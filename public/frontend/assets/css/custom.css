@@ -1,0 +1,32 @@
+.footer-bottom .newsletter-section.style-1 {
+  padding: 30px 0;
+}
+header .header-left-2 .mega_menu .sub-menu-mega .nav-column ul a {
+  padding: 2px 0;
+}
+.widget-service .service-list.style1 .item-service .info a.title-info,
+.widget-service .service-list.style2 .item-service .info a.title-info,
+.widget-service .service-list.style3 .item-service .info a.title-info,
+.widget-service .service-list.style4 .item-service .info a.title-info,
+.widget-service .service-list.style6 .item-service .info a.title-info {
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ed3952;
+}
+.post-view .post-item .description {
+  overflow: hidden !important;
+  -webkit-line-clamp: 4 !important;
+  text-overflow: ellipsis !important;
+  display: -webkit-box !important;
+}
+.homepage .page-content .box_heading .heading {
+  font-size: 19px;
+  font-weight: 700;
+}
+a:hover {
+  /*color: #3333ff !important;*/
+}
+.detail-descript.wb-content.ck_editor_content a:hover,
+article.article-detail.m-bottom-30 a:hover {
+  color: #3333ff !important;
+}

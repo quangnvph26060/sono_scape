@@ -1,0 +1,49 @@
+:root {
+    --bg-color: #ffffff;
+    --bg-color-opacity: #ffffffc7;
+    --primary-color: #45818e;
+    --primary-sub-color: #45818e40;
+    --sub-color: #134f5c;
+    --line-bottom-menu-color: #134f5c70;
+    --txt-color: #000000;
+    --txt-sub-color: #00000073;
+    --price-color: #45818e;
+    --price-sub-color: #45818e73;
+    --breadcrumbs-bg-color: #f3f3f3;
+    --breadcrumbs-txt-color: #000000;
+    --breadcrumbs-height: 42px;
+    --link-color: #000000;
+    --header-bg-color: ;
+    --header-bgsub-color: ;
+    --header-txt-color: #134f5c;
+    --header-txt-color-hover: #0000ff;
+    --footer-bg-color: #f3f3f3;
+    --footer-txt-color: #000000;
+    --footer-title-color: #000000;
+    --menu-bg-color: #0f677a;
+    --menu-bg-color-mobile: #0f677a;
+    --sub-menu-bg-color: #fff;
+    --menu-bg-active-color: #cc0000;
+    --menu-txt-color: #ffffff;
+    --menu-txt-child-color: #000000;
+    --menu-txt-active-color: #ffffff;
+    --space-between-widget: 30px;
+    --space-between-widget-mobile: 20px;
+    --menu-height: 50px;
+    --font-website: "Roboto";
+    --font-size-website: 15px;
+    --effect-loading-bg-color: ;
+    --effect-loading-color: ;
+}
+
+.bg {
+    opacity: 0;
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+}
+
+.bg-loaded {
+    opacity: 1;
+}
+
+
