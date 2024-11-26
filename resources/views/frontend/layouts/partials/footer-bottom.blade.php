@@ -20,7 +20,7 @@
                             <li class="nav-item relative default wb-header-menu-item">
                                 <a class="nav-link" href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/"
                                     target='"_blank"' aria-label="MÁY SIÊU ÂM SONOSCAPE  ">
-                                    MÁY SIÊU ÂM SONOSCAPE
+                                 SẢN PHẨM
                                 </a>
                             </li>
                             <li class="nav-item relative default wb-header-menu-item">

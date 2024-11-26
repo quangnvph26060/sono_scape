@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Introduction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
 
 class IntroduceController extends Controller
 {
     public function introduce(){
-        return view('frontend.pages.introduce');
+        $introduction = Introduction::whereDate('release_date', '<=', Carbon::today())
+        ->orderByDesc('release_date')
+        ->first();
+        return view('frontend.pages.introduce', compact('introduction'));
     }
 }
