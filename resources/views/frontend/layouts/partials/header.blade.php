@@ -74,7 +74,7 @@
                         <ul class="list-inline-block pull-right pr-lg-3">
                             <li>
                                 <form class="search-form"
-                                    action="https://maysieuamsonoscape.com/search/product/autocomplete">
+                                    action="{{route('product.list')}}" method="GET">
                                     <input placeholder="Nhập từ khóa" value="" data-default-value="Nhập từ khóa"
                                         data-value="Nhập từ khóa" type="text" name="keyword" class="search-box"
                                         autocomplete="off" />
@@ -268,7 +268,7 @@
                         <ul class="list-inline-block pull-right pr-lg-3">
                             <li>
                                 <form class="search-form"
-                                    action="https://maysieuamsonoscape.com/search/product/autocomplete">
+                                    action="{{route('product.list')}}" method="GET">
                                     <input placeholder="Nhập từ khóa" value=""
                                         data-default-value="Nhập từ khóa" data-value="Nhập từ khóa" type="text"
                                         name="keyword" class="search-box" autocomplete="off" />

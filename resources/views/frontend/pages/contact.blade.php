@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<x-breadcrumb />
+    <x-breadcrumb />
 
     <div class="page-content">
         <div class="container contact-style1">
@@ -73,7 +73,8 @@
                                     </li>
                                     <li>
                                         <label for="message" class="d-inline-b required">Tin nhắn</label>
-                                        <textarea name="message" id="message" cols="30" rows="10" class="width-100 form-control" required></textarea>
+                                        <textarea name="message" id="message" cols="30" rows="10" class="width-100 form-control" required>@if (!is_null($product))Tên sản phẩm: {{ $product->name }}@endif
+                                        </textarea>
                                     </li>
                                     <li class="clearfix">
 

@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Models\News;
+use App\Models\Product;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,5 +26,14 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::component('frontend.components.sidebar', 'sidebar');
         Blade::component('frontend.components.breadcrumb', 'breadcrumb');
+
+        View::composer('frontend.components.sidebar', function ($view) {
+            $view->with([
+                'popularNews'=> News::latest('view')->limit(3)->get(),
+                'latestProduct' => Product::latest()->first(),
+            ]);
+        });
+
+        Paginator::useBootstrapFive();
     }
 }

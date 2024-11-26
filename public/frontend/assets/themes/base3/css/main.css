@@ -1611,9 +1611,7 @@ body:not(.layout_fullwidth) .row-widget {
     padding-right: 15px;
     padding-left: 15px;
   }
-  .homepage .widget-sidebar {
-    padding-top: var(--space-between-widget);
-  }
+
   header .header-container .menu-nav .dropdown.mega_menu .dropdown-menu {
     background: var(--sub-menu-bg-color);
   }

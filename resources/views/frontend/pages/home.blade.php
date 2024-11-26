@@ -97,38 +97,42 @@
                                 <div class="tab-content product-view">
                                     <div class="tab-pane active loaded" id="tab_style_27_0">
                                         <div class="row product-grid-view item-style">
-                                            <div class="col-6 col-sm-4 col-md-4 col-lg-3">
-                                                <div class="product-item relative" >
-                                                    <figure class="photoframe relative">
-                                                        <div class="relative img-product">
-                                                            <a href="{{route('product.detail', 'may-sieu-am-sonoscape-m22')}}"
-                                                                class="d-block relative">
-                                                                <img src="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
-                                                                    width="100%" height="100%"
-                                                                    data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
-                                                                    class="lazyload" alt="Máy siêu âm 5D SonoScape M22"
-                                                                    aria-label="Máy siêu âm 5D SonoScape M22" />
-                                                            </a>
-                                                        </div>
-                                                        <figcaption class="infor-product">
-                                                            <h3 class="wrap-two-lines product-title">
-                                                                <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-4d-sonoscape-m22.html"
-                                                                    class="two-lines"
-                                                                    aria-label="Máy siêu âm 5D SonoScape M22">Máy siêu âm
-                                                                    5D
-                                                                    SonoScape M22</a>
-                                                            </h3>
-                                                            <div class="btn-purchased">
-                                                                <a href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html?product_code=&product_title=M%C3%A1y+si%C3%AAu+%C3%A2m+5D+SonoScape+M22"
-                                                                    rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                                    title="Máy siêu âm 5D SonoScape M22"><i
-                                                                        class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                                    Liên hệ</a>
+
+                                            @foreach ($products as $product)
+                                                <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+                                                    <div class="product-item relative">
+                                                        <figure class="photoframe relative">
+                                                            <div class="relative img-product">
+                                                                <a href="{{ route('product.detail', $product->slug) }}"
+                                                                    class="d-block relative">
+                                                                    <img src="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
+                                                                        width="100%" height="100%"
+                                                                        data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
+                                                                        class="lazyload"
+                                                                        alt="Máy siêu âm 5D SonoScape M22"
+                                                                        aria-label="Máy siêu âm 5D SonoScape M22" />
+                                                                </a>
                                                             </div>
-                                                        </figcaption>
-                                                    </figure>
+                                                            <figcaption class="infor-product">
+                                                                <h3 class="wrap-two-lines product-title">
+                                                                    <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-4d-sonoscape-m22.html"
+                                                                        class="two-lines"
+                                                                        aria-label="Máy siêu âm 5D SonoScape M22">{{ $product->name }}</a>
+                                                                </h3>
+                                                                <div class="btn-purchased">
+                                                                    <a href="{{ route('contact', $product->slug) }}"
+                                                                        rel="nofollow"
+                                                                        class="btn btn--m btn-primary btn-item"
+                                                                        title="Máy siêu âm 5D SonoScape M22"><i
+                                                                            class="fa fa-phone-alt"
+                                                                            aria-hidden="true"></i>
+                                                                        Liên hệ</a>
+                                                                </div>
+                                                            </figcaption>
+                                                        </figure>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab_style_27_1"></div>
@@ -150,66 +154,20 @@
                                     <div class="col-12 blog-container">
                                         <div class="ck_editor_content widget-content">
                                             <p style="text-align: center">
-                                                <a
-                                                    href="https://maysieuamsonoscape.com/gioi-thieu-may-sieu-am-sonoscape.html"><img
-                                                        src="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="
+                                                <a href="{{ route('introduce') }}"><img
+                                                        src="https://media.loveitopcdn.com/39908/sonoscape-2.png"
                                                         data-isrc="https://media.loveitopcdn.com/39908/sonoscape-2.png"
                                                         style="height: 60px; width: 190px" /></a>
                                             </p>
 
-                                            <p>
-                                                <span style="color: #cc0000"><span
-                                                        style="font-size: 24px">♦</span></span><span
-                                                    style="color: #339999">&nbsp;<strong>&nbsp;Tập đoàn
-                                                        SonoScape</strong></span><strong> </strong>là một trong 10 nhà sản
-                                                xuất
-                                                máy
-                                                siêu âm và nội soi y tế toàn cầu hàng đầu, SonoScape
-                                                được thành lập năm 2002 và có trụ sở tại Thâm Quyến.
-                                                Hiện hãng SonoScape có mặt tại 170 quốc gia &amp;
-                                                vùng lãnh thổ.
-                                            </p>
+                                            {!! \Str::words($introduction->article, 120, '...') !!} 
 
                                             <p>
-                                                Công ty TNHH Thiết Bị Y Tế&nbsp;Phú Việt là nhà phân
-                                                phối dòng
-                                                <a
-                                                    href="https://maysieuamsonoscape.com/may-sieu-am-sonoscape-s22-m22-p22-p25/">máy
-                                                    siêu âm SonoScape </a>tại Việt Nam với cam kết đồng hành lâu dài tại thị
-                                                trường Việt Nam.
-                                            </p>
-
-                                            <p>
-                                                &nbsp;<span style="color: #cc0000"><span
-                                                        style="font-size: 24px">♦</span></span><span
-                                                    style="color: #339999">&nbsp;&nbsp;<strong>Hãng
-                                                        SonoScape</strong></span><strong> </strong>đã có mặt tại Việt Nam
-                                                hơn 15
-                                                năm, mỗi năm bán ra hàng trăm máy. Được các bác sĩ
-                                                đầu ngành&nbsp;tin tưởng sử dụng cho các phòng khám
-                                                của mình như:
-                                            </p>
-
-                                            <p>&nbsp;</p>
-
-                                            <ul>
-                                                <li>
-                                                    <a
-                                                        href="https://maysieuamsonoscape.com/may-sieu-am-5d/may-sieu-am-5d.html">PGS.
-                                                        TS. Nguyễn Phước Bảo Quân- Chủ tịch chi
-                                                        hội siêu âm Việt Nam.</a>
-                                                </li>
-                                            </ul>
-
-                                            <p>
-                                                &nbsp; &nbsp; &nbsp;
-                                                <a href="https://maysieuamsonoscape.com/gioi-thieu-may-sieu-am-sonoscape.html"
-                                                    target="_blank">&nbsp; &nbsp;<span style="color: #cc0000"><strong>
-                                                            <xem th=""></xem>
-                                                        </strong></span></a><a
-                                                    href="https://maysieuamsonoscape.com/gioi-thieu-may-sieu-am-sonoscape.html"><span
-                                                        style="color: #ff0000"><strong>&lt; Xem
-                                                            Thêm&gt;</strong></span></a>
+                                                <a href="{{ route('introduce') }}">
+                                                    <span style="color: #ff0000">
+                                                        <strong>&lt; Xem Thêm&gt;</strong>
+                                                    </span>
+                                                </a>
                                             </p>
                                         </div>
                                     </div>
@@ -299,194 +257,89 @@
                                                 <div class="post-item relative" data-id="224">
                                                     <figure class="photoframe relative">
                                                         <div class="relative img-post">
-                                                            <a href="{{route('news.detail', 'may-sieu-am-5d')}}"
+                                                            <a href="{{ route('news.detail', $news->first()->slug) }}"
                                                                 class="d-block relative text-center">
                                                                 <img src="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
                                                                     width="100%" height="100%"
                                                                     data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
                                                                     class="lazyload"
-                                                                    alt="Lắp máy siêu âm 5D SonoScape P25/P20 cho PGS. TS. Nguyễn Phước Bảo Quân."
-                                                                    aria-label="Lắp máy siêu âm 5D SonoScape P25/P20 cho PGS. TS. Nguyễn Phước Bảo Quân." />
+                                                                    alt="{{$news->first()->subject}}"
+                                                                    aria-label="{{$news->first()->subject}}" />
                                                             </a>
                                                         </div>
                                                         <figcaption class="info-post">
                                                             <div class="bg-gradient"></div>
                                                             <div class="wrap-two-lines post-title">
-                                                                <a href="{{route('news.detail', 'may-sieu-am-5d')}}"
+                                                                <a href="{{ route('news.detail', $news->first()->slug) }}"
                                                                     class="two-lines"
-                                                                    aria-label="Lắp máy siêu âm 5D SonoScape P25/P20 cho PGS. TS. Nguyễn Phước Bảo Quân.">Lắp
-                                                                    máy siêu âm 5D SonoScape P25/P20 cho
-                                                                    PGS. TS. Nguyễn Phước Bảo Quân.</a>
+                                                                    aria-label="{{$news->first()->subject}}">{{$news->first()->subject}}</a>
                                                             </div>
                                                             <p class="f-size-medium post-view-date">
                                                                 <span class="post-date">
                                                                     <i class="fas fa-calendar-alt"></i>
-                                                                    24/11/2022
+                                                                    {{ \Carbon\Carbon::parse($news->first()->created_at)->format('d/m/Y') }}
                                                                     <span class="d-none-sidebar"> | </span>
                                                                 </span>
                                                                 <span class="post-item-view">
-                                                                    <i class="fas fa-eye"></i> 317 Lượt xem
+                                                                    <i class="fas fa-eye"></i> {{ $news->first()->view }} Lượt xem
                                                                 </span>
                                                             </p>
                                                             <div class="description">
-                                                                <p>
-                                                                    <strong>Lắp máy siêu âm 5D SonoScape P25/P20
-                                                                        cho PGS. TS. Nguyễn Phước Bảo Quân - Chủ
-                                                                        tịch Hội siêu âm Việt Nam</strong>
-                                                                </p>
+                                                                {!! \Str::words($news->first()->article, 35, ' [...]') !!}
                                                             </div>
                                                             <div class="read-more">
-                                                                <a
-                                                                    href="{{route('news.detail', 'may-sieu-am-5d')}}">
+                                                                <a href="{{ route('news.detail', 'may-sieu-am-5d') }}">
                                                                     Xem thêm &rsaquo;&rsaquo;</a>
                                                             </div>
                                                         </figcaption>
                                                     </figure>
                                                 </div>
                                             </div>
+
                                             <div class="col-md-6 col-sm-12 right-style5">
-                                                <div class="post-item relative" data-id="229">
-                                                    <figure class="photoframe relative">
-                                                        <div class="relative img-post">
-                                                            <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/cong-ty-tnhh-thiet-bi-y-te-phu-viet.html"
-                                                                class="d-block relative text-center">
-                                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                                    width="100%" height="100%"
-                                                                    data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/003411-may-sieu-am-sonoscape-s55.jpg?zc=1"
-                                                                    class="lazyload"
-                                                                    alt="Công Ty TNHH Thiết Bị Y Tế Phú Việt triển khai lắp đặt máy siêu âm 5D SonoScape S55 tại Hoà Bình"
-                                                                    aria-label="Công Ty TNHH Thiết Bị Y Tế Phú Việt triển khai lắp đặt máy siêu âm 5D SonoScape S55 tại Hoà Bình" />
-                                                            </a>
-                                                        </div>
-                                                        <figcaption class="info-post">
-                                                            <div class="bg-gradient"></div>
-                                                            <div class="wrap-two-lines post-title">
-                                                                <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/cong-ty-tnhh-thiet-bi-y-te-phu-viet.html"
-                                                                    class="two-lines"
-                                                                    aria-label="Công Ty TNHH Thiết Bị Y Tế Phú Việt triển khai lắp đặt máy siêu âm 5D SonoScape S55 tại Hoà Bình">Công
-                                                                    Ty TNHH Thiết Bị Y Tế Phú Việt triển
-                                                                    khai lắp đặt máy siêu âm 5D SonoScape S55
-                                                                    tại Hoà Bình</a>
+
+                                                @foreach ($news->skip(1)->take(3) as $item)
+                                                    <div class="post-item relative" data-id="{{ $item->id }}">
+                                                        <figure class="photoframe relative">
+                                                            <div class="relative img-post">
+                                                                <a href="{{ route('news.detail', $item->slug) }}"
+                                                                    class="d-block relative text-center">
+                                                                    <img src="https://media.loveitopcdn.com/39908/thumb/800x500/003411-may-sieu-am-sonoscape-s55.jpg?zc=1"
+                                                                        width="100%" height="100%"
+                                                                        data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/003411-may-sieu-am-sonoscape-s55.jpg?zc=1"
+                                                                        class="lazyload" alt="{{ $item->subject }}"
+                                                                        aria-label="{{ $item->subject }}" />
+                                                                </a>
                                                             </div>
-                                                            <p class="f-size-medium post-view-date">
-                                                                <span class="post-date">
-                                                                    <i class="fas fa-calendar-alt"></i>
-                                                                    16/05/2024
-                                                                    <span class="d-none-sidebar"> | </span>
-                                                                </span>
-                                                                <span class="post-item-view">
-                                                                    <i class="fas fa-eye"></i> 117 Lượt xem
-                                                                </span>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>
-                                                                    <strong>Công Ty TNHH Thiết Bị Y Tế Phú Việt -
-                                                                        Triển khai lắp đặt máy siêu âm 5D
-                                                                        SonoScape S55&nbsp;tại Hoà Bình.</strong>
+                                                            <figcaption class="info-post">
+                                                                <div class="bg-gradient"></div>
+                                                                <div class="wrap-two-lines post-title">
+                                                                    <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/cong-ty-tnhh-thiet-bi-y-te-phu-viet.html"
+                                                                        class="two-lines"
+                                                                        aria-label="{{ $item->subject }}">{{ $item->subject }}</a>
+                                                                </div>
+                                                                <p class="f-size-medium post-view-date">
+                                                                    <span class="post-date">
+                                                                        <i class="fas fa-calendar-alt"></i>
+                                                                        {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}
+                                                                        <span class="d-none-sidebar"> | </span>
+                                                                    </span>
+                                                                    <span class="post-item-view">
+                                                                        <i class="fas fa-eye"></i> {{ $item->view }} Lượt xem
+                                                                    </span>
                                                                 </p>
-                                                            </div>
-                                                            <div class="read-more">
-                                                                <a
-                                                                    href="https://maysieuamsonoscape.com/may-sieu-am-5d/cong-ty-tnhh-thiet-bi-y-te-phu-viet.html">
-                                                                    Xem thêm &rsaquo;&rsaquo;</a>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="post-item relative" data-id="225">
-                                                    <figure class="photoframe relative">
-                                                        <div class="relative img-post">
-                                                            <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/may-sieu-am-sonoscape-m22.html"
-                                                                class="d-block relative text-center">
-                                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                                    width="100%" height="100%"
-                                                                    data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/may-sieu-am-sonoscape-m22-s22.jpg?zc=1"
-                                                                    class="lazyload"
-                                                                    alt="Lắp máy siêu âm 5D SonoScape M22/ S22 cho Bác sĩ Song Hà"
-                                                                    aria-label="Lắp máy siêu âm 5D SonoScape M22/ S22 cho Bác sĩ Song Hà" />
-                                                            </a>
-                                                        </div>
-                                                        <figcaption class="info-post">
-                                                            <div class="bg-gradient"></div>
-                                                            <div class="wrap-two-lines post-title">
-                                                                <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/may-sieu-am-sonoscape-m22.html"
-                                                                    class="two-lines"
-                                                                    aria-label="Lắp máy siêu âm 5D SonoScape M22/ S22 cho Bác sĩ Song Hà">Lắp
-                                                                    máy siêu âm 5D SonoScape M22/ S22 cho
-                                                                    Bác sĩ Song Hà</a>
-                                                            </div>
-                                                            <p class="f-size-medium post-view-date">
-                                                                <span class="post-date">
-                                                                    <i class="fas fa-calendar-alt"></i>
-                                                                    06/09/2017
-                                                                    <span class="d-none-sidebar"> | </span>
-                                                                </span>
-                                                                <span class="post-item-view">
-                                                                    <i class="fas fa-eye"></i> 131 Lượt xem
-                                                                </span>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>
-                                                                    <strong>Lắp máy siêu âm 5D SonoScape M22/ S22
-                                                                        cho Bác sĩ Song Hà - Chuyên sản phụ khoa
-                                                                        hiếm muộn.</strong>
-                                                                </p>
-                                                            </div>
-                                                            <div class="read-more">
-                                                                <a
-                                                                    href="https://maysieuamsonoscape.com/may-sieu-am-5d/may-sieu-am-sonoscape-m22.html">
-                                                                    Xem thêm &rsaquo;&rsaquo;</a>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="post-item relative" data-id="227">
-                                                    <figure class="photoframe relative">
-                                                        <div class="relative img-post">
-                                                            <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/gia-may-sieu-am-5d.html"
-                                                                class="d-block relative text-center">
-                                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                                    width="100%" height="100%"
-                                                                    data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/160746-sonoscape.jpg?zc=1"
-                                                                    class="lazyload"
-                                                                    alt="Hãng SonoScape tham gia Vietnam Medi-pharm Expo 2023 tại Hồ Chí Minh"
-                                                                    aria-label="Hãng SonoScape tham gia Vietnam Medi-pharm Expo 2023 tại Hồ Chí Minh" />
-                                                            </a>
-                                                        </div>
-                                                        <figcaption class="info-post">
-                                                            <div class="bg-gradient"></div>
-                                                            <div class="wrap-two-lines post-title">
-                                                                <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/gia-may-sieu-am-5d.html"
-                                                                    class="two-lines"
-                                                                    aria-label="Hãng SonoScape tham gia Vietnam Medi-pharm Expo 2023 tại Hồ Chí Minh">Hãng
-                                                                    SonoScape tham gia Vietnam
-                                                                    Medi-pharm Expo 2023 tại Hồ Chí Minh</a>
-                                                            </div>
-                                                            <p class="f-size-medium post-view-date">
-                                                                <span class="post-date">
-                                                                    <i class="fas fa-calendar-alt"></i>
-                                                                    18/09/2023
-                                                                    <span class="d-none-sidebar"> | </span>
-                                                                </span>
-                                                                <span class="post-item-view">
-                                                                    <i class="fas fa-eye"></i> 113 Lượt xem
-                                                                </span>
-                                                            </p>
-                                                            <div class="description">
-                                                                <p>
-                                                                    Hãng SonoScape tham gia&nbsp;Vietnam
-                                                                    Medi-pharm Expo 2023 tại Hồ Chí Minh với
-                                                                    những máy siêu âm 5D cao cấp
-                                                                </p>
-                                                            </div>
-                                                            <div class="read-more">
-                                                                <a
-                                                                    href="https://maysieuamsonoscape.com/may-sieu-am-5d/gia-may-sieu-am-5d.html">
-                                                                    Xem thêm &rsaquo;&rsaquo;</a>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
+                                                                <div class="description fw-bold">
+                                                                    {!! \Str::words($item->article, 24, ' [...]') !!}
+                                                                </div>
+                                                                <div class="read-more">
+                                                                    <a
+                                                                        href="{{ route('news.detail', $item->slug) }}">
+                                                                        Xem thêm &rsaquo;&rsaquo;</a>
+                                                                </div>
+                                                            </figcaption>
+                                                        </figure>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <center class="read-more w-100">
