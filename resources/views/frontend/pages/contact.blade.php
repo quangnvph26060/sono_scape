@@ -1,16 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="breadcrumbs">
-        <div class="container">
-            <ul class="horizontal-list clearfix f-size-medium">
-                <li>
-                    <a class="color-base" href="https://maysieuamsonoscape.com">Trang chủ</a><i>/</i>
-                </li>
-                <li><span class="color-base">Tin tức</span></li>
-            </ul>
-        </div>
-    </div>
+<x-breadcrumb />
 
     <div class="page-content">
         <div class="container contact-style1">

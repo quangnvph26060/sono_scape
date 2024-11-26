@@ -11,4 +11,9 @@ class NewsController extends Controller
     {
         return view('frontend.pages.news.list');
     }
+
+    public function detail()
+    {
+        return view('frontend.pages.news.detail');
+    }
 }

@@ -98,23 +98,17 @@
                                     <div class="tab-pane active loaded" id="tab_style_27_0">
                                         <div class="row product-grid-view item-style">
                                             <div class="col-6 col-sm-4 col-md-4 col-lg-3">
-                                                <div class="product-item relative" data-id="419"
-                                                    action="https://maysieuamsonoscape.com/api/v2/add-to-cart/419">
+                                                <div class="product-item relative" >
                                                     <figure class="photoframe relative">
                                                         <div class="relative img-product">
-                                                            <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-4d-sonoscape-m22.html"
+                                                            <a href="{{route('product.detail', 'may-sieu-am-sonoscape-m22')}}"
                                                                 class="d-block relative">
-                                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                                <img src="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
                                                                     width="100%" height="100%"
                                                                     data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
                                                                     class="lazyload" alt="Máy siêu âm 5D SonoScape M22"
                                                                     aria-label="Máy siêu âm 5D SonoScape M22" />
                                                             </a>
-                                                            <a href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html?product_code=&product_title=M%C3%A1y+si%C3%AAu+%C3%A2m+5D+SonoScape+M22"
-                                                                rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                                title="Máy siêu âm 5D SonoScape M22"><i
-                                                                    class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                                Liên hệ</a>
                                                         </div>
                                                         <figcaption class="infor-product">
                                                             <h3 class="wrap-two-lines product-title">
@@ -128,121 +122,6 @@
                                                                 <a href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html?product_code=&product_title=M%C3%A1y+si%C3%AAu+%C3%A2m+5D+SonoScape+M22"
                                                                     rel="nofollow" class="btn btn--m btn-primary btn-item"
                                                                     title="Máy siêu âm 5D SonoScape M22"><i
-                                                                        class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                                    Liên hệ</a>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-4 col-md-4 col-lg-3">
-                                                <div class="product-item relative" data-id="422"
-                                                    action="https://maysieuamsonoscape.com/api/v2/add-to-cart/422">
-                                                    <figure class="photoframe relative">
-                                                        <div class="relative img-product">
-                                                            <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-4d-sonoscape-s22.html"
-                                                                class="d-block relative">
-                                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                                    width="100%" height="100%"
-                                                                    data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/164845-may-sieu-am-sonoscape-s22.jpg?zc=1"
-                                                                    class="lazyload" alt="Máy siêu âm 5D SonoScape S22"
-                                                                    aria-label="Máy siêu âm 5D SonoScape S22" />
-                                                            </a>
-                                                            <a href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html?product_code=&product_title=M%C3%A1y+si%C3%AAu+%C3%A2m+5D+SonoScape+S22"
-                                                                rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                                title="Máy siêu âm 5D SonoScape S22"><i
-                                                                    class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                                Liên hệ</a>
-                                                        </div>
-                                                        <figcaption class="infor-product">
-                                                            <h3 class="wrap-two-lines product-title">
-                                                                <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-4d-sonoscape-s22.html"
-                                                                    class="two-lines"
-                                                                    aria-label="Máy siêu âm 5D SonoScape S22">Máy siêu âm
-                                                                    5D
-                                                                    SonoScape S22</a>
-                                                            </h3>
-                                                            <div class="btn-purchased">
-                                                                <a href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html?product_code=&product_title=M%C3%A1y+si%C3%AAu+%C3%A2m+5D+SonoScape+S22"
-                                                                    rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                                    title="Máy siêu âm 5D SonoScape S22"><i
-                                                                        class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                                    Liên hệ</a>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-4 col-md-4 col-lg-3">
-                                                <div class="product-item relative" data-id="420"
-                                                    action="https://maysieuamsonoscape.com/api/v2/add-to-cart/420">
-                                                    <figure class="photoframe relative">
-                                                        <div class="relative img-product">
-                                                            <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-5d-sonoscape-p25.html"
-                                                                class="d-block relative">
-                                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                                    width="100%" height="100%"
-                                                                    data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/may-sieu-am-5d-sonoscape-p25.jpg?zc=1"
-                                                                    class="lazyload" alt="Máy siêu âm 5D SonoScape P25"
-                                                                    aria-label="Máy siêu âm 5D SonoScape P25" />
-                                                            </a>
-                                                            <a href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html?product_code=&product_title=M%C3%A1y+si%C3%AAu+%C3%A2m+5D+SonoScape+P25"
-                                                                rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                                title="Máy siêu âm 5D SonoScape P25"><i
-                                                                    class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                                Liên hệ</a>
-                                                        </div>
-                                                        <figcaption class="infor-product">
-                                                            <h3 class="wrap-two-lines product-title">
-                                                                <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-5d-sonoscape-p25.html"
-                                                                    class="two-lines"
-                                                                    aria-label="Máy siêu âm 5D SonoScape P25">Máy siêu âm
-                                                                    5D
-                                                                    SonoScape P25</a>
-                                                            </h3>
-                                                            <div class="btn-purchased">
-                                                                <a href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html?product_code=&product_title=M%C3%A1y+si%C3%AAu+%C3%A2m+5D+SonoScape+P25"
-                                                                    rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                                    title="Máy siêu âm 5D SonoScape P25"><i
-                                                                        class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                                    Liên hệ</a>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-4 col-md-4 col-lg-3">
-                                                <div class="product-item relative" data-id="421"
-                                                    action="https://maysieuamsonoscape.com/api/v2/add-to-cart/421">
-                                                    <figure class="photoframe relative">
-                                                        <div class="relative img-product">
-                                                            <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-sonoscape-p25-pro.html"
-                                                                class="d-block relative">
-                                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                                    width="100%" height="100%"
-                                                                    data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/may-sieu-am-mau-5d-sonoscape-p25-pro.jpg?zc=1"
-                                                                    class="lazyload"
-                                                                    alt="Máy siêu âm 5D SonoScape P25 Pro"
-                                                                    aria-label="Máy siêu âm 5D SonoScape P25 Pro" />
-                                                            </a>
-                                                            <a href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html?product_code=&product_title=M%C3%A1y+si%C3%AAu+%C3%A2m+5D+SonoScape+P25+Pro"
-                                                                rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                                title="Máy siêu âm 5D SonoScape P25 Pro"><i
-                                                                    class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                                Liên hệ</a>
-                                                        </div>
-                                                        <figcaption class="infor-product">
-                                                            <h3 class="wrap-two-lines product-title">
-                                                                <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-sonoscape-p25-pro.html"
-                                                                    class="two-lines"
-                                                                    aria-label="Máy siêu âm 5D SonoScape P25 Pro">Máy siêu
-                                                                    âm
-                                                                    5D SonoScape P25 Pro</a>
-                                                            </h3>
-                                                            <div class="btn-purchased">
-                                                                <a href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html?product_code=&product_title=M%C3%A1y+si%C3%AAu+%C3%A2m+5D+SonoScape+P25+Pro"
-                                                                    rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                                    title="Máy siêu âm 5D SonoScape P25 Pro"><i
                                                                         class="fa fa-phone-alt" aria-hidden="true"></i>
                                                                     Liên hệ</a>
                                                             </div>
@@ -420,9 +299,9 @@
                                                 <div class="post-item relative" data-id="224">
                                                     <figure class="photoframe relative">
                                                         <div class="relative img-post">
-                                                            <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/may-sieu-am-5d.html"
+                                                            <a href="{{route('news.detail', 'may-sieu-am-5d')}}"
                                                                 class="d-block relative text-center">
-                                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                                <img src="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
                                                                     width="100%" height="100%"
                                                                     data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
                                                                     class="lazyload"
@@ -433,7 +312,7 @@
                                                         <figcaption class="info-post">
                                                             <div class="bg-gradient"></div>
                                                             <div class="wrap-two-lines post-title">
-                                                                <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/may-sieu-am-5d.html"
+                                                                <a href="{{route('news.detail', 'may-sieu-am-5d')}}"
                                                                     class="two-lines"
                                                                     aria-label="Lắp máy siêu âm 5D SonoScape P25/P20 cho PGS. TS. Nguyễn Phước Bảo Quân.">Lắp
                                                                     máy siêu âm 5D SonoScape P25/P20 cho
@@ -458,7 +337,7 @@
                                                             </div>
                                                             <div class="read-more">
                                                                 <a
-                                                                    href="https://maysieuamsonoscape.com/may-sieu-am-5d/may-sieu-am-5d.html">
+                                                                    href="{{route('news.detail', 'may-sieu-am-5d')}}">
                                                                     Xem thêm &rsaquo;&rsaquo;</a>
                                                             </div>
                                                         </figcaption>
