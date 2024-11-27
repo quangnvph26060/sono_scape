@@ -54,6 +54,12 @@
                         <p>Chính sách hỗ trợ</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.slider.index') }}">
+                        <i class="fas fa-image"></i>
+                        <p>Cấu hình trình chiếu</p>
+                    </a>
+                </li>
 
 
                 {{-- <li class="nav-item">

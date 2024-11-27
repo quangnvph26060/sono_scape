@@ -12,23 +12,20 @@
                             data-width="1920" data-height="800" data-animatein="fadeInDown" data-animateout="fadeOut"
                             data-autoplaytimeout="4000" data-dots="true" data-nav="true" data-loop="true"
                             data-autoplay="true">
-                            <div class="item-slider text-center relative">
-                                <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/may-sieu-am-5d.html"
-                                    target='"_blank"'>
-                                    <picture class="banner-thumb">
-                                        <source media="(min-width: 650px)"
-                                            srcset="
-                                                https://media.loveitopcdn.com/39908/thumb/1920x800/011631-may-sieu-am-sonoscape.jpg?zc=1
-                                                " />
-                                        <source media="(min-width: 350px)"
-                                            srcset="
-                                                https://media.loveitopcdn.com/39908/thumb/960x400/011631-may-sieu-am-sonoscape.jpg?zc=1
-                                                " />
-                                        <img src="https://media.loveitopcdn.com/39908/thumb/1920x800/011631-may-sieu-am-sonoscape.jpg?zc=1"
-                                            width="100%" height="800" alt="PGS.TS. Nguyễn Phước Bảo Quân " />
-                                    </picture>
-                                </a>
-                            </div>
+
+
+                            @foreach ($items as $key => $item)
+                                <div class="item-slider text-center relative">
+                                    <a href="{{ $item['link'] }}" target='"_blank"'>
+                                        <picture class="banner-thumb">
+                                            <source media="(min-width: 650px)" srcset="{{ showImage($item['slider']) }}" />
+                                            <source media="(min-width: 350px)" srcset="{{ showImage($item['slider']) }}" />
+                                            <img src="{{ showImage($item['slider']) }}" width="100%" height="800"
+                                                alt="{{ $item['alt'] }}" />
+                                        </picture>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -151,23 +148,17 @@
                                             <div class="swiper youtube-slider">
                                                 <!-- Swiper Wrapper -->
                                                 <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <iframe width="560" height="315"
-                                                            src="https://www.youtube.com/embed/RnwdHySLFwk?si=wEyLF68SUCoTrFM0"
-                                                            title="YouTube video player" frameborder="0"
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                            referrerpolicy="strict-origin-when-cross-origin"
-                                                            allowfullscreen></iframe>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <iframe width="560" height="315"
-                                                            src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2"
-                                                            title="YouTube video player" frameborder="0"
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                            referrerpolicy="strict-origin-when-cross-origin"
-                                                            allowfullscreen></iframe>
-                                                    </div>
-                                                    <!-- Thêm các video khác vào đây -->
+
+                                                    @foreach ($sliderVideo->items['links'] as $video)
+                                                        <div class="swiper-slide">
+                                                            <iframe width="560" height="315"
+                                                                src="https://www.youtube.com/embed/{{ getYouTubeVideoId($video) }}?si=24ccB15cPCU7M77X"
+                                                                title="YouTube video player" frameborder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                referrerpolicy="strict-origin-when-cross-origin"
+                                                                allowfullscreen></iframe>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
 
                                                 <!-- Swiper Pagination -->
