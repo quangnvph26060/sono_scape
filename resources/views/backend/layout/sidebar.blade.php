@@ -44,8 +44,14 @@
 
                 <li class="nav-item">
                     <a href="{{ route('admin.company.index') }}">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-building "></i>
                         <p>Công ty sản xuất</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.supportPolicy.index') }}">
+                        <i class="fas fa-sign"></i>
+                        <p>Chính sách hỗ trợ</p>
                     </a>
                 </li>
 

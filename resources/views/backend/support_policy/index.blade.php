@@ -138,7 +138,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title" style="text-align: center; color:white">Danh sách Công ty sản xuất</h4>
+                        <h4 class="card-title" style="text-align: center; color:white">Danh sách Chính sách hỗ trợ</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -147,29 +147,31 @@
                                     <div class="row align-items-center">
                                         <div class="col-sm-12 col-md-6 d-flex justify-content-start">
                                             <button id="open-add-modal" type="button" class="btn btn-primary">
-                                                Thêm công ty
+                                                Thêm chính sách hỗ trợ
                                             </button>
                                         </div>
-                                        <div class="col-sm-12 col-md-6">
+                                        {{-- <div class="col-sm-12 col-md-6">
                                             <div class="dataTables_filter">
                                                 <label for="search-query">Tìm kiếm</label>
                                                 <input id="search-query" type="text" name="phone"
                                                     class="form-control form-control-sm" placeholder="Nhập số điện thoại">
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12" id="table-content">
                                         <!-- Load bảng user ban đầu từ view `table.blade.php` -->
-                                        @include('backend.company.table', ['companies' => $companies])
+                                        @include('backend.support_policy.table', [
+                                            'supportPolicies' => $supportPolicies,
+                                        ])
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12" id="pagination-links">
                                         <!-- Load phân trang ban đầu -->
-                                        {{ $companies->links('vendor.pagination.custom') }}
+                                        {{ $supportPolicies->links('vendor.pagination.custom') }}
                                     </div>
                                 </div>
                             </div>
@@ -181,28 +183,35 @@
     </div>
 
     <!-- Modal thêm khách hàng mới -->
-    <div class="modal fade" id="addCompanyModal" tabindex="-1" aria-labelledby="addCompanyModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addSupportPolicyModal" tabindex="-1" aria-labelledby="addSupportPolicyModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addCompanyModalLabel">Thêm khách hàng</h5>
+                    <h5 class="modal-title" id="addSupportPolicyModalLabel">Thêm chính sách mới</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="add-company-form">
+                    <form id="add-supportPolicy-form">
                         @csrf
                         <!-- Họ tên -->
                         <div class="mb-3">
-                            <label for="name" class="form-label">Tên công ty</label>
+                            <label for="name" class="form-label">Tiêu đề</label>
                             <input type="text" class="form-control" id="name" name="name">
                             <small id="name-error" class="text-danger"></small>
                         </div>
 
                         <!-- Số điện thoại -->
                         <div class="mb-3">
-                            <label for="phone" class="form-label">Số điện thoại</label>
-                            <input type="text" class="form-control" id="phone" name="phone">
-                            <small id="phone-error" class="text-danger"></small>
+                            <label for="description" class="form-label">Mô tả chính sách</label>
+                            <input type="text" class="form-control" id="description" name="description">
+                            <small id="description-error" class="text-danger"></small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="logo" class="form-label">Logo </label>
+                            <input type="file" class="form-control" id="logo" name="logo">
+                            <small id="logo-error" class="text-danger"></small>
                         </div>
                         <button type="submit" class="btn btn-primary">Xác nhận</button>
                     </form>
@@ -211,29 +220,39 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="editCompanyModal" tabindex="-1" aria-labelledby="editCompanyModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editSupportPolicyModal" tabindex="-1" aria-labelledby="editSupportPolicyModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editCompanyModalLabel">Sửa công ty</h5>
+                    <h5 class="modal-title" id="editSupportPolicyModalLabel">Sửa chính sách hỗ trợ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="edit-company-form">
+                    <form id="edit-supportPolicy-form">
                         @csrf
-                        <input type="hidden" id="edit-company-id" name="id">
+                        <input type="hidden" id="edit-supportPolicy-id" name="id">
                         <!-- Họ tên -->
                         <div class="mb-3">
-                            <label for="name" class="form-label">Tên công ty</label>
+                            <label for="name" class="form-label">Tên chính sách hỗ trợ</label>
                             <input type="text" class="form-control" id="edit-name" name="name">
                             <small id="name-error" class="text-danger"></small>
                         </div>
 
                         <!-- Số điện thoại -->
                         <div class="mb-3">
-                            <label for="phone" class="form-label">Số điện thoại</label>
-                            <input type="text" class="form-control" id="edit-phone" name="phone">
-                            <small id="phone-error" class="text-danger"></small>
+                            <label for="description" class="form-label">Mô tả</label>
+                            <input type="text" class="form-control" id="edit-description" name="description">
+                            <small id="description-error" class="text-danger"></small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="logo" class="form-label">Logo </label>
+                            <input type="file" class="form-control" id="edit-logo" name="logo">
+                            <div id="logo-preview-container">
+                                <!-- Logo sẽ được hiển thị tại đây -->
+                            </div>
+                            <small id="logo-error" class="text-danger"></small>
                         </div>
                         <button type="submit" class="btn btn-primary">Xác nhận</button>
                     </form>
@@ -248,6 +267,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.min.js"></script>
     <script>
         $(document).ready(function() {
+            $('#logo').on('change', function(event) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // Hiển thị hình ảnh đã chọn trong modal
+                    $('#logo-preview').remove(); // Xóa hình ảnh cũ nếu có
+                    var image = $('<img />', {
+                        src: e.target.result,
+                        id: 'logo-preview',
+                        class: 'img-fluid',
+                        style: 'max-width: 200px; margin-top: 10px;'
+                    });
+                    $('#logo').after(image); // Hiển thị sau input file
+                };
+
+                // Đọc tệp hình ảnh
+                if (this.files && this.files[0]) {
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+            $('#edit-logo').on('change', function(event) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // Hiển thị hình ảnh đã chọn trong modal
+                    $('#logo-preview').remove(); // Xóa hình ảnh cũ nếu có
+                    var image = $('<img />', {
+                        src: e.target.result,
+                        id: 'logo-preview',
+                        class: 'img-fluid',
+                        style: 'max-width: 200px; margin-top: 10px;'
+                    });
+                    $('#edit-logo').after(image); // Hiển thị sau input file
+                };
+
+                // Đọc tệp hình ảnh
+                if (this.files && this.files[0]) {
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+
             $(document).on('click', '#pagination-links a', function(e) {
                 e.preventDefault();
                 let pageUrl = $(this).attr('href'); // Lấy URL của liên kết phân trang
@@ -259,7 +319,7 @@
                         // Cập nhật bảng và phân trang
                         $('#table-content').html($(response).find('#table-content').html());
                         $('#pagination-links').html($(response).find('#pagination-links')
-                        .html());
+                            .html());
                     },
                     error: function(xhr) {
                         console.error("Failed to paginate:", xhr.responseText);
@@ -274,50 +334,60 @@
             });
             // Mở modal thêm khách hàng
             $('#open-add-modal').on('click', function() {
-                $('#add-company-form')[0].reset();
+                $('#add-supportPolicy-form')[0].reset();
                 $('.invalid-feedback').hide();
-                $('#addCompanyModal').modal('show');
+                $('#addSupportPolicyModal').modal('show');
             });
 
             $('.edit-btn').on('click', function() {
-                const companyId = $(this).data('id'); // Lấy ID công ty từ nút bấm
+                let supportPolicyId = $(this).data('id');
+                let url = "{{ route('admin.supportPolicy.detail', ':id') }}";
+                url = url.replace(':id', supportPolicyId);
 
-                // Gửi AJAX để lấy chi tiết công ty
-                $.ajax({
-                    url: `/admin/company/detail/${companyId}`, // Gửi yêu cầu tới route chi tiết công ty
-                    type: 'GET',
-                    success: function(response) {
-                        if (response) {
-                            // Gán dữ liệu vào hidden input và các trường khác trong form
-                            $('#edit-company-id').val(response.id); // Gán ID vào hidden input
-                            $('#edit-name').val(response.name); // Gán tên
-                            $('#edit-phone').val(response.phone); // Gán số điện thoại
+                $.get(url, function(data) {
+                    // Cập nhật giá trị cho các trường input
+                    $('#edit-name').val(data.name);
+                    $('#edit-description').val(data.description);
+                    $('#edit-supportPolicy-id').val(data.id);
 
-                            // Hiển thị modal
-                            $('#editCompanyModal').modal('show');
-                        }
-                    },
-                    error: function() {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Thất bại',
-                            text: 'Không thể tải thông tin công ty.',
+                    // Hiển thị logo nếu có
+                    if (data.logo) {
+                        let logoUrl = "{{ env('APP_URL') }}/storage/:path".replace(':path', data
+                            .logo); // Đảm bảo đường dẫn là đúng
+                        console.log(logoUrl);
+
+                        $('#logo-preview').remove(); // Xóa hình ảnh cũ nếu có
+                        let image = $('<img />', {
+                            src: logoUrl,
+                            id: 'logo-preview',
+                            class: 'img-fluid',
+                            style: 'max-width: 200px; margin-top: 10px;'
                         });
+                        $('#logo-preview-container').append(
+                            image); // Hiển thị hình ảnh trong container chứa logo
                     }
+
+                    // Hiển thị modal chỉnh sửa
+                    $('#editSupportPolicyModal').modal('show');
                 });
             });
 
+
             // Thêm khách hàng mới
-            $('#add-company-form').on('submit', function(e) {
+            $('#add-supportPolicy-form').on('submit', function(e) {
                 e.preventDefault();
 
+                var formData = new FormData(this);
+
                 $.ajax({
-                    url: "{{ route('admin.company.store') }}",
+                    url: "{{ route('admin.supportPolicy.store') }}",
                     type: 'POST',
-                    data: $(this).serialize(),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function(response) {
                         if (response.success) {
-                            $('#addCompanyModal').modal('hide');
+                            $('#addSupportPolicyModal').modal('hide');
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Thành công',
@@ -340,19 +410,22 @@
                 });
             });
 
-            $('#edit-company-form').on('submit', function(e) {
+            $('#edit-supportPolicy-form').on('submit', function(e) {
                 e.preventDefault();
 
-                // Lấy ID công ty từ hidden input
-                const companyId = $('#edit-company-id').val();
+                // Lấy ID chính sách hỗ trợ từ hidden input
+                const supportPolicyId = $('#edit-supportPolicy-id').val();
+                var formData = new FormData(this);
 
                 $.ajax({
-                    url: `/admin/company/update/${companyId}`, // URL sử dụng ID động
+                    url: `/admin/support-policy/update/${supportPolicyId}`, // URL sử dụng ID động
                     type: 'POST',
-                    data: $(this).serialize(),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function(response) {
                         if (response.success) {
-                            $('#editCompanyModal').modal('hide');
+                            $('#editSupportPolicyModal').modal('hide');
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Thành công',
@@ -387,7 +460,7 @@
             function updateTableAndPagination() {
                 let query = $('#search-query').val();
                 $.ajax({
-                    url: "{{ route('admin.company.search') }}", // URL tìm kiếm
+                    url: "{{ route('admin.supportPolicy.search') }}", // URL tìm kiếm
                     type: 'GET',
                     data: {
                         query: query
@@ -446,7 +519,7 @@
                             }
                         },
                         error: function(xhr) {
-                            toastr.error('Xóa công ty thất bại', 'Lỗi');
+                            toastr.error('Xóa chính sách hỗ trợ thất bại', 'Lỗi');
                         }
                     });
                 }
@@ -459,7 +532,7 @@
 
             function updateTable(query) {
                 $.ajax({
-                    url: "{{ route('admin.company.search') }}", // Route tìm kiếm
+                    url: "{{ route('admin.supportPolicy.search') }}", // Route tìm kiếm
                     type: 'GET',
                     data: {
                         query: query
@@ -478,7 +551,7 @@
                                         <a href="javascript:void(0)" class="btn btn-warning edit-btn" data-id="${customer.id}">
                                             <i class="fas fa-wrench"></i>
                                         </a>
-                                        <a href="javascript:void(0)" class="btn btn-danger delete-btn" data-url="/admin/company/delete/${customer.id}">
+                                        <a href="javascript:void(0)" class="btn btn-danger delete-btn" data-url="/admin/support-policy/delete/${customer.id}">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
