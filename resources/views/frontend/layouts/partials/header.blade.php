@@ -5,11 +5,11 @@
                 <ul class="info-account line-right">
                     <li>
                         <span class="phone-label">Gọi ngay</span>
-                        <a href="tel:0934218397">
+                        <a href="tel:{{ $setting->phone }}">
                             <span class="color">
                                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
                             </span>
-                            0934218397
+                           {{ $setting->phone }}
                         </a>
                     </li>
                 </ul>
@@ -18,11 +18,11 @@
         <div class="textAlign-right topbar-right">
             <div class="textAlign-right">
                 <div class="social-header d-inline-block relative">
-                    <a href="https://www.facebook.com/thanhmocdan" rel="nofollow" aria-label="facebook"
+                    <a href="https://www.facebook.com/{{$setting->fanpage}}" rel="nofollow" aria-label="facebook"
                         class="float-shadow" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://www.youtube.com/channel/UCzMV3nkgr8qhVj2O1pUjRHQ" rel="nofollow"
+                    <a href="https://www.youtube.com/channel/{{$setting->youtube}}" rel="nofollow"
                         aria-label="youtube" class="float-shadow" target="_blank">
                         <i class="fab fa-youtube"></i>
                     </a>
@@ -178,7 +178,7 @@
                     <div class="col-4 header-logo">
                         <a href="{{url('/')}}" aria-label="Máy Siêu Âm SonoScape"
                             class="logo d-inline-b">
-                            <img src="https://media.loveitopcdn.com/39908/thumb/sonoscape-2.png"
+                            <img src="{{showImage($setting->logo)}}"
                                 alt="Máy siêu âm SonoScape Việt Nam" width="100%" height="100%" />
                         </a>
                     </div>

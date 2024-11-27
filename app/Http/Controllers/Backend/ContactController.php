@@ -30,9 +30,9 @@ class ContactController extends Controller
                 'youtube' => 'required',
                 'sort_description' => 'required|max:100',
                 'map' => 'nullable',
-                'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'company_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'company_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             ],
             __('request.messages'),
             [
