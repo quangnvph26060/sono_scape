@@ -259,16 +259,16 @@
                     </div>
                 </li>
 
-                {{-- <li class="nav-item topbar-user dropdown hidden-caret">
+                <li class="nav-item topbar-user dropdown hidden-caret">
                     <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
                         aria-expanded="false">
                         <div class="avatar-sm">
-                            <img src="{{ isset(session('authUser')->user_info->img_url) && !empty(session('authUser')->user_info->img_url) ? asset(session('authUser')->user_info->img_url) : asset('images/avatar2.jpg') }}"
+                            <img src="{{asset('backend/assets/img/chadengle.jpg') }}"
                                 alt="image profile" class="avatar-img rounded-circle">
                         </div>
                         <span class="profile-username">
-                            <span class="op-7">Hi,</span>
-                            <span class="fw-bold">{{ session('authUser')->name }}</span>
+                            <span class="op-7">Hi, {{ auth()->user()->name }}</span>
+                            <span class="fw-bold">{{ auth()->user()->email }}</span>
                         </span>
                     </a>
                     <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -278,17 +278,14 @@
                                 <li>
                                     <div class="user-box">
                                         <div class="avatar-lg">
-                                            <img src="{{ isset(session('authUser')->user_info->img_url) && !empty(session('authUser')->user_info->img_url) ? asset(session('authUser')->user_info->img_url) : asset('images/avatar2.jpg') }}"
+                                            <img src="{{ asset('backend/assets/img/chadengle.jpg') }}"
                                                 alt="image profile" class="avatar-img rounded-circle">
                                         </div>
                                         <div class="u-text">
-                                            <h4>{{ session('authUser')->name }}</h4>
-                                            <p class="text-muted">{{ session('authUser')->email }}</p>
-                                            <a href="{{ route('admin.detail', ['id' => session('authUser')->id]) }}"
-                                                class="btn btn-xs btn-secondary btn-sm">Trang cá nhân</a>
-                                            <a href="#" class="btn btn-xs  btn-sm"
-                                                style="background: red; color: #ffff"
-                                                onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">Đăng
+                                            <h4>{{ auth()->user()->name }}</h4>
+                                            <p class="text-muted">{{ auth()->user()->email }}</p>
+                                            <a href="{{ route('admin.logout') }}" class="btn btn-xs  btn-sm"
+                                                style="background: red; color: #ffff">Đăng
                                                 xuất</a>
                                             <form id="logoutForm" action="{{ route('admin.logout') }}"
                                                 method="POST" style="display: none;">
@@ -315,7 +312,7 @@
                             </div>
                         </div>
                     </ul>
-                </li> --}}
+                </li>
             </ul>
         </div>
     </nav>
