@@ -29,8 +29,14 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('frontend.components.sidebar', function ($view) {
             $view->with([
-                'popularNews'=> News::latest('view')->limit(3)->get(),
+                'popularNews' => News::latest('view')->limit(3)->get(),
                 'latestProduct' => Product::latest()->first(),
+            ]);
+        });
+
+        View::composer('frontend.layouts.master', function ($view) {
+            $view->with([
+                'setting' => \App\Models\Contact::first()
             ]);
         });
 

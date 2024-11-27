@@ -18,48 +18,16 @@
                                     <picture class="banner-thumb">
                                         <source media="(min-width: 650px)"
                                             srcset="
-                      https://media.loveitopcdn.com/39908/thumb/1920x800/011631-may-sieu-am-sonoscape.jpg?zc=1
-                    " />
+                                                https://media.loveitopcdn.com/39908/thumb/1920x800/011631-may-sieu-am-sonoscape.jpg?zc=1
+                                                " />
                                         <source media="(min-width: 350px)"
                                             srcset="
-                      https://media.loveitopcdn.com/39908/thumb/960x400/011631-may-sieu-am-sonoscape.jpg?zc=1
-                    " />
+                                                https://media.loveitopcdn.com/39908/thumb/960x400/011631-may-sieu-am-sonoscape.jpg?zc=1
+                                                " />
                                         <img src="https://media.loveitopcdn.com/39908/thumb/1920x800/011631-may-sieu-am-sonoscape.jpg?zc=1"
                                             width="100%" height="800" alt="PGS.TS. Nguyễn Phước Bảo Quân " />
                                     </picture>
                                 </a>
-                            </div>
-                            <div class="item-slider text-center relative">
-                                <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/" target='"_blank"'>
-                                    <picture class="banner-thumb">
-                                        <source media="(min-width: 650px)"
-                                            srcset="
-                      https://media.loveitopcdn.com/39908/thumb/1920x800/010047-may-sieu-am-sonoscape.png?zc=1
-                    " />
-                                        <source media="(min-width: 350px)"
-                                            srcset="
-                      https://media.loveitopcdn.com/39908/thumb/960x400/010047-may-sieu-am-sonoscape.png?zc=1
-                    " />
-                                        <img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAAXNSR0IArs4c6QAAAAtJREFUGFdjZEACAAAaAALk5wYlAAAAAElFTkSuQmCC"
-                                            data-src="https://media.loveitopcdn.com/39908/thumb/1920x800/010047-may-sieu-am-sonoscape.png?zc=1"
-                                            class="owl-lazy" width="100%" height="800" alt="Máy siêu âm SonoScape" />
-                                    </picture>
-                                </a>
-                            </div>
-                            <div class="item-slider text-center relative">
-                                <picture class="banner-thumb">
-                                    <source media="(min-width: 650px)"
-                                        srcset="
-                    https://media.loveitopcdn.com/39908/thumb/1920x800/011921-may-sieu-am-sonoscape.jpg?zc=1
-                  " />
-                                    <source media="(min-width: 350px)"
-                                        srcset="
-                    https://media.loveitopcdn.com/39908/thumb/960x400/011921-may-sieu-am-sonoscape.jpg?zc=1
-                  " />
-                                    <img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAAAXNSR0IArs4c6QAAAAtJREFUGFdjZEACAAAaAALk5wYlAAAAAElFTkSuQmCC"
-                                        data-src="https://media.loveitopcdn.com/39908/thumb/1920x800/011921-may-sieu-am-sonoscape.jpg?zc=1"
-                                        class="owl-lazy" width="100%" height="800" alt="Máy siêu âm SonoScape " />
-                                </picture>
                             </div>
                         </div>
                     </div>
@@ -108,8 +76,7 @@
                                                                     <img src="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
                                                                         width="100%" height="100%"
                                                                         data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
-                                                                        class="lazyload"
-                                                                        alt="Máy siêu âm 5D SonoScape M22"
+                                                                        class="lazyload" alt="Máy siêu âm 5D SonoScape M22"
                                                                         aria-label="Máy siêu âm 5D SonoScape M22" />
                                                                 </a>
                                                             </div>
@@ -124,8 +91,7 @@
                                                                         rel="nofollow"
                                                                         class="btn btn--m btn-primary btn-item"
                                                                         title="Máy siêu âm 5D SonoScape M22"><i
-                                                                            class="fa fa-phone-alt"
-                                                                            aria-hidden="true"></i>
+                                                                            class="fa fa-phone-alt" aria-hidden="true"></i>
                                                                         Liên hệ</a>
                                                                 </div>
                                                             </figcaption>
@@ -160,7 +126,7 @@
                                                         style="height: 60px; width: 190px" /></a>
                                             </p>
 
-                                            {!! \Str::words($introduction->article, 120, '...') !!} 
+                                            {!! \Str::words($introduction->article, 120, '...') !!}
 
                                             <p>
                                                 <a href="{{ route('introduce') }}">
@@ -262,9 +228,8 @@
                                                                 <img src="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
                                                                     width="100%" height="100%"
                                                                     data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
-                                                                    class="lazyload"
-                                                                    alt="{{$news->first()->subject}}"
-                                                                    aria-label="{{$news->first()->subject}}" />
+                                                                    class="lazyload" alt="{{ $news->first()->subject }}"
+                                                                    aria-label="{{ $news->first()->subject }}" />
                                                             </a>
                                                         </div>
                                                         <figcaption class="info-post">
@@ -272,7 +237,7 @@
                                                             <div class="wrap-two-lines post-title">
                                                                 <a href="{{ route('news.detail', $news->first()->slug) }}"
                                                                     class="two-lines"
-                                                                    aria-label="{{$news->first()->subject}}">{{$news->first()->subject}}</a>
+                                                                    aria-label="{{ $news->first()->subject }}">{{ $news->first()->subject }}</a>
                                                             </div>
                                                             <p class="f-size-medium post-view-date">
                                                                 <span class="post-date">
@@ -281,7 +246,8 @@
                                                                     <span class="d-none-sidebar"> | </span>
                                                                 </span>
                                                                 <span class="post-item-view">
-                                                                    <i class="fas fa-eye"></i> {{ $news->first()->view }} Lượt xem
+                                                                    <i class="fas fa-eye"></i> {{ $news->first()->view }}
+                                                                    Lượt xem
                                                                 </span>
                                                             </p>
                                                             <div class="description">
@@ -325,15 +291,15 @@
                                                                         <span class="d-none-sidebar"> | </span>
                                                                     </span>
                                                                     <span class="post-item-view">
-                                                                        <i class="fas fa-eye"></i> {{ $item->view }} Lượt xem
+                                                                        <i class="fas fa-eye"></i> {{ $item->view }}
+                                                                        Lượt xem
                                                                     </span>
                                                                 </p>
                                                                 <div class="description fw-bold">
                                                                     {!! \Str::words($item->article, 24, ' [...]') !!}
                                                                 </div>
                                                                 <div class="read-more">
-                                                                    <a
-                                                                        href="{{ route('news.detail', $item->slug) }}">
+                                                                    <a href="{{ route('news.detail', $item->slug) }}">
                                                                         Xem thêm &rsaquo;&rsaquo;</a>
                                                                 </div>
                                                             </figcaption>
@@ -468,6 +434,12 @@
             /* Tạo bóng */
             transition: all 0.3s ease;
             /* Hiệu ứng mượt */
+        }
+
+        @media (max-width: 768px) {
+            .swiper.youtube-slider.swiper-initialized.swiper-horizontal.swiper-ios {
+                height: 225px;
+            }
         }
 
         /* Hover */

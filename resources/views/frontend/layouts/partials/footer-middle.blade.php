@@ -6,9 +6,9 @@
                     <div class="">
                         <div class="ck_editor_content widget-content">
                             <p>
-                                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="
-                                    data-isrc="https://media.loveitopcdn.com/39908/sonoscape-2.png"
-                                    style="height: 80px; width: 150px" />
+                                <img src="{{showImage($setting->logo)}}"
+                                    data-isrc="{{showImage($setting->logo)}}"
+                                    style="height: 80px; width: auto" />
                             </p>
 
                             <p style="text-align: center">&nbsp;</p>
@@ -16,31 +16,18 @@
                             <p>
                                 <img alt="" loading="lazy" sizes="(max-width: 300px) 100vw, 300px"
                                     src="https://giaycaosmartmen.com/wp-content/uploads/2022/06/phone-1.svg"
-                                    srcset="
-                      https://giaycaosmartmen.com/wp-content/uploads/2022/06/phone-1.svg  100w,
-                      https://giaycaosmartmen.com/wp-content/uploads/2022/06/phone-1.svg  150w,
-                      https://giaycaosmartmen.com/wp-content/uploads/2022/06/phone-1.svg  300w,
-                      https://giaycaosmartmen.com/wp-content/uploads/2022/06/phone-1.svg 1024w,
-                      https://giaycaosmartmen.com/wp-content/uploads/2022/06/phone-1.svg 1536w,
-                      https://giaycaosmartmen.com/wp-content/uploads/2022/06/phone-1.svg 2048w,
-                      https://giaycaosmartmen.com/wp-content/uploads/2022/06/phone-1.svg   39w
-                    "
                                     style="height: 20px; width: 20px" />&nbsp; &nbsp; &nbsp; &nbsp;<span
                                     style="font-size: 16px"><span style="color: #000000">Gọi mua
                                         hàng&nbsp;</span></span>
                             </p>
 
                             <p>
-                                <span style="color: #000000">&nbsp;</span><strong><span style="color: #000000">Mr Việt
-                                        :</span><span style="color: #cc0000">&nbsp;0934 218&nbsp;397</span></strong>
+                                <span style="color: #000000">&nbsp;</span><strong><span style="color: #000000">{{ $setting->name }}
+                                        : </span><span style="color: #cc0000">{{ $setting->phone }}</span></strong>
                             </p>
 
                             <p>
-                                <span style="color: #cc0000">Với hơn 10 năm kinh nghiệm về bán hàng dòng máy
-                                    siêu </span><span style="color: #e74c3c">âm </span><strong><a
-                                        href="https://maysieuamsonoscape.com/may-sieu-am-sonoscape-s22-m22-p22-p25/"><span
-                                            style="color: #e74c3c">SonoScape</span></a></strong><span
-                                    style="color: #ff0000"> </span><span style="color: #cc0000">tại Việt Nam.</span>
+                                <span style="color: #cc0000">{{ $setting->sort_description }}</span>
                             </p>
                         </div>
                     </div>
@@ -53,8 +40,8 @@
                     <div class="">
                         <div class="ck_editor_content widget-content">
                             <p style="text-align: center">
-                                <img alt="Phú Việt Medical" src="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="
-                                    data-isrc="https://media.loveitopcdn.com/39908/014620-phu-viet-medical.jpg"
+                                <img alt="Phú Việt Medical" src="{{showImage($setting->company_logo)}}"
+                                    data-isrc="{{showImage($setting->company_logo)}}"
                                     style="height: 150px; width: 150px; float: left" title="Phú Việt Medical" />
                             </p>
 
@@ -69,17 +56,14 @@
                             <h3>&nbsp;</h3>
 
                             <h3>
-                                <span style="font-size: 16px"><span style="color: #000000">Công Ty TNHH Thiết Bị Y Tế
-                                        Phú Việt</span></span><span style="font-size: 20px"></span><br />
+                                <span style="font-size: 16px"><span style="color: #000000">{{ $setting->company }}</span></span><span style="font-size: 20px"></span><br />
                                 <span style="font-size: 14px"><span style="color: #000000"><i aria-hidden="true"
-                                            class="fa fa-map-marker">&nbsp;&nbsp;</i>B46- TT8, Khu đô thị Văn Quán- Quận
-                                        Hà Đông- Hà
-                                        Nội</span></span>
+                                            class="fa fa-map-marker">&nbsp;&nbsp;</i>{{ $setting->address }}</span></span>
                             </h3>
 
                             <p>
                                 <span style="font-size: 14px"><span style="color: #000000">► Gmail:
-                                        maysieuamsonoscape@gmail.com</span></span>
+                                        {{ $setting->email }}</span></span>
                             </p>
 
                             <p>
@@ -112,7 +96,7 @@
                     <div class="widget-content text-center">
                         <div class="fb-page">
                             <iframe loading="lazy"
-                                src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/thanhmocdan&amp;tabs=timeline&amp;height=250&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId"
+                                src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/{{$setting->fanpage}}&amp;tabs=timeline&amp;height=250&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId"
                                 width="100%" height="250" style="border:none;overflow:hidden" scrolling="no"
                                 frameborder="0" allowfullscreen="true"
                                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
