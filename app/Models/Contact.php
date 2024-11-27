@@ -13,7 +13,15 @@ class Contact extends Model
     protected $fillable = [
         'name',
         'address',
+        'company',
         'phone',
-        'email'
+        'email',
+        'map',
+        'logo',
+        'icon',
+        'fanpage',
+        'sort_description',
+        'company_logo',
+        'youtube'
     ];
 }

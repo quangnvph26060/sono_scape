@@ -18,7 +18,7 @@
         <div class="textAlign-right topbar-right">
             <div class="textAlign-right">
                 <div class="social-header d-inline-block relative">
-                    <a href="https://www.facebook.com/SieuAmSonoScapeVietNam" rel="nofollow" aria-label="facebook"
+                    <a href="https://www.facebook.com/thanhmocdan" rel="nofollow" aria-label="facebook"
                         class="float-shadow" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
@@ -82,16 +82,6 @@
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </form>
-                            </li>
-                            <li>
-                                <div class="mini-cart-box mini-cart3 pull-right">
-                                    <a class="mini-cart-link btn-view-cart" href="https://maysieuamsonoscape.com/cart">
-                                        <span class="d-none title_cart">Giỏ hàng</span>
-                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                        <span class="d-none title_cart_2">Giỏ hàng</span>
-                                        <span class="mini-cart-number bg-color white total_items">0</span>
-                                    </a>
-                                </div>
                             </li>
                         </ul>
                         <a href="https://maysieuamsonoscape.com" aria-label="Máy Siêu Âm SonoScape"
@@ -276,17 +266,6 @@
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </form>
-                            </li>
-                            <li>
-                                <div class="mini-cart-box mini-cart3 pull-right">
-                                    <a class="mini-cart-link btn-view-cart"
-                                        href="https://maysieuamsonoscape.com/cart">
-                                        <span class="d-none title_cart">Giỏ hàng</span>
-                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                        <span class="d-none title_cart_2">Giỏ hàng</span>
-                                        <span class="mini-cart-number bg-color white total_items">0</span>
-                                    </a>
-                                </div>
                             </li>
                         </ul>
                     </div>

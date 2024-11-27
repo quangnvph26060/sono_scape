@@ -21,9 +21,14 @@ class CompanyController extends Controller
     {
         try {
             $query = $request->query('query');
-            $clients = Company::where('name', 'LIKE', "%{$query}%")
-                ->orWhere('phone', 'LIKE', "%{$query}%")
-                ->get();
+            // $clients = Company::where('name', 'LIKE', "%{$query}%")
+            //     ->orWhere('phone', 'LIKE', "%{$query}%")
+            //     ->get();
+
+            $clients = Company::whereAny([
+                ['name', 'like', '%' . $query . '%'],
+                ['phone', 'like', '%' . $query . '%']
+            ]);
 
             return response()->json(['success' => true, 'customers' => $clients]);
         } catch (Exception $e) {
