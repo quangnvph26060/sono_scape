@@ -37,7 +37,7 @@ class SliderController extends Controller
     private function storeImage(Request $request, $type)
     {
         $data = Validator::make($request->all(), [
-            'slider' => 'required|array',
+            'slider' => 'nullable|array',
             'slider.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
 
             'link' => 'nullable|array',
@@ -51,42 +51,39 @@ class SliderController extends Controller
         ], __('request.messages'));
 
         if ($data->fails()) {
-
             return response()->json([
                 'status' => false,
                 'message' => $data->errors()->first()
             ]);
         }
 
-
-        if (empty($data->validated()['slider'])) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Vui lòng điền ít nhất 1 ảnh.'
-            ]);
-        }
-
         $credentials = $data->validated();
 
-        $array = [];
+        // Lấy dữ liệu cũ từ cơ sở dữ liệu
+        $existingSlider = \App\Models\Slider::where('type', $type)->first();
+        $existingItems = $existingSlider ? $existingSlider->items : [];
 
-        foreach ($credentials['slider'] as $key => $value) {
-            $array[$key]['slider'] = $value->store('slider');
-            $array[$key]['link'] = $credentials['link'][$key];
-            $array[$key]['alt'] = $credentials['alt'][$key];
-            $array[$key]['index'] = $credentials['index'][$key];
+        $array = [];
+        foreach ($credentials['index'] as $key => $index) {
+            $array[$key]['slider'] = isset($credentials['slider'][$key])
+                ? $credentials['slider'][$key]->store('slider') // Lưu ảnh mới nếu có
+                : ($existingItems[$key]['slider'] ?? null); // Giữ ảnh cũ nếu không có ảnh mới
+
+            $array[$key]['link'] = $credentials['link'][$key] ?? ($existingItems[$key]['link'] ?? null);
+            $array[$key]['alt'] = $credentials['alt'][$key] ?? ($existingItems[$key]['alt'] ?? null);
+            $array[$key]['index'] = $index;
         }
 
-        \App\Models\Slider::updateOrCreate([
-            'type' => $type,
-        ], [
-            'items' => $array
-        ]);
+        \App\Models\Slider::updateOrCreate(
+            ['type' => $type],
+            ['items' => $array]
+        );
 
         return response()->json([
             'status' => true,
         ]);
     }
+
 
     private function storeVideo($request, $type)
     {

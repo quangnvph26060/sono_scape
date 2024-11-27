@@ -40,9 +40,9 @@
                     <div class="">
                         <div class="ck_editor_content widget-content">
                             <p style="text-align: center">
-                                <img alt="Phú Việt Medical" src="{{showImage($setting->company_logo)}}"
+                                <img alt="{{ $setting->company }}" src="{{showImage($setting->company_logo)}}"
                                     data-isrc="{{showImage($setting->company_logo)}}"
-                                    style="height: 150px; width: 150px; float: left" title="Phú Việt Medical" />
+                                    style="height: auto; width: 150px; float: left" title="{{ $setting->company }}" />
                             </p>
 
                             <h3>&nbsp;</h3>
@@ -100,7 +100,7 @@
                                 width="100%" height="250" style="border:none;overflow:hidden" scrolling="no"
                                 frameborder="0" allowfullscreen="true"
                                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                                aria-label="Công Ty TNHH Thiết Bị Y Tế Phú Việt"></iframe>
+                                aria-label="{{ $setting->company }}"></iframe>
                         </div>
                     </div>
                 </div>

@@ -6,31 +6,31 @@
                     <div class="col-12">
                         <ul class="categories-list navbar-nav mb-menu">
                             <li class="nav-item relative default wb-header-menu-item">
-                                <a class="nav-link" href="https://maysieuamsonoscape.com" aria-label="TRANG CHỦ">
+                                <a class="nav-link" href="{{url('/')}}" aria-label="TRANG CHỦ">
                                     TRANG CHỦ
                                 </a>
                             </li>
                             <li class="nav-item relative default wb-header-menu-item">
                                 <a class="nav-link"
-                                    href="https://maysieuamsonoscape.com/gioi-thieu-may-sieu-am-sonoscape.html"
-                                    aria-label="GIỚI THIỆU  SONOSCAPE">
-                                    GIỚI THIỆU SONOSCAPE
+                                    href="{{route('introduce')}}"
+                                    aria-label="GIỚI THIỆU ">
+                                    GIỚI THIỆU
                                 </a>
                             </li>
                             <li class="nav-item relative default wb-header-menu-item">
-                                <a class="nav-link" href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/"
-                                    target='"_blank"' aria-label="MÁY SIÊU ÂM SONOSCAPE  ">
+                                <a class="nav-link" href="{{route('product.list')}}"
+                                    target='"_blank"' aria-label="{{$setting->company}}">
                                  SẢN PHẨM
                                 </a>
                             </li>
                             <li class="nav-item relative default wb-header-menu-item">
-                                <a class="nav-link" href="https://maysieuamsonoscape.com/may-sieu-am-5d/"
+                                <a class="nav-link" href="{{route('news.list')}}"
                                     aria-label="TIN TỨC MỚI">
                                     TIN TỨC MỚI
                                 </a>
                             </li>
                             <li class="nav-item relative default wb-header-menu-item">
-                                <a class="nav-link" href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html"
+                                <a class="nav-link" href="{{route('contact')}}"
                                     aria-label="LIÊN HỆ">
                                     LIÊN HỆ
                                 </a>

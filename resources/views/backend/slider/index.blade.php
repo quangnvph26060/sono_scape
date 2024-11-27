@@ -2,12 +2,9 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header d-flex justify-content-between  ">
+        <div class="card-header">
             <h4 class="card-title">Danh sách trình chiếu</h4>
-            <div class="card-options">
-                <a href="{{ route('admin.slider.create', 'image') }}" class="btn btn-primary btn-sm"><i class="fas fa-image me-2"></i>Thêm mới trình chiếu hình ảnh (+)</a>
-                <a href="{{ route('admin.slider.create', 'video') }}" class="btn btn-primary btn-sm"><i class="fas fa-video me-2"></i>Thêm mới trình chiếu video (+)</a>
-            </div>
+
         </div>
 
         <div class="card-body">
@@ -26,8 +23,11 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->type == 'image' ? 'Trình chiếu hình ảnh' : 'Trình chiếu video' }}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm"><i class="fas fa-edit edit-btn" data-id="{{ $item->id }}"></i></button>
-                                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt delete-btn" data-url=""></i></button>
+                                    @if ($item->type == 'image')
+                                    <a href="{{ route('admin.slider.create', 'image') }}" class="btn btn-primary btn-sm"><i class="fas fa-image me-2"></i>Chỉnh sửa trình chiếu hình ảnh (+)</a>
+                                    @else
+                                    <a href="{{ route('admin.slider.create', 'video') }}" class="btn btn-primary btn-sm"><i class="fas fa-video me-2"></i>Chỉnh sửa trình chiếu video (+)</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

@@ -29,8 +29,10 @@ class HomeController extends Controller
             ->values()
             ->all();
 
-            $sliderVideo = Slider::where('type', 'video')->first();
+        $sliderVideo = Slider::where('type', 'video')->first();
 
-        return view('frontend.pages.home', compact('products', 'introduction', 'news', 'items', 'sliderVideo'));
+        $services = \App\Models\SupportPolicy::latest()->get();
+
+        return view('frontend.pages.home', compact('products', 'introduction', 'news', 'items', 'sliderVideo', 'services'));
     }
 }

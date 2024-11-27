@@ -31,3 +31,4 @@ Route::get('tin-tuc', [NewsController::class, 'list'])->name('news.list');
 Route::get('tin-tuc/{slug}', [NewsController::class, 'detail'])->name('news.detail');
 
 Route::get('lien-he/{slug?}', [ContactController::class, 'contact'])->name('contact');
+Route::post('lien-he/{slug?}', [ContactController::class, 'store']);

@@ -22,8 +22,12 @@ class ProductController extends Controller
         return view('frontend.pages.product.list', compact('products'));
     }
 
-    public function detail()
+    public function detail($slug)
     {
-        return view('frontend.pages.product.detail');
+        $product = Product::where('slug', $slug)->with('company', 'country')->firstOrFail();
+
+        $relatedProducts = Product::where('country_id', $product->country_id)->where('id', '!=', $product->id)->limit(8)->get();
+
+        return view('frontend.pages.product.detail', compact('product', 'relatedProducts'));
     }
 }

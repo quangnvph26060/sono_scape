@@ -34,14 +34,13 @@
         <div class="row">
             <div class="widget widget-product widget-27 col-12 col-md-12" data-widget-id="27" data-widget="product">
                 <div class="widget_product_body style1" style="background-color: #ffffff">
-                    <div class="container" data-ajax="https://maysieuamsonoscape.com/api/load-widget-content?widget_id=27">
+                    <div class="container" data-ajax="#">
                         <div class="content-widget">
                             <div class="">
                                 <div class="box_heading">
                                     <h2 class="heading">
                                         <a style="color: #cc0000 !important"
-                                            href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/">MÁY SIÊU ÂM
-                                            SONOSCAPE 4D- 5D</a>
+                                            href="{{route('product.list')}}">SẢN PHẨM</a>
                                     </h2>
                                     <div class="line-hg"><span></span></div>
                                     <div class="svg-wrap">
@@ -73,21 +72,21 @@
                                                                     <img src="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
                                                                         width="100%" height="100%"
                                                                         data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
-                                                                        class="lazyload" alt="Máy siêu âm 5D SonoScape M22"
-                                                                        aria-label="Máy siêu âm 5D SonoScape M22" />
+                                                                        class="lazyload" alt="{{ $product->name }}"
+                                                                        aria-label="{{ $product->name }}" />
                                                                 </a>
                                                             </div>
                                                             <figcaption class="infor-product">
                                                                 <h3 class="wrap-two-lines product-title">
-                                                                    <a href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/may-sieu-am-4d-sonoscape-m22.html"
+                                                                    <a href="{{ route('product.detail', $product->slug) }}"
                                                                         class="two-lines"
-                                                                        aria-label="Máy siêu âm 5D SonoScape M22">{{ $product->name }}</a>
+                                                                        aria-label="{{ $product->name }}">{{ $product->name }}</a>
                                                                 </h3>
                                                                 <div class="btn-purchased">
                                                                     <a href="{{ route('contact', $product->slug) }}"
                                                                         rel="nofollow"
                                                                         class="btn btn--m btn-primary btn-item"
-                                                                        title="Máy siêu âm 5D SonoScape M22"><i
+                                                                        title="{{ $product->name }}"><i
                                                                             class="fa fa-phone-alt" aria-hidden="true"></i>
                                                                         Liên hệ</a>
                                                                 </div>
@@ -271,7 +270,7 @@
                                                             <figcaption class="info-post">
                                                                 <div class="bg-gradient"></div>
                                                                 <div class="wrap-two-lines post-title">
-                                                                    <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/cong-ty-tnhh-thiet-bi-y-te-phu-viet.html"
+                                                                    <a href="{{ route('news.detail', $item->slug) }}"
                                                                         class="two-lines"
                                                                         aria-label="{{ $item->subject }}">{{ $item->subject }}</a>
                                                                 </div>
@@ -300,7 +299,7 @@
                                             </div>
                                         </div>
                                         <center class="read-more w-100">
-                                            <a href="https://maysieuamsonoscape.com/may-sieu-am-5d/">
+                                            <a href="#">
                                                 Xem thêm &rsaquo;&rsaquo;
                                             </a>
                                         </center>
@@ -323,52 +322,23 @@
                                     data-margin="20" data-autoplayTimeout="5000" data-responsive-0="1"
                                     data-responsive-576="2" data-responsive-768="3" data-responsive-992="3"
                                     data-autoplay="1">
-                                    <div class="item-service text-center">
-                                        <a href="javascript:void(0)">
-                                            <div class="icon">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                    width="100%" height="100%"
-                                                    data-src="https://media.loveitopcdn.com/39908/thumb/thiet-ke-chua-co-ten-2.png"
-                                                    class="owl-lazy max-w-100" alt="Lắp đặt chuyên nghiệp"
-                                                    aria-label="Lắp đặt chuyên nghiệp" />
+
+                                    @foreach ($services as $service)
+                                        <div class="item-service text-center">
+                                            <a href="javascript:void(0)">
+                                                <div class="icon">
+                                                    <img src="{{ showImage($service->logo) }}" width="100%"
+                                                        height="100%" data-src="{{ showImage($service->logo) }}"
+                                                        class="owl-lazy max-w-100" alt="{{ $service->name }}"
+                                                        aria-label="{{ $service->name }}" />
+                                                </div>
+                                            </a>
+                                            <div class="info">
+                                                <a class="title-info" href="javascript:void(0)">{{ $service->name }}</a>
+                                                <p>{{ $service->description }}</p>
                                             </div>
-                                        </a>
-                                        <div class="info">
-                                            <a class="title-info" href="javascript:void(0)">Lắp đặt chuyên nghiệp</a>
-                                            <p>Kỹ sư đào tạo chính hãng, hỗ trợ 24/7.</p>
                                         </div>
-                                    </div>
-                                    <div class="item-service text-center">
-                                        <a href="javascript:void(0)">
-                                            <div class="icon">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                    width="100%" height="100%"
-                                                    data-src="https://media.loveitopcdn.com/39908/thumb/005509-4.png"
-                                                    class="owl-lazy max-w-100" alt="Trả góp" aria-label="Trả góp" />
-                                            </div>
-                                        </a>
-                                        <div class="info">
-                                            <a class="title-info" href="javascript:void(0)">Trả góp</a>
-                                            <p>Lãi suất 0%, không thủ tục, không thế chấp.</p>
-                                        </div>
-                                    </div>
-                                    <div class="item-service text-center">
-                                        <a href="javascript:void(0)">
-                                            <div class="icon">
-                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                    width="100%" height="100%"
-                                                    data-src="https://media.loveitopcdn.com/39908/thumb/005521-3.png"
-                                                    class="owl-lazy max-w-100" alt="Giao hàng toàn quốc"
-                                                    aria-label="Giao hàng toàn quốc" />
-                                            </div>
-                                        </a>
-                                        <div class="info">
-                                            <a class="title-info" href="javascript:void(0)">Giao hàng toàn quốc</a>
-                                            <p>
-                                                Miễn phí tận nơi, nhanh chóng, bảo trì trọn đời.
-                                            </p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
