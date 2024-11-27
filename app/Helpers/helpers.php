@@ -66,7 +66,7 @@ function showImage($path, $default = 'image-default.jpg')
         return $storage->url($path);
     }
 
-    return asset('backend/assets/images/' . $default);
+    return asset('backend/assets/img/' . $default);
 }
 
 function getSize($path)

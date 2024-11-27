@@ -29,18 +29,26 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.contact.show') }}">
+                        <i class="fas fa-cogs"></i>
+                        <p>Cấu hình chung</p>
+                    </a>
+                </li>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
                     <h4 class="text-section">Thành phần quản lý</h4>
                 </li>
+
                 <li class="nav-item">
                     <a href="{{ route('admin.company.index') }}">
                         <i class="fas fa-user"></i>
                         <p>Công ty sản xuất</p>
                     </a>
                 </li>
+
 
                 {{-- <li class="nav-item">
                     <a href="{{ route('admin.store.index') }}">

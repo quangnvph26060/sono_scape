@@ -356,8 +356,7 @@ body {
     margin-top: 69px;
     overflow: hidden;
     width: 100%;
-    max-width: unset;
-    padding: 0 !important; }
+    max-width: unset; }
   .main-panel > .container-full {
     padding: 0px !important;
     min-height: calc(100% - 123px);

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Backend\CompanyController;
-use App\Http\Controllers\Backend\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\CompanyController;
+use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/update/{id}', [CompanyController::class, 'update'])->name('update');
         Route::post('/store', [CompanyController::class, 'store'])->name('store');
         Route::get('/detail/{id}', [CompanyController::class, 'detail'])->name('detail');
+    });
+
+    route::controller(ContactController::class)->group(function () {
+        route::get('contact', 'show')->name('contact.show');
+        route::post('contact', 'update')->name('contact.update');
     });
 });
