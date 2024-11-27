@@ -37,11 +37,20 @@ class CompanyController extends Controller
         }
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $companies = $this->companyService->getPaginatedCompany();
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('backend.company.table', compact('companies'))->render(),
+                'pagination' => $companies->links('vendor.pagination.custom')->render(),
+            ]);
+        }
+
         return view('backend.company.index', compact('companies'));
     }
+
 
     public function update(Request $request, $id)
     {
