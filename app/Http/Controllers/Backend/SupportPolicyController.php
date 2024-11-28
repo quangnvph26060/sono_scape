@@ -81,7 +81,7 @@ class SupportPolicyController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Thêm công ty sản xuất mới thành công',
+                'message' => 'Thêm chính sách hỗ trợ mới thành công',
                 'html' => $html,
                 'pagination' => $pagination,
             ]);
@@ -89,7 +89,7 @@ class SupportPolicyController extends Controller
             Log::error('Failed to add new SupportPolicy: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Thêm công ty sản xuất thất bại',
+                'message' => 'Thêm chính sách hỗ trợ thất bại',
             ]);
         }
     }
@@ -108,7 +108,7 @@ class SupportPolicyController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Xóa công ty sản xuất thành công',
+                'message' => 'Xóa chính sách hỗ trợ thành công',
                 'html' => $html,
                 'pagination' => $pagination,
             ]);
@@ -116,7 +116,7 @@ class SupportPolicyController extends Controller
             Log::error('Failed to delete this SupportPolicy: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Xóa công ty sản xuất thất bại',
+                'message' => 'Xóa chính sách hỗ trợ thất bại',
             ]);
         }
     }
@@ -129,7 +129,7 @@ class SupportPolicyController extends Controller
             return response()->json($supportPolicy);
         } catch (Exception $e) {
             Log::error('Failed to find this SupportPolicy: ' . $e->getMessage());
-            return response()->json(['success' => false, 'message' => 'Tìm công ty sản xuất thất bại']);
+            return response()->json(['success' => false, 'message' => 'Tìm chính sách hỗ trợ thất bại']);
         }
     }
 }
