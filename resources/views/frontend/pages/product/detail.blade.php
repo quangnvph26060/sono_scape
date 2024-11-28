@@ -1,7 +1,8 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <x-breadcrumb />
+    <x-breadcrumb :title="'Sản phẩm'" :name="$product->name" />
+
 
     <div class="page-content">
         <div class="container">
@@ -115,8 +116,7 @@
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-12 col-xs-12 detail-product">
-                            <form class="add-to-cart" method="GET"
-                                action="#">
+                            <form class="add-to-cart" method="GET" action="#">
                                 <input type="hidden" name="is_detail" value="true" />
                                 <div class="detail-info">
                                     <div class="product-title">
@@ -330,7 +330,7 @@
 
                                 @foreach ($relatedProducts as $item)
                                     <div class="item col-6 col-sm-4 col-md-4 col-lg-3">
-                                        <div class="product-item relative" >
+                                        <div class="product-item relative">
                                             <figure class="photoframe relative">
                                                 <div class="relative img-product">
                                                     <a href="{{ route('product.detail', $item->slug) }}"
@@ -338,12 +338,12 @@
                                                         <img src="https://media.loveitopcdn.com/39908/thumb/260x300/may-sieu-am-5d-sonoscape-p25.jpg?zc=1"
                                                             width="100%" height="100%"
                                                             data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/may-sieu-am-5d-sonoscape-p25.jpg?zc=1"
-                                                            class="lazyload" alt="{{$item->name}}"
-                                                            aria-label="{{$item->name}}" />
+                                                            class="lazyload" alt="{{ $item->name }}"
+                                                            aria-label="{{ $item->name }}" />
                                                     </a>
-                                                    <a href="{{route('contact', $item->slug)}}"
-                                                        rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                        title="{{$item->name}}"><i class="fa fa-phone-alt"
+                                                    <a href="{{ route('contact', $item->slug) }}" rel="nofollow"
+                                                        class="btn btn--m btn-primary btn-item"
+                                                        title="{{ $item->name }}"><i class="fa fa-phone-alt"
                                                             aria-hidden="true"></i>
                                                         Liên hệ</a>
                                                 </div>
@@ -351,13 +351,13 @@
                                                     <h3 class="wrap-two-lines product-title">
                                                         <a href="{{ route('product.detail', $item->slug) }}"
                                                             class="two-lines"
-                                                            aria-label="{{$item->name}}">{{$item->name}}</a>
+                                                            aria-label="{{ $item->name }}">{{ $item->name }}</a>
                                                     </h3>
                                                     <div class="btn-purchased">
-                                                        <a href="{{route('contact', $item->slug)}}"
-                                                            rel="nofollow" class="btn btn--m btn-primary btn-item"
-                                                            title="{{$item->name}}"><i
-                                                                class="fa fa-phone-alt" aria-hidden="true"></i>
+                                                        <a href="{{ route('contact', $item->slug) }}" rel="nofollow"
+                                                            class="btn btn--m btn-primary btn-item"
+                                                            title="{{ $item->name }}"><i class="fa fa-phone-alt"
+                                                                aria-hidden="true"></i>
                                                             Liên hệ</a>
                                                     </div>
                                                 </figcaption>

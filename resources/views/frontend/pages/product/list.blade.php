@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 @section('content')
-    <x-breadcrumb />
+    <x-breadcrumb :title="'Sản phẩm'" />
+
     <div class="page-content">
         <div class="container">
             <div class="row clearfix product-list">
@@ -76,7 +77,7 @@
                             @endforelse
                         </div>
 
-                            {{ $products->appends(request()->query())->links() }}
+                        {{ $products->appends(request()->query())->links() }}
 
                     </div>
                 </div>

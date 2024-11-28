@@ -1,7 +1,8 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <x-breadcrumb />
+    <x-breadcrumb :title="'Liên hệ'" />
+
 
     <div class="page-content">
         <div class="container contact-style1">
@@ -13,7 +14,7 @@
                     <div class="row clearfix">
                         <div class="col-lg-5 col-md-5 m-bottom-30">
                             <h1 class="heading heading-contact">
-                               {{ $setting->company }}
+                                {{ $setting->company }}
                             </h1>
                             <ul class="c-info-list">
                                 <li class="m-bottom-10">
@@ -30,7 +31,8 @@
                                     <div class="clearfix">
                                         <i class="fas fa-phone-alt"></i>
                                         <p class="contact-e">
-                                            <a href="tel:{{$setting->phone}}" aria-label="Liên hệ {{$setting->company}}">{{$setting->phone}}</a>
+                                            <a href="tel:{{ $setting->phone }}"
+                                                aria-label="Liên hệ {{ $setting->company }}">{{ $setting->phone }}</a>
                                         </p>
                                     </div>
                                 </li>
@@ -38,8 +40,8 @@
                                     <div class="clearfix">
                                         <i class="fas fa-envelope"></i>
                                         <p class="contact-e">
-                                            <a href="mailto:{{$setting->email}}" class="contact-e color-base"
-                                                aria-label="Liên hệ {{$setting->company}}">{{$setting->email}}</a>
+                                            <a href="mailto:{{ $setting->email }}" class="contact-e color-base"
+                                                aria-label="Liên hệ {{ $setting->company }}">{{ $setting->email }}</a>
                                         </p>
                                     </div>
                                 </li>
@@ -47,8 +49,7 @@
                         </div>
                         <div class="col-lg-7 col-md-7">
                             <div class="heading">Form liên hệ</div>
-                            <form method="POST" action="" id="contact_form"
-                                class="contact-form">
+                            <form method="POST" action="" id="contact_form" class="contact-form">
                                 @csrf
                                 <ul>
                                     <li class="clearfix">
@@ -65,13 +66,16 @@
                                     </li>
                                     <li>
                                         <label for="phone" class="required d-inline-b">Số điện thoại</label>
-                                        <input type="text" name="phone"  id="phone"
+                                        <input type="text" name="phone" id="phone"
                                             class="width-100 form-control" />
                                     </li>
                                     <li>
                                         <label for="message" class="d-inline-b required">Tin nhắn</label>
-                                        <textarea name="message" id="message" cols="30" rows="10" class="width-100 form-control">@if (!is_null($product))Tên sản phẩm: {{ $product->name }}@endif
-                                        </textarea>
+                                        <textarea name="message" id="message" cols="30" rows="10" class="width-100 form-control">
+@if (!is_null($product))
+Tên sản phẩm: {{ $product->name }}
+@endif
+</textarea>
                                     </li>
                                     <li class="clearfix">
 
@@ -97,9 +101,9 @@
 
 
 @push('styles')
-<style>
-    .map-container iframe{
-        width: 100% !important;
-    }
-</style>
+    <style>
+        .map-container iframe {
+            width: 100% !important;
+        }
+    </style>
 @endpush

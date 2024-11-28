@@ -2,7 +2,8 @@
 
 
 @section('content')
-    <x-breadcrumb />
+    <x-breadcrumb :title="'Giới thiệu'" />
+
 
     <div class="page-content">
         <div class="container">
@@ -27,8 +28,8 @@
                                     </a>
                                 </li>
                                 <li class="relative">
-                                    <a href="https://twitter.com/intent/tweet?url={{ url()->current() }}"
-                                        rel="nofollow" target="_blank" class="f-size-ex-large textAlign-center">
+                                    <a href="https://twitter.com/intent/tweet?url={{ url()->current() }}" rel="nofollow"
+                                        target="_blank" class="f-size-ex-large textAlign-center">
                                         <i class="fab fa-twitter"></i>
                                     </a>
                                 </li>
@@ -46,8 +47,8 @@
                                     </a>
                                 </li>
                                 <li class="relative">
-                                    <a href="https://www.tumblr.com/share/link?url={{ url()->current() }}"
-                                        rel="nofollow" target="_blank" class="f-size-ex-large textAlign-center">
+                                    <a href="https://www.tumblr.com/share/link?url={{ url()->current() }}" rel="nofollow"
+                                        target="_blank" class="f-size-ex-large textAlign-center">
                                         <i class="fab fa-tumblr"></i>
                                     </a>
                                 </li>

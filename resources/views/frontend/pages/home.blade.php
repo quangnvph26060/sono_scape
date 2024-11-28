@@ -16,7 +16,7 @@
 
                             @foreach ($items as $key => $item)
                                 <div class="item-slider text-center relative">
-                                    <a href="{{ $item['link'] }}" target='"_blank"'>
+                                    <a href="{{ $item['link'] ?? 'javascript:void(0)' }}" @if (! is_null($item['link'])) target="_blank" @endif>
                                         <picture class="banner-thumb">
                                             <source media="(min-width: 650px)" srcset="{{ showImage($item['slider']) }}" />
                                             <source media="(min-width: 350px)" srcset="{{ showImage($item['slider']) }}" />
@@ -215,9 +215,9 @@
                                                         <div class="relative img-post">
                                                             <a href="{{ route('news.detail', $news->first()->slug) }}"
                                                                 class="d-block relative text-center">
-                                                                <img src="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
+                                                                <img src="{{ showImage($news->first()->featured_image) }}"
                                                                     width="100%" height="100%"
-                                                                    data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
+                                                                    data-isrc="{{ showImage($news->first()->featured_image) }}"
                                                                     class="lazyload" alt="{{ $news->first()->subject }}"
                                                                     aria-label="{{ $news->first()->subject }}" />
                                                             </a>
@@ -244,7 +244,7 @@
                                                                 {!! \Str::words($news->first()->article, 35, ' [...]') !!}
                                                             </div>
                                                             <div class="read-more">
-                                                                <a href="{{ route('news.detail', 'may-sieu-am-5d') }}">
+                                                                <a href="{{ route('news.detail', $news->first()->slug) }}">
                                                                     Xem thêm &rsaquo;&rsaquo;</a>
                                                             </div>
                                                         </figcaption>
@@ -260,9 +260,9 @@
                                                             <div class="relative img-post">
                                                                 <a href="{{ route('news.detail', $item->slug) }}"
                                                                     class="d-block relative text-center">
-                                                                    <img src="https://media.loveitopcdn.com/39908/thumb/800x500/003411-may-sieu-am-sonoscape-s55.jpg?zc=1"
+                                                                    <img src="{{ showImage($item->featured_image) }}"
                                                                         width="100%" height="100%"
-                                                                        data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/003411-may-sieu-am-sonoscape-s55.jpg?zc=1"
+                                                                        data-isrc="{{ showImage($item->featured_image) }}"
                                                                         class="lazyload" alt="{{ $item->subject }}"
                                                                         aria-label="{{ $item->subject }}" />
                                                                 </a>

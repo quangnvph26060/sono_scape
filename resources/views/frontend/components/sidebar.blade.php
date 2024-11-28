@@ -85,11 +85,11 @@
                                     <div class="post-item relative" data-id="224">
                                         <figure class="photoframe relative">
                                             <div class="relative img-post">
-                                                <a href="{{ route('news.detail', $item->id) }}"
+                                                <a href="{{ route('news.detail', $item->slug) }}"
                                                     class="d-block relative text-center">
-                                                    <img src="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
+                                                    <img src="{{ showImage($item->featured_image) }}"
                                                         width="100%" height="100%"
-                                                        data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
+                                                        data-isrc="{{ showImage($item->featured_image) }}"
                                                         class="lazyload"
                                                         alt="{{ $item->subject }}"
                                                         aria-label="{{ $item->subject }}" />
@@ -98,7 +98,7 @@
                                             <figcaption class="info-post">
                                                 <div class="bg-gradient"></div>
                                                 <div class="wrap-two-lines post-title">
-                                                    <a href="{{ route('news.detail', $item->id) }}"
+                                                    <a href="{{ route('news.detail', $item->slug) }}"
                                                         class="two-lines"
                                                         aria-label="{{ $item->subject }}">{{ $item->subject }}.</a>
                                                 </div>
@@ -117,7 +117,7 @@
                                                 </div>
                                                 <div class="read-more">
                                                     <a
-                                                        href="{{ route('news.detail', $item->id) }}">
+                                                        href="{{ route('news.detail', $item->slug) }}">
                                                         Xem thêm &rsaquo;&rsaquo;</a>
                                                 </div>
                                             </figcaption>
