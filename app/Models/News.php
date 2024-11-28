@@ -32,6 +32,11 @@ class News extends Model
     public static function boot()
     {
         parent::boot();
+
+        static::addGlobalScope('published', function ($builder) {
+            $builder->where('status', 'published')->where('posted_at', '<=', now());
+        });
+
         static::creating(function ($model) {
             $model->slug = Str::slug($model->subject);
             $model->seo_title = $model->subject;
@@ -40,5 +45,10 @@ class News extends Model
         static::updating(function ($model) {
             $model->slug = Str::slug($model->subject);
         });
+
+        static::deleting(function ($model) {
+            deleteImage($model->featured_image);
+        });
     }
+
 }
