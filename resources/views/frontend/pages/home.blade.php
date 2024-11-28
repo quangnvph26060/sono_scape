@@ -16,7 +16,8 @@
 
                             @foreach ($items as $key => $item)
                                 <div class="item-slider text-center relative">
-                                    <a href="{{ $item['link'] ?? 'javascript:void(0)' }}" @if (! is_null($item['link'])) target="_blank" @endif>
+                                    <a href="{{ $item['link'] ?? 'javascript:void(0)' }}"
+                                        @if (!is_null($item['link'])) target="_blank" @endif>
                                         <picture class="banner-thumb">
                                             <source media="(min-width: 650px)" srcset="{{ showImage($item['slider']) }}" />
                                             <source media="(min-width: 350px)" srcset="{{ showImage($item['slider']) }}" />
@@ -36,11 +37,10 @@
                 <div class="widget_product_body style1" style="background-color: #ffffff">
                     <div class="container" data-ajax="#">
                         <div class="content-widget">
-                            <div class="">
+                            <div class="text-center">
                                 <div class="box_heading">
                                     <h2 class="heading">
-                                        <a style="color: #cc0000 !important"
-                                            href="{{route('product.list')}}">SẢN PHẨM</a>
+                                        <a style="color: #cc0000 !important" href="{{ route('product.list') }}">SẢN PHẨM BÁN CHẠY</a>
                                     </h2>
                                     <div class="line-hg"><span></span></div>
                                     <div class="svg-wrap">
@@ -69,9 +69,8 @@
                                                             <div class="relative img-product">
                                                                 <a href="{{ route('product.detail', $product->slug) }}"
                                                                     class="d-block relative">
-                                                                    <img src="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
-                                                                        width="100%" height="100%"
-                                                                        data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/033906-may-sieu-am-sonoscape-m22.jpg?zc=1"
+                                                                    <img src="{{ showImage($product->images[0] ?? '') }}" width="100%"
+                                                                        height="100%" data-isrc="{{ showImage($product->images[0] ?? '') }}"
                                                                         class="lazyload" alt="{{ $product->name }}"
                                                                         aria-label="{{ $product->name }}" />
                                                                 </a>
@@ -180,16 +179,16 @@
                 data-widget="post_category">
                 <div class="widget_post_body style5"
                     style="
-          background-image: url(https://media.loveitopcdn.com/39908/thumb/7-10.png);
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-        ">
+                    background-image: url(https://media.loveitopcdn.com/39908/thumb/7-10.png);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    ">
                     <div class="container">
                         <div class="content-widget" data-limit="4" data-type="5" data-post-size="post_medium">
-                            <div class="">
+                            <div class="text-center">
                                 <div class="box_heading">
-                                    <h2 class="heading">TIN TỨC MỚI</h2>
+                                    <h2 class="heading">TIN TỨC NỔI BẬT<Table></Table></h2>
                                     <div class="line-hg"><span></span></div>
                                     <div class="svg-wrap">
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -244,7 +243,8 @@
                                                                 {!! \Str::words($news->first()->article, 35, ' [...]') !!}
                                                             </div>
                                                             <div class="read-more">
-                                                                <a href="{{ route('news.detail', $news->first()->slug) }}">
+                                                                <a
+                                                                    href="{{ route('news.detail', $news->first()->slug) }}">
                                                                     Xem thêm &rsaquo;&rsaquo;</a>
                                                             </div>
                                                         </figcaption>

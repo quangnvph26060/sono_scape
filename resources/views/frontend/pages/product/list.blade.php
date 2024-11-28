@@ -7,7 +7,7 @@
             <div class="row clearfix product-list">
                 <div class="col-lg-9 product-view">
                     <div class="row clearfix sort_products">
-                        <div class="col-lg-7 col-12 col-sm-8">
+                        {{-- <div class="col-lg-7 col-12 col-sm-8">
                             <p class="d-inline-middle f-size-medium">Sắp xếp:</p>
                             <div class="clearfix d-inline-middle">
                                 <div class="wrap-select f-size-medium relative">
@@ -20,7 +20,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-5 col-12 col-sm-4 grid-right d-none">
                             <p class="d-inline-middle f-size-medium"></p>
                             <div class="clearfix d-inline-middle">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="divider-2" />
+                    {{-- <hr class="divider-2" /> --}}
                     <div class="blog-item product-grid-view" data-wow-delay="0.25s">
                         <div class="row">
 
@@ -42,9 +42,9 @@
                                             <div class="relative img-product">
                                                 <a href="{{ route('product.detail', $product->slug) }}"
                                                     class="d-block relative">
-                                                    <img src="https://media.loveitopcdn.com/39908/thumb/260x300/may-sieu-am-mau-5d-sonoscape-p25-pro.jpg?zc=1"
+                                                    <img src="{{ showImage($product->images[0]) }}"
                                                         width="100%" height="100%"
-                                                        data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/may-sieu-am-mau-5d-sonoscape-p25-pro.jpg?zc=1"
+                                                        data-isrc="{{ showImage($product->images[0]) }}"
                                                         class="lazyload" alt="{{ $product->name }}"
                                                         aria-label="{{ $product->name }}" />
                                                 </a>

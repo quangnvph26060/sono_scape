@@ -3,7 +3,6 @@
 @section('content')
     <x-breadcrumb :title="'Sản phẩm'" :name="$product->name" />
 
-
     <div class="page-content">
         <div class="container">
             <div class="row clearfix">
@@ -11,107 +10,33 @@
                     <div class="row product-detail in-stock" data-attributes="[]" data-attributes-data="[]">
                         <div class="col-md-5 col-sm-12 col-xs-12 img-product">
                             <div class="relative d-inline-b qv-preview" data-zoom="1">
-                                <a data-fancybox="gallery" data-number="0"
-                                    href="https://media.loveitopcdn.com/39908/thumb/033906-may-sieu-am-sonoscape-m22.jpg"
-                                    class="img-main-href">
-                                    <img class="img-main-detail"
-                                        src="https://media.loveitopcdn.com/39908/thumb/033906-may-sieu-am-sonoscape-m22.jpg"
-                                        alt="Máy siêu âm 5D SonoScape M22" aria-label="Máy siêu âm 5D SonoScape M22" />
-                                    <i class="fa fa-expand"></i>
-                                </a>
-                                <a data-fancybox="gallery" data-number="1"
-                                    href="https://media.loveitopcdn.com/39908/thumb/may-sieu-am-5d-sonoscape-m22.jpg"
-                                    class="img-main-href">
-                                    <img class="img-main-detail"
-                                        src="https://media.loveitopcdn.com/39908/thumb/may-sieu-am-5d-sonoscape-m22.jpg"
-                                        alt="Máy siêu âm 5D SonoScape M22" aria-label="Máy siêu âm 5D SonoScape M22" />
-                                    <i class="fa fa-expand"></i>
-                                </a>
-                                <a data-fancybox="gallery" data-number="2"
-                                    href="https://media.loveitopcdn.com/39908/thumb/171114-may-sieu-am-sonoscape-m22.jpg"
-                                    class="img-main-href">
-                                    <img class="img-main-detail"
-                                        src="https://media.loveitopcdn.com/39908/thumb/171114-may-sieu-am-sonoscape-m22.jpg"
-                                        alt="Máy siêu âm 5D SonoScape M22" aria-label="Máy siêu âm 5D SonoScape M22" />
-                                    <i class="fa fa-expand"></i>
-                                </a>
-                                <a data-fancybox="gallery" data-number="3"
-                                    href="https://media.loveitopcdn.com/39908/thumb/171029-may-sieu-am-sonoscape.jpg"
-                                    class="img-main-href">
-                                    <img class="img-main-detail"
-                                        src="https://media.loveitopcdn.com/39908/thumb/171029-may-sieu-am-sonoscape.jpg"
-                                        alt="Máy siêu âm 5D SonoScape M22" aria-label="Máy siêu âm 5D SonoScape M22" />
-                                    <i class="fa fa-expand"></i>
-                                </a>
-                                <a data-fancybox="gallery" data-number="4"
-                                    href="https://media.loveitopcdn.com/39908/thumb/sonoscape-m22.jpg"
-                                    class="img-main-href">
-                                    <img class="img-main-detail"
-                                        src="https://media.loveitopcdn.com/39908/thumb/sonoscape-m22.jpg"
-                                        alt="Máy siêu âm 5D SonoScape M22" aria-label="Máy siêu âm 5D SonoScape M22" />
-                                    <i class="fa fa-expand"></i>
-                                </a>
+
+                                @foreach ($product->images as $item)
+                                    <a data-fancybox="gallery" data-number="{{ $loop->index }}"
+                                        href="{{ showImage($item) }}" class="img-main-href">
+                                        <img class="img-main-detail" src="{{ showImage($item) }}" alt="{{ $product->name }}"
+                                            aria-label="{{ $product->name }}" />
+                                        <i class="fa fa-expand"></i>
+                                    </a>
+                                @endforeach
                             </div>
 
                             <div class="relative qv-carousel-wrap">
                                 <div id="product-detail-carousel" class="owl-carousel d-carousel product-detail-carousel"
                                     data-nav="true" data-margin="15" data-responsive-0="4" data-responsive-576="4"
                                     data-responsive-768="4" data-responsive-992="4" onclick="changeImageOnClick(event)">
-                                    <div>
-                                        <a class="d-block text-center"
-                                            style="
-                        background-image: url(https://media.loveitopcdn.com/39908/thumb/033906-may-sieu-am-sonoscape-m22.jpg);
-                      ">
-                                            <img class="owl-lazy" data-number="0"
-                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                data-src="https://media.loveitopcdn.com/39908/thumb/033906-may-sieu-am-sonoscape-m22.jpg"
-                                                alt />
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a class="d-block text-center"
-                                            style="
-                        background-image: url(https://media.loveitopcdn.com/39908/thumb/may-sieu-am-5d-sonoscape-m22.jpg);
-                      ">
-                                            <img class="owl-lazy" data-number="1"
-                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                data-src="https://media.loveitopcdn.com/39908/thumb/may-sieu-am-5d-sonoscape-m22.jpg"
-                                                alt />
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a class="d-block text-center"
-                                            style="
-                        background-image: url(https://media.loveitopcdn.com/39908/thumb/171114-may-sieu-am-sonoscape-m22.jpg);
-                      ">
-                                            <img class="owl-lazy" data-number="2"
-                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                data-src="https://media.loveitopcdn.com/39908/thumb/171114-may-sieu-am-sonoscape-m22.jpg"
-                                                alt />
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a class="d-block text-center"
-                                            style="
-                        background-image: url(https://media.loveitopcdn.com/39908/thumb/171029-may-sieu-am-sonoscape.jpg);
-                      ">
-                                            <img class="owl-lazy" data-number="3"
-                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                data-src="https://media.loveitopcdn.com/39908/thumb/171029-may-sieu-am-sonoscape.jpg"
-                                                alt />
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a class="d-block text-center"
-                                            style="
-                        background-image: url(https://media.loveitopcdn.com/39908/thumb/sonoscape-m22.jpg);
-                      ">
-                                            <img class="owl-lazy" data-number="4"
-                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                data-src="https://media.loveitopcdn.com/39908/thumb/sonoscape-m22.jpg"
-                                                alt />
-                                        </a>
-                                    </div>
+
+                                    @foreach ($product->images as $item)
+                                        <div>
+                                            <a class="d-block text-center"
+                                                style="
+                                                background-image: url({{ showImage($item) }});
+                                            ">
+                                                <img class="owl-lazy" data-number="{{ $loop->index }}"
+                                                    src="{{ showImage($item) }}" data-src="{{ showImage($item) }}" alt />
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -130,20 +55,13 @@
                                         <input type="hidden" name="product_price" value="0" />
                                         <input type="hidden" name="product_sale_price" value="0" />
                                     </div>
-                                    <hr class="divider" />
-                                    <!-- Thông tin -->
-                                    <div class="product-infor"></div>
+                                    <hr class="divider mb-0" />
                                     <div class="product-content-des">
-                                        <h2>
-                                            <strong><span style="color: #ff0000">Giá: Liên Hệ</span></strong>
-                                        </h2>
-
                                         <p>
                                             <br />
                                             Nguồn gốc: {{ $product->source }}<br />
                                             Hãng sản xuất: <strong>{{ $product->company->name }}</strong><br />
                                             Công nghệ: {{ $product->country->name }}<br />
-                                            Model: <strong>M22</strong><br />
                                             Tình trạng : {{ $product->condition_level }}<br />
                                             Bảo hành: {{ $product->guarantee }} tháng<br />
                                             Giá chỉ từ: {{ number_format($product->price, 0, '', '.') }} vnđ (Tùy cấu hình
@@ -170,9 +88,8 @@
                                         <div class="col-sm-6 order-now">
                                             <a href="{{ route('contact', $product->slug) }}" rel="nofollow"
                                                 class="btn btn--l btn-primary btn-order wb-main-order btn-item buy_now"
-                                                title="{{ $product->name }}"><i class="fa fa-phone-alt"
-                                                    aria-hidden="true"></i>
-                                                Liên hệ</a>
+                                                title="{{ $product->name }}">Liên hệ <i style="margin-left: 5px"
+                                                    class="fa fa-phone-alt" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                     <hr class="divider" />
@@ -328,43 +245,46 @@
                         <article class="blog-item product-grid-view" data-wow-delay="0.25s">
                             <div class="row">
 
-                                @foreach ($relatedProducts as $item)
-                                    <div class="item col-6 col-sm-4 col-md-4 col-lg-3">
-                                        <div class="product-item relative">
-                                            <figure class="photoframe relative">
-                                                <div class="relative img-product">
-                                                    <a href="{{ route('product.detail', $item->slug) }}"
-                                                        class="d-block relative">
-                                                        <img src="https://media.loveitopcdn.com/39908/thumb/260x300/may-sieu-am-5d-sonoscape-p25.jpg?zc=1"
-                                                            width="100%" height="100%"
-                                                            data-isrc="https://media.loveitopcdn.com/39908/thumb/260x300/may-sieu-am-5d-sonoscape-p25.jpg?zc=1"
-                                                            class="lazyload" alt="{{ $item->name }}"
-                                                            aria-label="{{ $item->name }}" />
-                                                    </a>
-                                                    <a href="{{ route('contact', $item->slug) }}" rel="nofollow"
-                                                        class="btn btn--m btn-primary btn-item"
-                                                        title="{{ $item->name }}"><i class="fa fa-phone-alt"
-                                                            aria-hidden="true"></i>
-                                                        Liên hệ</a>
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        @foreach ($relatedProducts as $item)
+                                            <div class="swiper-slide">
+                                                <div class="product-item relative">
+                                                    <figure class="photoframe relative">
+                                                        <div class="relative img-product">
+                                                            <a href="{{ route('product.detail', $item->slug) }}"
+                                                                class="d-block relative">
+                                                                <img src="{{ showImage($item->images[0]) }}"
+                                                                    width="100%" height="100%" class="lazyload"
+                                                                    alt="{{ $item->name }}" />
+                                                            </a>
+                                                            <a href="{{ route('contact', $item->slug) }}" rel="nofollow"
+                                                                class="btn btn--m btn-primary btn-item"
+                                                                title="{{ $item->name }}"><i class="fa fa-phone-alt"
+                                                                    aria-hidden="true"></i> Liên hệ</a>
+                                                        </div>
+                                                        <figcaption class="infor-product">
+                                                            <h3 class="wrap-two-lines product-title">
+                                                                <a href="{{ route('product.detail', $item->slug) }}"
+                                                                    class="two-lines"
+                                                                    aria-label="{{ $item->name }}">{{ $item->name }}</a>
+                                                            </h3>
+                                                            <div class="btn-purchased">
+                                                                <a href="{{ route('contact', $item->slug) }}"
+                                                                    rel="nofollow" class="btn btn--m btn-primary btn-item"
+                                                                    title="{{ $item->name }}">
+                                                                    <i class="fa fa-phone-alt" aria-hidden="true"></i>
+                                                                    Liên hệ
+                                                                </a>
+                                                            </div>
+                                                        </figcaption>
+                                                    </figure>
                                                 </div>
-                                                <figcaption class="infor-product">
-                                                    <h3 class="wrap-two-lines product-title">
-                                                        <a href="{{ route('product.detail', $item->slug) }}"
-                                                            class="two-lines"
-                                                            aria-label="{{ $item->name }}">{{ $item->name }}</a>
-                                                    </h3>
-                                                    <div class="btn-purchased">
-                                                        <a href="{{ route('contact', $item->slug) }}" rel="nofollow"
-                                                            class="btn btn--m btn-primary btn-item"
-                                                            title="{{ $item->name }}"><i class="fa fa-phone-alt"
-                                                                aria-hidden="true"></i>
-                                                            Liên hệ</a>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </div>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
+                                </div>
+
                             </div>
                         </article>
                     </div>
@@ -378,5 +298,49 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('frontend/assets/plugins/swiper/swiper-bundle.min.js') }}"></script>
     <script src="assets/plugins/elevatezoom-3.0.8/jquery.elevatezoom.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.swiper-container', {
+                slidesPerView: 2,
+                spaceBetween: 10,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1
+                    },
+                    768: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 4
+                    },
+                },
+            });
+        });
+    </script>
+@endpush
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('frontend/assets/plugins/swiper/swiper-bundle.min.css') }}" />
+    <style>
+        .swiper-container {
+            width: 100%;
+            padding: 0px 5px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 @endpush
