@@ -3,7 +3,7 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="" class="logo">
-                <img src="{{ asset('assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand"
+                <img src="{{ asset('backend/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand"
                     height="20" />
             </a>
             <div class="nav-toggle">
@@ -64,6 +64,12 @@
                     <a href="{{ route('admin.news.index') }}">
                         <i class="fas fa-newspaper"></i>
                         <p>Quản lý bài viết</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.form.index') }}">
+                        <i class="fas fa-question"></i>
+                        <p>Yêu cầu liên hệ</p>
                     </a>
                 </li>
 

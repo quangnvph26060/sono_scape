@@ -3,7 +3,8 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="../index.html" class="logo">
-                <img src="../assets/img/kaiadmin/logo_light.svg" alt="navbar brand" class="navbar-brand" height="20">
+                <img src="{{ asset('backend/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand"
+                    class="navbar-brand" height="20">
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -43,7 +44,8 @@
                                     <div class="notif-center">
                                         <a href="#">
                                             <div class="notif-img">
-                                                <img src="../assets/img/jm_denis.jpg" alt="Img Profile">
+                                                <img src="{{ asset('backend/assets/img/jm_denis.jpg') }}"
+                                                    alt="Img Profile">
                                             </div>
                                             <div class="notif-content">
                                                 <span class="subject">Jimmy Denis</span>
@@ -53,7 +55,8 @@
                                         </a>
                                         <a href="#">
                                             <div class="notif-img">
-                                                <img src="../assets/img/chadengle.jpg" alt="Img Profile">
+                                                <img src="{{ asset('backend/assets/img/chadengle.jpg') }}"
+                                                    alt="Img Profile">
                                             </div>
                                             <div class="notif-content">
                                                 <span class="subject">Chad</span>
@@ -63,7 +66,8 @@
                                         </a>
                                         <a href="#">
                                             <div class="notif-img">
-                                                <img src="../assets/img/mlane.jpg" alt="Img Profile">
+                                                <img src="{{ asset('backend/assets/img/mlane.jpg') }}"
+                                                    alt="Img Profile">
                                             </div>
                                             <div class="notif-content">
                                                 <span class="subject">Jhon Doe</span>
@@ -75,7 +79,8 @@
                                         </a>
                                         <a href="#">
                                             <div class="notif-img">
-                                                <img src="{{ asset('assets/img/talha.jpg') }}" alt="Img Profile">
+                                                <img src="{{ asset('backend/assets/img/talha.jpg') }}"
+                                                    alt="Img Profile">
                                             </div>
                                             <div class="notif-content">
                                                 <span class="subject">Talha</span>
@@ -259,63 +264,42 @@
                     </div>
                 </li>
 
-                <li class="nav-item topbar-user dropdown hidden-caret">
-                    <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
-                        aria-expanded="false">
+                <li class="nav-item dropdown">
+                    <a class="profile-pic" href="#" id="dropdownToggle">
                         <div class="avatar-sm">
-                            <img src="{{asset('backend/assets/img/chadengle.jpg') }}"
-                                alt="image profile" class="avatar-img rounded-circle">
+                            <img src="{{ asset('backend/assets/img/chadengle.jpg') }}" alt="image profile"
+                                class="avatar-img rounded-circle">
                         </div>
                         <span class="profile-username">
                             <span class="op-7">Hi, {{ auth()->user()->name }}</span>
                             <span class="fw-bold">{{ auth()->user()->email }}</span>
                         </span>
                     </a>
-                    <ul class="dropdown-menu dropdown-user animated fadeIn">
-                        <div class="scroll-wrapper dropdown-user-scroll scrollbar-outer" style="position: relative;">
-                            <div class="dropdown-user-scroll scrollbar-outer scroll-content"
-                                style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 0px;">
-                                <li>
-                                    <div class="user-box">
-                                        <div class="avatar-lg">
-                                            <img src="{{ asset('backend/assets/img/chadengle.jpg') }}"
-                                                alt="image profile" class="avatar-img rounded-circle">
-                                        </div>
-                                        <div class="u-text">
-                                            <h4>{{ auth()->user()->name }}</h4>
-                                            <p class="text-muted">{{ auth()->user()->email }}</p>
-                                            <a href="{{ route('admin.logout') }}" class="btn btn-xs  btn-sm"
-                                                style="background: red; color: #ffff">Đăng
-                                                xuất</a>
-                                            <form id="logoutForm" action="{{ route('admin.logout') }}"
-                                                method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-
-                            </div>
-                            <div class="scroll-element scroll-x">
-                                <div class="scroll-element_outer">
-                                    <div class="scroll-element_size"></div>
-                                    <div class="scroll-element_track"></div>
-                                    <div class="scroll-bar"></div>
+                    <ul class="dropdown-menu" id="dropdownMenu">
+                        <li>
+                            <div class="user-box">
+                                <div class="avatar-lg">
+                                    <img src="{{ asset('backend/assets/img/chadengle.jpg') }}" alt="image profile"
+                                        class="avatar-img rounded-circle">
+                                </div>
+                                <div class="u-text">
+                                    <h4>{{ auth()->user()->name }}</h4>
+                                    <p class="text-muted">{{ auth()->user()->email }}</p>
+                                    <a href="{{ route('admin.logout') }}" class="btn btn-xs btn-sm"
+                                        style="background: red; color: #fff">Đăng xuất</a>
+                                    <form id="logoutForm" action="{{ route('admin.logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
                                 </div>
                             </div>
-                            <div class="scroll-element scroll-y">
-                                <div class="scroll-element_outer">
-                                    <div class="scroll-element_size"></div>
-                                    <div class="scroll-element_track"></div>
-                                    <div class="scroll-bar"></div>
-                                </div>
-                            </div>
-                        </div>
+                        </li>
                     </ul>
                 </li>
+
             </ul>
         </div>
     </nav>
     <!-- End Navbar -->
 </div>
-<script></script>
+
