@@ -14,7 +14,7 @@ class NewsController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            return datatables()->of(News::all())
+            return datatables()->of(News::withoutGlobalScope('published')->get())
                 ->addColumn('status', function ($row) {
                     return '
                     <div class="radio-container">
@@ -29,7 +29,7 @@ class NewsController extends Controller
                     return '<a href="' . route('admin.news.edit', $row) . '" class="two-lines" aria-label="' . $row->subject . '">' . $row->subject . '</a>';
                 })
                 ->addColumn('posted_at', function ($row) {
-                    return \Carbon\Carbon::parse($row->created_at)->format('d/m/Y') . ' - ' . \Carbon\Carbon::parse($row->created_at)->locale('vi')->diffForHumans();
+                    return \Carbon\Carbon::parse($row->posted_at)->format('d/m/Y') . ' - ' . \Carbon\Carbon::parse($row->posted_at)->locale('vi')->diffForHumans();
                 })
                 ->addColumn('created_at', function ($row) {
                     return \Carbon\Carbon::parse($row->created_at)->format('d/m/Y') . ' - ' . \Carbon\Carbon::parse($row->created_at)->locale('vi')->diffForHumans();
@@ -104,16 +104,21 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(News $news)
+    public function edit(string $id)
     {
+        $news = News::withoutGlobalScope('published')->findOrFail($id);
+
         return view('backend.news.edit', compact('news'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, string $id)
     {
+
+        $news = News::withoutGlobalScope('published')->findOrFail($id);
+
         $credentials = $request->validate([
             'subject' => 'required|max:100|unique:sgo_news,subject,' . $news->id,
             'summary' => 'required',
@@ -162,8 +167,7 @@ class NewsController extends Controller
 
     public function changeStatus(Request $request)
     {
-        $news = News::find($request->id);
-
+        $news = News::withoutGlobalScope('published')->find($request->id);
 
         if (!$news) {
             return response()->json([
