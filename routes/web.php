@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\FormController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
@@ -72,5 +73,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // NEWS ROUTE
         Route::resource('news', NewsController::class);
         Route::post('news/change-status', [NewsController::class, 'changeStatus'])->name('news.change-status');
+
+        // FORM ROUTE
+        Route::controller(FormController::class)->group(function () {
+            Route::get('form', 'index')->name('form.index');
+            Route::post('form', 'updateEmail');
+            Route::delete('form/{form}', 'destroy')->name('form.destroy');
+        });
     });
 });
