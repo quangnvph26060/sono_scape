@@ -145,16 +145,19 @@
                             <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                                 <div class="row">
                                     <div class="row align-items-center">
-                                        <div class="col-sm-12 col-md-6 d-flex justify-content-start">
+                                        <div class="col-sm-12 col-md-8 d-flex justify-content-start">
                                             <button id="open-add-modal" type="button" class="btn btn-primary">
                                                 Thêm công ty
                                             </button>
                                         </div>
-                                        <div class="col-sm-12 col-md-6">
+                                        <div class="col-sm-12 col-md-4">
                                             <div class="dataTables_filter">
-                                                <label for="search-query">Tìm kiếm</label>
-                                                <input id="search-query" type="text" name="phone"
-                                                    class="form-control form-control-sm" placeholder="Nhập số điện thoại">
+
+                                                <div class="input-group">
+                                                    <input id="search-query" type="text" name="phone"
+                                                        class="form-control form-control-sm"
+                                                        placeholder="Nhập số điện thoại">
+                                                </div>
                                             </div>
                                         </div>
 
@@ -245,21 +248,23 @@
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.min.js"></script>
     <script>
         $(document).ready(function() {
             $(document).on('click', '#pagination-links a', function(e) {
                 e.preventDefault();
-                let pageUrl = $(this).attr('href'); // Lấy URL của liên kết phân trang
+                let pageUrl = $(this).attr('href');
 
                 $.ajax({
                     url: pageUrl,
                     type: 'GET',
                     success: function(response) {
+
                         // Cập nhật bảng và phân trang
                         $('#table-content').html($(response).find('#table-content').html());
                         $('#pagination-links').html($(response).find('#pagination-links')
-                        .html());
+                            .html());
                     },
                     error: function(xhr) {
                         console.error("Failed to paginate:", xhr.responseText);

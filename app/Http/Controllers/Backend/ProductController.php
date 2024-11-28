@@ -59,6 +59,32 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate(
+            [
+                'name' => 'required|unique:sgo_products,name,' . $id,
+                'source' => 'required',
+                'company_id' => 'required|exists:sgo_companies,id',
+                'country_id' => 'required|exists:sgo_countries,id',
+                'condition_level' => 'required',
+                'price' => 'required|numeric',
+                'images' => 'nullable|array|min:1',
+                'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'status' => 'required',
+                'description' => 'required',
+            ],
+            __('request.messages'),
+            [
+                'name' => 'Tìm sản phẩm',
+                'source' => 'Nguồn',
+                'company_id' => 'Công ty',
+                'country_id' => 'Quốc gia',
+                'condition_level' => 'Trạng thái',
+                'price' => 'Giá',
+                'image' => 'Hiển thị',
+                'status' => 'Trạng thái',
+            ]
+        );
+
         try {
             $product = $this->productService->updateProduct($request->all(), $id);
 
@@ -66,6 +92,9 @@ class ProductController extends Controller
 
             $html = view('backend.product.table', compact('products'))->render();
             $pagination = $products->links('vendor.pagination.custom')->render();
+
+            toastr()->success('Cập nhật thành công.');
+
             return redirect()->route('admin.product.index');
         } catch (Exception $e) {
             Log::error("Failed to update this Product: " . $e->getMessage());
@@ -75,6 +104,32 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate(
+            [
+                'name' => 'required|unique:sgo_products,name',
+                'source' => 'required',
+                'company_id' => 'required|exists:sgo_companies,id',
+                'country_id' => 'required|exists:sgo_countries,id',
+                'condition_level' => 'required',
+                'price' => 'required|numeric',
+                'images' => 'required|array|min:1',
+                'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'status' => 'required',
+                'description' => 'required',
+            ],
+            __('request.messages'),
+            [
+                'name' => 'Tên sản phẩm',
+                'source' => 'Nguồn',
+                'company_id' => 'Công ty',
+                'country_id' => 'Quốc gia',
+                'condition_level' => 'Trạng thái',
+                'price' => 'Giá',
+                'image' => 'Hiển thị',
+                'status' => 'Trạng thái',
+            ]
+        );
         try {
             $product = $this->productService->addNewProduct($request->all());
 
