@@ -67,6 +67,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.product.index') }}">
+                        <i class="fas fa-storage"></i>
+                        <p>Sản phẩm</p>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.form.index') }}">
                         <i class="fas fa-question"></i>
                         <p>Yêu cầu liên hệ</p>

@@ -15,7 +15,7 @@
                 <tr>
                     <td>{{ ($supportPolicies->currentPage() - 1) * $supportPolicies->perPage() + $loop->index + 1 }}
                     </td>
-                    <td><img src="{{ showImage($value->logo) }}" alt="Logo" width="40px" height="40px"></td>
+                    <td><img src="{{ showImage($value->logo) }}" alt="Logo" width="50px" height="50px"></td>
                     <td>{{ $value->name ?? '' }}</td>
                     <td>{{ $value->description ?? '' }}</td>
                     <td style="text-align:center">

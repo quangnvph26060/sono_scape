@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\Auth\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SupportPolicyController;
+use App\Http\Controllers\Backend\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +75,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('news', NewsController::class);
         Route::post('news/change-status', [NewsController::class, 'changeStatus'])->name('news.change-status');
 
+        Route::prefix('/product')->name('product.')->group(function () {
+            Route::get('/', [ProductController::class, 'index'])->name('index');
+            Route::get('/search', [ProductController::class, 'search'])->name('search');
+            Route::delete('/delete/{id}', [ProductController::class, 'delete'])->name('delete');
+            Route::post('/update/{id}', [ProductController::class, 'update'])->name('update');
+            Route::post('/store', [ProductController::class, 'store'])->name('store');
+            Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
+            Route::get('/add', [ProductController::class, 'add'])->name('add');
         // FORM ROUTE
         Route::controller(FormController::class)->group(function () {
             Route::get('form', 'index')->name('form.index');
