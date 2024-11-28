@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        View::composer('frontend.layouts.master', function ($view) {
+        View::composer('*', function ($view) {
             $view->with([
                 'setting' => \App\Models\Contact::first()
             ]);

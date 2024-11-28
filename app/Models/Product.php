@@ -25,6 +25,11 @@ class Product extends Model
         'description',
     ];
 
+    protected $casts = [
+        'images' => 'array',
+        'status' => 'boolean',
+    ];
+
     public static function boot()
     {
         parent::boot();
@@ -45,6 +50,6 @@ class Product extends Model
 
     public function company()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo(Company::class, 'company_id');
     }
 }

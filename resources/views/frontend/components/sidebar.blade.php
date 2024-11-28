@@ -21,30 +21,30 @@
             <div class="widget-content">
                 <ul class="categories-list navbar-nav mb-menu">
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="https://maysieuamsonoscape.com" aria-label="TRANG CHỦ">
+                        <a class="nav-link" href="{{url('/')}}" aria-label="TRANG CHỦ">
                             TRANG CHỦ
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="https://maysieuamsonoscape.com/gioi-thieu-may-sieu-am-sonoscape.html"
+                        <a class="nav-link" href="{{route('introduce')}}"
                             aria-label="GIỚI THIỆU  SONOSCAPE">
                             GIỚI THIỆU SONOSCAPE
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/"
-                            target='"_blank"' aria-label="MÁY SIÊU ÂM SONOSCAPE  ">
+                        <a class="nav-link" href="{{route('product.list')}}"
+                            target='"_blank"' aria-label="Sản phẩm">
                             SẢN PHẨM
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="https://maysieuamsonoscape.com/may-sieu-am-5d/"
+                        <a class="nav-link" href="{{route('news.list')}}"
                             aria-label="TIN TỨC MỚI">
                             TIN TỨC MỚI
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html"
+                        <a class="nav-link" href="{{route('contact')}}"
                             aria-label="LIÊN HỆ">
                             LIÊN HỆ
                         </a>
@@ -85,11 +85,11 @@
                                     <div class="post-item relative" data-id="224">
                                         <figure class="photoframe relative">
                                             <div class="relative img-post">
-                                                <a href="{{ route('news.detail', $item->id) }}"
+                                                <a href="{{ route('news.detail', $item->slug) }}"
                                                     class="d-block relative text-center">
-                                                    <img src="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
+                                                    <img src="{{ showImage($item->featured_image) }}"
                                                         width="100%" height="100%"
-                                                        data-isrc="https://media.loveitopcdn.com/39908/thumb/800x500/212222-may-sieu-am-5d-sonoscape-p25-2.jpg?zc=1"
+                                                        data-isrc="{{ showImage($item->featured_image) }}"
                                                         class="lazyload"
                                                         alt="{{ $item->subject }}"
                                                         aria-label="{{ $item->subject }}" />
@@ -98,7 +98,7 @@
                                             <figcaption class="info-post">
                                                 <div class="bg-gradient"></div>
                                                 <div class="wrap-two-lines post-title">
-                                                    <a href="{{ route('news.detail', $item->id) }}"
+                                                    <a href="{{ route('news.detail', $item->slug) }}"
                                                         class="two-lines"
                                                         aria-label="{{ $item->subject }}">{{ $item->subject }}.</a>
                                                 </div>
@@ -117,7 +117,7 @@
                                                 </div>
                                                 <div class="read-more">
                                                     <a
-                                                        href="{{ route('news.detail', $item->id) }}">
+                                                        href="{{ route('news.detail', $item->slug) }}">
                                                         Xem thêm &rsaquo;&rsaquo;</a>
                                                 </div>
                                             </figcaption>

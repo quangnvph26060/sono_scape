@@ -14,8 +14,16 @@ class NewsController extends Controller
         return view('frontend.pages.news.list', compact('news'));
     }
 
-    public function detail()
+    public function detail($slug)
     {
-        return view('frontend.pages.news.detail');
+        $news = News::where('slug', $slug)->firstOrFail();
+
+        $relatedNews = News::where('id', '!=', $news->id)->limit(5)->get();
+
+        // $news->view += 1;
+        // $news->save();
+        $news->increment('view');
+        
+        return view('frontend.pages.news.detail', compact('news', 'relatedNews'));
     }
 }

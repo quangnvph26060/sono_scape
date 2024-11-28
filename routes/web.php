@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CompanyController;
@@ -67,5 +68,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('sliders/create/{type}', 'create')->name('create');
             Route::post('sliders/store/{type}', 'store')->name('store');
         });
+
+        // NEWS ROUTE
+        Route::resource('news', NewsController::class);
+        Route::post('news/change-status', [NewsController::class, 'changeStatus'])->name('news.change-status');
     });
 });

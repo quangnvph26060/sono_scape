@@ -35,7 +35,7 @@
         </div>
         <div class="text-notify">Đã thêm vào giỏ hàng</div>
         <div class="view-cart">
-            <a href="https://maysieuamsonoscape.com/cart">Xem giỏ hàng và thanh toán</a>
+            <a href="#">Xem giỏ hàng và thanh toán</a>
         </div>
     </div>
 </div>

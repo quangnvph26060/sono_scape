@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
@@ -16,9 +15,8 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/fonts.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/kaiadmin.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/kaiadmin.css.map') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/plugins.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/plugins.css.map') }}">
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/plugins.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('backend/assets/css/plugins.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('backend/assets/css/plugins.min.css') }}"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <link rel="stylesheet"
@@ -26,6 +24,8 @@
     <script src="{{ asset('backend/validator/validator.js') }}"></script>
 
     <title>Document</title>
+
+    @stack('styles')
 </head>
 <style>
     .collapse {
@@ -35,6 +35,7 @@
     .collapse.show {
         display: block;
     }
+
 </style>
 
 <body>
@@ -55,28 +56,29 @@
 
     </div>
 
-    <script src="{{ asset('backend/assets/js/core/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/core/popper.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/core/bootstrap.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="{{ asset('backend/assets/js/core/jquery-3.7.1.min.js') }}"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+     <script src="{{ asset('backend/assets/js/core/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/chart.js/chart.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/plugin/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/jsvectormap/jsvectormap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/jsvectormap/world.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/webfont/webfont.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.min.js"></script>
     <script src="{{ asset('backend/assets/js/kaiadmin.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/kaiadmin.js') }}"></script>
     <script src="{{ asset('backend/assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('backend/assets/js/setting-demo2.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-    <script src="{{ asset('backend/assets/js/demo.js') }}"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script> --}}
+    {{-- <script src="{{ asset('backend/assets/js/demo.js') }}"></script> --}}
+
+        <!-- Load Bootstrap and Summernote -->
+
+
+
     {{-- <script>
         $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
           type: "line",
@@ -109,23 +111,23 @@
     </script> --}}
 
     <script>
-        WebFont.load({
-            google: {
-                families: ["Public Sans:300,400,500,600,700"]
-            },
-            custom: {
-                families: [
-                    "Font Awesome 5 Solid",
-                    "Font Awesome 5 Regular",
-                    "Font Awesome 5 Brands",
-                    "simple-line-icons",
-                ],
-                urls: ["{{ asset('assets/css/fonts.min.css') }}"],
-            },
-            active: function() {
-                sessionStorage.fonts = true;
-            },
-        });
+        // WebFont.load({
+        //     google: {
+        //         families: ["Public Sans:300,400,500,600,700"]
+        //     },
+        //     custom: {
+        //         families: [
+        //             "Font Awesome 5 Solid",
+        //             "Font Awesome 5 Regular",
+        //             "Font Awesome 5 Brands",
+        //             "simple-line-icons",
+        //         ],
+        //         urls: ["{{ asset('assets/css/fonts.min.css') }}"],
+        //     },
+        //     active: function() {
+        //         sessionStorage.fonts = true;
+        //     },
+        // });
 
         const previewImage = function(event, imgId) {
             const file = event.target.files[0];
@@ -138,10 +140,16 @@
                 reader.readAsDataURL(file);
             }
         }
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
     </script>
 
 
-@stack('scripts')
+    @stack('scripts')
 </body>
 
 </html>

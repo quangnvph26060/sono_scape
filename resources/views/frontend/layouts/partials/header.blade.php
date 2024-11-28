@@ -63,10 +63,10 @@
             <div class="container">
                 <div class="row clearfix center-vertical relative">
                     <div class="col-lg-3 col-6 header-logo">
-                        <a href="https://maysieuamsonoscape.com" aria-label="Máy Siêu Âm SonoScape"
+                        <a href="{{url('/')}}" aria-label="Máy Siêu Âm SonoScape"
                             class="logo d-inline-b">
-                            <img src="https://media.loveitopcdn.com/39908/thumb/sonoscape-2.png"
-                                alt="Máy siêu âm SonoScape Việt Nam" width="100%" height="100%" />
+                            <img src="{{showImage($setting->logo)}}"
+                                alt="{{$setting->company}}" width="100%" height="100%" />
                         </a>
                     </div>
                     <div
@@ -84,10 +84,10 @@
                                 </form>
                             </li>
                         </ul>
-                        <a href="https://maysieuamsonoscape.com" aria-label="Máy Siêu Âm SonoScape"
+                        <a href="{{url('/')}}" aria-label="{{$setting->company}}"
                             class="logo d-inline-b logo-fixed">
-                            <img src="https://media.loveitopcdn.com/39908/thumb/sonoscape-2.png"
-                                alt="Máy siêu âm SonoScape Việt Nam" width="100%" height="100%" />
+                            <img src="{{showImage($setting->logo)}}"
+                                alt="{{$setting->company}}" width="100%" height="100%" />
                         </a>
                         <nav class="main-nav navbar-expand-lg pull-left">
                             <div class="btn-toggle-mobile-menu center-vertical">
@@ -102,7 +102,7 @@
                                 <div class="section-header-menu">
                                     <ul class="navbar-nav ml-auto menu-nav mb-menu">
                                         <li class="nav-item mega_menu relative wb-header-menu-item">
-                                            <a class="nav-link" href="https://maysieuamsonoscape.com"
+                                            <a class="nav-link" href="{{url('/')}}"
                                                 aria-label="TRANG CHỦ">
                                                 TRANG CHỦ
                                             </a>
@@ -110,22 +110,22 @@
 
                                         <li class="nav-item mega_menu relative wb-header-menu-item">
                                             <a class="nav-link"
-                                                href="https://maysieuamsonoscape.com/gioi-thieu-may-sieu-am-sonoscape.html"
-                                                aria-label="GIỚI THIỆU  SONOSCAPE">
-                                                GIỚI THIỆU SONOSCAPE
+                                                href="{{route('introduce')}}"
+                                                aria-label="GIỚI THIỆU ">
+                                                GIỚI THIỆU
                                             </a>
                                         </li>
 
                                         <li class="nav-item mega_menu relative wb-header-menu-item">
                                             <a class="nav-link"
-                                                href="https://maysieuamsonoscape.com/may-sieu-am-4d-5d-sonoscape/"
-                                                target="_blank" aria-label="MÁY SIÊU ÂM SONOSCAPE  ">
-                                                MÁY SIÊU ÂM SONOSCAPE
+                                                href="{{route('product.list')}}"
+                                                target="_blank" aria-label="{{$setting->company}}">
+                                               SẢN PHẨM
                                             </a>
                                         </li>
 
                                         <li class="nav-item mega_menu relative wb-header-menu-item">
-                                            <a class="nav-link" href="https://maysieuamsonoscape.com/may-sieu-am-5d/"
+                                            <a class="nav-link" href="{{route('news.list')}}"
                                                 aria-label="TIN TỨC MỚI">
                                                 TIN TỨC MỚI
                                             </a>
@@ -133,15 +133,7 @@
 
                                         <li class="nav-item mega_menu relative wb-header-menu-item">
                                             <a class="nav-link"
-                                                href="https://maysieuamsonoscape.com/may-noi-soi-tai-mui-hong/"
-                                                aria-label="SẢN PHẨM KHÁC">
-                                                SẢN PHẨM KHÁC
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item mega_menu relative wb-header-menu-item">
-                                            <a class="nav-link"
-                                                href="https://maysieuamsonoscape.com/lien-he-phu-viet-medical.html"
+                                                href="{{route('contact')}}"
                                                 aria-label="LIÊN HỆ">
                                                 LIÊN HỆ
                                             </a>
@@ -151,11 +143,11 @@
 
                                 <div class="textAlign-right">
                                     <div class="social-header d-inline-block relative">
-                                        <a href="https://www.facebook.com/SieuAmSonoScapeVietNam" rel="nofollow"
+                                        <a href="https://www.facebook.com/{{$setting->fanpage}}" rel="nofollow"
                                             aria-label="facebook" class="float-shadow" target="_blank">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
-                                        <a href="https://www.youtube.com/channel/UCzMV3nkgr8qhVj2O1pUjRHQ"
+                                        <a href="https://www.youtube.com/channel/{{$setting->youtube}}"
                                             rel="nofollow" aria-label="youtube" class="float-shadow"
                                             target="_blank">
                                             <i class="fab fa-youtube"></i>
@@ -225,7 +217,7 @@
                                             <a class="nav-link"
                                                 href="{{route('introduce')}}"
                                                 aria-label="GIỚI THIỆU  SONOSCAPE">
-                                                GIỚI THIỆU SONOSCAPE
+                                                GIỚI THIỆU
                                             </a>
                                         </li>
 

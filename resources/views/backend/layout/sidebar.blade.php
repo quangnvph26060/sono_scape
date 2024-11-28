@@ -60,6 +60,12 @@
                         <p>Cấu hình trình chiếu</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.news.index') }}">
+                        <i class="fas fa-newspaper"></i>
+                        <p>Quản lý bài viết</p>
+                    </a>
+                </li>
 
 
                 {{-- <li class="nav-item">
