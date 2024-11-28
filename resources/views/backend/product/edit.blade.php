@@ -31,116 +31,119 @@
             </div>
         </div>
     </div>
-    <form action="{{ route('admin.product.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data"
-        id="addproduct">
+    <form action="{{ route('admin.product.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="row">
-            <!-- Cột bên trái -->
-            <div class="col-lg-6 add_product">
-                <!-- Tên sản phẩm -->
-                <div>
-                    <label for="name" class="form-label">Tên sản phẩm</label>
-                    <input type="text" class="form-control" name="name" id="name" value="{{ $product->name }}"
-                        placeholder="Nhập tên sản phẩm">
-                </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <!-- Cột bên trái -->
+                    <div class="col-lg-6 add_product">
+                        <!-- Tên sản phẩm -->
+                        <div class="form-group mb-3">
+                            <label for="name" class="form-label">Tên sản phẩm</label>
+                            <input type="text" class="form-control" name="name" id="name"
+                                value="{{ $product->name }}" placeholder="Nhập tên sản phẩm">
+                        </div>
 
-                <!-- Dropdown Country -->
-                <div>
-                    <label for="country_id" class="form-label">Công nghệ</label>
-                    <select class="form-control" name="country_id" id="country_id">
-                        <option value="{{ $product->country->id }}">{{ $product->country->name }}</option>
-                        @foreach ($countries as $country)
-                            <option value="{{ $country->id }}">{{ $country->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                        <!-- Dropdown Country -->
+                        <div class="form-group mb-3">
+                            <label for="country_id" class="form-label">Công nghệ</label>
+                            <select class="form-select" name="country_id" id="country_id">
+                                <option value="{{ $product->country->id }}">{{ $product->country->name }}</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                <!-- Dropdown Company -->
-                <div>
-                    <label for="company_id" class="form-label">Hãng sản xuất</label>
-                    <select class="form-control" name="company_id" id="company_id">
-                        <option value="{{ $product->company->id }}">{{ $product->company->name }}</option>
-                        @foreach ($companies as $company)
-                            <option value="{{ $company->id }}">{{ $company->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                        <!-- Dropdown Company -->
+                        <div class="form-group mb-3">
+                            <label for="company_id" class="form-label">Hãng sản xuất</label>
+                            <select class="form-select" name="company_id" id="company_id">
+                                <option value="{{ $product->company->id }}">{{ $product->company->name }}</option>
+                                @foreach ($companies as $company)
+                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                <!-- Tình trạng -->
-                <div>
-                    <label for="condition_level" class="form-label">Tình trạng (%)</label>
-                    <input type="number" class="form-control" name="condition_level" id="condition_level"
-                        value="{{ $product->condition_level }}" min="0" max="100">
-                </div>
-            </div>
+                        <!-- Tình trạng -->
+                        <div class="form-group mb-3">
+                            <label for="condition_level" class="form-label">Tình trạng (%)</label>
+                            <input type="number" class="form-control" name="condition_level" id="condition_level"
+                                value="{{ $product->condition_level }}" min="0" max="100">
+                        </div>
+                    </div>
 
-            <!-- Cột bên phải -->
-            <div class="col-lg-6 add_product">
-                <!-- Giá -->
-                <div>
-                    <label for="price" class="form-label">Giá</label>
-                    <input type="number" class="form-control" value="{{ $product->price }}" name="price" id="price"
-                        placeholder="Nhập giá sản phẩm">
-                </div>
+                    <!-- Cột bên phải -->
+                    <div class="col-lg-6 add_product">
+                        <!-- Giá -->
+                        <div class="form-group mb-3">
+                            <label for="price" class="form-label">Giá</label>
+                            <input type="number" class="form-control" value="{{ $product->price }}" name="price"
+                                id="price" placeholder="Nhập giá sản phẩm">
+                        </div>
 
-                <!-- Đơn vị sản phẩm -->
-                <div>
-                    <label for="product_unit" class="form-label">Nguồn</label>
-                    <input type="text" value="{{ $product->source }}" class="form-control" name="source" id="source"
-                        placeholder="Nhập nguồn sản phẩm">
-                </div>
+                        <!-- Đơn vị sản phẩm -->
+                        <div class="form-group mb-3">
+                            <label for="product_unit" class="form-label">Nguồn</label>
+                            <input type="text" value="{{ $product->source }}" class="form-control" name="source"
+                                id="source" placeholder="Nhập nguồn sản phẩm">
+                        </div>
 
-                <!-- Bảo hành -->
-                <div>
-                    <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
-                    <input type="number" value="{{ $product->guarantee }}" class="form-control" name="guarantee"
-                        id="guarantee" placeholder="Nhập số tháng bảo hành">
-                </div>
-                <div>
-                    <label for="status">Trạng thái</label>
-                    <select class="form-control" id="status" name="status">
-                        <option value="1" {{ $product->status == 1 ? 'selected' : '' }}>Còn hàng</option>
-                        <option value="0" {{ $product->status == 0 ? 'selected' : '' }}>Hết hàng</option>
-                    </select>
-                </div>
+                        <!-- Bảo hành -->
+                        <div class="form-group mb-3">
+                            <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
+                            <input type="number" value="{{ $product->guarantee }}" class="form-control" name="guarantee"
+                                id="guarantee" placeholder="Nhập số tháng bảo hành">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="status">Trạng thái</label>
+                            <select class="form-select" id="status" name="status">
+                                <option value="1" {{ $product->status == 1 ? 'selected' : '' }}>Còn hàng</option>
+                                <option value="0" {{ $product->status == 0 ? 'selected' : '' }}>Hết hàng</option>
+                            </select>
+                        </div>
 
-            </div>
-            <div class="col-lg-12">
-                <!-- Ảnh sản phẩm -->
-                <div>
-                    <label for="images" class="form-label">Ảnh sản phẩm</label>
-                    <input type="file" class="form-control" id="images" name="images[]" multiple accept="image/*">
-                </div>
-            </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <!-- Ảnh sản phẩm -->
+                        <div class="form-group mb-3">
+                            <label for="images" class="form-label">Ảnh sản phẩm</label>
+                            <input type="file" class="form-control" id="images" name="images[]" multiple
+                                accept="image/*">
+                        </div>
+                    </div>
 
-            @if (isset($productImages) && count($productImages) > 0)
-                <div class="col-lg-12 mt-3">
-                    <label class="form-label">Ảnh hiện tại</label>
-                    <div class="row">
-                        @foreach ($productImages as $image)
-                            <div class="col-3 mb-3">
-                                <img src="{{ asset('storage/' . $image) }}" alt="Product Image"
-                                    class="img-fluid product-image">
+                    @if (isset($productImages) && count($productImages) > 0)
+                        <div class="col-lg-12 mt-3">
+                            <label class="form-label">Ảnh hiện tại</label>
+                            <div class="row">
+                                @foreach ($productImages as $image)
+                                    <div class="col-3 mb-3">
+                                        <img src="{{ asset('storage/' . $image) }}" alt="Product Image"
+                                            class="img-fluid product-image">
+                                    </div>
+                                @endforeach
                             </div>
-                        @endforeach
+                        </div>
+                    @endif
+
+                    <!-- Mô tả -->
+                    <div class="col-lg-12">
+                        <label for="description" class="form-label">Mô tả</label>
+                        <textarea id="description" class="form-control" name="description" rows="10">{{ $product->description }}</textarea>
                     </div>
                 </div>
-            @endif
+            </div>
+            <div class="card-footer">
 
-            <!-- Mô tả -->
-            <div class="col-lg-12">
-                <label for="description" class="form-label">Mô tả</label>
-                <textarea id="description" class="form-control" name="description" rows="10">{{ $product->description }}</textarea>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary w-md">Xác nhận</button>
+                </div>
             </div>
         </div>
-
-        <!-- Nút xác nhận -->
-        <div class="modal-footer m-2">
-            <button type="submit" class="btn btn-primary w-md">Xác nhận</button>
-        </div>
     </form>
-
-
 @endsection
 
 @push('scripts')

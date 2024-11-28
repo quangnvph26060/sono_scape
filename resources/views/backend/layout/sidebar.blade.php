@@ -68,45 +68,16 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.product.index') }}">
-                        <i class="fas fa-storage"></i>
+                        <i class="fas fa-box-open"></i>
                         <p>Sản phẩm</p>
                     </a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a href="{{ route('admin.form.index') }}">
                         <i class="fas fa-question"></i>
                         <p>Yêu cầu liên hệ</p>
                     </a>
                 </li>
-
-
-                {{-- <li class="nav-item">
-                    <a href="{{ route('admin.store.index') }}">
-                        <i class="fas fa-user"></i>
-                        <p></p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebargiaodich">
-                        <i class="fas fa-dollar"></i>
-                        <p>Giao dịch</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="sidebargiaodich">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href = "{{ route('admin.transaction.index') }}">
-                                    <span class="sub-item">Nạp tiền</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href = "">
-                                    <span class="sub-item">Nhận tiền</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
             </ul>
         </div>
     </div>

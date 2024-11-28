@@ -54,6 +54,18 @@ class CompanyController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate(
+            [
+                'name' => 'required|unique:sgo_companies,name,' . $id,
+                'phone' => 'required|unique:sgo_companies,phone,' . $id,
+            ],
+            __('request.messages'),
+            [
+                'name' => 'Tìm công ty',
+                'phone' => 'Số điện thoại',
+            ]
+        );
+
         try {
             $company = $this->companyService->updateCompany($request->all(), $id);
 
@@ -75,6 +87,18 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'name' => 'required|unique:sgo_companies,name',
+                'phone' => 'required|unique:sgo_companies,phone',
+            ],
+            __('request.messages'),
+            [
+                'name' => 'Tên công ty',
+                'phone' => 'Số điện thoại',
+            ]
+        );
+
         try {
             $company = $this->companyService->addNewCompany($request->all());
 

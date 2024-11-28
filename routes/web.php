@@ -83,6 +83,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/store', [ProductController::class, 'store'])->name('store');
             Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
             Route::get('/add', [ProductController::class, 'add'])->name('add');
+        });
+
         // FORM ROUTE
         Route::controller(FormController::class)->group(function () {
             Route::get('form', 'index')->name('form.index');
