@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\FormController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\SliderController;
@@ -82,6 +83,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/store', [ProductController::class, 'store'])->name('store');
             Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
             Route::get('/add', [ProductController::class, 'add'])->name('add');
+        // FORM ROUTE
+        Route::controller(FormController::class)->group(function () {
+            Route::get('form', 'index')->name('form.index');
+            Route::post('form', 'updateEmail');
+            Route::delete('form/{form}', 'destroy')->name('form.destroy');
         });
     });
 });

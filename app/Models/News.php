@@ -43,12 +43,14 @@ class News extends Model
         });
 
         static::updating(function ($model) {
-            $model->slug = Str::slug($model->subject);
+            if ($model->isDirty('subject')) {
+                $model->slug = Str::slug($model->subject);
+            }
+            $model->seo_title = $model->subject;
         });
 
         static::deleting(function ($model) {
             deleteImage($model->featured_image);
         });
     }
-
 }
