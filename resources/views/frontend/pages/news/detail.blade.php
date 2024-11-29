@@ -6,7 +6,7 @@
     <div class="page-content">
         <div class="container">
             <div class="row clearfix">
-                <section class="col-lg-9">
+                <section class="col-lg-8">
                     <article class="article-detail m-bottom-30">
                         <div class="clearfix">
                             <h1 class="post-detail-title">

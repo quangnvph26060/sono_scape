@@ -1,8 +1,8 @@
 <div class="header-top" style="background-color: #cccccc">
-    <div class="container">
-        <div class="textAlign-left topbar-left">
-            <div class="section-infor-topbar relative">
-                <ul class="info-account line-right">
+    <div class="container row align-items-center">
+        <div class="col-6">
+            <div class="section-infor-topbar relative" style="padding-top: 5px">
+                {{-- <ul class="info-account line-right">
                     <li>
                         <span class="phone-label">Gọi ngay</span>
                         <a href="tel:{{ $setting->phone }}">
@@ -12,11 +12,17 @@
                             {{ $setting->phone }}
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
+                <marquee behavior="scroll">Chào mừng bạn đến với Tủ thuốc cho mọi nhà Medicare</marquee>
             </div>
         </div>
-        <div class="textAlign-right topbar-right">
-            <div class="textAlign-right">
+        <div class=" col-6">
+            <div class="textAlign-right d-flex justify-content-end align-items-center">
+                <div class="time_header mr-5">
+                    <img src="//bizweb.dktcdn.net/100/411/753/themes/894845/assets/time.png?1676273080247"
+                        alt="time_header">
+                    <span>Thời gian làm việc: 8:00 - 22:00</span>
+                </div>
                 <div class="social-header d-inline-block relative">
                     <a href="https://www.facebook.com/{{ $setting->fanpage }}" rel="nofollow" aria-label="facebook"
                         class="float-shadow" target="_blank">
@@ -159,33 +165,35 @@
         <div class="wb-main-header">
             <div class="container">
                 <div class="row clearfix align-items-center">
-                    <div class="col-4 header-logo">
+                    <div class="col-3 header-logo">
                         <a href="{{ url('/') }}" aria-label="Máy Siêu Âm SonoScape" class="logo d-inline-b">
                             <img src="{{ showImage($setting->logo) }}" alt="Máy siêu âm SonoScape Việt Nam"
                                 width="100%" height="100%" />
                         </a>
                     </div>
-                    <div class="col-5 form-search">
+                    <div class="col-7 form-search">
                         <form class="search-form w-100" action="{{ route('product.list') }}" method="GET">
 
                             <div class="input-group ">
                                 <input type="search" class="form-control" style="height: 3rem" name="keyword"
                                     placeholder="Nhập từ khóa" value="{{ request()->get('keyword') }}">
-                                    <button type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
+                                <button type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-3 contact-header">
-                        <div class="phone_header d-flex align-items-center justify-content-end" style="font-size: 1.2rem">
+                    <div class="col-2 contact-header">
+                        <div class="phone_header d-flex align-items-center justify-content-end"
+                            style="font-size: 1.2rem">
                             <div class="phone_image mr-3">
                                 <img src="//bizweb.dktcdn.net/100/411/753/themes/894845/assets/phone_header.png?1676273080247"
                                     alt="Giỏ hàng">
                             </div>
-                            <div class="phone_content" style="line-height: 25px">
-                                <span class="d-block ">Liên hệ ngay</span>
-                                <a class="fone fw-bold text-danger" href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
+                            <div class="phone_content" style="line-height: 20px">
+                                <span class="d-block" style="font-size: 13px">Liên hệ ngay</span>
+                                <a class="fone fw-bold text-danger" style="font-size: 16px"
+                                    href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
                             </div>
                         </div>
                     </div>
