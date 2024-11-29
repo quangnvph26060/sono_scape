@@ -127,7 +127,7 @@ class NewsController extends Controller
             'status' => 'required|in:published,unpublished',
             'seo_keywords' => 'nullable',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'posted_at' => 'required|date_format:Y-m-d H:i|after:today',
+            'posted_at' => 'required|date_format:Y-m-d H:i|',
         ], __('request.messages'), [
             'subject' => 'Tiêu đề',
             'summary' => 'Tóm tắt',

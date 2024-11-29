@@ -3036,7 +3036,7 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-line-clamp: 2;
     color: var(--link-color);
     margin-bottom: 5px;
-    font-size: 100%;
+    font-size: 1.5rem;
     font-weight: 400;
 }
 .post-view .post-item .wrap-two-lines strong.two-lines {
@@ -3637,7 +3637,7 @@ footer .widget_post_body.style6 .post-view .row > div {
 @media (min-width: 992px) {
     .post-list .post-view .post-list-view .post-item img,
     .related-article .post-view .post-list-view .post-item img {
-        max-width: 30%;
+        max-width: 100%;
     }
     .post-view .post-grid-view .mini-post-content .f-size-ex-large {
         margin-top: 10px;
@@ -6018,8 +6018,9 @@ body.tab_style7 .widget-sidebar ul.tab_list li a {
 .post-list .read-more,
 .row-widget .read-more,
 .widget .read-more {
-    display: none;
+    /* display: none; */
     margin-top: 10px;
+    font-weight: bold;
 }
 .widget .read-more a {
     text-decoration: underline;

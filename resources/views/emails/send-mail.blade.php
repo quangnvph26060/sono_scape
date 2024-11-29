@@ -66,8 +66,9 @@
         <p><span class="field">Họ và Tên:</span> {{ $data['name'] }}</p>
         <p><span class="field">Email:</span> {{ $data['email'] }}</p>
         <p><span class="field">Số Điện Thoại:</span> {{ $data['phone'] }}</p>
-        <p><span class="field">Tin Nhắn:</span></p>
-        <p>{{ $data['message'] }}</p>
+        @if (!is_null($data['message']))
+        <p><span class="field">Tin Nhắn:</span> {{ $data['message'] }}</p>
+        @endif
         <p><span class="field">Ngày Gửi:</span> {{ \Carbon\Carbon::parse($data['created_at'])->format('d/m/Y H:i') }}
         </p>
         <div class="footer">

@@ -34,7 +34,7 @@ class ContactController extends Controller
             'name' => 'required|string|min:3|max:255',
             'email' => 'required|email',
             'phone' => ['required', 'regex:/^(03|05|07|08|09)[0-9]{8}$/'],
-            'message' => 'required'
+            'message' => $request->message ? 'max:150|min:10' : 'nullable',
         ], __('request.messages'), [
             'name' => 'Họ và tên',
             'email' => 'Email',

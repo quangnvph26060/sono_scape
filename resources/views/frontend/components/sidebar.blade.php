@@ -1,4 +1,4 @@
-<aside class="col-lg-3 col-12 widget-sidebar pl-lg-1">
+<aside class="col-lg-4 col-12 widget-sidebar pl-lg-1">
     <div class="widget wrapper widget-menu" data-widget-id="22" data-widget="menu">
         <div class="widget-menu style2" style="" data-id="0">
             <div class="box_heading">
@@ -21,31 +21,27 @@
             <div class="widget-content">
                 <ul class="categories-list navbar-nav mb-menu">
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="{{url('/')}}" aria-label="TRANG CHỦ">
+                        <a class="nav-link" href="{{ url('/') }}" aria-label="TRANG CHỦ">
                             TRANG CHỦ
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="{{route('introduce')}}"
-                            aria-label="GIỚI THIỆU  SONOSCAPE">
+                        <a class="nav-link" href="{{ route('introduce') }}" aria-label="GIỚI THIỆU  SONOSCAPE">
                             GIỚI THIỆU SONOSCAPE
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="{{route('product.list')}}"
-                            target='"_blank"' aria-label="Sản phẩm">
+                        <a class="nav-link" href="{{ route('product.list') }}" target='"_blank"' aria-label="Sản phẩm">
                             SẢN PHẨM
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="{{route('news.list')}}"
-                            aria-label="TIN TỨC MỚI">
+                        <a class="nav-link" href="{{ route('news.list') }}" aria-label="TIN TỨC MỚI">
                             TIN TỨC MỚI
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="{{route('contact')}}"
-                            aria-label="LIÊN HỆ">
+                        <a class="nav-link" href="{{ route('contact') }}" aria-label="LIÊN HỆ">
                             LIÊN HỆ
                         </a>
                     </li>
@@ -79,53 +75,28 @@
                 <div class="tab-content post-view">
                     <div id="tab_style_37_0" class="tab-pane active">
                         <div class="row">
-
                             @foreach ($popularNews as $item)
-                                <div class="col-lg-12 col-6">
-                                    <div class="post-item relative" data-id="224">
-                                        <figure class="photoframe relative">
-                                            <div class="relative img-post">
-                                                <a href="{{ route('news.detail', $item->slug) }}"
-                                                    class="d-block relative text-center">
-                                                    <img src="{{ showImage($item->featured_image) }}"
-                                                        width="100%" height="100%"
-                                                        data-isrc="{{ showImage($item->featured_image) }}"
-                                                        class="lazyload"
-                                                        alt="{{ $item->subject }}"
-                                                        aria-label="{{ $item->subject }}" />
-                                                </a>
-                                            </div>
-                                            <figcaption class="info-post">
-                                                <div class="bg-gradient"></div>
-                                                <div class="wrap-two-lines post-title">
-                                                    <a href="{{ route('news.detail', $item->slug) }}"
-                                                        class="two-lines"
-                                                        aria-label="{{ $item->subject }}">{{ $item->subject }}.</a>
-                                                </div>
-                                                <p class="f-size-medium post-view-date">
-                                                    <span class="post-date">
-                                                        <i class="fas fa-calendar-alt"></i>
-                                                        {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}
-                                                        <span class="d-none-sidebar"> | </span>
-                                                    </span>
-                                                    <span class="post-item-view">
-                                                        <i class="fas fa-eye"></i> {{ $item->view }} Lượt xem
-                                                    </span>
-                                                </p>
-                                                <div class="description">
-                                                    {!! \Str::words($item->article, 20, ' [...]') !!}
-                                                </div>
-                                                <div class="read-more">
-                                                    <a
-                                                        href="{{ route('news.detail', $item->slug) }}">
-                                                        Xem thêm &rsaquo;&rsaquo;</a>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
+                                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                                    <div class="d-flex align-items-start popular-news-item">
+                                        <!-- Hình ảnh -->
+                                        <div class="news-image me-3">
+                                            <a href="{{ route('news.detail', $item->slug) }}" class="d-block">
+                                                <img src="{{ showImage($item->featured_image) }}"
+                                                    alt="{{ $item->subject }}" class="img-fluid" />
+                                            </a>
+                                        </div>
+                                        <!-- Nội dung -->
+                                        <div class="news-content">
+                                            <h5 class="news-title">
+                                                <a
+                                                    href="{{ route('news.detail', $item->slug) }}">{{ \Str::words($item->subject, 20, '...') }}</a>
+                                            </h5>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
+
                         <center class="read-more w-100">
                             <a href="{{ route('news.list') }}">Xem thêm
                                 &rsaquo;&rsaquo;</a>
@@ -136,3 +107,54 @@
         </div>
     </div>
 </aside>
+<style>
+    .popular-news-item {
+        border-bottom: 1px solid #ddd;
+        /* Đường kẻ dưới từng bài */
+        padding-bottom: 15px;
+        display: flex;
+    }
+
+    .news-image img {
+        width: 150px;
+        /* Kích thước hình ảnh */
+        height: auto;
+        border-radius: 5px;
+        /* Bo góc */
+    }
+
+    .news-content {
+        flex: 1;
+    }
+
+    .news-title {
+        text-align: left;
+        font-size: 16px;
+        margin: 0 15px 8px;
+        color: #000000;
+    }
+
+    .news-title a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .news-title:hover{
+        color: #c6111d;
+    }
+
+    .news-title a:hover {
+        color: #007bff;
+    }
+
+    .news-description {
+        font-size: 14px;
+        color: #555;
+        margin: 0 0 8px;
+    }
+
+    .news-meta {
+        font-size: 12px;
+        color: #777;
+    }
+</style>

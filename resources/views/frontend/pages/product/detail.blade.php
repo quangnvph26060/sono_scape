@@ -316,7 +316,7 @@
                         slidesPerView: 1
                     },
                     768: {
-                        slidesPerView: 2
+                        slidesPerView: 3
                     },
                     1024: {
                         slidesPerView: 4

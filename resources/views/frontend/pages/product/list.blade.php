@@ -5,7 +5,7 @@
     <div class="page-content">
         <div class="container">
             <div class="row clearfix product-list">
-                <div class="col-lg-9 product-view">
+                <div class="col-lg-8 product-view">
                     <div class="row clearfix sort_products">
                         {{-- <div class="col-lg-7 col-12 col-sm-8">
                             <p class="d-inline-middle f-size-medium">Sắp xếp:</p>

@@ -113,8 +113,8 @@
                     <div class="card-body">
                         @if ($news->featured_image)
                             <div class="mb-3">
-                                <img src="{{ showImage($news->featured_image) }}" alt="Ảnh đại diện"
-                                    class="img-fluid" style="max-width: 100%; height: auto;">
+                                <img src="{{ showImage($news->featured_image) }}" alt="Ảnh đại diện" class="img-fluid"
+                                    style="max-width: 100%; height: auto;">
                             </div>
                         @endif
                         <input id="file-1" name="featured_image" type="file" accept="image/*">
@@ -173,15 +173,35 @@
             const input = document.querySelector('#chose_tag');
             const tagify = new Tagify(input, {
                 whitelist: ["Chất lượng cao", "Giá rẻ", "Cao cấp", "Độc quyền", "Mới nhất",
-                    'Thân thiện với môi trường', 'Dễ sử dụng', 'Công nghệ tiên tiến'
-                ], // Tag gợi ý
+                    "Thân thiện với môi trường", "Dễ sử dụng", "Công nghệ tiên tiến"
+                ],
                 dropdown: {
-                    maxItems: 10, // Số lượng gợi ý tối đa
-                    classname: "tags-look", // Class CSS tùy chỉnh
-                    enabled: 0, // Gợi ý tự động khi gõ
-                    closeOnSelect: false // Không đóng dropdown khi chọn tag
+                    maxItems: 10,
+                    classname: "tags-look",
+                    enabled: 0,
+                    closeOnSelect: false
                 }
             });
+
+            // Hàm điều chỉnh chiều cao
+            function adjustTagifyHeight(scopeElement) {
+                if (scopeElement) {
+                    scopeElement.style.height = "auto"; // Reset chiều cao
+                    scopeElement.style.height = scopeElement.scrollHeight + "px"; // Điều chỉnh theo nội dung
+                }
+            }
+
+            // Gắn sự kiện "add" và "remove" cho Tagify
+            tagify.on('add', () => {
+                adjustTagifyHeight(tagify.DOM.scope); // Điều chỉnh khi thêm tag
+            });
+
+            tagify.on('remove', () => {
+                adjustTagifyHeight(tagify.DOM.scope); // Điều chỉnh khi xóa tag
+            });
+
+            // Điều chỉnh ngay khi tải trang (nếu đã có giá trị ban đầu)
+            adjustTagifyHeight(tagify.DOM.scope);
 
             $("#file-1").fileinput({
                 showPreview: true, // Hiển thị ảnh preview
@@ -218,5 +238,24 @@
         .modal-backdrop.show {
             z-index: 1001 !important;
         }
+
+        .tags-look .tagify {
+        display: block;
+        white-space: normal;
+        overflow-y: hidden; /* Ẩn thanh cuộn dọc */
+        max-height: 150px; /* Giới hạn chiều cao nếu cần */
+    }
+
+        .tagify {
+            max-height: 150px;
+            /* Giới hạn chiều cao */
+            overflow-y: auto;
+            /* Thêm thanh cuộn dọc nếu quá dài */
+        }
+
+        .tagify__input {
+        width: 100%; /* Đảm bảo input chiếm hết chiều rộng */
+        overflow: hidden; /* Ẩn nội dung tràn */
+    }
     </style>
 @endpush

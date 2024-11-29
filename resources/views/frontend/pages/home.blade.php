@@ -40,7 +40,8 @@
                             <div class="text-center">
                                 <div class="box_heading">
                                     <h2 class="heading">
-                                        <a style="color: #cc0000 !important" href="{{ route('product.list') }}">SẢN PHẨM BÁN CHẠY</a>
+                                        <a style="color: #cc0000 !important" href="{{ route('product.list') }}">SẢN PHẨM BÁN
+                                            CHẠY</a>
                                     </h2>
                                     <div class="line-hg"><span></span></div>
                                     <div class="svg-wrap">
@@ -69,8 +70,9 @@
                                                             <div class="relative img-product">
                                                                 <a href="{{ route('product.detail', $product->slug) }}"
                                                                     class="d-block relative">
-                                                                    <img src="{{ showImage($product->images[0] ?? '') }}" width="100%"
-                                                                        height="100%" data-isrc="{{ showImage($product->images[0] ?? '') }}"
+                                                                    <img src="{{ showImage($product->images[0] ?? '') }}"
+                                                                        width="100%" height="100%"
+                                                                        data-isrc="{{ showImage($product->images[0] ?? '') }}"
                                                                         class="lazyload" alt="{{ $product->name }}"
                                                                         aria-label="{{ $product->name }}" />
                                                                 </a>
@@ -188,7 +190,8 @@
                         <div class="content-widget" data-limit="4" data-type="5" data-post-size="post_medium">
                             <div class="text-center">
                                 <div class="box_heading">
-                                    <h2 class="heading">TIN TỨC NỔI BẬT<Table></Table></h2>
+                                    <h2 class="heading">TIN TỨC NỔI BẬT<Table></Table>
+                                    </h2>
                                     <div class="line-hg"><span></span></div>
                                     <div class="svg-wrap">
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -346,6 +349,50 @@
                 </div>
             </div>
         </div>
+
+        <div class="consult-section">
+            <div class="container">
+                <div class="row consult-container">
+                    <!-- Hình ảnh bên trái -->
+                    <div class="col-lg-6 consult-left" ></div>
+
+                    <!-- Form bên phải -->
+                    <div class="col-lg-6 d-flex align-items-center" style="background-image: url('{{asset('frontend/assets/image/abstract-template-background-white-and-bright-blue-squares-overlapping-with-halftone-and-texture-free-vector.jpg')}}')">
+                        <form class="consult-form w-100 contact-form" action="{{ route('contact') }}" id="contact_form">
+                            <h2>Bạn đang cần được tư vấn</h2>
+                            <p>{{ $setting->name }} sẽ liên hệ với bạn trong ít phút nữa.</p>
+
+                            <div class="row g-3">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" name="name" class="form-control" placeholder="Nhập tên*" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" name="email" class="form-control" placeholder="Nhập E-Mail*" />
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <input type="text" name="phone" class="form-control" pattern="^[0-9]*$" inputmode="numeric"
+                                        title="Số điện thoại không đúng định dạng" placeholder="Nhập số điện thoại*" />
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <textarea style="resize: none;" class="form-control" name="message" rows="3" placeholder="Viết một tin nhắn ngắn..."></textarea>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        Gửi
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <div class="alert alert-success" style="display: none; padding: 0.5rem 1.25rem;">
+                                </div>
+                                <div class="alert alert-danger" style="display: none; padding: 0.5rem 1.25rem;"></div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -377,6 +424,49 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('frontend/assets/plugins/swiper/swiper-bundle.min.css') }}" />
     <style>
+        .consult-section {
+            padding: 50px 0;
+        }
+
+        .consult-container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .consult-left {
+            background-image: url('{{asset('frontend/assets/image/background.jpg')}}');
+            /* Thay bằng hình ảnh của bạn */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* .consult-left {
+            background-image: url('{{ asset('frontend/assets/image/background.jpg') }}');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        } */
+
+        .consult-form {
+            padding: 40px;
+        }
+
+        .consult-form h2 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            height: 50px;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
         /* Nút Next và Prev */
         .swiper-button-next,
         .swiper-button-prev {

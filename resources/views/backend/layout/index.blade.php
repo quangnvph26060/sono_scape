@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ showImage($setting->icon) }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
@@ -28,43 +29,6 @@
     @stack('styles')
 </head>
 <style>
-    .nav-item {
-        position: relative;
-        display: inline-block;
-    }
-
-    .profile-pic {
-        cursor: pointer;
-        text-decoration: none;
-        color: #333;
-        display: flex;
-        align-items: center;
-    }
-
-    .dropdown-menu {
-        display: none;
-        /* Ẩn menu dropdown mặc định */
-        position: absolute;
-        top: 100%;
-        /* Đặt menu ngay dưới nút */
-        left: 0;
-        background-color: white;
-        min-width: 200px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 10px;
-        border-radius: 4px;
-        z-index: 1000;
-    }
-
-    .dropdown-menu li {
-        list-style: none;
-        padding: 5px 0;
-    }
-
-    .dropdown-menu li:hover {
-        background-color: #f0f0f0;
-    }
-
     .collapse {
         display: none;
     }
@@ -72,6 +36,7 @@
     .collapse.show {
         display: block;
     }
+
 </style>
 
 <body>
@@ -85,16 +50,15 @@
                 @yield('content')
             </div>
 
-
             @include('backend.layout.footer')
 
         </div>
 
     </div>
 
-    <script src="{{ asset('backend/assets/js/core/jquery-3.7.1.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="{{ asset('backend/assets/js/core/bootstrap.min.js') }}"></script>
+   <script src="{{ asset('backend/assets/js/core/jquery-3.7.1.min.js') }}"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+     <script src="{{ asset('backend/assets/js/core/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/chart.js/chart.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
@@ -111,8 +75,7 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script> --}}
     {{-- <script src="{{ asset('backend/assets/js/demo.js') }}"></script> --}}
 
-    <!-- Load Bootstrap and Summernote -->
-
+        <!-- Load Bootstrap and Summernote -->
 
 
     {{-- <script>
@@ -143,7 +106,6 @@
           fillColor: "rgba(255, 165, 52, .14)",
         });
 
-
     </script> --}}
 
     <script>
@@ -165,22 +127,6 @@
         //     },
         // });
 
-        $(document).ready(function() {
-            // Toggle dropdown menu on click
-            $("#dropdownToggle").click(function(e) {
-                e.preventDefault(); // Ngăn chặn điều hướng mặc định
-                $(this).closest(".nav-item").find(".dropdown-menu").toggle(); // Toggle menu
-            });
-
-            // Đóng dropdown khi click bên ngoài
-            $(document).click(function(e) {
-                if (!$(e.target).closest(".nav-item").length) {
-                    $(".dropdown-menu").hide(); // Ẩn menu nếu click bên ngoài
-                }
-            });
-        });
-
-
         const previewImage = function(event, imgId) {
             const file = event.target.files[0];
             const reader = new FileReader();
@@ -199,7 +145,6 @@
             }
         })
     </script>
-
 
     @stack('scripts')
 </body>
