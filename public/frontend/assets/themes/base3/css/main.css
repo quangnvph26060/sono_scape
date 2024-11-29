@@ -215,10 +215,11 @@ body.layout_fullwidth .container {
     border-radius: 5px;
 }
 .categories-list .wb-header-menu-item a {
+    width: 100%;
     padding: 10px 25px 10px 15px;
 }
 
-.categories-list .wb-header-menu-item:hover a{
+.categories-list .wb-header-menu-item a:hover{
  color: white;
  font-weight: 600;
 }

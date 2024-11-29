@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row clearfix">
                 <!-- left content column-->
-                <div class="col-lg-9">
+                <div class="col-lg-8">
                     <!-- blog post-->
                     <article class="article-detail m-bottom-50">
                         <div class="ck_editor_content">

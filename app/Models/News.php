@@ -25,10 +25,6 @@ class News extends Model
         'featured_image'
     ];
 
-    protected $casts = [
-        'seo_keywords' => 'array',
-    ];
-
     public static function boot()
     {
         parent::boot();
