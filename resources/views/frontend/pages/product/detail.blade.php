@@ -6,7 +6,7 @@
     <div class="page-content">
         <div class="container">
             <div class="row clearfix">
-                <section class="col-lg-9">
+                <section class="col-lg-8">
                     <div class="row product-detail in-stock" data-attributes="[]" data-attributes-data="[]">
                         <div class="col-md-5 col-sm-12 col-xs-12 img-product">
                             <div class="relative d-inline-b qv-preview" data-zoom="1">

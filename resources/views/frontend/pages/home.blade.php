@@ -273,9 +273,9 @@
                                                             <figcaption class="info-post">
                                                                 <div class="bg-gradient"></div>
                                                                 <div class="wrap-two-lines post-title">
-                                                                    <a href="{{ route('news.detail', $item->slug) }}"
+                                                                    <a style="font-size: 1rem" href="{{ route('news.detail', $item->slug) }}"
                                                                         class="two-lines"
-                                                                        aria-label="{{ $item->subject }}">{{ $item->subject }}</a>
+                                                                        aria-label="{{ $item->subject }}">{{ \Str::words($item->subject, 20, '...') }}</a>
                                                                 </div>
                                                                 <p class="f-size-medium post-view-date">
                                                                     <span class="post-date">
@@ -301,11 +301,13 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                        <center class="read-more w-100">
-                                            <a href="#">
-                                                Xem thêm &rsaquo;&rsaquo;
-                                            </a>
-                                        </center>
+                                        @if ($news->count() > 0)
+                                            <center class="read-more w-100">
+                                                <a href="{{ route('news.list') }}">
+                                                    Xem thêm &rsaquo;&rsaquo;
+                                                </a>
+                                            </center>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -354,10 +356,11 @@
             <div class="container">
                 <div class="row consult-container">
                     <!-- Hình ảnh bên trái -->
-                    <div class="col-lg-6 consult-left" ></div>
+                    <div class="col-lg-6 consult-left"></div>
 
                     <!-- Form bên phải -->
-                    <div class="col-lg-6 d-flex align-items-center" style="background-image: url('{{asset('frontend/assets/image/abstract-template-background-white-and-bright-blue-squares-overlapping-with-halftone-and-texture-free-vector.jpg')}}')">
+                    <div class="col-lg-6 d-flex align-items-center"
+                        style="background-image: url('{{ asset('frontend/assets/image/abstract-template-background-white-and-bright-blue-squares-overlapping-with-halftone-and-texture-free-vector.jpg') }}')">
                         <form class="consult-form w-100 contact-form" action="{{ route('contact') }}" id="contact_form">
                             <h2>Bạn đang cần được tư vấn</h2>
                             <p>{{ $setting->name }} sẽ liên hệ với bạn trong ít phút nữa.</p>
@@ -367,14 +370,17 @@
                                     <input type="text" name="name" class="form-control" placeholder="Nhập tên*" />
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Nhập E-Mail*" />
+                                    <input type="email" name="email" class="form-control"
+                                        placeholder="Nhập E-Mail*" />
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <input type="text" name="phone" class="form-control" pattern="^[0-9]*$" inputmode="numeric"
-                                        title="Số điện thoại không đúng định dạng" placeholder="Nhập số điện thoại*" />
+                                    <input type="text" name="phone" class="form-control" pattern="^[0-9]*$"
+                                        inputmode="numeric" title="Số điện thoại không đúng định dạng"
+                                        placeholder="Nhập số điện thoại*" />
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <textarea style="resize: none;" class="form-control" name="message" rows="3" placeholder="Viết một tin nhắn ngắn..."></textarea>
+                                    <textarea style="resize: none;" class="form-control" name="message" rows="3"
+                                        placeholder="Viết một tin nhắn ngắn..."></textarea>
                                 </div>
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary w-100">
@@ -436,18 +442,18 @@
         }
 
         .consult-left {
-            background-image: url('{{asset('frontend/assets/image/background.jpg')}}');
+            background-image: url('{{ asset('frontend/assets/image/background.jpg') }}');
             /* Thay bằng hình ảnh của bạn */
             background-size: cover;
             background-position: center;
         }
 
         /* .consult-left {
-            background-image: url('{{ asset('frontend/assets/image/background.jpg') }}');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-        } */
+                    background-image: url('{{ asset('frontend/assets/image/background.jpg') }}');
+                    background-size: contain;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                } */
 
         .consult-form {
             padding: 40px;
