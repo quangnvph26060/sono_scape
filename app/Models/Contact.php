@@ -22,6 +22,16 @@ class Contact extends Model
         'fanpage',
         'sort_description',
         'company_logo',
-        'youtube'
+        'youtube',
+        'seo_title',
+        'seo_description',
+        'seo_keywords',
+        'copyright',
+        'working_time',
+        'header_top'
     ];
+
+    // protected $casts = [
+    //     'seo_keywords' => 'array'
+    // ];
 }

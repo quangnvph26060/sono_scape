@@ -1,6 +1,11 @@
 @extends('frontend.layouts.master')
 
+@section('title', $news->subject)
+@section('description', $news->seo_description)
+@section('keywords', formatString($news->seo_keywords))
+
 @section('content')
+
     <x-breadcrumb :title="'Tin tức'" :name="$news->subject" />
 
     <div class="page-content">
@@ -73,8 +78,8 @@
 
                             @foreach ($relatedNews as $item)
                                 <li>
-                                    <a href="{{ route('news.detail',  $item->slug) }}"
-                                        aria-label="{{$item->subject}}">{{ $item->subject }}</a>
+                                    <a href="{{ route('news.detail', $item->slug) }}"
+                                        aria-label="{{ $item->subject }}">{{ $item->subject }}</a>
                                 </li>
                             @endforeach
                         </ul>

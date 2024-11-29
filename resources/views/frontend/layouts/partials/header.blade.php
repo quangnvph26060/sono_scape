@@ -13,7 +13,7 @@
                         </a>
                     </li>
                 </ul> --}}
-                <marquee behavior="scroll">Chào mừng bạn đến với Tủ thuốc cho mọi nhà Medicare</marquee>
+                <marquee behavior="scroll">{{ $setting->header_top }}</marquee>
             </div>
         </div>
         <div class=" col-6">
@@ -21,7 +21,7 @@
                 <div class="time_header mr-5">
                     <img src="//bizweb.dktcdn.net/100/411/753/themes/894845/assets/time.png?1676273080247"
                         alt="time_header">
-                    <span>Thời gian làm việc: 8:00 - 22:00</span>
+                    <span>{{ $setting->working_time }}</span>
                 </div>
                 <div class="social-header d-inline-block relative">
                     <a href="https://www.facebook.com/{{ $setting->fanpage }}" rel="nofollow" aria-label="facebook"
@@ -218,34 +218,34 @@
                             <div class="navbar-menu">
                                 <div class="section-header-menu">
                                     <ul class="navbar-nav ml-auto menu-nav mb-menu">
-                                        <li class="nav-item mega_menu relative wb-header-menu-item">
+                                        <li class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'home') active @endif">
                                             <a class="nav-link" href="{{ url('/') }}" aria-label="TRANG CHỦ">
                                                 TRANG CHỦ
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mega_menu relative wb-header-menu-item">
+                                        <li class="nav-item mega_menu relative wb-header-menu-item @if (Route::currentRouteName() == 'introduce') active @endif">
                                             <a class="nav-link" href="{{ route('introduce') }}"
                                                 aria-label="GIỚI THIỆU  SONOSCAPE">
                                                 GIỚI THIỆU
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mega_menu relative wb-header-menu-item">
+                                        <li class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'product.list') active @endif">
                                             <a class="nav-link" href="{{ route('product.list') }}" target="_blank"
                                                 aria-label="MÁY SIÊU ÂM SONOSCAPE  ">
                                                 SẢN PHẨM
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mega_menu relative wb-header-menu-item">
+                                        <li class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'news.list') active @endif">
                                             <a class="nav-link" href="{{ route('news.list') }}"
                                                 aria-label="TIN TỨC MỚI">
                                                 TIN TỨC MỚI
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mega_menu relative wb-header-menu-item">
+                                        <li class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'contact') active @endif">
                                             <a class="nav-link" href="{{ route('contact') }}" aria-label="LIÊN HỆ">
                                                 LIÊN HỆ
                                             </a>

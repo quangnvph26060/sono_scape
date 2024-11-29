@@ -33,6 +33,12 @@ class ContactController extends Controller
                 'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
                 'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
                 'company_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'seo_title' => 'nullable|max:100',
+                'seo_description' => 'nullable|max:100',
+                'seo_keywords' => 'nullable|max:100',
+                'copyright' => 'nullable',
+                'working_time' => 'nullable',
+                'header_top' => 'nullable',
             ],
             __('request.messages'),
             [
@@ -48,6 +54,12 @@ class ContactController extends Controller
                 'logo' => 'Logo',
                 'icon' => 'Icon',
                 'company_logo' => 'Logo công ty',
+                'seo_title' => 'Tiêu đề seo',
+                'seo_description' => 'Mô tả seo',
+                'seo_keywords' => 'Từ khóa seo',
+                'copyright' => 'Copyright',
+                'working_time' => 'Thời gian làm việc',
+                'header_top' => 'Tiều đề đầu trang',
             ]
         );
 
