@@ -118,8 +118,10 @@ function getYouTubeVideoId($url)
     return null;  // Nếu không tìm thấy ID
 }
 
-function formatString($json)
+function formatString($json = null)
 {
+    if (empty($json))  return null;
+
     $keywordsArray = json_decode($json, true);
 
     $keywordsString = implode(', ', array_column($keywordsArray, 'value'));
