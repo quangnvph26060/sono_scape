@@ -5,7 +5,7 @@
                 <div class="block-wrapper">
                     <div class="">
                         <div class="ck_editor_content widget-content">
-                            <h3 style="font-weight: 600">THÔNG TIN LIÊN HỆ</h3>
+                            <h3 style="font-weight: 600">LIÊN HỆ VỚI CHÚNG TÔI</h3>
                             <p>
                                 <img src="{{ showImage($setting->logo) }}" data-isrc="{{ showImage($setting->logo) }}"
                                     style="height: 80px; width: auto" />
@@ -134,7 +134,8 @@
             </div>
         </div>
         <div class="footer-3 col-lg-4 col-md-4">
-            <div class="widget widget-fanpage_fb widget-56" style="margin-left: 60px" data-widget-id="56" data-widget="fanpage_fb">
+            <div class="widget widget-fanpage_fb widget-56" style="margin-left: 60px" data-widget-id="56"
+                data-widget="fanpage_fb">
                 <div class="widget-fanpage widget-56">
                     <div class="box_heading">
                         <h3 style="font-weight: 600; padding-bottom: 5px">FANPAGE</h3>
@@ -152,14 +153,28 @@
                         </div>
                     </div>
                     <div class="widget-content text-center">
-                        <div class="fb-page">
+                        {{-- <div class="fb-page">
                             <iframe loading="lazy"
                                 src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/{{$setting->fanpage}}&amp;tabs=timeline&amp;height=250&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId"
                                 width="100%" height="250" style="border:none;overflow:hidden" scrolling="no"
                                 frameborder="0" allowfullscreen="true"
                                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                                 aria-label="{{ $setting->company }}"></iframe>
-                        </div>
+                        </div> --}}
+
+
+                        <div id="fb-root"></div>
+
+                        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v21.0">
+                        </script>
+
+                        <iframe loading="lazy"
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthanhmocdan%2F&tabs=timeline&width=300&height=100&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                            width="100%" height="250" style="border:none;overflow:hidden" scrolling="no"
+                            frameborder="0" allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+
                     </div>
                 </div>
             </div>

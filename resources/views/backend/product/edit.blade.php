@@ -115,20 +115,6 @@
                         </div>
                     </div>
 
-                    @if (isset($productImages) && count($productImages) > 0)
-                        <div class="col-lg-12 mt-3">
-                            <label class="form-label">Ảnh hiện tại</label>
-                            <div class="row">
-                                @foreach ($productImages as $image)
-                                    <div class="col-3 mb-3">
-                                        <img src="{{ asset('storage/' . $image) }}" alt="Product Image"
-                                            class="img-fluid product-image">
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-
                     <!-- Mô tả -->
                     <div class="col-lg-12">
                         <label for="description" class="form-label">Mô tả</label>
@@ -156,6 +142,20 @@
 
     <script>
         $(function() {
+            var existingImages = [];
+            var existingImagesConfig = [];
+
+            @foreach ($product->images as $key => $image)
+                existingImages.push('{{ showImage($image) }}');
+                existingImagesConfig.push({
+                    caption: 'Ảnh {{ $loop->index + 1 }}', // Đặt tên cho từng ảnh
+                    size: 12345, // Kích thước file (tùy chỉnh nếu cần)
+                    key: '{{ $key }}', // ID của ảnh
+                    url: '{{ route('admin.product.delete-image', ['id' => $product->id . '-' . $key]) }}' // API xóa ảnh
+                });
+            @endforeach
+
+
             $('textarea[name="description"]').summernote({
                 placeholder: 'Mô tả nội dung...',
                 tabsize: 2,
@@ -174,18 +174,61 @@
                 ]
             });
 
+
             $("#images").fileinput({
-                showPreview: true, // Hiển thị ảnh preview
-                allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif'], // Định dạng file chấp nhận
-                maxFileSize: 2000, // Kích thước file tối đa (KB)
-                browseLabel: 'Chọn ảnh', // Nhãn cho nút chọn ảnh
-                removeLabel: 'Xóa ảnh', // Nhãn cho nút xóa ảnh
-                uploadLabel: 'Tải lên', // Nhãn cho nút tải lên
-                showRemove: true, // Hiển thị nút xóa
-                showUpload: false, // Ẩn nút upload (nếu bạn không cần)
-                previewFileType: 'image', // Đảm bảo chỉ hiển thị file ảnh
-                browseIcon: '<i class="fas fa-folder-open"></i>', // Icon cho nút chọn file
-                removeIcon: '<i class="fas fa-trash"></i>' // Icon cho nút xóa file
+                showPreview: true,
+                allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+                maxFileSize: 2000,
+                browseLabel: 'Chọn ảnh',
+                removeLabel: 'Xóa ảnh',
+                uploadLabel: 'Tải lên',
+                showRemove: true,
+                showUpload: false,
+                previewFileType: 'image',
+                browseIcon: '<i class="fas fa-folder-open"></i>',
+                removeIcon: '<i class="fas fa-trash"></i>',
+
+
+                initialPreview: existingImages,
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: existingImagesConfig,
+                deleteUrl: true,
+            }).on('filedeleted', function(event, key, jqXHR, data) {
+                if (jqXHR.responseJSON.status) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "success",
+                        title: jqXHR.responseJSON.message
+                    });
+                } else {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "error",
+                        title: jqXHR.responseJSON.message
+                    });
+                }
+
             });
         });
     </script>

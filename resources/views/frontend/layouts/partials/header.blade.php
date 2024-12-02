@@ -1,6 +1,6 @@
 <div class="header-top" style="background-color: #cccccc">
-    <div class="container row align-items-center">
-        <div class="col-6">
+    <div class=" row align-items-center">
+        <div class="col-lg-6">
             <div class="section-infor-topbar relative" style="padding-top: 5px">
                 {{-- <ul class="info-account line-right">
                     <li>
@@ -16,8 +16,8 @@
                 <marquee behavior="scroll">{{ $setting->header_top }}</marquee>
             </div>
         </div>
-        <div class=" col-6">
-            <div class="textAlign-right d-flex justify-content-end align-items-center">
+        <div class=" col-lg-6 ">
+            <div class="d-flex align-items-center justify-content-center">
                 <div class="time_header mr-5">
                     <img src="//bizweb.dktcdn.net/100/411/753/themes/894845/assets/time.png?1676273080247"
                         alt="time_header">
@@ -25,12 +25,12 @@
                 </div>
                 <div class="social-header d-inline-block relative">
                     <a href="https://www.facebook.com/{{ $setting->fanpage }}" rel="nofollow" aria-label="facebook"
-                        class="float-shadow" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
+                        class="float-shadow mr-2" target="_blank">
+                        <i class="fab fa-facebook-f"></i> Facebook
                     </a>
                     <a href="https://www.youtube.com/channel/{{ $setting->youtube }}" rel="nofollow"
                         aria-label="youtube" class="float-shadow" target="_blank">
-                        <i class="fab fa-youtube"></i>
+                        <i class="fab fa-youtube"></i> Youtube
                     </a>
                 </div>
             </div>
