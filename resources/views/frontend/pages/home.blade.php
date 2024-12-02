@@ -191,9 +191,7 @@
                             <div class="text-center">
                                 <div class="box_heading">
                                     <h2 class="heading">
-                                        <a style="color: #cc0000 !important" href="{{ route('product.list') }}">SẢN PHẨM
-                                            BÁN
-                                            CHẠY</a>
+                                        <a style="color: #cc0000 !important" href="{{ route('news.list') }}">TIN TỨC NỔI BẬT</a>
                                     </h2>
                                     <div class="line-hg"><span></span></div>
                                     <div class="svg-wrap">
@@ -304,14 +302,17 @@
         <div class="consult-section">
             <div class="container">
                 <div class="row consult-container"
-                    style="background-image: url({{ asset('frontend/assets/image/bg_blog.jpg') }})">
+                    style="background-image: url({{ asset('frontend/assets/image/pngtree-medical-doctor-science-background-picture-image_968711.jpg') }})">
                     <!-- Hình ảnh bên trái -->
-                    <div class="col-lg-6 consult-left"></div>
+                    <div class="col-lg-4 consult-left"></div>
 
                     <!-- Form bên phải -->
-                    <div class="col-lg-6 d-flex align-items-center">
+                    <div class="col-lg-8 d-flex align-items-center">
                         <form class="consult-form w-100 contact-form" action="{{ route('contact') }}" id="contact_form">
-                            <h2>Bạn đang cần được tư vấn</h2>
+                            {{-- <h2 >Bạn đang cần được tư vấn</h2> --}}
+                            <h2 style="font-size: 2rem">
+                                <a style="color: #cc0000 !important" href="{{ route('product.list') }}">Bạn đang cần được tư vấn</a>
+                            </h2>
                             <p>{{ $setting->name }} sẽ liên hệ với bạn trong ít phút nữa.</p>
 
                             <div class="row g-3">

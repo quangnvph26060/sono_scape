@@ -16,11 +16,11 @@ class HomeController extends Controller
     {
         $products = Product::latest()->take(8)->get();
 
-        $introduction = Introduction::whereDate('release_date', '<=', Carbon::today())
-            ->orderByDesc('release_date')
-            ->first();
+        // $introduction = Introduction::whereDate('release_date', '<=', Carbon::today())
+        //     ->orderByDesc('release_date')
+        //     ->first();
 
-        $news = News::latest()->take(3)->get();
+        $news = News::latest()->take(8)->get();
 
         $sliderImage = Slider::where('type', 'image')->first();
 
@@ -33,6 +33,6 @@ class HomeController extends Controller
 
         $services = \App\Models\SupportPolicy::latest()->get();
 
-        return view('frontend.pages.home', compact('products', 'introduction', 'news', 'items', 'sliderVideo', 'services'));
+        return view('frontend.pages.home', compact('products', 'news', 'items', 'sliderVideo', 'services'));
     }
 }
