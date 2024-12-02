@@ -208,7 +208,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-container" style="margin-top: 70px">
+                            <div class="swiper-container" style="margin-top: 70px; overflow-x: hidden">
                                 <div class="swiper-wrapper">
                                     @foreach ($news as $item)
                                         <div class="swiper-slide">
