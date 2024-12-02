@@ -6,42 +6,63 @@
                     <div class="">
                         <div class="ck_editor_content widget-content">
                             <p>
-                                <img src="{{showImage($setting->logo)}}"
-                                    data-isrc="{{showImage($setting->logo)}}"
+                                <img src="{{ showImage($setting->logo) }}" data-isrc="{{ showImage($setting->logo) }}"
                                     style="height: 80px; width: auto" />
                             </p>
 
                             <p style="text-align: center">&nbsp;</p>
 
+                            <h3 style="font-weight: 500">
+                                <span style="font-size: 16px"><span
+                                        style="color: #000000">{{ $setting->company }}</span></span><span
+                                    style="font-size: 20px"></span>
+                            </h3>
+
+
+
                             <p>
-                                <img alt="" loading="lazy" sizes="(max-width: 300px) 100vw, 300px"
+                                {{-- <img alt="" loading="lazy" sizes="(max-width: 300px) 100vw, 300px"
                                     src="https://giaycaosmartmen.com/wp-content/uploads/2022/06/phone-1.svg"
                                     style="height: 20px; width: 20px" />&nbsp; &nbsp; &nbsp; &nbsp;<span
                                     style="font-size: 16px"><span style="color: #000000">Gọi mua
-                                        hàng&nbsp;</span></span>
+                                        hàng&nbsp;</span></span> --}}
                             </p>
 
                             <p>
-                                <span style="color: #000000">&nbsp;</span><strong><span style="color: #000000">{{ $setting->name }}
-                                        : </span><span style="color: #cc0000">{{ $setting->phone }}</span></strong>
+                                <i aria-hidden="true" class="fa fa-phone">&nbsp;&nbsp;</i>
+                                <strong>
+                                    <span style="color: #000000">{{ $setting->name }} : </span>
+                                    <span style="color: #cc0000">{{ $setting->phone }}</span>
+                                </strong>
+                            </p>
+
+                            <p style="font-size: 14px"><span style="color: #000000"><i aria-hidden="true"
+                                        class="fa fa-map-marker">&nbsp;&nbsp;</i>{{ $setting->address }}</span></p>
+                            <p>
+                                <span style="font-size: 14px"><span style="color: #000000">► Gmail:
+                                        {{ $setting->email }}</span></span>
                             </p>
 
                             <p>
-                                <span style="color: #cc0000">{{ $setting->sort_description }}</span>
+                                -----------------------------------------------------------
                             </p>
+
+                            {{-- <span style="color: #cc0000">{{ $setting->sort_description }}</span> --}}
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="footer-2 col-lg-4 col-md-4">
             <div class="widget widget-text_editor widget-16" data-widget-id="16" data-widget="text_editor">
                 <div class="block-wrapper">
-                    <div class="">
-                        <div class="ck_editor_content widget-content">
+                    <div class="pr-5">
+                        {{-- <div class="ck_editor_content widget-content">
                             <p style="text-align: center">
-                                <img alt="{{ $setting->company }}" src="{{showImage($setting->company_logo)}}"
-                                    data-isrc="{{showImage($setting->company_logo)}}"
+                                <img alt="{{ $setting->company }}" src="{{ showImage($setting->company_logo) }}"
+                                    data-isrc="{{ showImage($setting->company_logo) }}"
                                     style="height: auto; width: 150px; float: left" title="{{ $setting->company }}" />
                             </p>
 
@@ -56,7 +77,9 @@
                             <h3>&nbsp;</h3>
 
                             <h3>
-                                <span style="font-size: 16px"><span style="color: #000000">{{ $setting->company }}</span></span><span style="font-size: 20px"></span><br />
+                                <span style="font-size: 16px"><span
+                                        style="color: #000000">{{ $setting->company }}</span></span><span
+                                    style="font-size: 20px"></span><br />
                                 <span style="font-size: 14px"><span style="color: #000000"><i aria-hidden="true"
                                             class="fa fa-map-marker">&nbsp;&nbsp;</i>{{ $setting->address }}</span></span>
                             </h3>
@@ -69,7 +92,42 @@
                             <p>
                                 -----------------------------------------------------------
                             </p>
+                        </div> --}}
+
+                        <h3 style="font-weight: 600">THÔNG TIN</h3>
+
+                        <div class="widget-content">
+                            <ul class="categories-list navbar-nav mb-menu" style="list-style: none; padding-left: 0">
+                                <li class="nav-item relative default wb-header-menu-item">
+                                    <a class="nav-link" href="{{ url('/') }}" aria-label="TRANG CHỦ">
+                                        TRANG CHỦ
+                                    </a>
+                                </li>
+                                <li class="nav-item relative default wb-header-menu-item">
+                                    <a class="nav-link" href="{{ route('introduce') }}"
+                                        aria-label="GIỚI THIỆU  SONOSCAPE">
+                                        GIỚI THIỆU SONOSCAPE
+                                    </a>
+                                </li>
+                                <li class="nav-item relative default wb-header-menu-item">
+                                    <a class="nav-link" href="{{ route('product.list') }}" target='"_blank"'
+                                        aria-label="Sản phẩm">
+                                        SẢN PHẨM
+                                    </a>
+                                </li>
+                                <li class="nav-item relative default wb-header-menu-item">
+                                    <a class="nav-link" href="{{ route('news.list') }}" aria-label="TIN TỨC MỚI">
+                                        TIN TỨC MỚI
+                                    </a>
+                                </li>
+                                <li class="nav-item relative default wb-header-menu-item">
+                                    <a class="nav-link" href="{{ route('contact') }}" aria-label="LIÊN HỆ">
+                                        LIÊN HỆ
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -78,8 +136,7 @@
             <div class="widget widget-fanpage_fb widget-56 " data-widget-id="56" data-widget="fanpage_fb">
                 <div class="widget-fanpage widget-56">
                     <div class="box_heading ">
-                        <div class="heading">Fanpage</div>
-                        <div class="line-hg"><span></span></div>
+                        <h3 style="font-weight: 600; padding-bottom: 5px">FANPAGE</h3>
                         <div class="svg-wrap">
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="125.656px"
@@ -95,12 +152,12 @@
                     </div>
                     <div class="widget-content text-center">
                         <div class="fb-page">
-                            {{-- <iframe loading="lazy"
+                            <iframe loading="lazy"
                                 src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/{{$setting->fanpage}}&amp;tabs=timeline&amp;height=250&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId"
                                 width="100%" height="250" style="border:none;overflow:hidden" scrolling="no"
                                 frameborder="0" allowfullscreen="true"
                                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                                aria-label="{{ $setting->company }}"></iframe> --}}
+                                aria-label="{{ $setting->company }}"></iframe>
                         </div>
                     </div>
                 </div>
