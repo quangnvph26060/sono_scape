@@ -539,8 +539,12 @@ header .header-container .search-form button[type="submit"] {
 }
 
 @media (max-width: 768px) {
-    .footer-3 {
+    /* .footer-3 {
         display: none !important;
+    } */
+
+    .widget-fanpage_fb{
+        margin-left: 0 !important;
     }
 
     .widget-text_editor .block-wrapper div{

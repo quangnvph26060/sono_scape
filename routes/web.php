@@ -83,6 +83,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/store', [ProductController::class, 'store'])->name('store');
             Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
             Route::get('/add', [ProductController::class, 'add'])->name('add');
+            route::post('delete-image/{id}', [ProductController::class, 'deleteImage'])->name('delete-image');
         });
 
         // FORM ROUTE
