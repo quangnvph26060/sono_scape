@@ -313,7 +313,7 @@
                             <h2 style="font-size: 2rem">
                                 <a style="color: #cc0000 !important" href="{{ route('product.list') }}">Bạn đang cần được tư vấn</a>
                             </h2>
-                            <p>{{ $setting->name }} sẽ liên hệ với bạn trong ít phút nữa.</p>
+                            <p style="font-weight: 500">{{ $setting->name }} sẽ liên hệ với bạn trong ít phút nữa.</p>
 
                             <div class="row g-3">
                                 <div class="col-md-6 mb-3">

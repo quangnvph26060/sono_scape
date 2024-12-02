@@ -2667,6 +2667,9 @@ body:not(.layout_fullwidth) .row-widget {
     }
 }
 @media (max-width: 768px) {
+    .consult-form {
+        padding: 10px !important;
+    }
     header .header-container .header-logo .logo img {
         max-width: 250px;
     }
