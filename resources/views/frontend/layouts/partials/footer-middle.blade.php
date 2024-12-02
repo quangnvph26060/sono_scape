@@ -5,6 +5,7 @@
                 <div class="block-wrapper">
                     <div class="">
                         <div class="ck_editor_content widget-content">
+                            <h3 style="font-weight: 600">THÔNG TIN LIÊN HỆ</h3>
                             <p>
                                 <img src="{{ showImage($setting->logo) }}" data-isrc="{{ showImage($setting->logo) }}"
                                     style="height: 80px; width: auto" />
@@ -58,7 +59,7 @@
         <div class="footer-2 col-lg-4 col-md-4">
             <div class="widget widget-text_editor widget-16" data-widget-id="16" data-widget="text_editor">
                 <div class="block-wrapper">
-                    <div class="pr-5">
+                    <div class="">
                         {{-- <div class="ck_editor_content widget-content">
                             <p style="text-align: center">
                                 <img alt="{{ $setting->company }}" src="{{ showImage($setting->company_logo) }}"
@@ -94,7 +95,7 @@
                             </p>
                         </div> --}}
 
-                        <h3 style="font-weight: 600">THÔNG TIN</h3>
+                        <h3 style="font-weight: 600">DANH MỤC</h3>
 
                         <div class="widget-content">
                             <ul class="categories-list navbar-nav mb-menu" style="list-style: none; padding-left: 0">
@@ -133,9 +134,9 @@
             </div>
         </div>
         <div class="footer-3 col-lg-4 col-md-4">
-            <div class="widget widget-fanpage_fb widget-56 " data-widget-id="56" data-widget="fanpage_fb">
+            <div class="widget widget-fanpage_fb widget-56" style="margin-left: 60px" data-widget-id="56" data-widget="fanpage_fb">
                 <div class="widget-fanpage widget-56">
-                    <div class="box_heading ">
+                    <div class="box_heading">
                         <h3 style="font-weight: 600; padding-bottom: 5px">FANPAGE</h3>
                         <div class="svg-wrap">
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
