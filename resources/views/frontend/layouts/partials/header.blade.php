@@ -211,8 +211,8 @@
                                     alt="Giỏ hàng">
                             </div>
                             <div class="phone_content" style="line-height: 20px">
-                                <span class="d-block" style="font-size: 13px">Liên hệ ngay</span>
-                                <a class="fone fw-bold text-danger" style="font-size: 16px"
+                                <span class="d-block" style="font-size: 15px">Liên hệ ngay</span>
+                                <a class="fone fw-bold text-danger" style="font-size: 18px"
                                     href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
                             </div>
                         </div>
