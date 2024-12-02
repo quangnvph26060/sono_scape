@@ -67,32 +67,9 @@
     <div class="header-left header-container no-pd-menu-header">
         <div class="wb-nav-header width-menu-mobile">
             <div class="container">
-                <div class="row clearfix center-vertical relative">
-                    <div class="col-lg-3 col-6 header-logo">
-                        <a href="{{ url('/') }}" aria-label="Máy Siêu Âm SonoScape" class="logo d-inline-b">
-                            <img src="{{ showImage($setting->logo) }}" alt="{{ $setting->company }}" width="100%"
-                                height="100%" />
-                        </a>
-                    </div>
-                    <div
-                        class="col-lg-9 col-md-12 col-sm-12 col-12 px-0 px-lg-3 menu-cart center-vertical-nojustify height-menu-fixed">
-                        <ul class="list-inline-block pull-right pr-lg-3">
-                            <li>
-                                <form class="search-form" action="{{ route('product.list') }}" method="GET">
-                                    <input placeholder="Nhập từ khóa" value="" data-default-value="Nhập từ khóa"
-                                        data-value="Nhập từ khóa" type="text" name="keyword" class="search-box"
-                                        autocomplete="off" />
-                                    <button type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
-                        <a href="{{ url('/') }}" aria-label="{{ $setting->company }}"
-                            class="logo d-inline-b logo-fixed">
-                            <img src="{{ showImage($setting->logo) }}" alt="{{ $setting->company }}" width="100%"
-                                height="100%" />
-                        </a>
+                <div class="row clearfix center-vertical relative align-items-center">
+
+                    <div class="col-3">
                         <nav class="main-nav navbar-expand-lg pull-left">
                             <div class="btn-toggle-mobile-menu center-vertical">
                                 <span class="nav-icon toggle-mobile-menu">
@@ -155,11 +132,54 @@
                             </div>
                         </nav>
                     </div>
+
+                    <div class=" col-5 header-logo">
+                        <a href="{{ url('/') }}" aria-label="Máy Siêu Âm SonoScape" class="logo d-inline-b">
+                            <img src="{{ showImage($setting->logo) }}" alt="{{ $setting->company }}" width="100%"
+                                height="100%" />
+                        </a>
+                    </div>
+
+                    <div class="col-4 contact-header">
+                        <div class="phone_header d-flex align-items-center justify-content-end"
+                            style="font-size: 1.2rem">
+                            <div class="phone_image mr-2">
+                                <img width="20px" height="auto" src="//bizweb.dktcdn.net/100/411/753/themes/894845/assets/phone_header.png?1676273080247"
+                                    alt="Giỏ hàng">
+                            </div>
+                            <div class="phone_content" style="line-height: 20px">
+                                <span class="d-block" style="font-size: 13px">Liên hệ ngay</span>
+                                <a class="fone fw-bold text-danger" style="font-size: 16px"
+                                    href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 mt-3">
+
+                        <form class="w-100 relative" action="{{ route('product.list') }}" method="GET">
+                            {{-- <input placeholder="Nhập từ khóa" value="" data-default-value="Nhập từ khóa"
+                                        data-value="Nhập từ khóa" type="text" name="keyword" class="search-box"
+                                        autocomplete="off" />
+                                    <button type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button> --}}
+                            <input type="text" class="form-control" value="{{ request()->get('keyword') }}" name="keyword" placeholder="Nhập từ khóa">
+                            <button type="submit" style="position: absolute; top: 0; right: 0; height: 100%; width: 50px; border-radius: 0 5px 5px 0; color: #fff; background: #EB0218; border: 0">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <div class="d-none d-lg-block header-desktop">
     <div class="header-left header-container no-pd-menu-header">
         <div class="wb-main-header">
@@ -177,7 +197,7 @@
                             <div class="input-group ">
                                 <input type="search" class="form-control" style="height: 3rem" name="keyword"
                                     placeholder="Nhập từ khóa" value="{{ request()->get('keyword') }}">
-                                <button type="submit">
+                                <button type="submit" style="background: #EB0218;">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
@@ -205,7 +225,7 @@
             <div class="container">
                 <div class="row clearfix">
                     <div
-                        class="col-lg-12 col-md-12 col-sm-12 col-12 menu-cart center-vertical-nojustify height-menu-fixed d-flex justify-content-center">
+                        class="col-lg-12 col-md-12 col-sm-12 col-12 menu-cart center-vertical-nojustify height-menu-fixed">
                         <nav class="main-nav navbar-expand-lg pull-left">
                             <div class="btn-toggle-mobile-menu center-vertical">
                                 <span class="nav-icon toggle-mobile-menu">
@@ -215,37 +235,43 @@
                                     <span> MENU </span>
                                 </span>
                             </div>
+
                             <div class="navbar-menu">
                                 <div class="section-header-menu">
                                     <ul class="navbar-nav ml-auto menu-nav mb-menu">
-                                        <li class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'home') active @endif">
+                                        <li
+                                            class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'home') active @endif">
                                             <a class="nav-link" href="{{ url('/') }}" aria-label="TRANG CHỦ">
                                                 TRANG CHỦ
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mega_menu relative wb-header-menu-item @if (Route::currentRouteName() == 'introduce') active @endif">
+                                        <li
+                                            class="nav-item mega_menu relative wb-header-menu-item @if (Route::currentRouteName() == 'introduce') active @endif">
                                             <a class="nav-link" href="{{ route('introduce') }}"
                                                 aria-label="GIỚI THIỆU  SONOSCAPE">
                                                 GIỚI THIỆU
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'product.list') active @endif">
+                                        <li
+                                            class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'product.list') active @endif">
                                             <a class="nav-link" href="{{ route('product.list') }}" target="_blank"
                                                 aria-label="MÁY SIÊU ÂM SONOSCAPE  ">
                                                 SẢN PHẨM
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'news.list') active @endif">
+                                        <li
+                                            class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'news.list') active @endif">
                                             <a class="nav-link" href="{{ route('news.list') }}"
                                                 aria-label="TIN TỨC MỚI">
                                                 TIN TỨC MỚI
                                             </a>
                                         </li>
 
-                                        <li class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'contact') active @endif">
+                                        <li
+                                            class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'contact') active @endif">
                                             <a class="nav-link" href="{{ route('contact') }}" aria-label="LIÊN HỆ">
                                                 LIÊN HỆ
                                             </a>

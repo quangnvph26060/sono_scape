@@ -3239,11 +3239,11 @@ input[type="submit"].btn-block {
 .input-group > .custom-file .custom-file-input:focus {
   z-index: 4;
 }
-.input-group > .custom-select:not(:last-child),
+/* .input-group > .custom-select:not(:last-child),
 .input-group > .form-control:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-}
+} */
 .input-group > .custom-select:not(:first-child),
 .input-group > .form-control:not(:first-child) {
   border-top-left-radius: 0;

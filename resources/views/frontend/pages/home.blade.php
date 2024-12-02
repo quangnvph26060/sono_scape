@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="page-content">
+    <div class="page-content" style="padding: 0 0 30px 0 !important;">
         <div class="row">
             <div class="widget widget-slider widget-26 col-12 col-md-12" data-widget-id="26" data-widget="slider">
                 <div class="hero-wrap widget-slider widget-26 not-padding-bottom not-padding-top style-1" data-id="124">
@@ -87,9 +87,9 @@
                                                                     <a href="{{ route('contact', $product->slug) }}"
                                                                         rel="nofollow"
                                                                         class="btn btn--m btn-primary btn-item"
-                                                                        title="{{ $product->name }}"><i
-                                                                            class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                                        Liên hệ</a>
+                                                                        title="{{ $product->name }}">
+                                                                        Liên hệ <i class="fa fa-phone-alt ml-2"
+                                                                            aria-hidden="true"></i></a>
                                                                 </div>
                                                             </figcaption>
                                                         </figure>
@@ -106,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-container">
+        {{-- <div class="bg-container">
             <div class="container px-0">
                 <div class="row row-widget justify-content-end">
                     <div class="widget widget-text_editor widget-32 col-12 col-md-6" data-widget-id="32"
@@ -175,13 +175,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="widget widget-post_category widget-35 col-12 col-md-12" data-widget-id="35"
                 data-widget="post_category">
                 <div class="widget_post_body style5"
                     style="
-                    background-image: url(https://media.loveitopcdn.com/39908/thumb/7-10.png);
+                    background-image: url({{ asset('frontend/assets/image/bg_blog.jpg') }});
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
@@ -190,7 +190,10 @@
                         <div class="content-widget" data-limit="4" data-type="5" data-post-size="post_medium">
                             <div class="text-center">
                                 <div class="box_heading">
-                                    <h2 class="heading">TIN TỨC NỔI BẬT<Table></Table>
+                                    <h2 class="heading">
+                                        <a style="color: #cc0000 !important" href="{{ route('product.list') }}">SẢN PHẨM
+                                            BÁN
+                                            CHẠY</a>
                                     </h2>
                                     <div class="line-hg"><span></span></div>
                                     <div class="svg-wrap">
@@ -207,108 +210,54 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget-content">
-                                <div class="tab-content post-view">
-                                    <div id="tab_style_35_0" class="tab-pane active loaded">
-                                        <div class="row post-list-view item-style">
-                                            <div class="col-md-6 col-sm-12 left-style5">
-                                                <div class="post-item relative" data-id="224">
-                                                    <figure class="photoframe relative">
-                                                        <div class="relative img-post">
-                                                            <a href="{{ route('news.detail', $news->first()->slug) }}"
-                                                                class="d-block relative text-center">
-                                                                <img src="{{ showImage($news->first()->featured_image) }}"
-                                                                    width="100%" height="100%"
-                                                                    data-isrc="{{ showImage($news->first()->featured_image) }}"
-                                                                    class="lazyload" alt="{{ $news->first()->subject }}"
-                                                                    aria-label="{{ $news->first()->subject }}" />
+                            <div class="swiper-container" style="margin-top: 70px">
+                                <div class="swiper-wrapper">
+                                    @foreach ($news as $item)
+                                        <div class="swiper-slide">
+                                            <div class="post-item relative" data-id="{{ $item->id }}">
+                                                <figure class="photoframe relative">
+                                                    <div class="relative img-post">
+                                                        <a href="{{ route('news.detail', $item->slug) }}"
+                                                            class="d-block relative text-center">
+                                                            <img src="{{ showImage($item->featured_image) }}"
+                                                                width="100%" height="100%" class="lazyload"
+                                                                alt="{{ $item->subject }}" />
+                                                        </a>
+                                                    </div>
+                                                    <figcaption class="info-post" style="padding: 10px 0">
+
+                                                        <p class="f-size-medium post-view-date">
+                                                            <span class="post-date">
+                                                                <i class="fas fa-calendar-alt"></i>
+                                                                {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}
+                                                                <span class="d-none-sidebar"> | </span>
+                                                            </span>
+                                                            <span class="post-item-view">
+                                                                <i class="fas fa-eye"></i> {{ $item->view }} Lượt xem
+                                                            </span>
+                                                        </p>
+
+                                                        <hr>
+                                                        <div class="wrap-two-lines post-title">
+                                                            <a href="{{ route('news.detail', $item->slug) }}"
+                                                                class="two-lines" aria-label="{{ $item->subject }}">
+                                                                {{ $item->subject }}.
                                                             </a>
                                                         </div>
-                                                        <figcaption class="info-post">
-                                                            <div class="bg-gradient"></div>
-                                                            <div class="wrap-two-lines post-title">
-                                                                <a href="{{ route('news.detail', $news->first()->slug) }}"
-                                                                    class="two-lines"
-                                                                    aria-label="{{ $news->first()->subject }}">{{ $news->first()->subject }}</a>
-                                                            </div>
-                                                            <p class="f-size-medium post-view-date">
-                                                                <span class="post-date">
-                                                                    <i class="fas fa-calendar-alt"></i>
-                                                                    {{ \Carbon\Carbon::parse($news->first()->created_at)->format('d/m/Y') }}
-                                                                    <span class="d-none-sidebar"> | </span>
-                                                                </span>
-                                                                <span class="post-item-view">
-                                                                    <i class="fas fa-eye"></i> {{ $news->first()->view }}
-                                                                    Lượt xem
-                                                                </span>
-                                                            </p>
-                                                            <div class="description">
-                                                                {!! \Str::words($news->first()->article, 35, ' [...]') !!}
-                                                            </div>
-                                                            <div class="read-more">
-                                                                <a
-                                                                    href="{{ route('news.detail', $news->first()->slug) }}">
-                                                                    Xem thêm &rsaquo;&rsaquo;</a>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                            </div>
 
-                                            <div class="col-md-6 col-sm-12 right-style5">
+                                                        <div class="description">
+                                                            {{ \Str::words($item->summary, 10, ' [...]') }}
+                                                        </div>
 
-                                                @foreach ($news->skip(1)->take(3) as $item)
-                                                    <div class="post-item relative" data-id="{{ $item->id }}">
-                                                        <figure class="photoframe relative">
-                                                            <div class="relative img-post">
-                                                                <a href="{{ route('news.detail', $item->slug) }}"
-                                                                    class="d-block relative text-center">
-                                                                    <img src="{{ showImage($item->featured_image) }}"
-                                                                        width="100%" height="100%"
-                                                                        data-isrc="{{ showImage($item->featured_image) }}"
-                                                                        class="lazyload" alt="{{ $item->subject }}"
-                                                                        aria-label="{{ $item->subject }}" />
-                                                                </a>
-                                                            </div>
-                                                            <figcaption class="info-post">
-                                                                <div class="bg-gradient"></div>
-                                                                <div class="wrap-two-lines post-title">
-                                                                    <a style="font-size: 1rem" href="{{ route('news.detail', $item->slug) }}"
-                                                                        class="two-lines"
-                                                                        aria-label="{{ $item->subject }}">{{ \Str::words($item->subject, 20, '...') }}</a>
-                                                                </div>
-                                                                <p class="f-size-medium post-view-date">
-                                                                    <span class="post-date">
-                                                                        <i class="fas fa-calendar-alt"></i>
-                                                                        {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}
-                                                                        <span class="d-none-sidebar"> | </span>
-                                                                    </span>
-                                                                    <span class="post-item-view">
-                                                                        <i class="fas fa-eye"></i> {{ $item->view }}
-                                                                        Lượt xem
-                                                                    </span>
-                                                                </p>
-                                                                <div class="description fw-bold">
-                                                                    {!! \Str::words($item->article, 24, ' [...]') !!}
-                                                                </div>
-                                                                <div class="read-more">
-                                                                    <a href="{{ route('news.detail', $item->slug) }}">
-                                                                        Xem thêm &rsaquo;&rsaquo;</a>
-                                                                </div>
-                                                            </figcaption>
-                                                        </figure>
-                                                    </div>
-                                                @endforeach
+                                                        <div class="read-more">
+                                                            <a href="{{ route('news.detail', $item->slug) }}">
+                                                                Xem thêm &rsaquo;&rsaquo;</a>
+                                                        </div>
+                                                    </figcaption>
+                                                </figure>
                                             </div>
                                         </div>
-                                        @if ($news->count() > 0)
-                                            <center class="read-more w-100">
-                                                <a href="{{ route('news.list') }}">
-                                                    Xem thêm &rsaquo;&rsaquo;
-                                                </a>
-                                            </center>
-                                        @endif
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -354,13 +303,13 @@
 
         <div class="consult-section">
             <div class="container">
-                <div class="row consult-container">
+                <div class="row consult-container"
+                    style="background-image: url({{ asset('frontend/assets/image/bg_blog.jpg') }})">
                     <!-- Hình ảnh bên trái -->
                     <div class="col-lg-6 consult-left"></div>
 
                     <!-- Form bên phải -->
-                    <div class="col-lg-6 d-flex align-items-center"
-                        style="background-image: url('{{ asset('frontend/assets/image/abstract-template-background-white-and-bright-blue-squares-overlapping-with-halftone-and-texture-free-vector.jpg') }}')">
+                    <div class="col-lg-6 d-flex align-items-center">
                         <form class="consult-form w-100 contact-form" action="{{ route('contact') }}" id="contact_form">
                             <h2>Bạn đang cần được tư vấn</h2>
                             <p>{{ $setting->name }} sẽ liên hệ với bạn trong ít phút nữa.</p>
@@ -404,7 +353,31 @@
 
 @push('scripts')
     <script src="{{ asset('frontend/assets/plugins/swiper/swiper-bundle.min.js') }}"></script>
+
     <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                },
+
+                480: {
+                    slidesPerView: 2,
+                }
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+
         document.addEventListener("DOMContentLoaded", function() {
             const youtubeSlider = new Swiper(".youtube-slider", {
                 loop: true, // Vòng lặp slider
@@ -442,18 +415,11 @@
         }
 
         .consult-left {
-            background-image: url('{{ asset('frontend/assets/image/background.jpg') }}');
+            /* background-image: url('{{ asset('frontend/assets/image/background.jpg') }}'); */
             /* Thay bằng hình ảnh của bạn */
             background-size: cover;
             background-position: center;
         }
-
-        /* .consult-left {
-                    background-image: url('{{ asset('frontend/assets/image/background.jpg') }}');
-                    background-size: contain;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                } */
 
         .consult-form {
             padding: 40px;
