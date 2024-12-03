@@ -50,3 +50,13 @@
     font-weight: bold;
 }
 
+.nav-item.relative.default.wb-header-menu-item i{
+    margin-right: 10px !important;
+    font-size: 7px;
+}
+
+.nav-item.relative.default.wb-header-menu-item a{
+    display: flex;
+    align-items: center;
+}
+

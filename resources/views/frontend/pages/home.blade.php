@@ -263,7 +263,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+
+        {{-- <div class="row">
             <div class="widget widget-service widget-63 col-12 col-md-12" data-widget-id="63" data-widget="service">
                 <div class="service-list style3 content-color"
                     style="color: #cc0000 !important; background-color: #ffffff">
@@ -297,7 +298,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="consult-section">
             <div class="container">

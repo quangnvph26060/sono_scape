@@ -36,16 +36,15 @@
                                     <span style="color: #cc0000">{{ $setting->phone }}</span>
                                 </strong>
                             </p>
-
-                            <p style="font-size: 14px"><span style="color: #000000"><i aria-hidden="true"
-                                        class="fa fa-map-marker">&nbsp;&nbsp;</i>{{ $setting->address }}</span></p>
-                            <p>
-                                <span style="font-size: 14px"><span style="color: #000000">► Gmail:
-                                        {{ $setting->email }}</span></span>
+                            <p style="font-size: 14px;"><span style="color: #000000"><i style="margin-right: 8px" aria-hidden="true"
+                                        class="fa fa-map-marker">&nbsp;&nbsp;</i>{{ $setting->address }}</span>
                             </p>
-
                             <p>
-                                -----------------------------------------------------------
+                                <span style="font-size: 14px">
+                                    <span style="color: #000000">
+                                        <i class="fa fa-envelope" style="margin-right: 8px" aria-hidden="true"></i> Gmail: {{ $setting->email }}
+                                    </span>
+                                </span>
                             </p>
 
                             {{-- <span style="color: #cc0000">{{ $setting->sort_description }}</span> --}}
@@ -100,7 +99,8 @@
                         <div class="widget-content">
                             <ul style="list-style: none; padding: 0">
                                 <li class="nav-item relative default wb-header-menu-item">
-                                    <a class="nav-link" style="padding: 0.5rem 0;" href="{{ url('/') }}" aria-label="TRANG CHỦ">
+                                    <a class="nav-link" style="padding: 0.5rem 0;" href="{{ url('/') }}"
+                                        aria-label="TRANG CHỦ">
                                         <i class="fas fa-chevron-right mr-1"></i>
                                         TRANG CHỦ
                                     </a>
@@ -108,26 +108,28 @@
                                 <li class="nav-item relative default wb-header-menu-item">
                                     <a class="nav-link" style="padding: 0.5rem 0;" href="{{ route('introduce') }}"
                                         aria-label="GIỚI THIỆU ">
-                                         <i class="fas fa-chevron-right mr-1"></i>
+                                        <i class="fas fa-chevron-right mr-1"></i>
                                         GIỚI THIỆU
                                     </a>
                                 </li>
                                 <li class="nav-item relative default wb-header-menu-item">
-                                    <a class="nav-link" href="{{ route('product.list') }}" style="padding: 0.5rem 0;" target='"_blank"'
-                                        aria-label="Sản phẩm">
+                                    <a class="nav-link" href="{{ route('product.list') }}" style="padding: 0.5rem 0;"
+                                        target='"_blank"' aria-label="Sản phẩm">
                                         <i class="fas fa-chevron-right mr-1"></i>
                                         SẢN PHẨM
                                     </a>
                                 </li>
                                 <li class="nav-item relative default wb-header-menu-item">
-                                    <a class="nav-link" href="{{ route('news.list') }}" style="padding: 0.5rem 0;" aria-label="TIN TỨC MỚI">
-                                       <i class="fas fa-chevron-right mr-1"></i>
+                                    <a class="nav-link" href="{{ route('news.list') }}" style="padding: 0.5rem 0;"
+                                        aria-label="TIN TỨC MỚI">
+                                        <i class="fas fa-chevron-right mr-1"></i>
                                         TIN TỨC MỚI
                                     </a>
                                 </li>
                                 <li class="nav-item relative default wb-header-menu-item">
-                                    <a class="nav-link" style="padding: 0.5rem 0;" href="{{ route('contact') }}" aria-label="LIÊN HỆ">
-                                         <i class="fas fa-chevron-right mr-1"></i>
+                                    <a class="nav-link" style="padding: 0.5rem 0;" href="{{ route('contact') }}"
+                                        aria-label="LIÊN HỆ">
+                                        <i class="fas fa-chevron-right mr-1"></i>
                                         LIÊN HỆ
                                     </a>
                                 </li>

@@ -33,7 +33,7 @@ a:visited {
 }
 a.nav-link:hover,
 a[title]:hover {
-    opacity: 0.75;
+    opacity: 1;
 }
 body .page-content {
     padding: 30px 0;

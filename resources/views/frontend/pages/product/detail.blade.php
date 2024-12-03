@@ -275,8 +275,8 @@
                                                                 <a href="{{ route('contact', $item->slug) }}"
                                                                     rel="nofollow" class="btn btn--m btn-primary btn-item"
                                                                     title="{{ $item->name }}">
-                                                                    <i class="fa fa-phone-alt" aria-hidden="true"></i>
                                                                     Liên hệ
+                                                                    <i class="fa fa-phone-alt ml-2" aria-hidden="true"></i>
                                                                 </a>
                                                             </div>
                                                         </figcaption>
@@ -301,7 +301,7 @@
 
 @push('scripts')
     <script src="{{ asset('frontend/assets/plugins/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="assets/plugins/elevatezoom-3.0.8/jquery.elevatezoom.min.js"></script>
+    <script src="{{ asset('frontend/assets/plugins/elevatezoom-3.0.8/jquery.elevatezoom.min.js') }}"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
