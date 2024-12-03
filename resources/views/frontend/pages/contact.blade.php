@@ -29,7 +29,7 @@
                                 </li>
                                 <li class="m-bottom-10">
                                     <div class="clearfix">
-                                        <i class="fas fa-phone-alt"></i>
+                                        <i class="fas fa-phone"></i>
                                         <p class="contact-e">
                                             <a href="tel:{{ $setting->phone }}"
                                                 aria-label="Liên hệ {{ $setting->company }}">{{ $setting->phone }}</a>
