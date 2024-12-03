@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+@section('title', 'Liên hệ với chúng tôi')
+
 @section('content')
     <x-breadcrumb :title="'Liên hệ'" />
 
@@ -8,9 +10,7 @@
         <div class="container contact-style1">
             <div class="row clearfix">
                 <section class="col-lg-12">
-                    <div class="map-container m-bottom-30">
-                        {!! $setting->map !!}
-                    </div>
+
                     <div class="row clearfix">
                         <div class="col-lg-5 col-md-5 m-bottom-30">
                             <h1 class="heading heading-contact">
@@ -92,6 +92,9 @@ Tên sản phẩm: {{ $product->name }}
                                 </ul>
                             </form>
                         </div>
+                    </div>
+                    <div class="map-container m-bottom-30">
+                        {!! $setting->map !!}
                     </div>
                 </section>
             </div>

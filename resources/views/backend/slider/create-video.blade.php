@@ -1,4 +1,5 @@
 @extends('backend.layout.index')
+@section('title', 'Thêm trình chiếu video')
 
 @section('content')
     <div class="card">
@@ -12,7 +13,8 @@
                 @foreach ($sliders->items['links'] as $item)
                     <div class="row slider-item mb-3">
                         <div class="form-group col-md-11">
-                            <input type="text" name="links[]" class="form-control" placeholder="Link video" value="{{ $item }}">
+                            <input type="text" name="links[]" class="form-control" placeholder="Link video"
+                                value="{{ $item }}">
                         </div>
                         <div class="form-group col-md-1 d-flex justify-content-center align-items-center">
                             @if ($loop->first)
@@ -43,7 +45,9 @@
 
 
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css" rel="stylesheet">
     <script>
         $(document).ready(function() {
             let sliderIndex = "{{ count($sliders->items['links']) }}";

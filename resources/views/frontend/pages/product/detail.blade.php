@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+@section('title', $product->name)
+
 @section('content')
     <x-breadcrumb :title="'Sản phẩm'" :name="$product->name" />
 

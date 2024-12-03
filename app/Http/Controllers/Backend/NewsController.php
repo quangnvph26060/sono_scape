@@ -120,7 +120,7 @@ class NewsController extends Controller
         $news = News::withoutGlobalScope('published')->findOrFail($id);
 
         $credentials = $request->validate([
-            'subject' => 'required|max:100|unique:sgo_news,subject,' . $news->id,
+            'subject' => 'required|max:100|unique:sgo_news,subject,' . $id,
             'summary' => 'required',
             'article' => 'required',
             'seo_description' => 'nullable',
@@ -140,7 +140,6 @@ class NewsController extends Controller
         ]);
 
         if ($request->hasFile('featured_image')) {
-            deleteImage($news->featured_image);
             $credentials['featured_image'] = saveImage($request, 'featured_image', 'news');
         }
 

@@ -1,5 +1,7 @@
 @extends('backend.layout.index')
 
+@section('title', 'Cấu hình chung')
+
 @section('content')
     <form action="{{ route('admin.contact.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -281,14 +283,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.7.0/tagify.min.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var input = document.querySelector('#seo_keywords');
-            new Tagify(input, {
-                delimiters: ",| ", // You can customize this as needed
-                maxTags: 10, // Limit the number of tags
-                enforceWhitelist: false // Allow any tags
-            });
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var input = document.querySelector('#seo_keywords');
+        //     new Tagify(input, {
+        //         maxTags: 10, // Limit the number of tags
+        //         enforceWhitelist: true // Allow any tags
+        //     });
+
+        // });
+
+        const input = document.querySelector('#seo_keywords');
+        const tagify = new Tagify(input, {
+            whitelist: ["Chất lượng cao", "Giá rẻ", "Cao cấp", "Độc quyền", "Mới nhất",
+                'Thân thiện với môi trường', 'Dễ sử dụng', 'Công nghệ tiên tiến'
+            ],
+            dropdown: {
+                maxItems: 10,
+                classname: "tags-look",
+                enabled: 0,
+                closeOnSelect: false
+            }
         });
+
+        tagify.on('add', () => {
+            adjustTagifyHeight(tagify.DOM.scope);
+        });
+
+        function adjustTagifyHeight(scopeElement) {
+            if (scopeElement) {
+                scopeElement.style.height = "auto"; // Reset chiều cao
+                scopeElement.style.height = scopeElement.scrollHeight + "px"; // Điều chỉnh theo nội dung
+            }
+        }
     </script>
 @endpush
 
@@ -299,6 +325,30 @@
     <style>
         .tagify__tag {
             margin-top: 3px !important;
+        }
+
+
+        .tags-look .tagify {
+            display: block;
+            white-space: normal;
+            overflow-y: hidden;
+            /* Ẩn thanh cuộn dọc */
+            max-height: 150px;
+            /* Giới hạn chiều cao nếu cần */
+        }
+
+        .tagify {
+            max-height: 150px;
+            /* Giới hạn chiều cao */
+            overflow-y: auto;
+            /* Thêm thanh cuộn dọc nếu quá dài */
+        }
+
+        .tagify__input {
+            width: 100%;
+            /* Đảm bảo input chiếm hết chiều rộng */
+            overflow: hidden;
+            /* Ẩn nội dung tràn */
         }
     </style>
 @endpush

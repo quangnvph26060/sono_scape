@@ -24,7 +24,10 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.css">
     <script src="{{ asset('backend/validator/validator.js') }}"></script>
 
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <title>@yield('title', $setting->seo_title ?? env('APP_NAME'))</title>
 
     @stack('styles')
 </head>

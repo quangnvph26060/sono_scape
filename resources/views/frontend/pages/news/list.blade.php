@@ -1,5 +1,8 @@
 @extends('frontend.layouts.master')
 
+@section('title', 'Danh sách tin tức')
+
+
 @section('content')
     <x-breadcrumb :title="'Tin tức'" />
 

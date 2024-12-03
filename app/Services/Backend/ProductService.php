@@ -67,6 +67,14 @@ class ProductService
             DB::beginTransaction();
             $price = preg_replace('/[^\d]/', '', $data['price']);
             $product = $this->product->find($id);
+
+            if (isset($data['deleteAllImage'])) {
+
+                foreach ($product->images as $image) {
+                    deleteImage($image);
+                }
+            }
+
             $product->update([
                 'name' => $data['name'],
                 'source' => $data['source'],
@@ -79,16 +87,9 @@ class ProductService
                 'description' => $data['description'],
             ]);
 
-            $images = [];
+
+            $images = $product->images;
             if (request()->hasFile('images')) {
-                // Nếu có ảnh mới, tiến hành xóa ảnh cũ trước
-                if (empty($images) && $product->images) {
-                    $oldImages = $product->images;
-                    foreach ($oldImages as $oldImage) {
-                        // Gọi hàm deleteImage để xóa các ảnh cũ
-                        deleteImage($oldImage);
-                    }
-                }
 
                 // Lưu các ảnh mới
                 foreach (request()->file('images') as $image) {

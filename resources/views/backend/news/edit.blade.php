@@ -1,5 +1,8 @@
 @extends('backend.layout.index')
 
+@section('title', 'Cập nhật bài viết')
+
+
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -111,12 +114,6 @@
                         <h4 class="card-title">Ảnh đại diện</h4>
                     </div>
                     <div class="card-body">
-                        @if ($news->featured_image)
-                            <div class="mb-3">
-                                <img src="{{ showImage($news->featured_image) }}" alt="Ảnh đại diện" class="img-fluid"
-                                    style="max-width: 100%; height: auto;">
-                            </div>
-                        @endif
                         <input id="file-1" name="featured_image" type="file" accept="image/*">
                     </div>
                 </div>
@@ -214,8 +211,17 @@
                 showUpload: false, // Ẩn nút upload (nếu bạn không cần)
                 previewFileType: 'image', // Đảm bảo chỉ hiển thị file ảnh
                 browseIcon: '<i class="fas fa-folder-open"></i>', // Icon cho nút chọn file
-                removeIcon: '<i class="fas fa-trash"></i>' // Icon cho nút xóa file
+                removeIcon: '<i class="fas fa-trash"></i>', // Icon cho nút xóa file
+                initialPreview: "{{ showImage($news->featured_image) }}", // Ảnh ban đầu
+                initialPreviewAsData: true, // Sử dụng dữ liệu để hiển thị preview
+                sortable: true, // Bật sắp xếp
+                dragSettings: { // Cài đặt biểu tượng kéo
+                    sortIcons: {
+                        move: '<i class="bi bi-arrows-move"></i>'
+                    } // Biểu tượng "Move"
+                }
             });
+
         });
     </script>
 @endpush
@@ -240,11 +246,13 @@
         }
 
         .tags-look .tagify {
-        display: block;
-        white-space: normal;
-        overflow-y: hidden; /* Ẩn thanh cuộn dọc */
-        max-height: 150px; /* Giới hạn chiều cao nếu cần */
-    }
+            display: block;
+            white-space: normal;
+            overflow-y: hidden;
+            /* Ẩn thanh cuộn dọc */
+            max-height: 150px;
+            /* Giới hạn chiều cao nếu cần */
+        }
 
         .tagify {
             max-height: 150px;
@@ -254,8 +262,10 @@
         }
 
         .tagify__input {
-        width: 100%; /* Đảm bảo input chiếm hết chiều rộng */
-        overflow: hidden; /* Ẩn nội dung tràn */
-    }
+            width: 100%;
+            /* Đảm bảo input chiếm hết chiều rộng */
+            overflow: hidden;
+            /* Ẩn nội dung tràn */
+        }
     </style>
 @endpush

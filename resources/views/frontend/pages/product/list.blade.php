@@ -1,4 +1,8 @@
 @extends('frontend.layouts.master')
+
+@section('title', 'Danh sách sản phẩm')
+
+
 @section('content')
     <x-breadcrumb :title="'Sản phẩm'" />
 
@@ -49,9 +53,9 @@
                                                         aria-label="{{ $product->name }}" />
                                                 </a>
                                                 <a href="{{ route('contact', $product->slug) }}" rel="nofollow"
-                                                    class="btn btn--m btn-primary btn-item" title="{{ $product->name }}"><i
-                                                        class="fa fa-phone-alt" aria-hidden="true"></i>
-                                                    Liên hệ</a>
+                                                    class="btn btn--m btn-primary btn-item" title="{{ $product->name }}">
+                                                    Liên hệ <i
+                                                    class="fa fa-phone-alt ml-2" aria-hidden="true"></i></a>
                                             </div>
                                             <figcaption class="infor-product">
                                                 <h3 class="wrap-two-lines product-title">
@@ -62,9 +66,9 @@
                                                 <div class="btn-purchased">
                                                     <a href="{{ route('contact', $product->slug) }}" rel="nofollow"
                                                         class="btn btn--m btn-primary btn-item"
-                                                        title="{{ $product->name }}"><i class="fa fa-phone-alt"
-                                                            aria-hidden="true"></i>
-                                                        Liên hệ</a>
+                                                        title="{{ $product->name }}">
+                                                        Liên hệ <i class="fa fa-phone-alt ml-2"
+                                                        aria-hidden="true"></i></a>
                                                 </div>
                                             </figcaption>
                                         </figure>

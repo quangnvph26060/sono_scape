@@ -1,4 +1,8 @@
 @extends('backend.layout.index')
+
+@section('title', 'Danh sách công ty')
+
+
 @section('content')
     <!-- Styles are unchanged -->
     <style>
