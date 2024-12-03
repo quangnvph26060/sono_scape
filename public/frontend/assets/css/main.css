@@ -60,3 +60,12 @@
     align-items: center;
 }
 
+.fb-share-button.fb_iframe_widget span{
+    vertical-align: middle !important;
+    margin-left: 5px;
+}
+
+/* .fb-share-button.fb_iframe_widget{
+    margin-bottom: 7px;
+} */
+

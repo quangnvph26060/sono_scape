@@ -2,6 +2,13 @@
 
 @section('title', $product->name)
 
+@section('og_title', $product->name)
+
+@section('og_description', html_entity_decode($product->description))
+
+@section('og_image', showImage($product->images[0]))
+
+
 @section('content')
     <x-breadcrumb :title="'Sản phẩm'" :name="$product->name" />
 
@@ -102,12 +109,18 @@
                                 <div class="d-inline-middle addthis-widget-container">
                                     <ul class="clearfix horizontal-list social-icons">
                                         <li class="relative">
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
+                                            {{-- <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
                                                 rel="nofollow" target="_blank" class="f-size-ex-large textAlign-center">
                                                 <i class="fab fa-facebook-f"></i>
-                                            </a>
+                                            </a> --}}
+                                            <div class="fb-share-button"
+                                                data-href="{{ url()->current() }}" data-layout=""
+                                                data-size=""><a target="_blank"
+                                                    href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}&amp;src=sdkpreparse"
+                                                    class="fb-xfbml-parse-ignore">Chia sẻ</a>
+                                            </div>
                                         </li>
-                                        <li class="relative">
+                                        {{-- <li class="relative">
                                             <a href="https://twitter.com/intent/tweet?url={{ url()->current() }}"
                                                 rel="nofollow" target="_blank" class="f-size-ex-large textAlign-center">
                                                 <i class="fab fa-twitter"></i>
@@ -131,7 +144,7 @@
                                                 rel="nofollow" target="_blank" class="f-size-ex-large textAlign-center">
                                                 <i class="fab fa-tumblr"></i>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -276,7 +289,8 @@
                                                                     rel="nofollow" class="btn btn--m btn-primary btn-item"
                                                                     title="{{ $item->name }}">
                                                                     Liên hệ
-                                                                    <i class="fa fa-phone-alt ml-2" aria-hidden="true"></i>
+                                                                    <i class="fa fa-phone-alt ml-2"
+                                                                        aria-hidden="true"></i>
                                                                 </a>
                                                             </div>
                                                         </figcaption>
