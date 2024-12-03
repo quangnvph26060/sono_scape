@@ -35,7 +35,7 @@ class ContactController extends Controller
                 'company_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
                 'seo_title' => 'nullable|max:100',
                 'seo_description' => 'nullable|max:100',
-                'seo_keywords' => 'nullable|max:100',
+                'seo_keywords' => 'nullable',
                 'copyright' => 'nullable',
                 'working_time' => 'nullable',
                 'header_top' => 'nullable',

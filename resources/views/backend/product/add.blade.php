@@ -1,4 +1,5 @@
 @extends('backend.layout.index')
+@section('title', 'Thêm mới sản phẩm')
 
 @section('content')
     @if ($errors->any())

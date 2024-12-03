@@ -1,5 +1,6 @@
 @extends('frontend.layouts.master')
 
+@section('title', 'Giới thiệu về ' . $setting->company)
 
 @section('content')
     <x-breadcrumb :title="'Giới thiệu'" />

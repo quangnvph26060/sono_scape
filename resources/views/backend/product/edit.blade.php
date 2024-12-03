@@ -1,4 +1,5 @@
 @extends('backend.layout.index')
+@section('title', 'Cập nhật sản phẩm')
 
 @section('content')
     <style>
@@ -156,23 +157,7 @@
             @endforeach
 
 
-            $('textarea[name="description"]').summernote({
-                placeholder: 'Mô tả nội dung...',
-                tabsize: 2,
-                height: 300,
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
-                        'color', 'backcolor'
-                    ]],
-                    ['para', ['ul', 'ol', 'paragraph',
-                        'height'
-                    ]],
-                    ['insert', ['link', 'picture', 'video', 'table']],
-                    ['view', ['fullscreen', 'codeview', 'help']],
-                    ['heading', ['style']],
-                ]
-            });
+
 
 
             $("#images").fileinput({
@@ -195,6 +180,7 @@
                 initialPreviewConfig: existingImagesConfig,
                 deleteUrl: true,
             }).on('filedeleted', function(event, key, jqXHR, data) {
+
                 if (jqXHR.responseJSON.status) {
                     const Toast = Swal.mixin({
                         toast: true,
@@ -229,6 +215,39 @@
                     });
                 }
 
+            });
+
+
+            $('.close.fileinput-remove, .fileinput-remove').on('click', function() {
+
+                // Tạo thẻ input hidden
+                var inputHidden = $('<input>', {
+                    type: 'hidden',
+                    name: 'deleteAllImage', // Tên của input
+                    value: '1' // Giá trị của input (có thể là 1 hoặc bất kỳ giá trị nào bạn muốn)
+                });
+
+                // Thêm input vào form (giả sử form có id là 'myForm')
+                $('form').append(inputHidden);
+            });
+
+
+            $('textarea[name="description"]').summernote({
+                placeholder: 'Mô tả nội dung...',
+                tabsize: 2,
+                height: 300,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
+                        'color', 'backcolor'
+                    ]],
+                    ['para', ['ul', 'ol', 'paragraph',
+                        'height'
+                    ]],
+                    ['insert', ['link', 'picture', 'video', 'table']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                    ['heading', ['style']],
+                ]
             });
         });
     </script>

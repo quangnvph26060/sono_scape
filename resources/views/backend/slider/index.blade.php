@@ -1,4 +1,5 @@
 @extends('backend.layout.index')
+@section('title', 'Danh sách trình chiếu')
 
 @section('content')
     <div class="card">

@@ -79,6 +79,8 @@ class SliderController extends Controller
             ['items' => $array]
         );
 
+        toastr()->success('Lưu thông tin thành công');
+
         return response()->json([
             'status' => true,
         ]);
@@ -107,6 +109,7 @@ class SliderController extends Controller
         ], [
             'items' => $credentials,
         ]);
+
 
         return response()->json([
             'status' => true,

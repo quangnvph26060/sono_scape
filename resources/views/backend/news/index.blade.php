@@ -1,5 +1,7 @@
 @extends('backend.layout.index')
 
+@section('title', 'Danh sách bài viết')
+
 @section('content')
     <div class="card">
         <div class="card-header d-flex justify-content-between">

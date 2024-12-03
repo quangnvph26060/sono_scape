@@ -240,7 +240,7 @@
                                 <div class="section-header-menu">
                                     <ul class="navbar-nav ml-auto menu-nav mb-menu">
                                         <li
-                                            class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'home') active @endif">
+                                            class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'home') active @endif" style="margin: 0 20px 0 0 !important">
                                             <a class="nav-link" href="{{ url('/') }}" aria-label="TRANG CHỦ">
                                                 TRANG CHỦ
                                             </a>

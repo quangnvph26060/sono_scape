@@ -1,6 +1,6 @@
 <div class="container footer-content">
     <div class="row clearfix reset-col-padding">
-        <div class="footer-1 col-lg-4 col-md-4">
+        <div class="footer-1 col-lg-5 col-md-4">
             <div class="widget widget-text_editor widget-19" data-widget-id="19" data-widget="text_editor">
                 <div class="block-wrapper">
                     <div class="">
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <div class="footer-2 col-lg-4 col-md-4">
+        <div class="footer-2 col-lg-3 col-md-4">
             <div class="widget widget-text_editor widget-16" data-widget-id="16" data-widget="text_editor">
                 <div class="block-wrapper">
                     <div class="">
@@ -98,31 +98,36 @@
                         <h3 style="font-weight: 600">DANH MỤC</h3>
 
                         <div class="widget-content">
-                            <ul class="categories-list navbar-nav mb-menu" style="list-style: none; padding-left: 0">
+                            <ul style="list-style: none; padding: 0">
                                 <li class="nav-item relative default wb-header-menu-item">
-                                    <a class="nav-link" href="{{ url('/') }}" aria-label="TRANG CHỦ">
+                                    <a class="nav-link" style="padding: 0.5rem 0;" href="{{ url('/') }}" aria-label="TRANG CHỦ">
+                                        <i class="fas fa-chevron-right mr-1"></i>
                                         TRANG CHỦ
                                     </a>
                                 </li>
                                 <li class="nav-item relative default wb-header-menu-item">
-                                    <a class="nav-link" href="{{ route('introduce') }}"
-                                        aria-label="GIỚI THIỆU  SONOSCAPE">
-                                        GIỚI THIỆU SONOSCAPE
+                                    <a class="nav-link" style="padding: 0.5rem 0;" href="{{ route('introduce') }}"
+                                        aria-label="GIỚI THIỆU ">
+                                         <i class="fas fa-chevron-right mr-1"></i>
+                                        GIỚI THIỆU
                                     </a>
                                 </li>
                                 <li class="nav-item relative default wb-header-menu-item">
-                                    <a class="nav-link" href="{{ route('product.list') }}" target='"_blank"'
+                                    <a class="nav-link" href="{{ route('product.list') }}" style="padding: 0.5rem 0;" target='"_blank"'
                                         aria-label="Sản phẩm">
+                                        <i class="fas fa-chevron-right mr-1"></i>
                                         SẢN PHẨM
                                     </a>
                                 </li>
                                 <li class="nav-item relative default wb-header-menu-item">
-                                    <a class="nav-link" href="{{ route('news.list') }}" aria-label="TIN TỨC MỚI">
+                                    <a class="nav-link" href="{{ route('news.list') }}" style="padding: 0.5rem 0;" aria-label="TIN TỨC MỚI">
+                                       <i class="fas fa-chevron-right mr-1"></i>
                                         TIN TỨC MỚI
                                     </a>
                                 </li>
                                 <li class="nav-item relative default wb-header-menu-item">
-                                    <a class="nav-link" href="{{ route('contact') }}" aria-label="LIÊN HỆ">
+                                    <a class="nav-link" style="padding: 0.5rem 0;" href="{{ route('contact') }}" aria-label="LIÊN HỆ">
+                                         <i class="fas fa-chevron-right mr-1"></i>
                                         LIÊN HỆ
                                     </a>
                                 </li>
