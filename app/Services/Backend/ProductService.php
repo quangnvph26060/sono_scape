@@ -30,17 +30,27 @@ class ProductService
         try {
             DB::beginTransaction();
             $price = preg_replace('/[^\d]/', '', $data['price']);
+            $salePrice = preg_replace('/[^\d]/', '', $data['sale_price']);
             $product = $this->product->create([
                 'name' => $data['name'],
-                'source' => $data['source'],
-                'company_id' => $data['company_id'],
-                'country_id' => $data['country_id'],
-                'condition_level' => $data['condition_level'],
                 'guarantee' => $data['guarantee'],
                 'price' => $price,
                 'status' => $data['status'],
                 'description' => $data['description'],
+                'sub_description' => $data['sub_description'],
+                'sale_price' => $salePrice,
+                'title_seo' => $data['title_seo'],
+                'description_seo' => $data['description_seo'],
+                'keyword_seo' => $data['keyword_seo'],
             ]);
+            if (request()->hasFile('main_image')) { // Kiểm tra xem file có được upload hay không
+                $file = request()->file('main_image'); // Lấy tệp từ request
+                $mainImageName = $file->getClientOriginalName();
+                $main_image = saveImage(request(), 'main_image', 'product_main_image');
+            } else {
+                $main_image = null; // Xử lý trường hợp không có tệp tải lên
+            }
+
 
             $images = [];
 
@@ -52,7 +62,10 @@ class ProductService
                 }
             }
 
-            $product->update(['images' => $images]);
+            $product->update([
+                'images' => $images,
+                'main_image' => $main_image
+            ]);
             DB::commit();
             return $product;
         } catch (Exception $e) {
@@ -66,6 +79,7 @@ class ProductService
         try {
             DB::beginTransaction();
             $price = preg_replace('/[^\d]/', '', $data['price']);
+            $salePrice = preg_replace('/[^\d]/', '', $data['sale_price']);
             $product = $this->product->find($id);
 
             if (isset($data['deleteAllImage'])) {
@@ -75,36 +89,44 @@ class ProductService
                 }
             }
 
+
             $product->update([
                 'name' => $data['name'],
-                'source' => $data['source'],
-                'company_id' => $data['company_id'],
-                'country_id' => $data['country_id'],
-                'condition_level' => $data['condition_level'],
                 'guarantee' => $data['guarantee'],
                 'price' => $price,
                 'status' => $data['status'],
                 'description' => $data['description'],
+                'sub_description' => $data['sub_description'],
+                'sale_price' => $salePrice,
+                'title_seo' => $data['title_seo'],
+                'description_seo' => $data['description_seo'],
+                'keyword_seo' => $data['keyword_seo'],
             ]);
 
 
             $images = $product->images;
             if (request()->hasFile('images')) {
-
-                // Lưu các ảnh mới
                 foreach (request()->file('images') as $image) {
                     $imageName = $image->getClientOriginalName();
-                    // Lưu ảnh mới vào thư mục product_images
                     $path = $image->storeAs('product_images', $imageName, 'public');
                     $images[] = $path;
                 }
+            } else {
+                $images = $product->images; // Giữ lại ảnh cũ nếu không có ảnh mới
             }
 
-            if (!empty($images)) {
-                $product->update([
-                    'images' => $images,
-                ]);
+            if (request()->hasFile('main_image')) {
+                deleteImage($product->main_image);
+                $main_image = saveImage(request(), 'main_image', 'product_main_image');
+            } else {
+                $main_image = $product->main_image; // Giữ lại ảnh đại diện cũ
             }
+
+            $product->update([
+                'images' => $images,
+                'main_image' => $main_image,
+            ]);
+
             DB::commit();
             return $product;
         } catch (Exception $e) {

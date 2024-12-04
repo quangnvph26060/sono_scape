@@ -26,7 +26,7 @@
     @endif
     <div class="card">
         <div class="card-header  d-flex justify-content-between">
-            <h4 class="card-title">Tạo sản phẩm</h4>
+            <h4 class="card-title">Chỉnh sửa thông tin sản phẩm {{ $product->name }}</h4>
             <div class="card-tools">
                 <a href="{{ route('admin.product.index') }}" class="btn btn-primary btn-sm">Danh sách sản phẩm</a>
             </div>
@@ -42,60 +42,44 @@
                         <!-- Tên sản phẩm -->
                         <div class="form-group mb-3">
                             <label for="name" class="form-label">Tên sản phẩm</label>
-                            <input type="text" class="form-control" name="name" id="name"
-                                value="{{ $product->name }}" placeholder="Nhập tên sản phẩm">
+                            <input value="{{ $product->name }}" type="text" class="form-control" name="name"
+                                id="name" placeholder="Nhập tên sản phẩm">
                         </div>
-
-                        <!-- Dropdown Country -->
-                        <div class="form-group mb-3">
-                            <label for="country_id" class="form-label">Công nghệ</label>
-                            <select class="form-select" name="country_id" id="country_id">
-                                <option value="{{ $product->country->id }}">{{ $product->country->name }}</option>
-                                @foreach ($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <!-- Dropdown Company -->
-                        <div class="form-group mb-3">
-                            <label for="company_id" class="form-label">Hãng sản xuất</label>
-                            <select class="form-select" name="company_id" id="company_id">
-                                <option value="{{ $product->company->id }}">{{ $product->company->name }}</option>
-                                @foreach ($companies as $company)
-                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <!-- Tình trạng -->
-                        <div class="form-group mb-3">
-                            <label for="condition_level" class="form-label">Tình trạng (%)</label>
-                            <input type="number" class="form-control" name="condition_level" id="condition_level"
-                                value="{{ $product->condition_level }}" min="0" max="100">
-                        </div>
-                    </div>
-
-                    <!-- Cột bên phải -->
-                    <div class="col-lg-6 add_product">
                         <!-- Giá -->
                         <div class="form-group mb-3">
                             <label for="price" class="form-label">Giá</label>
-                            <input type="number" class="form-control" value="{{ $product->price }}" name="price"
+                            <input value="{{ $product->price }}" type="number" class="form-control" name="price"
                                 id="price" placeholder="Nhập giá sản phẩm">
                         </div>
-
-                        <!-- Đơn vị sản phẩm -->
+                        <!-- Giá khuyến mãi-->
                         <div class="form-group mb-3">
-                            <label for="product_unit" class="form-label">Nguồn</label>
-                            <input type="text" value="{{ $product->source }}" class="form-control" name="source"
-                                id="source" placeholder="Nhập nguồn sản phẩm">
+                            <label for="sale_price" class="form-label">Giá khuyễn mãi</label>
+                            <input value="{{ $product->sale_price }}" type="number" class="form-control" name="sale_price"
+                                id="sale_price" placeholder="Nhập giá khuyến mãi sản phẩm">
                         </div>
+                    </div>
+
+
+                    <!-- Cột bên phải -->
+                    <div class="col-lg-6 add_product">
+
+                        <div class="form-group mb-3">
+                            <label for="category_id" class="form-label">Danh mục</label>
+                            <select class="form-select" name="category_id" id="category_id">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
 
                         <!-- Bảo hành -->
                         <div class="form-group mb-3">
                             <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
-                            <input type="number" value="{{ $product->guarantee }}" class="form-control" name="guarantee"
+                            <input value="{{ $product->guarantee }}" type="number" class="form-control" name="guarantee"
                                 id="guarantee" placeholder="Nhập số tháng bảo hành">
                         </div>
                         <div class="form-group mb-3">
@@ -105,8 +89,25 @@
                                 <option value="0" {{ $product->status == 0 ? 'selected' : '' }}>Hết hàng</option>
                             </select>
                         </div>
-
                     </div>
+                    <div class="col-lg-12">
+                        <div class="form-group mb-3">
+                            <label for="main_image" class="form-label">Ảnh đại diện sản phẩm</label>
+
+                            <!-- Hiển thị ảnh cũ -->
+                            @if ($product->main_image)
+                                <div class="mb-3">
+                                    <img id="current-image" src="{{ asset('storage/' . $product->main_image) }}"
+                                        alt="Ảnh đại diện hiện tại"
+                                        style="max-width: 200px; max-height: 200px; border: 1px solid #ddd;">
+                                </div>
+                            @endif
+
+                            <!-- Input để chọn ảnh mới -->
+                            <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*">
+                        </div>
+                    </div>
+
                     <div class="col-lg-12">
                         <!-- Ảnh sản phẩm -->
                         <div class="form-group mb-3">
@@ -118,15 +119,35 @@
 
                     <!-- Mô tả -->
                     <div class="col-lg-12">
+                        <label for="sub_description" class="form-label">Mô tả phụ</label>
+                        <textarea id="sub_description" class="form-control" name="sub_description" rows="10">{!! $product->sub_description !!}</textarea>
+                    </div>
+                    <div class="col-lg-12">
                         <label for="description" class="form-label">Mô tả</label>
-                        <textarea id="description" class="form-control" name="description" rows="10">{{ $product->description }}</textarea>
+                        <textarea id="description" class="form-control" name="description" rows="10">{!! $product->description !!}</textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group mb-3">
+                        <label for="title_seo" class="form-label">Tiêu đề SEO</label>
+                        <input value="{{ $product->title_seo }}" type="text" class="form-control" name="title_seo"
+                            id="title_seo" placeholder="Nhập tiêu đề SEO">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="description_seo" class="form-label">Mô tả SEO</label>
+                        <input value="{{ $product->description_seo }}" type="text" class="form-control"
+                            name="description_seo" id="description_seo" placeholder="Nhập mô tả SEO">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="keyword_seo" class="form-label">Từ khóa SEO</label>
+                        <input value="{{ $product->keyword_seo }}" type="text" class="form-control"
+                            name="keyword_seo" id="keyword_seo" placeholder="Nhập từ khóa SEO">
                     </div>
                 </div>
             </div>
             <div class="card-footer">
-
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary w-md">Xác nhận</button>
+                    <button type="submit" class="btn btn-primary">Xác nhận</button>
                 </div>
             </div>
         </div>
@@ -140,7 +161,18 @@
     <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script>
+        document.getElementById('main_image').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const previewImage = document.getElementById('current-image');
 
+            if (file) {
+                // Tạo URL từ file đã chọn
+                const objectURL = URL.createObjectURL(file);
+                previewImage.src = objectURL;
+            }
+        });
+    </script>
     <script>
         $(function() {
             var existingImages = [];
@@ -155,10 +187,6 @@
                     url: '{{ route('admin.product.delete-image', ['id' => $product->id . '-' . $key]) }}' // API xóa ảnh
                 });
             @endforeach
-
-
-
-
 
             $("#images").fileinput({
                 showPreview: true,
@@ -233,6 +261,23 @@
 
 
             $('textarea[name="description"]').summernote({
+                placeholder: 'Mô tả nội dung...',
+                tabsize: 2,
+                height: 300,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
+                        'color', 'backcolor'
+                    ]],
+                    ['para', ['ul', 'ol', 'paragraph',
+                        'height'
+                    ]],
+                    ['insert', ['link', 'picture', 'video', 'table']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                    ['heading', ['style']],
+                ]
+            });
+            $('textarea[name="sub_description"]').summernote({
                 placeholder: 'Mô tả nội dung...',
                 tabsize: 2,
                 height: 300,
