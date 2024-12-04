@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('country_id')->references('id')->on('sgo_countries')->onDelete('cascade');
             $table->integer('condition_level')->nullable();
             $table->integer('guarantee')->nullable();
-            $table->bigInteger('price')->nullable();
+            $table->bigInteger('price')->default(0);
             $table->integer('status');
             $table->longText('description');
             $table->timestamps();

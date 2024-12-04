@@ -36,31 +36,27 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        // $countries = Country::all();
-        // $companies = Company::all();
-        // $products = $this->productService->getPaginatedProduct();
-
-        if (request()->ajax()) {
-            return datatables()->of(Product::with('company', 'country')->get())
+        if ($request->ajax()) {
+            return datatables()->of(Product::select(['id', 'name', 'status', 'price', 'guarantee', 'sale_price'])->get())
                 ->addColumn('status', function ($row) {
                     return $row->status ? 'Còn hàng' : 'Hết hàng';
-                })
-                ->addColumn('brand', function ($row) {
-                    return $row->company->name ?? 'N/A';
-                })->addColumn('country', function ($row) {
-                    return $row->country->name ?? 'N/A';
                 })
                 ->addColumn('price', function ($row) {
                     return number_format($row->price, 0, ',', '.') . ' VND';
                 })
+                ->addColumn('sale_price', function ($row) {
+                    return number_format($row->price, 0, ',', '.') . ' VND';
+                })
                 ->addColumn('action', function ($row) {
                     return '
-                        <div class="btn-group">
-                           <button class="btn btn-danger btn-sm delete-btn" data-url="' . route('admin.product.delete', $row->id) . '">    <i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    ';
+                    <div class="btn-group">
+                        <button class="btn btn-danger btn-sm delete-btn" data-url="' . route('admin.product.delete', $row->id) . '">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                ';
                 })
-                ->rawColumns(['status', 'action',])
+                ->rawColumns(['status', 'action'])
                 ->addIndexColumn()
                 ->make(true);
         }
@@ -68,11 +64,12 @@ class ProductController extends Controller
         return view('backend.product.index');
     }
 
+
     public function add()
     {
-        $countries = Country::all();
-        $companies = Company::all();
-        return view('backend.product.add', compact('countries', 'companies'));
+        // $countries = Country::all();
+        // $companies = Company::all();
+        return view('backend.product.add');
     }
 
     public function update(Request $request, $id)
@@ -121,7 +118,8 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    {dd($request->all());
+    {
+        // dd($request->all());
 
         $request->validate(
             [

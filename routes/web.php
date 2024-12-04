@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CompanyController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\Auth\AuthController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SupportPolicyController;
 use App\Http\Controllers\Backend\ProductController;
@@ -48,6 +49,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/update/{id}', [CompanyController::class, 'update'])->name('update');
             Route::post('/store', [CompanyController::class, 'store'])->name('store');
             Route::get('/detail/{id}', [CompanyController::class, 'detail'])->name('detail');
+        });
+
+        Route::prefix('/category')->name('category.')->group(function () {
+            Route::get('/', [CategoryController::class, 'index'])->name('index');
+            Route::get('/search', [CategoryController::class, 'search'])->name('search');
+            Route::delete('/delete/{id}', [CategoryController::class, 'delete'])->name('delete');
+            Route::post('/update/{id}', [CategoryController::class, 'update'])->name('update');
+            Route::post('/store', [CategoryController::class, 'store'])->name('store');
+            Route::get('/detail/{id}', [CategoryController::class, 'detail'])->name('detail');
         });
 
         route::controller(ContactController::class)->group(function () {

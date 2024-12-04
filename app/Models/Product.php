@@ -14,15 +14,17 @@ class Product extends Model
     protected $fillable = [
         'name',
         'images',
-        'source',
-        'company_id',
-        'country_id',
-        'model',
-        'condition_level',
         'guarantee',
         'price',
+        'price_sale',
+        'sub_description',
+        'title_seo',
+        'description_seo',
+        'keyword_seo',
         'status',
         'description',
+        'main_image',
+        'category_id,'
     ];
 
     protected $casts = [
@@ -51,5 +53,10 @@ class Product extends Model
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

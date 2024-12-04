@@ -33,35 +33,6 @@
                             <input type="text" class="form-control" name="name" id="name"
                                 placeholder="Nhập tên sản phẩm">
                         </div>
-
-                        <!-- Dropdown Country -->
-                        <div class="form-group mb-3">
-                            <label for="country_id" class="form-label">Công nghệ</label>
-                            <select class="form-select" name="country_id" id="country_id">
-                                <option value="">Chọn quốc gia</option>
-                                @foreach ($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <!-- Dropdown Company -->
-                        <div class="form-group mb-3">
-                            <label for="company_id" class="form-label">Hãng sản xuất</label>
-                            <select class="form-select" name="company_id" id="company_id">
-                                <option value="">Chọn công ty</option>
-                                @foreach ($companies as $company)
-                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <!-- Tình trạng -->
-                        <div class="form-group mb-3">
-                            <label for="condition_level" class="form-label">Tình trạng (%)</label>
-                            <input type="number" class="form-control" name="condition_level" id="condition_level"
-                                min="1" max="100">
-                        </div>
                     </div>
 
                     <!-- Cột bên phải -->

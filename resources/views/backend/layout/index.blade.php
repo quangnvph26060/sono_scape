@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="{{ showImage($setting->icon) }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/demo.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/css/demo.css.map') }}">
@@ -120,6 +121,7 @@
     <script src="{{ asset('backend/assets/js/kaiadmin.js') }}"></script>
     <script src="{{ asset('backend/assets/js/setting-demo.js') }}"></script>
     <script src="{{ asset('backend/assets/js/setting-demo2.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script> --}}
     {{-- <script src="{{ asset('backend/assets/js/demo.js') }}"></script> --}}
 
