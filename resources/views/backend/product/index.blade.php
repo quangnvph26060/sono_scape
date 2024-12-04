@@ -15,12 +15,9 @@
                     <thead>
                         <th>STT</th>
                         <th>Tên</th>
-                        <th>Nguồn gốc</th>
-                        <th>Hãng sản xuất</th>
-                        <th>Công nghệ</th>
-                        <th>Tình trạng</th>
-                        <th>Bảo hành</th>
+                        <th>Bảo hành (Tháng)</th>
                         <th>Giá</th>
+                        <th>Giá khuyến mãi</th>
                         <th>Trạng thái</th>
                         <th style="text-align: center">Hành động</th>
                     </thead>
@@ -56,26 +53,14 @@
                         }
                     },
                     {
-                        data: 'brand',
-                        name: 'company.name'
-                    },
-                    {
-                        data: 'country',
-                        name: 'country.name'
-                    },
-                    {
-                        data: 'source',
-                        name: 'source'
-                    },
-                    {
-                        data: 'condition_level',
-                        name: 'condition_level',
-                        searchable: false
-                    },
-                    {
                         data: 'guarantee',
                         name: 'guarantee',
                         searchable: false
+                    },
+                    {
+                        data: 'sale_price',
+                        name: 'sale_price',
+                        orderable: false
                     },
                     {
                         data: 'price',
@@ -90,7 +75,8 @@
                         data: 'action',
                         name: 'action',
                         orderable: false
-                    }
+                    },
+
                 ],
 
                 order: [

@@ -3,8 +3,8 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="" class="logo">
-                <img src="{{ asset('backend/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand"
-                    height="20" />
+                <img src="{{ asset('backend/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand"
+                    class="navbar-brand" height="20" />
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -67,10 +67,25 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.product.index') }}">
-                        <i class="fas fa-box-open"></i>
-                        <p>Danh Sách Sản phẩm</p>
+                    <a data-bs-toggle="collapse" href="#sidebarzns">
+                        <i class="fas fa-box"></i>
+                        <p>Quản lý sản phẩm</p>
+                        <span class="caret"></span>
                     </a>
+                    <div class="collapse" id="sidebarzns">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('admin.product.index') }}">
+                                    <span class="sub-item">Danh sách sản phẩm</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.category.index') }}">
+                                    <span class="sub-item">Danh sách danh mục sản phẩm</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.form.index') }}">
