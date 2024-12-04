@@ -16,7 +16,7 @@ class Product extends Model
         'images',
         'guarantee',
         'price',
-        'price_sale',
+        'sale_price',
         'sub_description',
         'title_seo',
         'description_seo',

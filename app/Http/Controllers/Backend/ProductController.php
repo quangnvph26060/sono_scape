@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\Product;
@@ -69,7 +70,8 @@ class ProductController extends Controller
     {
         // $countries = Country::all();
         // $companies = Company::all();
-        return view('backend.product.add');
+        $categories = Category::all();
+        return view('backend.product.add', compact('categories'));
     }
 
     public function update(Request $request, $id)
@@ -77,28 +79,34 @@ class ProductController extends Controller
         $request->validate(
             [
                 'name' => 'required|unique:sgo_products,name,' . $id,
-                'source' => 'required',
-                'company_id' => 'required|exists:sgo_companies,id',
-                'country_id' => 'required|exists:sgo_countries,id',
-                'condition_level' => 'required',
-                'price' => 'required|numeric',
+                'price' => 'nullable|numeric',
+                'sale_price' => 'nullable|numeric',
                 'images' => 'nullable|array|min:1',
-                'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
+                'main_image' => 'nullable|mimes:jpeg,png,gif,svg,webp,jfif|max:2048',
                 'status' => 'required',
                 'description' => 'required',
+                'sub_description' => 'required',
+                'description_seo' => 'nullable',
+                'title_seo' => 'nullable',
+                'keyword_seo' => 'nullable',
             ],
             __('request.messages'),
             [
-                'name' => 'Tìm sản phẩm',
-                'source' => 'Nguồn',
-                'company_id' => 'Công ty',
-                'country_id' => 'Quốc gia',
-                'condition_level' => 'Trạng thái',
+                'name' => 'Tên sản phẩm',
                 'price' => 'Giá',
                 'image' => 'Hiển thị',
                 'status' => 'Trạng thái',
+                'sale_price' => 'Giá khuyến mãi',
+                'main_image' => 'Ảnh đại diện',
+                'description' => 'Mô tả',
+                'sub_description' => 'Mô tả phụ',
+                'description_seo' => 'Mô tả SEO',
+                'title_seo' => 'Tiêu đề SEO',
+                'keyword_seo' => 'Từ khóa SEO'
             ]
         );
+
 
         try {
             $product = $this->productService->updateProduct($request->all(), $id);
@@ -124,26 +132,31 @@ class ProductController extends Controller
         $request->validate(
             [
                 'name' => 'required|unique:sgo_products,name',
-                'source' => 'required',
-                'company_id' => 'required|exists:sgo_companies,id',
-                'country_id' => 'required|exists:sgo_countries,id',
-                'condition_level' => 'required',
-                'price' => 'required|numeric',
+                'price' => 'nullable|numeric',
+                'sale_price' => 'nullable|numeric',
                 'images' => 'required|array|min:1',
-                'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
+                'main_image' => 'required|mimes:jpeg,png,gif,svg,webp,jfif|max:2048',
                 'status' => 'required',
                 'description' => 'required',
+                'sub_description' => 'required',
+                'description_seo' => 'nullable',
+                'title_seo' => 'nullable',
+                'keyword_seo' => 'nullable',
             ],
             __('request.messages'),
             [
                 'name' => 'Tên sản phẩm',
-                'source' => 'Nguồn',
-                'company_id' => 'Công ty',
-                'country_id' => 'Quốc gia',
-                'condition_level' => 'Trạng thái',
                 'price' => 'Giá',
                 'image' => 'Hiển thị',
                 'status' => 'Trạng thái',
+                'sale_price' => 'Giá khuyến mãi',
+                'main_image' => 'Ảnh đại diện',
+                'description' => 'Mô tả',
+                'sub_description' => 'Mô tả phụ',
+                'description_seo' => 'Mô tả SEO',
+                'title_seo' => 'Tiêu đề SEO',
+                'keyword_seo' => 'Từ khóa SEO'
             ]
         );
         try {
@@ -214,12 +227,11 @@ class ProductController extends Controller
     public function detail($id)
     {
         try {
-            $countries = Country::all();
-            $companies = Company::all();
+            $categories = Category::orderByDesc('created_at')->get();
             $product = Product::find($id);
             // $productImages = $product->whereHas('images')->get();
 
-            return view('backend.product.edit', compact('product', 'countries', 'companies'));
+            return view('backend.product.edit', compact('product', 'categories'));
         } catch (Exception $e) {
             Log::error('Failed to find this Product: ' . $e->getMessage());
             return response()->json(['success' => false, 'message' => 'Tìm sản phẩm thất bại']);

@@ -33,22 +33,32 @@
                             <input type="text" class="form-control" name="name" id="name"
                                 placeholder="Nhập tên sản phẩm">
                         </div>
-                    </div>
-
-                    <!-- Cột bên phải -->
-                    <div class="col-lg-6 add_product">
                         <!-- Giá -->
                         <div class="form-group mb-3">
                             <label for="price" class="form-label">Giá</label>
                             <input type="number" class="form-control" name="price" id="price"
                                 placeholder="Nhập giá sản phẩm">
                         </div>
-
-                        <!-- Đơn vị sản phẩm -->
+                        <!-- Giá khuyến mãi-->
                         <div class="form-group mb-3">
-                            <label for="product_unit" class="form-label">Nguồn</label>
-                            <input type="text" class="form-control" name="source" id="source"
-                                placeholder="Nhập nguồn sản phẩm">
+                            <label for="sale_price" class="form-label">Giá khuyễn mãi</label>
+                            <input type="number" class="form-control" name="sale_price" id="sale_price"
+                                placeholder="Nhập giá khuyến mãi sản phẩm">
+                        </div>
+                    </div>
+
+
+                    <!-- Cột bên phải -->
+                    <div class="col-lg-6 add_product">
+
+                        <div class="form-group mb-3">
+                            <label for="category_id" class="form-label">Danh mục</label>
+                            <select class="form-select" name="category_id" id="category_id">
+                                <option value="">Chọn danh mục</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- Bảo hành -->
@@ -66,6 +76,12 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
+                        <div class="form-group mb-3">
+                            <label for="main_image" class="form-label">Ảnh đại diện sản phẩm</label>
+                            <input type="file" class="form-control" id="main_image" name="main_image" max="1">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
                         <!-- Ảnh sản phẩm -->
                         <div class="form-group mb-3">
                             <label for="images" class="form-label">Ảnh sản phẩm</label>
@@ -73,13 +89,34 @@
                                 accept="image/*">
                         </div>
                     </div>
+
                     <!-- Mô tả -->
+                    <div class="col-lg-12">
+                        <label for="sub_description" class="form-label">Mô tả phụ</label>
+                        <textarea id="sub_description" class="form-control" name="sub_description" rows="10"></textarea>
+                    </div>
                     <div class="col-lg-12">
                         <label for="description" class="form-label">Mô tả</label>
                         <textarea id="description" class="form-control" name="description" rows="10"></textarea>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="form-group mb-3">
+                        <label for="title_seo" class="form-label">Tiêu đề SEO</label>
+                        <input type="text" class="form-control" name="title_seo" id="title_seo"
+                            placeholder="Nhập tiêu đề SEO">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="description_seo" class="form-label">Mô tả SEO</label>
+                        <input type="text" class="form-control" name="description_seo" id="description_seo"
+                            placeholder="Nhập mô tả SEO">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="keyword_seo" class="form-label">Từ khóa SEO</label>
+                        <input type="text" class="form-control" name="keyword_seo" id="keyword_seo"
+                            placeholder="Nhập từ khóa SEO">
+                    </div>
+                </div>
             </div>
             <div class="card-footer">
                 <div class="form-group">
@@ -118,10 +155,40 @@
                     ['heading', ['style']],
                 ]
             });
+            $('textarea[name="sub_description"]').summernote({
+                placeholder: 'Mô tả thông tin phụ...',
+                tabsize: 2,
+                height: 300,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
+                        'color', 'backcolor'
+                    ]],
+                    ['para', ['ul', 'ol', 'paragraph',
+                        'height'
+                    ]],
+                    ['insert', ['link', 'picture', 'video', 'table']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                    ['heading', ['style']],
+                ]
+            });
 
             $("#images").fileinput({
                 showPreview: true, // Hiển thị ảnh preview
-                allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif'], // Định dạng file chấp nhận
+                allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'jfif'], // Định dạng file chấp nhận
+                maxFileSize: 2000, // Kích thước file tối đa (KB)
+                browseLabel: 'Chọn ảnh', // Nhãn cho nút chọn ảnh
+                removeLabel: 'Xóa ảnh', // Nhãn cho nút xóa ảnh
+                uploadLabel: 'Tải lên', // Nhãn cho nút tải lên
+                showRemove: true, // Hiển thị nút xóa
+                showUpload: false, // Ẩn nút upload (nếu bạn không cần)
+                previewFileType: 'image', // Đảm bảo chỉ hiển thị file ảnh
+                browseIcon: '<i class="fas fa-folder-open"></i>', // Icon cho nút chọn file
+                removeIcon: '<i class="fas fa-trash"></i>' // Icon cho nút xóa file
+            });
+            $("#main_image").fileinput({
+                showPreview: true, // Hiển thị ảnh preview
+                allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'jfif'], // Định dạng file chấp nhận
                 maxFileSize: 2000, // Kích thước file tối đa (KB)
                 browseLabel: 'Chọn ảnh', // Nhãn cho nút chọn ảnh
                 removeLabel: 'Xóa ảnh', // Nhãn cho nút xóa ảnh
