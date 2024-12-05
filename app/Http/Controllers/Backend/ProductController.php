@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
+use Exception;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\Product;
-use App\Services\Backend\ProductService;
-use Exception;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use App\Services\Backend\ProductService;
 
 class ProductController extends Controller
 {
@@ -38,6 +39,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
+            DB::reconnect();
             return datatables()->of(Product::select(['id', 'name', 'status', 'price', 'guarantee', 'sale_price'])->get())
                 ->addColumn('status', function ($row) {
                     return $row->status ? 'Còn hàng' : 'Hết hàng';
