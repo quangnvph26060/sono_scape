@@ -136,6 +136,10 @@
         .pagination .page-item .page-link {
             transition: all 0.3s ease;
         }
+
+        .table-responsive {
+            overflow: hidden  !important;
+        }
     </style>
     <div class="page-inner">
         <div class="row">

@@ -24,9 +24,9 @@ class ProductController extends Controller
 
     public function detail($slug)
     {
-        $product = Product::where('slug', $slug)->with('company', 'country')->firstOrFail();
+        $product = Product::where('slug', $slug)->with('category')->firstOrFail();
 
-        $relatedProducts = Product::where('country_id', $product->country_id)->where('id', '!=', $product->id)->limit(8)->get();
+        $relatedProducts = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->limit(8)->get();
 
         return view('frontend.pages.product.detail', compact('product', 'relatedProducts'));
     }

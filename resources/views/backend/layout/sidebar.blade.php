@@ -81,7 +81,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('admin.category.index') }}">
-                                    <span class="sub-item">Danh sách danh mục sản phẩm</span>
+                                    <span class="sub-item">Danh sách danh mục</span>
                                 </a>
                             </li>
                         </ul>

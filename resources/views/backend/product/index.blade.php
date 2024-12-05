@@ -171,4 +171,9 @@
 @push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css" rel="stylesheet">
+    <style>
+      table tr td:last-child{
+        text-align: center;
+      }
+    </style>
 @endpush

@@ -1,12 +1,14 @@
 @extends('frontend.layouts.master')
 
-@section('title', $product->name)
+@section('title', $product->title_seo)
+@section('description', $product->description_seo)
+@section('keywords', $product->keyword_seo)
 
-@section('og_title', $product->name)
 
-@section('og_description', html_entity_decode($product->description))
-
-@section('og_image', showImage($product->images[0]))
+@section('og_title', $product->title_seo)
+@section('og_description', $product->sub_description)
+@section('og_image', showImage($product->main_image))
+{{-- html_entity_decode --}}
 
 
 @section('content')
@@ -66,13 +68,22 @@
                                     </div>
                                     <hr class="divider mb-0" />
                                     <div class="product-content-des">
+                                        <p class="mb-1 mt-3">
+                                            Nguồn gốc: {{ $product->source }}
+                                        </p>
+                                        <p class="mb-1">
+                                            Danh mục:
+                                            {{ !is_null($product->category) ? $product->category->name : 'đang cập nhật...' }}
+                                        </p>
+                                        <p class="mb-1">
+                                            Tình trạng : {{ $product->condition_level }}
+
+                                        </p>
+                                        <p class="mb-1">
+                                            Bảo hành: {{ $product->guarantee }} tháng
+
+                                        </p>
                                         <p>
-                                            <br />
-                                            Nguồn gốc: {{ $product->source }}<br />
-                                            Hãng sản xuất: <strong>{{ $product->company->name }}</strong><br />
-                                            Công nghệ: {{ $product->country->name }}<br />
-                                            Tình trạng : {{ $product->condition_level }}<br />
-                                            Bảo hành: {{ $product->guarantee }} tháng<br />
                                             Giá chỉ từ: {{ number_format($product->price, 0, '', '.') }} vnđ (Tùy cấu hình
                                             giá có thể
                                             thay đổi)
@@ -113,8 +124,7 @@
                                                 rel="nofollow" target="_blank" class="f-size-ex-large textAlign-center">
                                                 <i class="fab fa-facebook-f"></i>
                                             </a> --}}
-                                            <div class="fb-share-button"
-                                                data-href="{{ url()->current() }}" data-layout=""
+                                            <div class="fb-share-button" data-href="{{ url()->current() }}" data-layout=""
                                                 data-size=""><a target="_blank"
                                                     href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}&amp;src=sdkpreparse"
                                                     class="fb-xfbml-parse-ignore">Chia sẻ</a>
