@@ -1,10 +1,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>@yield('title', $setting->seo_title ?? env('APP_NAME'))</title>
 
 <link rel="icon" type="image/png" href="{{ showImage($setting->icon) }}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<title>@yield('title', $setting->seo_title ?? env('APP_NAME'))</title>
 <meta name="description" content="@yield('description', $setting->seo_description)">
 <meta name="keywords" content="@yield('keywords', formatString($setting->seo_keywords) ?? env('APP_NAME'))">
 

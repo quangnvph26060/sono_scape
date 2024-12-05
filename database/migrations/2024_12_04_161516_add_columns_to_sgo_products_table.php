@@ -32,7 +32,8 @@ return new class extends Migration
             $table->text('keyword_seo')->nullable();
             $table->string('main_image')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('sgo_categories')->on('id')->onDelete('set null');
+            // $table->foreign('category_id')->references('sgo_categories')->on('id')->nullOnDelete();
+            $table->foreignId('category_id')->references('id')->on('sgo_categories')->nullOnDelete();
         });
     }
 
