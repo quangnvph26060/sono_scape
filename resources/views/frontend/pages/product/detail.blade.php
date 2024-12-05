@@ -6,7 +6,7 @@
 
 
 @section('og_title', $product->title_seo)
-@section('og_description', $product->sub_description)
+@section('og_description', $product->description)
 @section('og_image', showImage($product->main_image))
 {{-- html_entity_decode --}}
 
@@ -85,29 +85,32 @@
                                     </div>
                                     <hr class="divider" />
 
-                                    <div>
-                                        <p class="mb-1">
-                                            @if ($product->sale_price)
-                                                Giá chỉ từ:
-                                                <span style="color: red; font-weight: bold; margin-left:10px">
-                                                    ₫{{ number_format($product->sale_price, 0, '', '.') }}
-                                                </span>
-                                                <span style="text-decoration: line-through; color: gray; margin-left: 8px;">
-                                                    ₫{{ number_format($product->price, 0, '', '.') }}
-                                                </span>
-                                            @else
-                                                Giá chỉ từ: <span style="color: red; font-weight: bold;">
-                                                    ₫{{ number_format($product->price, 0, '', '.') }}
-                                                </span>
-                                            @endif
+
+
+                                    @if ($product->price || $product->sale_price)
+                                            <p class="mb-1">
+                                                @if ($product->sale_price)
+                                                    Giá chỉ từ:
+                                                    <span style="color: red; font-weight: bold; margin-left:10px">
+                                                        ₫{{ number_format($product->sale_price, 0, '', '.') }}
+                                                    </span>
+                                                    <span
+                                                        style="text-decoration: line-through; color: gray; margin-left: 8px;">
+                                                        ₫{{ number_format($product->price, 0, '', '.') }}
+                                                    </span>
+                                                @else
+                                                    Giá chỉ từ: <span style="color: red; font-weight: bold;">
+                                                        ₫{{ number_format($product->price, 0, '', '.') }}
+                                                    </span>
+                                                @endif
 
                                             <p class="mb-1">
                                                 Bảo hành: <span class="ml-2">{{ $product->guarantee }}</span> tháng
 
                                             </p>
-                                        </p>
-                                    </div>
-                                    <hr class="divider" />
+                                            </p>
+                                        <hr class="divider" />
+                                    @endif
 
                                     <!-- Thuộc tính -->
                                     <div class="product-infor">
