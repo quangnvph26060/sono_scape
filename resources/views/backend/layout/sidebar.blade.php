@@ -42,12 +42,12 @@
                     <h4 class="text-section">Thành phần quản lý</h4>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('admin.company.index') }}">
                         <i class="fas fa-building "></i>
                         <p>Công ty sản xuất</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('admin.supportPolicy.index') }}">
                         <i class="fas fa-sign"></i>
