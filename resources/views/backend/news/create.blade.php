@@ -55,7 +55,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="article">Nội dung</label>
-                                    <textarea name="article" class="form-control" placeholder="Nội dung">{!! old('article') !!}</textarea>
+                                    <textarea name="article" id="article" class="form-control" placeholder="Nội dung">{!! old('article') !!}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -122,32 +122,43 @@
     </form>
 @endsection
 
+
+
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput/js/fileinput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+    <script>
+        const BASE_URL = "{{ url('/') }}";
+    </script>
 
     <script>
         $(function() {
-            $('textarea[name="article"]').summernote({
-                placeholder: 'Mô tả nội dung...',
-                tabsize: 2,
-                height: 300,
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
-                        'color', 'backcolor'
-                    ]],
-                    ['para', ['ul', 'ol', 'paragraph',
-                        'height'
-                    ]],
-                    ['insert', ['link', 'picture', 'video', 'table']],
-                    ['view', ['fullscreen', 'codeview', 'help']],
-                    ['heading', ['style']],
-                ]
+            CKEDITOR.replace('article', {
+                filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+                filebrowserUploadMethod: 'form',
             });
+
+            // $('textarea[name="article"]').summernote({
+            //     placeholder: 'Mô tả nội dung...',
+            //     tabsize: 2,
+            //     height: 300,
+            //     toolbar: [
+            //         ['style', ['bold', 'italic', 'underline', 'clear']],
+            //         ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
+            //             'color', 'backcolor'
+            //         ]],
+            //         ['para', ['ul', 'ol', 'paragraph',
+            //             'height'
+            //         ]],
+            //         ['insert', ['link', 'picture', 'video', 'table']],
+            //         ['view', ['fullscreen', 'codeview', 'help']],
+            //         ['heading', ['style']],
+            //     ]
+            // });
 
             $('#datetimepicker4').datetimepicker({
                 format: 'YYYY-MM-DD HH:mm',
