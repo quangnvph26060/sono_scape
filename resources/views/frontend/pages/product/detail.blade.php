@@ -68,7 +68,8 @@
                                     </div>
                                     <hr class="divider mb-0" />
                                     <div class="product-content-des">
-                                        <p class="mb-1 mt-3">
+                                        {!! $product->sub_description !!}
+                                        {{-- <p class="mb-1 mt-3">
                                             Nguồn gốc: {{ $product->source }}
                                         </p>
                                         <p class="mb-1">
@@ -79,17 +80,35 @@
                                             Tình trạng : {{ $product->condition_level }}
 
                                         </p>
-                                        <p class="mb-1">
-                                            Bảo hành: {{ $product->guarantee }} tháng
 
-                                        </p>
-                                        <p>
-                                            Giá chỉ từ: {{ number_format($product->price, 0, '', '.') }} vnđ (Tùy cấu hình
-                                            giá có thể
-                                            thay đổi)
+                                        --}}
+                                    </div>
+                                    <hr class="divider" />
+
+                                    <div>
+                                        <p class="mb-1">
+                                            @if ($product->sale_price)
+                                                Giá chỉ từ:
+                                                <span style="color: red; font-weight: bold; margin-left:10px">
+                                                    ₫{{ number_format($product->sale_price, 0, '', '.') }}
+                                                </span>
+                                                <span style="text-decoration: line-through; color: gray; margin-left: 8px;">
+                                                    ₫{{ number_format($product->price, 0, '', '.') }}
+                                                </span>
+                                            @else
+                                                Giá chỉ từ: <span style="color: red; font-weight: bold;">
+                                                    ₫{{ number_format($product->price, 0, '', '.') }}
+                                                </span>
+                                            @endif
+
+                                            <p class="mb-1">
+                                                Bảo hành: <span class="ml-2">{{ $product->guarantee }}</span> tháng
+
+                                            </p>
                                         </p>
                                     </div>
                                     <hr class="divider" />
+
                                     <!-- Thuộc tính -->
                                     <div class="product-infor">
                                         <div class="row desc info-extra inventory">
