@@ -58,13 +58,13 @@
                         searchable: false
                     },
                     {
+                        data: 'price',
+                        name: 'price'
+                    },
+                    {
                         data: 'sale_price',
                         name: 'sale_price',
                         orderable: false
-                    },
-                    {
-                        data: 'price',
-                        name: 'price'
                     },
                     {
                         data: 'status',
