@@ -20,5 +20,31 @@
 
 <script src="{{ asset('frontend/assets/plugins/bootstrap-4.3.1/js/bootstrap.min.js') }}"></script>
 
+<script>
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
 
+        // Nếu cuộn xuống quá 100px, thêm class sticky vào header
+        if (scroll > 100) {
+            $('.header-desktop').addClass('sticky');
+        } else {
+            $('.header-desktop').removeClass('sticky');
+        }
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // const header = document.getElementById("header-mobile");
+        const header = document.querySelector('.header-mobile');
+        const offsetTrigger = 100;
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > offsetTrigger) {
+                header.classList.add("fixed-header");
+            } else {
+                header.classList.remove("fixed-header");
+            }
+        });
+    });
+</script>
 @stack('scripts')

@@ -3,9 +3,10 @@
 @section('title', $news->subject)
 @section('description', $news->seo_description)
 @section('keywords', formatString($news->seo_keywords))
+@section('og_image', showImage($news->featured_image))
 
 @section('content')
-
+{{-- @dd($news) --}}
     <x-breadcrumb :title="'Tin tức'" :name="$news->subject" />
 
     <div class="page-content">

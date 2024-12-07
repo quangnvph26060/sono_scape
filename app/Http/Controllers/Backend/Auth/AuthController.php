@@ -21,7 +21,7 @@ class AuthController extends Controller
     public function authenticate(LoginUserRequest $request)
     {
 
-        $credentials = $request->validated();
+        $credentials = $request->only(['email', 'password']);
 
         $remember = $request->boolean('remember');
 

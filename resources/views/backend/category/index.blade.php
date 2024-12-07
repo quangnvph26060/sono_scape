@@ -138,7 +138,7 @@
         }
 
         .table-responsive {
-            overflow: hidden  !important;
+            overflow: hidden !important;
         }
     </style>
     <div class="page-inner">
@@ -146,7 +146,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title" style="text-align: center; color:white">Danh sách Công ty sản xuất</h4>
+                        <h4 class="card-title" style="text-align: center; color:white">Danh mục
+
+                            @if (request()->get('type') == 'products')
+                                sản phẩm
+                                @else
+                                bài viết
+                            @endif
+                        </h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -207,6 +214,8 @@
                             <input type="text" class="form-control" id="name" name="name">
                             <small id="name-error" class="text-danger"></small>
                         </div>
+
+                        <input type="hidden" name="type" value="{{ request()->get('type') }}">
 
                         <div class="mb-3">
                             <label for="title_seo" class="form-label">Tiêu đề SEO</label>

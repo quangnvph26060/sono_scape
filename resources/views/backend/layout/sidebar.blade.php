@@ -1,10 +1,10 @@
 <div class="sidebar" data-background-color="dark">
-    <div class="sidebar-logo">
+    <div class="e">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="" class="logo">
-                <img src="{{ asset('backend/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand"
-                    class="navbar-brand" height="20" />
+                <img src="{{ asset('backend/assets/img/logo-sgo-media-optimized.png') }}" alt="navbar brand"
+                    class="navbar-brand img-fluid" height="20" />
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -29,43 +29,33 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+
+
                 <li class="nav-item">
-                    <a href="{{ route('admin.contact.show') }}">
+                    <a data-bs-toggle="collapse" href="#sideb-config">
                         <i class="fas fa-cogs"></i>
-                        <p>Cấu hình chung</p>
+                        <p>Cấu hình</p>
+                        <span class="caret"></span>
                     </a>
-                </li>
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon">
-                        <i class="fa fa-ellipsis-h"></i>
-                    </span>
-                    <h4 class="text-section">Thành phần quản lý</h4>
+                    <div class="collapse" id="sideb-config">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('admin.contact.show') }}">
+                                    <span class="sub-item">Cấu hình chung</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.supportPolicy.index') }}">
+                                    <span class="sub-item">Chính sách hỗ trợ</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
                 </li>
 
-                {{-- <li class="nav-item">
-                    <a href="{{ route('admin.company.index') }}">
-                        <i class="fas fa-building "></i>
-                        <p>Công ty sản xuất</p>
-                    </a>
-                </li> --}}
-                <li class="nav-item">
-                    <a href="{{ route('admin.supportPolicy.index') }}">
-                        <i class="fas fa-sign"></i>
-                        <p>Chính sách hỗ trợ</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.slider.index') }}">
-                        <i class="fas fa-image"></i>
-                        <p>Cấu hình trình chiếu</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.news.index') }}">
-                        <i class="fas fa-newspaper"></i>
-                        <p>Quản lý bài viết</p>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarzns">
                         <i class="fas fa-box"></i>
@@ -80,13 +70,51 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.category.index') }}">
-                                    <span class="sub-item">Danh sách danh mục</span>
+                                <a href="{{ route('admin.category.index') }}?type=products">
+                                    <span class="sub-item">Danh mục sản phẩm</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
+
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebar-ports">
+                        <i class="fas fa-pencil-alt"></i>
+                        <p>Quản lý bài viết</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="sidebar-ports">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('admin.news.index') }}">
+                                    <span class="sub-item">Danh sách bài viết</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.category.index') }}?type=posts">
+                                    <span class="sub-item">Danh mục bài viết</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.company.index') }}">
+                        <i class="fas fa-building "></i>
+                        <p>Công ty sản xuất</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.slider.index') }}">
+                        <i class="fas fa-image"></i>
+                        <p>Quản lý sliders</p>
+                    </a>
+                </li>
+
+
                 <li class="nav-item">
                     <a href="{{ route('admin.form.index') }}">
                         <i class="fas fa-question"></i>

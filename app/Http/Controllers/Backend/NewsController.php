@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
@@ -53,7 +54,8 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('backend.news.create');
+        $categories  = Category::query()->where('type', 'posts')->latest()->pluck('name', 'id');
+        return view('backend.news.create', compact('categories'));
     }
 
     /**
@@ -71,6 +73,8 @@ class NewsController extends Controller
             'seo_keywords' => 'nullable',
             'featured_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'posted_at' => 'required|date_format:Y-m-d H:i|after:today',
+            'seo_title' => 'nullable',
+            'tags' => 'nullable'
         ], __('request.messages'), [
             'subject' => 'Tiêu đề',
             'summary' => 'Tóm tắt',
@@ -107,8 +111,10 @@ class NewsController extends Controller
     public function edit(string $id)
     {
         $news = News::withoutGlobalScope('published')->findOrFail($id);
+        $categories  = Category::query()->where('type', 'posts')->latest()->pluck('name', 'id');
+        // dd($categories);
 
-        return view('backend.news.edit', compact('news'));
+        return view('backend.news.edit', compact('news', 'categories'));
     }
 
     /**
@@ -116,7 +122,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
+        // dd($request->all());
         $news = News::withoutGlobalScope('published')->findOrFail($id);
 
         $credentials = $request->validate([
@@ -127,7 +133,10 @@ class NewsController extends Controller
             'status' => 'required|in:published,unpublished',
             'seo_keywords' => 'nullable',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'posted_at' => 'required|date_format:Y-m-d H:i|',
+            'posted_at' => 'required|date_format:Y-m-d\TH:i',
+            'seo_title' => 'nullable',
+            'tags' => 'nullable',
+            'category_id' => 'required|integer|exists:sgo_categories,id',
         ], __('request.messages'), [
             'subject' => 'Tiêu đề',
             'summary' => 'Tóm tắt',
@@ -137,11 +146,14 @@ class NewsController extends Controller
             'seo_keywords' => 'Từ khóa seo',
             'featured_image' => 'Ảnh đại diện',
             'posted_at' => 'Ngày đăng',
+            'category_id' => 'Danh mục bài viết'
         ]);
 
         if ($request->hasFile('featured_image')) {
             $credentials['featured_image'] = saveImage($request, 'featured_image', 'news');
         }
+
+        // dd($credentials);
 
         $news->update($credentials);
 

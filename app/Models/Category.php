@@ -16,6 +16,7 @@ class Category extends Model
         'title_seo',
         'description_seo',
         'keyword_seo',
+        'type'
     ];
 
     public static function boot()

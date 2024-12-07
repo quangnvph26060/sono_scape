@@ -67,7 +67,7 @@
     <div class="header-left header-container no-pd-menu-header">
         <div class="wb-nav-header width-menu-mobile">
             <div class="container">
-                <div class="row clearfix center-vertical relative align-items-center">
+                <div class="row clearfix center-vertical relative align-items-center" id="header-mobile">
 
                     <div class="col-3">
                         <nav class="main-nav navbar-expand-lg pull-left">
@@ -76,7 +76,6 @@
                                     <span></span>
                                 </span>
                                 <span class="nav-icon toggle-mobile-menu title-menu">
-                                    <span> MENU </span>
                                 </span>
                             </div>
                             <div class="navbar-menu">
@@ -141,10 +140,12 @@
                     </div>
 
                     <div class="col-4 contact-header">
-                        <div class="phone_header d-flex align-items-center justify-content-end"
+                        <!-- Phần liên hệ, sẽ hiển thị trên màn hình desktop -->
+                        <div class="phone_header d-flex align-items-center justify-content-end d-none d-md-flex"
                             style="font-size: 1.2rem">
                             <div class="phone_image mr-2">
-                                <img width="20px" height="auto" src="//bizweb.dktcdn.net/100/411/753/themes/894845/assets/phone_header.png?1676273080247"
+                                <img width="20px" height="auto"
+                                    src="//bizweb.dktcdn.net/100/411/753/themes/894845/assets/phone_header.png?1676273080247"
                                     alt="Giỏ hàng">
                             </div>
                             <div class="phone_content" style="line-height: 20px">
@@ -153,7 +154,72 @@
                                     href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
                             </div>
                         </div>
+
+                        <!-- Phần icon điện thoại, sẽ hiển thị trên màn hình mobile -->
+                        <div class="icon-phone-mobile d-flex d-md-none">
+                            <a target="_blank" href="tel:{{ $setting->phone }}" class="btn-contact">
+                                Liên hệ ngay
+                            </a>
+
+                        </div>
                     </div>
+                    <style>
+                        @media (max-width: 767px) {
+                            .phone_header {
+                                display: none !important;
+                                /* Ẩn phần phone_header trên màn hình nhỏ */
+                            }
+
+                            .icon-phone-mobile {
+                                display: block;
+                                /* Hiển thị icon điện thoại trên màn hình nhỏ */
+                            }
+
+                            .icon-phone-mobile a {
+                                border-radius: 5px;
+                                padding: 6px 10px !important;
+                                background: none;
+                                border: 1px solid #d91116;
+                                color: rgb(0, 0, 0) !important;
+                                font-size: 16px;
+                                font-weight: bold;
+                                text-transform: uppercase;
+                                cursor: pointer;
+                                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                font-size: .8rem;
+                            }
+
+                            /* Hiệu ứng nổi bật khi hover vào nút */
+                            .icon-phone-mobile button:hover {
+                                background: #EB0218;
+                                color: #fff;
+                                transform: translateY(-5px);
+                                /* Nút sẽ nổi lên khi hover */
+                                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                                /* Thêm bóng cho nút khi hover */
+                            }
+
+                            /* Hiệu ứng khi nhấn nút */
+                            .icon-phone-mobile button:active {
+                                transform: translateY(1px);
+                                /* Nút sẽ bị đẩy xuống khi nhấn */
+                                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                                /* Giảm bóng khi nhấn */
+                            }
+                        }
+
+                        @media (min-width: 768px) {
+                            .phone_header {
+                                display: flex;
+                                /* Hiển thị phần phone_header trên màn hình lớn */
+                            }
+
+                            .icon-phone-mobile {
+                                display: none;
+                                /* Ẩn icon điện thoại trên màn hình lớn */
+                            }
+                        }
+                    </style>
 
 
                     <div class="col-12 mt-3">
@@ -165,8 +231,10 @@
                                     <button type="submit">
                                         <i class="fas fa-search"></i>
                                     </button> --}}
-                            <input type="text" class="form-control" value="{{ request()->get('keyword') }}" name="keyword" placeholder="Nhập từ khóa">
-                            <button type="submit" style="position: absolute; top: 0; right: 0; height: 100%; width: 50px; border-radius: 0 5px 5px 0; color: #fff; background: #EB0218; border: 0">
+                            <input type="text" class="form-control" value="{{ request()->get('keyword') }}"
+                                name="keyword" placeholder="Nhập từ khóa">
+                            <button type="submit"
+                                style="position: absolute; top: 0; right: 0; height: 100%; width: 50px; border-radius: 0 5px 5px 0; color: #fff; background: #EB0218; border: 0">
                                 <i class="fas fa-search"></i>
                             </button>
                         </form>
@@ -239,8 +307,8 @@
                             <div class="navbar-menu">
                                 <div class="section-header-menu">
                                     <ul class="navbar-nav ml-auto menu-nav mb-menu">
-                                        <li
-                                            class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'home') active @endif" style="margin: 0 20px 0 0 !important">
+                                        <li class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'home') active @endif"
+                                            style="margin: 0 20px 0 0 !important">
                                             <a class="nav-link" href="{{ url('/') }}" aria-label="TRANG CHỦ">
                                                 TRANG CHỦ
                                             </a>
@@ -286,3 +354,4 @@
         </div>
     </div>
 </div>
+
