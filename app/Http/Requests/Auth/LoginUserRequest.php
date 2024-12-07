@@ -24,7 +24,8 @@ class LoginUserRequest extends FormRequest
     {
         return [
             'email'          => 'required|email|exists:users,email',
-            'password'       => 'required|min:6|max:20'
+            'password'       => 'required|min:6|max:20',
+            'g-recaptcha-response' => 'required'
         ];
     }
 
@@ -32,7 +33,9 @@ class LoginUserRequest extends FormRequest
     {
         return [
             'email' => 'Email',
-            'password' => 'Mật khẩu'
+            'password' => 'Mật khẩu',
+            'g-recaptcha-response' => 'reCaptcha',
+
         ];
     }
 

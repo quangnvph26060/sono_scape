@@ -25,19 +25,8 @@
         @csrf
         @method('PUT')
         <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Ngày đăng</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <input type="text" name="posted_at" value="{{ old('posted_at', $news->posted_at) }}"
-                                class="form-control datetimepicker-input" id="datetimepicker4" data-toggle="datetimepicker"
-                                data-target="#datetimepicker4" />
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-9">
+
                 <div class="card">
                     <div class="card-body">
 
@@ -52,13 +41,20 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="summary">Mô tả ngắn</label>
-                                    <textarea name="summary" class="form-control" placeholder="Nội dung ngắn">{{ old('summary', $news->summary) }}</textarea>
+                                    <textarea rows="8" name="summary" class="form-control" placeholder="Nội dung ngắn">{{ old('summary', $news->summary) }}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="article">Nội dung</label>
                                     <textarea name="article" class="form-control" placeholder="Nội dung">{!! old('article', $news->article) !!}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="article">Tags</label>
+                                    <input type="text" class="form-control" placeholder="Gắn thẻ" id="chose_tag"
+                                        name="tags" value="{{ old('tags', $news->tags) }}">
                                 </div>
                             </div>
                         </div>
@@ -71,9 +67,25 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="title">Mô tả seo</label>
+                                    <label for="title">Tiêu đề SEO</label>
+
+                                    <input class="form-control" name="seo_title" type="text"
+                                        placeholder="Nhập tiêu đề seo" value="{{ old('seo_title', $news->seo_title) }}">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="title">Mô tả SEO</label>
                                     <textarea name="seo_description" id="" cols="30" rows="5" class="form-control"
                                         placeholder="Mô tả seo">{{ old('seo_description', $news->seo_description) }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="title">Từ khóa SEO</label>
+                                    <input type="text" name="seo_keywords" id="seo_keywords"
+                                        class="form-control @error('seo_keywords') is-invalid @enderror"
+                                        value="{{ old('seo_keywords', $news->seo_keywords) }}" placeholder="Nhập từ khóa">
                                 </div>
                             </div>
                         </div>
@@ -82,7 +94,22 @@
 
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Ngày đăng</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            {{-- <input type="text" name="posted_at" value="{{ old('posted_at', date('Y-m-d H:i')) }}"
+                                class="form-control datetimepicker-input" id="datetimepicker4" data-toggle="datetimepicker"
+                                data-target="#datetimepicker4" /> --}}
+                            <input type='datetime-local' class="form-control" id='datetimepicker4'
+                                value="{{ old('posted_at', $news->posted_at) }}" name="posted_at" />
+
+                        </div>
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Trạng thái</h4>
@@ -90,8 +117,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <select name="status" class="form-select">
-                                <option value="published" @selected(old('status') == $news->status)>Công chiếu</option>
-                                <option value="unpublished" @selected(old('status') == $news->status)>Chưa công chiếu</option>
+                                <option value="published" @selected(old('status') == 'published')>Xuất bản</option>
+                                <option value="unpublished" @selected(old('status') == 'unpublished')>Không xuất bản</option>
                             </select>
                         </div>
                     </div>
@@ -99,25 +126,38 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Gắn thẻ</h4>
+                        <h4 class="card-title">Danh mục</h4>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Gắn thẻ" id="chose_tag"
-                                name="seo_keywords" value="{{ old('seo_keywords', $news->seo_keywords) }}">
+                            <select name="category_id" class="form-select">
+                                @foreach ($categories as $id => $name)
+                                    <option value="{{ $id }}" @selected($id === $news->category_id)>{{ $name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Ảnh đại diện</h4>
+                        <h3 class="card-title">Ảnh đại diện</h3>
                     </div>
+
                     <div class="card-body">
-                        <input id="file-1" name="featured_image" type="file" accept="image/*">
+                        <div class="form-group mb-0">
+                            <img src="{{showImage($news->featured_image)}}" alt="" id="image_main" class="img-fluid w-100 mb-3">
+                            <a href="#" id="select_main_image" style="text-decoration: underline">Chọn ảnh
+                                tiêu biểu</a>
+
+                            <input type="file" name="featured_image" id="featured_image" class="form-control"
+                                style="display: none">
+                        </div>
                     </div>
                 </div>
-                <div class="form-group float-right">
+
+                <div class="form-group  ">
                     <button type="submit" class="btn btn-primary ">Lưu</button>
                 </div>
             </div>
@@ -161,6 +201,20 @@
             //     ]
             // });
 
+            $('#select_main_image').click(function(e) {
+                e.preventDefault();
+                $('#featured_image').click();
+            });
+
+            $('#featured_image').change(function() {
+                const file = $(this)[0].files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#image_main').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            });
+
             $('#datetimepicker4').datetimepicker({
                 format: 'YYYY-MM-DD HH:mm',
                 icons: {
@@ -177,9 +231,9 @@
             });
 
             const input = document.querySelector('#chose_tag');
-            const tagify = new Tagify(input, {
+            const tagify_1 = new Tagify(input, {
                 whitelist: ["Chất lượng cao", "Giá rẻ", "Cao cấp", "Độc quyền", "Mới nhất",
-                    "Thân thiện với môi trường", "Dễ sử dụng", "Công nghệ tiên tiến"
+                    'Thân thiện với môi trường', 'Dễ sử dụng', 'Công nghệ tiên tiến'
                 ],
                 dropdown: {
                     maxItems: 10,
@@ -189,25 +243,34 @@
                 }
             });
 
-            // Hàm điều chỉnh chiều cao
+            const keyword = document.querySelector('#seo_keywords');
+            const tagify_2 = new Tagify(keyword, {
+                whitelist: ["Chất lượng cao", "Giá rẻ", "Cao cấp", "Độc quyền", "Mới nhất",
+                    'Thân thiện với môi trường', 'Dễ sử dụng', 'Công nghệ tiên tiến'
+                ],
+                dropdown: {
+                    maxItems: 10,
+                    classname: "tags-look",
+                    enabled: 0,
+                    closeOnSelect: false
+                }
+            });
+
+            // Lắng nghe sự kiện thêm tag để cập nhật chiều cao riêng cho từng Tagify instance
+            tagify_1.on('add', () => {
+                adjustTagifyHeight(tagify_1.DOM.scope);
+            });
+
+            tagify_2.on('add', () => {
+                adjustTagifyHeight(tagify_2.DOM.scope);
+            });
+
             function adjustTagifyHeight(scopeElement) {
                 if (scopeElement) {
                     scopeElement.style.height = "auto"; // Reset chiều cao
                     scopeElement.style.height = scopeElement.scrollHeight + "px"; // Điều chỉnh theo nội dung
                 }
             }
-
-            // Gắn sự kiện "add" và "remove" cho Tagify
-            tagify.on('add', () => {
-                adjustTagifyHeight(tagify.DOM.scope); // Điều chỉnh khi thêm tag
-            });
-
-            tagify.on('remove', () => {
-                adjustTagifyHeight(tagify.DOM.scope); // Điều chỉnh khi xóa tag
-            });
-
-            // Điều chỉnh ngay khi tải trang (nếu đã có giá trị ban đầu)
-            adjustTagifyHeight(tagify.DOM.scope);
 
             $("#file-1").fileinput({
                 showPreview: true, // Hiển thị ảnh preview

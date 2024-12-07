@@ -15,9 +15,10 @@ class CategoryService
         $this->category = $category;
     }
 
-    public function getPaginatedCategory()
+    public function getPaginatedCategory($type)
     {
-        return $this->category->orderByDesc('created_at')->paginate(10);
+
+        return $this->category->where('type', $type)->orderByDesc('created_at')->paginate(10);
     }
 
     public function getAllCompanies()
@@ -29,12 +30,7 @@ class CategoryService
     {
         try {
             DB::beginTransaction();
-            $category = $this->category->create([
-                'name' => $data['name'],
-                'description_seo' => $data['description_seo'],
-                'keyword_seo' => $data['keyword_seo'],
-                'title_seo' => $data['title_seo'],
-            ]);
+            $category = $this->category->create($data);
 
             DB::commit();
             return $category;

@@ -6,7 +6,7 @@
     <form action="{{ route('admin.contact.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
-            <div class="col-9">
+            <div class="col-lg-9">
                 <div class="card">
                     <div class="card-header">
                         <h4>Cấu hình chung</h4>
@@ -217,7 +217,7 @@
 
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Logo</h4>
@@ -250,7 +250,7 @@
                     </div>
                 </div>
 
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Logo công ty</h4>
                     </div>
@@ -264,7 +264,7 @@
                         <input type="file" name="company_logo" id="company_logo" class="form-control d-none"
                             accept="image/*" onchange="previewImage(event, 'show_company_logo')">
                     </div>
-                </div>
+                </div> --}}
 
 
                 <div class="row mb-3 float-right">

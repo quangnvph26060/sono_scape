@@ -311,7 +311,7 @@
                     <div class="col-lg-8 d-flex align-items-center">
                         <form class="consult-form w-100 contact-form" action="{{ route('contact') }}" id="contact_form">
                             {{-- <h2 >Bạn đang cần được tư vấn</h2> --}}
-                            <h2 style="font-size: 2rem">
+                            <h2 style="font-size: 1.8rem">
                                 <a style="color: #cc0000 !important" href="{{ route('product.list') }}">Bạn đang cần được tư vấn</a>
                             </h2>
                             <p style="font-weight: 500">{{ $setting->name }} sẽ liên hệ với bạn trong ít phút nữa.</p>
@@ -434,7 +434,6 @@
 
         .form-control {
             border-radius: 5px;
-            height: 50px;
         }
 
         .form-control:focus {

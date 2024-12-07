@@ -35,7 +35,12 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-        $categories = $this->categoryService->getPaginatedCategory();
+
+
+        $type = $request->input('type');
+
+
+        $categories = $this->categoryService->getPaginatedCategory($type);
 
         if ($request->ajax()) {
             return response()->json([
@@ -52,7 +57,7 @@ class CategoryController extends Controller
     {
         $request->validate(
             [
-                'name' => 'required|unique:sgo_categories,name',
+                'name' => 'required|unique:sgo_categories,name,' . $id,
                 'title_seo' => 'nullable',
                 'keyword_seo' => 'nullable',
                 'description_seo' => 'nullable',
@@ -69,7 +74,7 @@ class CategoryController extends Controller
         try {
             $category = $this->categoryService->updateCategory($request->all(), $id);
 
-            $categories = $this->categoryService->getPaginatedCategory();
+            $categories = $this->categoryService->getPaginatedCategory($category->type);
 
             $html = view('backend.category.table', compact('categories'))->render();
             $pagination = $categories->links('vendor.pagination.custom')->render();
@@ -90,7 +95,7 @@ class CategoryController extends Controller
         $request->validate(
             [
                 'name' => 'required|unique:sgo_categories,name',
-                'title_seo' => 'nullable',
+                'title_seo' => 'nullable|max:100',
                 'keyword_seo' => 'nullable',
                 'description_seo' => 'nullable',
             ],
@@ -107,7 +112,7 @@ class CategoryController extends Controller
             $category = $this->categoryService->addNewCategory($request->all());
 
             // Lấy lại danh sách danh mục để cập nhật bảng
-            $categories = $this->categoryService->getPaginatedCategory(); // Hàm này sẽ trả về danh sách danh mục phân trang
+            $categories = $this->categoryService->getPaginatedCategory($category->type); // Hàm này sẽ trả về danh sách danh mục phân trang
 
             $html = view('backend.category.table', compact('categories'))->render();
             $pagination = $categories->links('vendor.pagination.custom')->render();
@@ -130,11 +135,12 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        try {
-            $this->categoryService->deleteCategory($id);
 
+        try {
+
+            $cate =  $this->categoryService->deleteCategory($id);
             // Lấy danh sách danh mục cập nhật sau khi xóa
-            $categories = $this->categoryService->getPaginatedCategory();
+            $categories = $this->categoryService->getPaginatedCategory($cate->type);
 
             $html = view('backend.category.table', compact('categories'))->render();
             $pagination = $categories->links('vendor.pagination.custom')->render();

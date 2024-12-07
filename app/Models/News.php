@@ -22,7 +22,9 @@ class News extends Model
         'seo_keywords',
         'status',
         'summary',
-        'featured_image'
+        'featured_image',
+        'category_id',
+        'tags'
     ];
 
     public static function boot()
