@@ -84,19 +84,19 @@
                     <div class="col-lg-12">
                         <!-- Ảnh sản phẩm -->
                         <div class="form-group mb-3">
-                            <label for="images" class="form-label">Ảnh sản phẩm</label>
+                            <label for="images" class="form-label">Album ảnh</label>
                             <input type="file" class="form-control" id="images" name="images[]" multiple
                                 accept="image/*">
                         </div>
                     </div>
 
                     <!-- Mô tả -->
-                    <div class="col-lg-12">
-                        <label for="sub_description" class="form-label">Mô tả phụ</label>
+                    <div class="col-lg-12 mb-3">
+                        <label for="sub_description" class="form-label">Mô tả ngắn</label>
                         <textarea id="sub_description" class="form-control" name="sub_description" rows="10"></textarea>
                     </div>
-                    <div class="col-lg-12">
-                        <label for="description" class="form-label">Mô tả</label>
+                    <div class="col-lg-12 mb-3">
+                        <label for="description" class="form-label">Mô tả chi tiết</label>
                         <textarea id="description" class="form-control" name="description" rows="10"></textarea>
                     </div>
                 </div>
@@ -135,42 +135,26 @@
     <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+    <script>
+        const BASE_URL = "{{ url('/') }}";
+    </script>
 
     <script>
         $(function() {
-            $('textarea[name="description"]').summernote({
-                placeholder: 'Mô tả nội dung...',
-                tabsize: 2,
-                height: 300,
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
-                        'color', 'backcolor'
-                    ]],
-                    ['para', ['ul', 'ol', 'paragraph',
-                        'height'
-                    ]],
-                    ['insert', ['link', 'picture', 'video', 'table']],
-                    ['view', ['fullscreen', 'codeview', 'help']],
-                    ['heading', ['style']],
-                ]
+
+            CKEDITOR.replace('sub_description', {
+
+                filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+                filebrowserUploadMethod: 'form',
+                height: 150
             });
-            $('textarea[name="sub_description"]').summernote({
-                placeholder: 'Mô tả thông tin phụ...',
-                tabsize: 2,
-                height: 300,
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
-                        'color', 'backcolor'
-                    ]],
-                    ['para', ['ul', 'ol', 'paragraph',
-                        'height'
-                    ]],
-                    ['insert', ['link', 'picture', 'video', 'table']],
-                    ['view', ['fullscreen', 'codeview', 'help']],
-                    ['heading', ['style']],
-                ]
+
+            CKEDITOR.replace('description', {
+                filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+                filebrowserUploadMethod: 'form',
+                height: 400
             });
 
             $("#images").fileinput({
