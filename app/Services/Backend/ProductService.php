@@ -148,6 +148,10 @@ class ProductService
                 }
             }
 
+            if ($product->main_image) {
+                deleteImage($product->main_image);
+            }
+
             $product->delete();
             DB::commit();
             return $product;
