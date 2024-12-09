@@ -161,9 +161,8 @@
                         <!-- Phần icon điện thoại, sẽ hiển thị trên màn hình mobile -->
                         <div class="icon-phone-mobile d-md-none" style="text-align: right">
                             <a target="_blank" href="tel:{{ $setting->name }}" class="btn-contact">
-                            Gọi
+                                <i class="fas fa-phone"></i>
                             </a>
-
                         </div>
                     </div>
                     <style>
@@ -320,7 +319,7 @@
                                         <li
                                             class="nav-item mega_menu relative wb-header-menu-item @if (Route::currentRouteName() == 'introduce') active @endif">
                                             <a class="nav-link" href="{{ route('introduce') }}"
-                                                aria-label="GIỚI THIỆU  SONOSCAPE">
+                                                aria-label="GIỚI THIỆU">
                                                 GIỚI THIỆU
                                             </a>
                                         </li>
@@ -328,7 +327,7 @@
                                         <li
                                             class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'product.list') active @endif">
                                             <a class="nav-link" href="{{ route('product.list') }}" target="_blank"
-                                                aria-label="MÁY SIÊU ÂM SONOSCAPE  ">
+                                                aria-label="MÁY SIÊU ÂM  ">
                                                 SẢN PHẨM
                                             </a>
                                         </li>
@@ -357,4 +356,3 @@
         </div>
     </div>
 </div>
-

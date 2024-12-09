@@ -26,8 +26,8 @@
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">
-                        <a class="nav-link" href="{{ route('introduce') }}" aria-label="GIỚI THIỆU  SONOSCAPE">
-                            GIỚI THIỆU SONOSCAPE
+                        <a class="nav-link" href="{{ route('introduce') }}" aria-label="GIỚI THIỆU">
+                            GIỚI THIỆU
                         </a>
                     </li>
                     <li class="nav-item relative default wb-header-menu-item">

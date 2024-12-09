@@ -20,13 +20,27 @@
                             <ul class="c-info-list">
                                 <li class="m-bottom-10">
                                     <div class="clearfix">
-                                        <i class="fas fa-phone"></i>
+                                        <i class="fa fa-briefcase"></i>
                                         <p class="contact-e">
                                             <strong>Kinh doanh: </strong>
                                             <span>{{ $setting->phone }}</span>
                                         </p>
                                     </div>
                                 </li>
+
+
+                                <li class="m-bottom-10">
+                                    <div class="clearfix">
+                                        <i class="fas fa-phone"></i>
+                                        <p class="contact-e">
+                                            <strong>Hotline: </strong>
+                                            <a href="tel:{{ $setting->name }}"
+                                                aria-label="Liên hệ {{ $setting->company }}">{{ $setting->name }}</a>
+                                        </p>
+                                    </div>
+                                </li>
+
+
                                 <li class="m-bottom-10">
                                     <div class="clearfix">
                                         <div class="contact-e" style="display: flex">
@@ -38,16 +52,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="m-bottom-10">
-                                    <div class="clearfix">
-                                        <i class="fas fa-phone"></i>
-                                        <p class="contact-e">
-                                            <strong>Hotline: </strong>
-                                            <a href="tel:{{ $setting->name }}"
-                                                aria-label="Liên hệ {{ $setting->company }}">{{ $setting->name }}</a>
-                                        </p>
-                                    </div>
-                                </li>
+
                                 <li class="m-bottom-10">
                                     <div class="clearfix">
                                         <i class="fas fa-envelope"></i>
