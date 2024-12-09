@@ -29,8 +29,10 @@ class ProductService
     {
         try {
             DB::beginTransaction();
-            $price = preg_replace('/[^\d]/', '', $data['price']);
-            $salePrice = preg_replace('/[^\d]/', '', $data['sale_price']);
+
+            $price = isset($data['price']) ? preg_replace('/[^\d]/', '', $data['price']) : 0;
+            $salePrice = isset($data['sale_price']) ? preg_replace('/[^\d]/', '', $data['sale_price']) : 0;
+
             $product = $this->product->create([
                 'name' => $data['name'],
                 'guarantee' => $data['guarantee'],
@@ -78,8 +80,10 @@ class ProductService
     {
         try {
             DB::beginTransaction();
-            $price = preg_replace('/[^\d]/', '', $data['price']);
-            $salePrice = preg_replace('/[^\d]/', '', $data['sale_price']);
+
+            $price = isset($data['price']) ? preg_replace('/[^\d]/', '', $data['price']) : 0;
+            $salePrice = isset($data['sale_price']) ? preg_replace('/[^\d]/', '', $data['sale_price']) : 0;
+
             $product = $this->product->find($id);
 
             if (isset($data['deleteAllImage'])) {
