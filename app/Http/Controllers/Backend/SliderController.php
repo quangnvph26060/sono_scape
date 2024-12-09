@@ -59,6 +59,8 @@ class SliderController extends Controller
 
         $credentials = $data->validated();
 
+        // dd($credentials);
+
         // Lấy dữ liệu cũ từ cơ sở dữ liệu
         $existingSlider = \App\Models\Slider::where('type', $type)->first();
         $existingItems = $existingSlider ? $existingSlider->items : [];
@@ -69,8 +71,8 @@ class SliderController extends Controller
                 ? $credentials['slider'][$key]->store('slider') // Lưu ảnh mới nếu có
                 : ($existingItems[$key]['slider'] ?? null); // Giữ ảnh cũ nếu không có ảnh mới
 
-            $array[$key]['link'] = $credentials['link'][$key] ?? ($existingItems[$key]['link'] ?? null);
-            $array[$key]['alt'] = $credentials['alt'][$key] ?? ($existingItems[$key]['alt'] ?? null);
+            $array[$key]['link'] = $credentials['link'][$key];
+            $array[$key]['alt'] = $credentials['alt'][$key];
             $array[$key]['index'] = $index;
         }
 

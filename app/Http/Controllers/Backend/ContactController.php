@@ -19,22 +19,23 @@ class ContactController extends Controller
     }
     public function update(Request $request)
     {
+        // , 'regex:/^0[0-9]{9}$/'
         $request->validate(
             [
-                'name' => 'required',
+                'name' => 'nullable',
                 'email' => 'required|email',
-                'phone' => ['required', 'regex:/^0[0-9]{9}$/'],
+                'phone' => 'required',
                 'company' => 'required',
                 'address' => 'required',
-                'fanpage' => 'required',
-                'youtube' => 'required',
-                'sort_description' => 'required|max:100',
+                'fanpage' => 'nullable',
+                'youtube' => 'nullable',
+                'sort_description' => 'nullable|max:100',
                 'map' => 'nullable',
                 'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
                 'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
                 'company_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-                'seo_title' => 'nullable|max:100',
-                'seo_description' => 'nullable|max:100',
+                'seo_title' => 'nullable|',
+                'seo_description' => 'nullable|',
                 'seo_keywords' => 'nullable',
                 'copyright' => 'nullable',
                 'working_time' => 'nullable',

@@ -240,9 +240,6 @@
 
             const input = document.querySelector('#chose_tag');
             const tagify_1 = new Tagify(input, {
-                whitelist: ["Chất lượng cao", "Giá rẻ", "Cao cấp", "Độc quyền", "Mới nhất",
-                    'Thân thiện với môi trường', 'Dễ sử dụng', 'Công nghệ tiên tiến'
-                ],
                 dropdown: {
                     maxItems: 10,
                     classname: "tags-look",
@@ -253,9 +250,6 @@
 
             const keyword = document.querySelector('#seo_keywords');
             const tagify_2 = new Tagify(keyword, {
-                whitelist: ["Chất lượng cao", "Giá rẻ", "Cao cấp", "Độc quyền", "Mới nhất",
-                    'Thân thiện với môi trường', 'Dễ sử dụng', 'Công nghệ tiên tiến'
-                ],
                 dropdown: {
                     maxItems: 10,
                     classname: "tags-look",
