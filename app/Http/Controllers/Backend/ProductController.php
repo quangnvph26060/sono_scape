@@ -80,7 +80,7 @@ class ProductController extends Controller
     {
         $request->validate(
             [
-                'name' => 'nullable|unique:sgo_products,name,' . $id,
+                'name' => 'required|unique:sgo_products,name,' . $id,
                 'price' => 'nullable|numeric',
                 'sale_price' => 'nullable|numeric',
                 'images' => 'nullable|array|min:1',
@@ -136,12 +136,12 @@ class ProductController extends Controller
                 'name' => 'required|unique:sgo_products,name',
                 'price' => 'nullable|numeric',
                 'sale_price' => 'nullable|numeric',
-                'images' => 'required|array|min:1',
+                'images' => 'nullable|array|min:1',
                 'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
-                'main_image' => 'required|mimes:jpeg,png,gif,svg,webp,jfif|max:2048',
-                'status' => 'required',
-                'description' => 'required',
-                'sub_description' => 'required',
+                'main_image' => 'nullable|mimes:jpeg,png,gif,svg,webp,jfif|max:2048',
+                'status' => 'nullable',
+                'description' => 'nullable',
+                'sub_description' => 'nullable',
                 'description_seo' => 'nullable',
                 'title_seo' => 'nullable',
                 'keyword_seo' => 'nullable',
