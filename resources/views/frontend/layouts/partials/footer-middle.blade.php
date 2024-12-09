@@ -11,7 +11,7 @@
                                     style="height: 80px; width: auto" />
                             </p>
 
-                            <p style="text-align: center">&nbsp;</p>
+                            {{-- <p style="text-align: center">&nbsp;</p> --}}
 
                             <h3 style="font-weight: 500">
                                 <span style="font-size: 16px"><span
@@ -29,20 +29,41 @@
                                         hàng&nbsp;</span></span> --}}
                             </p>
 
-                            <p>
+                            {{-- <p>
                                 <i aria-hidden="true" class="fa fa-phone">&nbsp;&nbsp;</i>
                                 <strong>
                                     <span style="color: #000000">{{ $setting->name }} : </span>
                                     <span style="color: #cc0000">{{ $setting->phone }}</span>
                                 </strong>
+                            </p> --}}
+
+                            <p style="font-size: 14px;"><span style="color: #000000"><i style="margin-right: 5px"
+                                        aria-hidden="true" class="fa fa-briefcase">&nbsp;&nbsp;</i><strong>Kinh
+                                        doanh:</strong> <span style="color: #cc0000">{{ $setting->phone }}</span></span>
                             </p>
-                            <p style="font-size: 14px;"><span style="color: #000000"><i style="margin-right: 8px" aria-hidden="true"
-                                        class="fa fa-map-marker">&nbsp;&nbsp;</i>{{ $setting->address }}</span>
+
+                            <p style="font-size: 14px;"><span style="color: #000000"><i style="margin-right: 5px"
+                                        aria-hidden="true" class="fa fa-phone">&nbsp;&nbsp;</i><strong>Hotline:</strong>
+                                    <span style="color: #cc0000">{{ $setting->name }}</span> </span>
                             </p>
+
+                            <p style="font-size: 14px; display:flex;">
+                                {{-- <span style="color: #000000" style="display: flex;"> --}}
+                                    <i style="margin-right: 8px; margin-top:5px" aria-hidden="true"
+                                        class="fa fa-map-marker">&nbsp;&nbsp;</i>
+                                    <span>
+                                        <strong>Địa chỉ:</strong>
+                                        Số 256/33, Đường Dương Quảng Hàm, Quận Gò Vấp,
+                                        Phường 5, TP Hồ Chí Minh
+                                    </span>
+                                {{-- </span> --}}
+                            </p>
+
                             <p>
                                 <span style="font-size: 14px">
                                     <span style="color: #000000">
-                                        <i class="fa fa-envelope" style="margin-right: 8px" aria-hidden="true"></i> Gmail: {{ $setting->email }}
+                                        <i class="fa fa-envelope" style="margin-right: 8px" aria-hidden="true"></i>
+                                        <strong> Email: </strong> {{ $setting->email }}
                                     </span>
                                 </span>
                             </p>
@@ -145,7 +166,7 @@
                 data-widget="fanpage_fb">
                 <div class="widget-fanpage widget-56">
                     <div class="box_heading">
-                        <h3 style="font-weight: 600; padding-bottom: 5px">FANPAGE</h3>
+                        <h3 style="font-weight: 600; padding-bottom: 5px">MAP</h3>
                         <div class="svg-wrap">
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="125.656px"
@@ -160,26 +181,9 @@
                         </div>
                     </div>
                     <div class="widget-content text-center">
-                        {{-- <div class="fb-page">
-                            <iframe loading="lazy"
-                                src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/{{$setting->fanpage}}&amp;tabs=timeline&amp;height=250&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId"
-                                width="100%" height="250" style="border:none;overflow:hidden" scrolling="no"
-                                frameborder="0" allowfullscreen="true"
-                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                                aria-label="{{ $setting->company }}"></iframe>
-                        </div> --}}
 
 
-                        <div id="fb-root"></div>
-
-                        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v21.0">
-                        </script>
-
-                        <iframe loading="lazy"
-                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthanhmocdan%2F&tabs=timeline&width=300&height=100&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-                            width="100%" height="250" style="border:none;overflow:hidden" scrolling="no"
-                            frameborder="0" allowfullscreen="true"
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        {!! $setting->map !!}
 
 
                     </div>

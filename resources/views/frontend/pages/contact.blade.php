@@ -14,15 +14,26 @@
                     <div class="row clearfix">
                         <div class="col-lg-5 col-md-5 m-bottom-30">
                             <h1 class="heading heading-contact">
-                                {{ $setting->company }}
+                                <strong> {{ $setting->company }}</strong>
+
                             </h1>
                             <ul class="c-info-list">
                                 <li class="m-bottom-10">
                                     <div class="clearfix">
-                                        <i class="fas fa-map-marker f-left"></i>
-                                        <div class="contact-e ">
-                                            <p>
-                                                {{ $setting->address }}
+                                        <i class="fas fa-phone"></i>
+                                        <p class="contact-e">
+                                            <strong>Kinh doanh: </strong>
+                                            <span>{{ $setting->phone }}</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="m-bottom-10">
+                                    <div class="clearfix">
+                                        <div class="contact-e" style="display: flex">
+                                            <i class="fas fa-map-marker f-left"></i>
+                                            <p style="padding-left: 10px">
+                                                <strong>Địa chỉ:</strong>
+                                                <span> {{ $setting->address }}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -31,8 +42,9 @@
                                     <div class="clearfix">
                                         <i class="fas fa-phone"></i>
                                         <p class="contact-e">
-                                            <a href="tel:{{ $setting->phone }}"
-                                                aria-label="Liên hệ {{ $setting->company }}">{{ $setting->phone }}</a>
+                                            <strong>Hotline: </strong>
+                                            <a href="tel:{{ $setting->name }}"
+                                                aria-label="Liên hệ {{ $setting->company }}">{{ $setting->name }}</a>
                                         </p>
                                     </div>
                                 </li>
@@ -40,6 +52,7 @@
                                     <div class="clearfix">
                                         <i class="fas fa-envelope"></i>
                                         <p class="contact-e">
+                                            <strong>Email: </strong>
                                             <a href="mailto:{{ $setting->email }}" class="contact-e color-base"
                                                 aria-label="Liên hệ {{ $setting->company }}">{{ $setting->email }}</a>
                                         </p>

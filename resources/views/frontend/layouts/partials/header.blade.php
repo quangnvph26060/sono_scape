@@ -1,7 +1,7 @@
 <div class="header-top" style="background-color: #cccccc">
     <div class=" row align-items-center">
         <div class="col-lg-6">
-            <div class="section-infor-topbar relative" style="padding-top: 5px">
+            <div class="section-infor-topbar relative " style="padding-top: 5px; margin-left: 140px">
                 {{-- <ul class="info-account line-right">
                     <li>
                         <span class="phone-label">Gọi ngay</span>
@@ -13,7 +13,10 @@
                         </a>
                     </li>
                 </ul> --}}
-                <marquee behavior="scroll">{{ $setting->header_top }}</marquee>
+                {{ $setting->header_top }}
+                {{-- <marquee behavior="scroll">
+
+                </marquee> --}}
             </div>
         </div>
         <div class=" col-lg-6 ">
@@ -67,7 +70,7 @@
     <div class="header-left header-container no-pd-menu-header">
         <div class="wb-nav-header width-menu-mobile">
             <div class="container">
-                <div class="row clearfix center-vertical relative align-items-center" id="header-mobile">
+                <div class="row clearfix center-vertical relative align-items-center " id="header-mobile">
 
                     <div class="col-3">
                         <nav class="main-nav navbar-expand-lg pull-left">
@@ -151,14 +154,14 @@
                             <div class="phone_content" style="line-height: 20px">
                                 <span class="d-block" style="font-size: 13px">Liên hệ ngay</span>
                                 <a class="fone fw-bold text-danger" style="font-size: 16px"
-                                    href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
+                                    href="tel:{{ $setting->name }}">{{ $setting->name }}</a>
                             </div>
                         </div>
 
                         <!-- Phần icon điện thoại, sẽ hiển thị trên màn hình mobile -->
-                        <div class="icon-phone-mobile d-flex d-md-none">
-                            <a target="_blank" href="tel:{{ $setting->phone }}" class="btn-contact">
-                                Liên hệ ngay
+                        <div class="icon-phone-mobile d-md-none" style="text-align: right">
+                            <a target="_blank" href="tel:{{ $setting->name }}" class="btn-contact">
+                            Gọi
                             </a>
 
                         </div>
@@ -281,7 +284,7 @@
                             <div class="phone_content" style="line-height: 20px">
                                 <span class="d-block" style="font-size: 15px">Liên hệ ngay</span>
                                 <a class="fone fw-bold text-danger" style="font-size: 18px"
-                                    href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
+                                    href="tel:{{ $setting->name }}">{{ $setting->name }}</a>
                             </div>
                         </div>
                     </div>

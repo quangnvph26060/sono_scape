@@ -16,11 +16,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Chủ sở hữu</label>
-                                    <input type="text" name="name"
-                                        class="form-control @error('name') is-invalid @enderror"
-                                        value="{{ $data->name }}">
-                                    @error('name')
+                                    <label>Tên công ty</label>
+                                    <input type="text" name="company"
+                                        class="form-control @error('company') is-invalid @enderror"
+                                        value="{{ $data->company }}">
+                                    @error('company')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Số điện thoại</label>
+                                    <label>Kinh doanh</label>
                                     <input type="text" name="phone"
                                         class="form-control @error('phone') is-invalid @enderror"
                                         value="{{ $data->phone }}">
@@ -49,13 +49,14 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Tên công ty</label>
-                                    <input type="text" name="company"
-                                        class="form-control @error('company') is-invalid @enderror"
-                                        value="{{ $data->company }}">
-                                    @error('company')
+                                    <label>Hotline</label>
+                                    <input type="text" name="name"
+                                        class="form-control @error('name') is-invalid @enderror"
+                                        value="{{ $data->name }}">
+                                    @error('name')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -124,7 +125,7 @@
                     <div class="card-body">
 
                         <div class="row">
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tên Fanpage</label>
                                     <input type="text" name="fanpage"
@@ -134,8 +135,8 @@
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                            </div> --}}
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Link youtube</label>
                                     <input type="text" name="youtube"
@@ -294,9 +295,6 @@
 
         const input = document.querySelector('#seo_keywords');
         const tagify = new Tagify(input, {
-            whitelist: ["Chất lượng cao", "Giá rẻ", "Cao cấp", "Độc quyền", "Mới nhất",
-                'Thân thiện với môi trường', 'Dễ sử dụng', 'Công nghệ tiên tiến'
-            ],
             dropdown: {
                 maxItems: 10,
                 classname: "tags-look",

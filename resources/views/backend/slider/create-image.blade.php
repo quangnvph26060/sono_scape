@@ -13,25 +13,32 @@
                 {{-- @dd($sliders->items) --}}
                 <!-- Slider đầu tiên -->
                 @foreach ($sliders->items as $index => $item)
-                    <div class="row slider-item mb-3 border rounded" id="slider_{{ $index }}">
+                    <div class="row slider-item mb-3 border rounded position-relative" id="slider_{{ $index }}">
+                        <button type="button" class="btn-close position-absolute btn z-3 top-0 end-0 m-2 p-0"
+                            aria-label="Close" onclick="removeSlider({{ $index }})"></button>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <img class="img-fluid img-thumbnail w-100" id="show_slider_{{ $index }}"
-                                    style="cursor: pointer; height: 150px;" src="{{ showImage($item['slider'], 'banner-defaut.jpg') }}"
-                                    alt="" onclick="$('#slider_input_{{ $index }}').click();">
-                                <input type="file" name="slider[{{ $index }}]" id="slider_input_{{ $index }}" class="form-control d-none"
-                                    accept="image/*" onchange="previewImage(event, 'show_slider_{{ $index }}')">
+                                    style="cursor: pointer; height: 150px;"
+                                    src="{{ showImage($item['slider'], 'banner-defaut.jpg') }}" alt=""
+                                    onclick="$('#slider_input_{{ $index }}').click();">
+                                <input type="file" name="slider[{{ $index }}]"
+                                    id="slider_input_{{ $index }}" class="form-control d-none" accept="image/*"
+                                    onchange="previewImage(event, 'show_slider_{{ $index }}')">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" name="link[{{ $index }}]" class="form-control" placeholder="Link" value="{{ $item['link'] }}">
+                                <input type="text" name="link[{{ $index }}]" class="form-control"
+                                    placeholder="Link" value="{{ $item['link'] }}">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="alt[{{ $index }}]" class="form-control" placeholder="Alt" value="{{ $item['alt'] }}">
+                                <input type="text" name="alt[{{ $index }}]" class="form-control"
+                                    placeholder="Alt" value="{{ $item['alt'] }}">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="index[{{ $index }}]" class="form-control" placeholder="Vị trí" value="{{ $item['index'] }}">
+                                <input type="text" name="index[{{ $index }}]" class="form-control"
+                                    placeholder="Vị trí" value="{{ $item['index'] }}">
                             </div>
                         </div>
                     </div>
@@ -60,6 +67,9 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css" rel="stylesheet">
 
     <script>
+        function removeSlider(index) {
+            $('#slider_' + index).remove();
+        }
         $(document).ready(function() {
             let sliderIndex = "{{ count($sliders->items) }}";
 
@@ -68,33 +78,38 @@
                 console.log('sliderIndex:', sliderIndex);
 
                 const newSlider = `
-                <div class="row slider-item mb-3 border rounded" id="slider_${sliderIndex}">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <img class="img-fluid img-thumbnail w-100" id="show_slider_${sliderIndex}"
-                                style="cursor: pointer; height: 150px;"
-                                src="{{ showImage('', 'banner-defaut.jpg') }}" alt=""
-                                onclick="$('#slider_input_${sliderIndex}').click();">
-                            <input type="file" name="slider[${sliderIndex}]" id="slider_input_${sliderIndex}"
-                                class="form-control d-none" accept="image/*"
-                                onchange="previewImage(event, 'show_slider_${sliderIndex}')">
+                    <div class="row slider-item mb-3 border rounded position-relative" id="slider_${sliderIndex}">
+                        <button type="button" class="btn-close position-absolute top-0 end-0 m-2 p-0 z-3" aria-label="Close" onclick="removeSlider(${sliderIndex})"></button>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <img class="img-fluid img-thumbnail w-100" id="show_slider_${sliderIndex}"
+                                    style="cursor: pointer; height: 150px;"
+                                    src="{{ showImage('', 'banner-defaut.jpg') }}" alt=""
+                                    onclick="$('#slider_input_${sliderIndex}').click();">
+                                <input type="file" name="slider[${sliderIndex}]" id="slider_input_${sliderIndex}"
+                                    class="form-control d-none" accept="image/*"
+                                    onchange="previewImage(event, 'show_slider_${sliderIndex}')">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" name="link[${sliderIndex}]" class="form-control" placeholder="Link">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="link[${sliderIndex}]" class="form-control" placeholder="Link">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="alt[${sliderIndex}]" class="form-control" placeholder="Alt">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="index[${sliderIndex}]" class="form-control" placeholder="Vị trí">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input type="text" name="alt[${sliderIndex}]" class="form-control" placeholder="Alt">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="index[${sliderIndex}]" class="form-control" placeholder="Vị trí">
-                        </div>
-                    </div>
-                </div>`;
+                    </div>`;
+
                 $('#slider-container').append(newSlider);
                 sliderIndex++;
             });
+
+
+
 
             $('#slider-form').on('submit', function(e) {
                 e.preventDefault();
