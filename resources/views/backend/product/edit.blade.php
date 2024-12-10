@@ -161,10 +161,18 @@
     <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+    <script>
+        const BASE_URL = "{{ url('/') }}";
+    </script>
     <script>
         document.getElementById('main_image').addEventListener('change', function(event) {
             const file = event.target.files[0];
             const previewImage = document.getElementById('current-image');
+
+            console.log(previewImage);
+
 
             if (file) {
                 // Tạo URL từ file đã chọn
@@ -175,6 +183,43 @@
     </script>
     <script>
         $(function() {
+
+
+            CKEDITOR.replace('sub_description', {
+
+                filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+                filebrowserUploadMethod: 'form',
+                height: 150
+            });
+
+            CKEDITOR.replace('description', {
+                filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+                filebrowserUploadMethod: 'form',
+                height: 400
+            });
+
+
+            const input = document.querySelector('#keyword_seo');
+            const tagify = new Tagify(input, {
+                dropdown: {
+                    maxItems: 10,
+                    classname: "tags-look",
+                    enabled: 0,
+                    closeOnSelect: false
+                }
+            });
+
+            tagify.on('add', () => {
+                adjustTagifyHeight(tagify_1.DOM.scope);
+            });
+
+            function adjustTagifyHeight(scopeElement) {
+                if (scopeElement) {
+                    scopeElement.style.height = "auto"; // Reset chiều cao
+                    scopeElement.style.height = scopeElement.scrollHeight + "px"; // Điều chỉnh theo nội dung
+                }
+            }
+
             var existingImages = [];
             var existingImagesConfig = [];
 
@@ -259,41 +304,6 @@
                 $('form').append(inputHidden);
             });
 
-
-            $('textarea[name="description"]').summernote({
-                placeholder: 'Mô tả nội dung...',
-                tabsize: 2,
-                height: 300,
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
-                        'color', 'backcolor'
-                    ]],
-                    ['para', ['ul', 'ol', 'paragraph',
-                        'height'
-                    ]],
-                    ['insert', ['link', 'picture', 'video', 'table']],
-                    ['view', ['fullscreen', 'codeview', 'help']],
-                    ['heading', ['style']],
-                ]
-            });
-            $('textarea[name="sub_description"]').summernote({
-                placeholder: 'Mô tả nội dung...',
-                tabsize: 2,
-                height: 300,
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
-                        'color', 'backcolor'
-                    ]],
-                    ['para', ['ul', 'ol', 'paragraph',
-                        'height'
-                    ]],
-                    ['insert', ['link', 'picture', 'video', 'table']],
-                    ['view', ['fullscreen', 'codeview', 'help']],
-                    ['heading', ['style']],
-                ]
-            });
         });
     </script>
 @endpush

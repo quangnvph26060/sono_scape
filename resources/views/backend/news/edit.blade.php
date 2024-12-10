@@ -101,10 +101,8 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            {{-- <input type="text" name="posted_at" value="{{ old('posted_at', date('Y-m-d H:i')) }}"
-                                class="form-control datetimepicker-input" id="datetimepicker4" data-toggle="datetimepicker"
-                                data-target="#datetimepicker4" /> --}}
-                            <input type='datetime-local' class="form-control" id='datetimepicker4'
+
+                            <input type='datetime-local' class="form-control"
                                 value="{{ old('posted_at', $news->posted_at) }}" name="posted_at" />
 
                         </div>
@@ -123,7 +121,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Danh mục</h4>
@@ -166,7 +163,7 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput/js/fileinput.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput/js/fileinput.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.js"></script> --}}
@@ -293,7 +290,7 @@
 @endpush
 
 @push('styles')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.css" rel="stylesheet">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.css" rel="stylesheet"> --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" />

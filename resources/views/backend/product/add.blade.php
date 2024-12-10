@@ -157,6 +157,28 @@
                 height: 400
             });
 
+            const input = document.querySelector('#keyword_seo');
+            const tagify = new Tagify(input, {
+                dropdown: {
+                    maxItems: 10,
+                    classname: "tags-look",
+                    enabled: 0,
+                    closeOnSelect: false
+                }
+            });
+
+            tagify.on('add', () => {
+                adjustTagifyHeight(tagify_1.DOM.scope);
+            });
+
+            function adjustTagifyHeight(scopeElement) {
+                if (scopeElement) {
+                    scopeElement.style.height = "auto"; // Reset chiều cao
+                    scopeElement.style.height = scopeElement.scrollHeight + "px"; // Điều chỉnh theo nội dung
+                }
+            }
+
+
             $("#images").fileinput({
                 showPreview: true, // Hiển thị ảnh preview
                 allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'jfif'], // Định dạng file chấp nhận

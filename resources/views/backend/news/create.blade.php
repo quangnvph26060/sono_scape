@@ -102,10 +102,8 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            {{-- <input type="text" name="posted_at" value="{{ old('posted_at', date('Y-m-d H:i')) }}"
-                                class="form-control datetimepicker-input" id="datetimepicker4" data-toggle="datetimepicker"
-                                data-target="#datetimepicker4" /> --}}
-                            <input type='datetime-local' class="form-control" id='datetimepicker4' name="posted_at" />
+
+                            <input type='datetime-local' class="form-control" name="posted_at" />
 
                         </div>
                     </div>
@@ -168,9 +166,6 @@
 
 
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput/js/fileinput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
@@ -181,48 +176,14 @@
     </script>
 
     <script>
-        $('#datetimepicker4').datetimepicker();
+
         $(function() {
-
-
-
             CKEDITOR.replace('article', {
                 filebrowserImageUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
                 filebrowserUploadMethod: 'form',
             });
 
-            // $('textarea[name="article"]').summernote({
-            //     placeholder: 'Mô tả nội dung...',
-            //     tabsize: 2,
-            //     height: 300,
-            //     toolbar: [
-            //         ['style', ['bold', 'italic', 'underline', 'clear']],
-            //         ['font', ['strikethrough', 'superscript', 'subscript', 'fontname', 'fontsize',
-            //             'color', 'backcolor'
-            //         ]],
-            //         ['para', ['ul', 'ol', 'paragraph',
-            //             'height'
-            //         ]],
-            //         ['insert', ['link', 'picture', 'video', 'table']],
-            //         ['view', ['fullscreen', 'codeview', 'help']],
-            //         ['heading', ['style']],
-            //     ]
-            // });
 
-            // $('#datetimepicker4').datetimepicker({
-            //     format: 'YYYY-MM-DD HH:mm',
-            //     icons: {
-            //         time: 'fa fa-clock',
-            //         date: 'fa fa-calendar',
-            //         up: 'fa fa-chevron-up',
-            //         down: 'fa fa-chevron-down',
-            //         previous: 'fa fa-chevron-left',
-            //         next: 'fa fa-chevron-right',
-            //         today: 'fa fa-sun',
-            //         clear: 'fa fa-trash',
-            //         close: 'fa fa-times'
-            //     }
-            // });
 
             $('#select_main_image').click(function(e) {
                 e.preventDefault();
@@ -293,14 +254,12 @@
 @endpush
 
 @push('styles')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+
     <style>
         .bootstrap-datetimepicker-widget {
             font-size: 0.875rem;
