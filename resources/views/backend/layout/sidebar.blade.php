@@ -45,6 +45,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="{{ route('admin.pageConfig.index') }}">
+                                    <span class="sub-item">Cấu hình page</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('admin.supportPolicy.index') }}">
                                     <span class="sub-item">Chính sách hỗ trợ</span>
                                 </a>

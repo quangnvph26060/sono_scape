@@ -14,7 +14,9 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\Auth\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\PageConfigController;
 use App\Http\Controllers\Backend\SupportPolicyController;
+use App\Models\PageConfig;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,6 +98,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
             Route::get('/add', [ProductController::class, 'add'])->name('add');
             route::post('delete-image/{id}', [ProductController::class, 'deleteImage'])->name('delete-image');
+        });
+
+        Route::prefix('page-config')->name('pageConfig.')->group(function () {
+            Route::get('', [PageConfigController::class, 'index'])->name('index');
+            Route::get('add', [PageConfigController::class, 'add'])->name('add');
+            Route::post('store', [PageConfigController::class, 'store'])->name('store');
+            Route::get('detail/{id}', [PageConfigController::class, 'edit'])->name('detail');
+            Route::post('update/{id}', [PageConfigController::class, 'update'])->name('update');
+            Route::delete('delete/{id}', [PageConfigController::class, 'delete'])->name('delete');
         });
 
         // FORM ROUTE
