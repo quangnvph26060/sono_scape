@@ -124,12 +124,12 @@
                     </div>
 
                     <!-- Mô tả -->
-                    <div class="col-lg-12">
-                        <label for="sub_description" class="form-label">Mô tả phụ</label>
+                    <div class="col-lg-12 mb-3">
+                        <label for="sub_description" class="form-label">Mô tả ngắn</label>
                         <textarea id="sub_description" class="form-control" name="sub_description" rows="10">{!! $product->sub_description !!}</textarea>
                     </div>
                     <div class="col-lg-12">
-                        <label for="description" class="form-label">Mô tả</label>
+                        <label for="description" class="form-label">Mô tả chi tiết</label>
                         <textarea id="description" class="form-control" name="description" rows="10">{!! $product->description !!}</textarea>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                     <div class="form-group mb-3">
                         <label for="keyword_seo" class="form-label">Từ khóa SEO</label>
                         <input value="{{ $product->keyword_seo }}" type="text" class="form-control"
-                            name="keyword_seo" id="product_keyword_seo" placeholder="Nhập từ khóa SEO">
+                            name="keyword_seo" id="keyword_seo" placeholder="Nhập từ khóa SEO">
                     </div>
                 </div>
             </div>
@@ -219,7 +219,7 @@
             });
 
             tagify.on('add', () => {
-                adjustTagifyHeight(tagify_1.DOM.scope);
+                adjustTagifyHeight(tagify.DOM.scope);
             });
 
             function adjustTagifyHeight(scopeElement) {
