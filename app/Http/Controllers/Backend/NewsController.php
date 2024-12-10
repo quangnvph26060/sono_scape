@@ -6,6 +6,7 @@ use App\Models\News;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -63,18 +64,18 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-
         $credentials = $request->validate([
             'subject' => 'required|max:100|unique:sgo_news,subject',
-            'summary' => 'required',
-            'article' => 'required',
+            'summary' => 'nullable',
+            'article' => 'nullable',
             'seo_description' => 'nullable',
-            'status' => 'required|in:published,unpublished',
+            'status' => 'nullable|in:published,unpublished',
             'seo_keywords' => 'nullable',
-            'featured_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'posted_at' => 'required|date_format:Y-m-d H:i|after:today',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'posted_at' => 'nullable|date_format:Y-m-d\TH:i|after:today',
             'seo_title' => 'nullable',
-            'tags' => 'nullable'
+            'tags' => 'nullable',
+            'category_id' => 'nullable'
         ], __('request.messages'), [
             'subject' => 'Tiêu đề',
             'summary' => 'Tóm tắt',
@@ -85,6 +86,8 @@ class NewsController extends Controller
             'featured_image' => 'Ảnh đại diện',
             'posted_at' => 'Ngày đăng',
         ]);
+
+        if (empty($request->posted_at)) $credentials['posted_at'] = Carbon::now();
 
         if ($request->hasFile('featured_image')) {
             $credentials['featured_image'] = saveImage($request, 'featured_image', 'news');
@@ -122,21 +125,20 @@ class NewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // dd($request->all());
         $news = News::withoutGlobalScope('published')->findOrFail($id);
 
         $credentials = $request->validate([
             'subject' => 'required|max:100|unique:sgo_news,subject,' . $id,
-            'summary' => 'required',
-            'article' => 'required',
+            'summary' => 'nullable',
+            'article' => 'nullable',
             'seo_description' => 'nullable',
-            'status' => 'required|in:published,unpublished',
+            'status' => 'nullable|in:published,unpublished',
             'seo_keywords' => 'nullable',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'posted_at' => 'required|date_format:Y-m-d\TH:i',
+            'posted_at' => 'nullable|date_format:Y-m-d\TH:i',
             'seo_title' => 'nullable',
             'tags' => 'nullable',
-            'category_id' => 'required|integer|exists:sgo_categories,id',
+            'category_id' => 'nullable|integer|exists:sgo_categories,id',
         ], __('request.messages'), [
             'subject' => 'Tiêu đề',
             'summary' => 'Tóm tắt',
@@ -152,8 +154,6 @@ class NewsController extends Controller
         if ($request->hasFile('featured_image')) {
             $credentials['featured_image'] = saveImage($request, 'featured_image', 'news');
         }
-
-        // dd($credentials);
 
         $news->update($credentials);
 

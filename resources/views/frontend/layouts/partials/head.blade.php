@@ -8,7 +8,7 @@
 <meta name="description" content="@yield('description', $setting->seo_description)">
 <meta name="keywords" content="@yield('keywords', formatString($setting->seo_keywords) ?? env('APP_NAME'))">
 
-
+<meta property="fb:app_id" content="1234567890" />
 <meta property="og:url" content="{{ url()->current() }}" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="@yield('og_title', $setting->seo_title ?? env('APP_NAME'))" />

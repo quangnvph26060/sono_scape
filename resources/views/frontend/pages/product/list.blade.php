@@ -46,9 +46,9 @@
                                             <div class="relative img-product">
                                                 <a href="{{ route('product.detail', $product->slug) }}"
                                                     class="d-block relative">
-                                                    <img src="{{ showImage($product->images[0]) }}"
+                                                    <img src="{{ showImage($product->main_image) }}"
                                                         width="100%" height="100%"
-                                                        data-isrc="{{ showImage($product->images[0]) }}"
+                                                        data-isrc="{{ showImage($product->main_image) }}"
                                                         class="lazyload" alt="{{ $product->name }}"
                                                         aria-label="{{ $product->name }}" />
                                                 </a>
