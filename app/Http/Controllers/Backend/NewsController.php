@@ -39,7 +39,7 @@ class NewsController extends Controller
                 ->addColumn('action', function ($row) {
                     return '
                         <div class="btn-group">
-                           <button class="btn btn-danger btn-sm delete-btn" data-url="' . route('admin.news.destroy', $row) . '">    <i class="fas fa-trash-alt"></i></button>
+                           <button class="btn btn-danger btn-sm delete-btn" data-url="' . route('admin.news.destroy', $row->id) . '">    <i class="fas fa-trash-alt"></i></button>
                         </div>
                     ';
                 })
@@ -165,14 +165,17 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(News $news)
+    public function destroy(string $id)
     {
-        $news->delete();
+        $news = News::withoutGlobalScope('published')->findOrFail($id);
 
         deleteImage($news->featured_image);
 
+        $news->delete();
+
         return response()->json([
-            'status' => true
+            'status' => true,
+            'message' => 'News item deleted successfully'
         ]);
     }
 
