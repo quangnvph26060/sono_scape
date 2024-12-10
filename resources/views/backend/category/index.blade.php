@@ -150,7 +150,7 @@
 
                             @if (request()->get('type') == 'products')
                                 sản phẩm
-                                @else
+                            @else
                                 bài viết
                             @endif
                         </h4>
@@ -319,7 +319,7 @@
                 $('#addCategoryModal').modal('show');
             });
 
-            $('.edit-category-btn').on('click', function() {
+            $(document).on('click', '.edit-category-btn', function() {
                 const categoryId = $(this).data('id'); // Lấy ID danh mục từ nút bấm
 
                 // Gửi AJAX để lấy chi tiết danh mục
