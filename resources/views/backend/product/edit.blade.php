@@ -94,12 +94,18 @@
                         <div class="form-group mb-3">
                             <label for="main_image" class="form-label">Ảnh đại diện sản phẩm</label>
 
-                            <!-- Hiển thị ảnh cũ -->
+                            <!-- Hiển thị ảnh cũ nếu có -->
                             @if ($product->main_image)
                                 <div class="mb-3">
                                     <img id="current-image" src="{{ asset('storage/' . $product->main_image) }}"
                                         alt="Ảnh đại diện hiện tại"
                                         style="max-width: 200px; max-height: 200px; border: 1px solid #ddd;">
+                                </div>
+                            @else
+                                <!-- Placeholder khi không có ảnh cũ -->
+                                <div class="mb-3">
+                                    <img id="current-image" src="" alt="Ảnh mới"
+                                        style="max-width: 200px; max-height: 200px; border: 1px solid #ddd; display: none;">
                                 </div>
                             @endif
 
@@ -141,7 +147,7 @@
                     <div class="form-group mb-3">
                         <label for="keyword_seo" class="form-label">Từ khóa SEO</label>
                         <input value="{{ $product->keyword_seo }}" type="text" class="form-control"
-                            name="keyword_seo" id="keyword_seo" placeholder="Nhập từ khóa SEO">
+                            name="keyword_seo" id="product_keyword_seo" placeholder="Nhập từ khóa SEO">
                     </div>
                 </div>
             </div>
@@ -177,7 +183,10 @@
             if (file) {
                 // Tạo URL từ file đã chọn
                 const objectURL = URL.createObjectURL(file);
+
+                // Gán URL vào src và hiển thị ảnh
                 previewImage.src = objectURL;
+                previewImage.style.display = 'block';
             }
         });
     </script>
