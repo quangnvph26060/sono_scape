@@ -168,7 +168,7 @@
             });
 
             tagify.on('add', () => {
-                adjustTagifyHeight(tagify_1.DOM.scope);
+                adjustTagifyHeight(tagify.DOM.scope);
             });
 
             function adjustTagifyHeight(scopeElement) {
