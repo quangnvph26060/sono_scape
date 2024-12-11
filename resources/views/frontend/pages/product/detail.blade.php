@@ -6,12 +6,13 @@
 
 
 @section('og_title', $product->title_seo)
-@section('og_description', $product->description)
+@section('og_description', $product->description_seo)
 @section('og_image', showImage($product->main_image))
 {{-- html_entity_decode --}}
 
 
 @section('content')
+
     <x-breadcrumb :title="'Sản phẩm'" :name="$product->name" />
 
     <div class="page-content">
@@ -135,7 +136,7 @@
                                         @if ($product->file_pdf)
                                             <a href="{{ route('file.download', $product->id) }}"
                                                 style="font-weight: bold; border-radius: 5px; color: #fff; background: #009FAB; border:none; padding: 5px;">
-                                                Tải file catalog <i class="fas fa-download ml-2"></i>
+                                                Xem Catalogue <i class="fas fa-download ml-2"></i>
                                             </a>
                                         @endif
 

@@ -35,7 +35,9 @@ class ProductService
 
             if (request()->hasFile('file_pdf')) {
                 $file = request()->file('file_pdf');
+                $fileName = $file->getClientOriginalName();
                 $data['file_pdf'] = file_get_contents($file->getRealPath());
+                $data['file_name'] = $fileName;
             }
 
             $product = $this->product->create($data);
@@ -47,7 +49,6 @@ class ProductService
             } else {
                 $main_image = null; // Xử lý trường hợp không có tệp tải lên
             }
-
 
             $images = [];
 
@@ -93,7 +94,9 @@ class ProductService
 
             if (request()->hasFile('file_pdf')) {
                 $file = request()->file('file_pdf');
+                $fileName = $file->getClientOriginalName();
                 $data['file_pdf'] = file_get_contents($file->getRealPath());
+                $data['file_name'] = $fileName;
             }
 
             // [
