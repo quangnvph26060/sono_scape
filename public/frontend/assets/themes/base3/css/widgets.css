@@ -2153,7 +2153,7 @@ header .header-top .language-button .dropdown-list li a:hover {
   header .header-container .textAlign-right {
     display: none;
   }
-  header .header-top > div {
+  header .header-top .row.align-items-center  {
     display: flex;
   }
   header .textAlign-right {
