@@ -67,7 +67,7 @@
                                         <input type="hidden" name="product_price" value="0" />
                                         <input type="hidden" name="product_sale_price" value="0" />
                                     </div>
-                                    <hr class="divider mb-0" />
+                                    <hr class="divider" />
                                     @if ($product->sub_description)
                                         <div class="product-content-des">
                                             {!! $product->sub_description !!}
@@ -162,7 +162,7 @@
 
                                         </div>
                                     </div>
-                                    <hr class="divider" />
+                                    <hr class="divider" style="margin-top: 1.5rem;" />
                                 </div>
                             </form>
                             <div class="share-container" style="margin-top: 20px">
