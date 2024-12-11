@@ -62,15 +62,15 @@
                             </div>
 
                             <div class="form-group mb-3 col-lg-6">
-                                <label for="manufacturer">Hãng sản xuất</label>
-                                <input type="text" name="manufacturer" value="{{ old('manufacturer') }}" id=""
-                                    class="form-control" placeholder="Nhập hãng sản xuất">
-                            </div>
-
-                            <div class="form-group mb-3 col-lg-6">
                                 <label for="model">Model</label>
                                 <input type="text" name="model" id="" value="{{ old('model') }}"
                                     class="form-control" placeholder="Nhập model">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="manufacturer">Thương hiệu</label>
+                                <input type="text" name="manufacturer" value="{{ old('manufacturer') }}" id=""
+                                    class="form-control" placeholder="Nhập Thương hiệu">
                             </div>
 
                             <div class="form-group mb-3 col-lg-6">

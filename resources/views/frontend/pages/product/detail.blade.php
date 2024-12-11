@@ -99,7 +99,7 @@
                                                 <p class="mb-1 d-flex">
                                                     @if ($product->sale_price)
                                                         <span>Giá chỉ từ:</span>
-                                                        <span style="color: red; font-weight: bold; margin-left:18px">
+                                                        <span style="color: red; font-weight: bold; margin-left:40px">
                                                             ₫{{ number_format($product->sale_price, 0, '', '.') }}
                                                         </span>
                                                         <span
@@ -119,7 +119,15 @@
                                                 <p class="mb-1 d-flex">
                                                     <span> Model:</span>
                                                     <span class=""
-                                                        style="margin-left: 40px">{{ $product->model }}</span>
+                                                        style="margin-left: 60px">{{ $product->model }}</span>
+                                                </p>
+                                            @endif
+
+                                            @if ($product->manufacturer)
+                                                <p class="mb-1 d-flex">
+                                                    <span> Thương hiệu:</span>
+                                                    <span class=""
+                                                        style="margin-left: 20px">{{ $product->manufacturer }}</span>
                                                 </p>
                                             @endif
 
@@ -127,21 +135,21 @@
                                                 <p class="mb-1 d-flex">
                                                     <span>Bảo hành:</span>
                                                     <span class=""
-                                                        style="margin-left: 18px">{{ $product->guarantee }} tháng</span>
+                                                        style="margin-left: 38px">{{ $product->guarantee }} tháng</span>
                                                 </p>
                                             @endif
 
                                             @if ($product->status)
                                                 <p class="mb-1">
                                                     Tình trạng: <span class=""
-                                                        style="margin-left: 10px">{{ $product->status }}</span>
+                                                        style="margin-left: 30px">{{ $product->status }}</span>
                                                 </p>
                                             @endif
 
                                             @if ($product->origin)
                                                 <p class="mb-1">
                                                     Xuất xứ: <span class=""
-                                                        style="margin-left: 27px">{{ $product->origin }}</span>
+                                                        style="margin-left: 47px">{{ $product->origin }}</span>
                                                 </p>
                                             @endif
 
