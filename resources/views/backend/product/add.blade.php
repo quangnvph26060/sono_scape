@@ -31,16 +31,10 @@
                             <!-- Cột bên trái -->
 
                             <!-- Tên sản phẩm -->
-                            <div class="form-group mb-3 col-lg-6">
+                            <div class="form-group mb-3 col-lg-12">
                                 <label for="name" class="form-label">Tên sản phẩm</label>
                                 <input value="{{ old('name') }}" type="text" class="form-control" name="name"
                                     id="name" placeholder="Nhập tên sản phẩm">
-                            </div>
-
-                            <div class="form-group mb-3 col-lg-6">
-                                <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
-                                <input value="{{ old('guarantee') }}" type="number" class="form-control" name="guarantee"
-                                    id="guarantee" placeholder="Nhập số tháng bảo hành">
                             </div>
 
                             <!-- Giá -->
@@ -53,6 +47,12 @@
                                 <label for="price" class="form-label">Giá khuyến mãi</label>
                                 <input value="{{ old('sale_price') }}" type="number" class="form-control" name="sale_price"
                                     id="sale_price" placeholder="Nhập giá khuyến mãi sản phẩm">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
+                                <input value="{{ old('guarantee') }}" type="number" class="form-control" name="guarantee"
+                                    id="guarantee" placeholder="Nhập số tháng bảo hành">
                             </div>
 
                             <div class="form-group mb-3 col-lg-6">
@@ -71,6 +71,12 @@
                                 <label for="model">Model</label>
                                 <input type="text" name="model" id="" value="{{ old('model') }}"
                                     class="form-control" placeholder="Nhập model">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="origin">Xuất xứ</label>
+                                <input type="text" name="origin" id="" value="{{ old('origin') }}"
+                                    class="form-control" placeholder="Nhập xuất xứ">
                             </div>
 
                             <div class="form-group mb-3 col-lg-6">
@@ -155,7 +161,7 @@
                                 src="{{ showImage('') }}" alt=""
                                 onclick="document.getElementById('main_image').click();">
 
-                            <input type="file" class="form-control d-none" id="main_image"  name="main_image"
+                            <input type="file" class="form-control d-none" id="main_image" name="main_image"
                                 accept="image/*" onchange="previewImage(event, 'show_main_image')">
                         </div>
 
