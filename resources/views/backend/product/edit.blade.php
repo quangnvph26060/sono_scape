@@ -92,6 +92,12 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group mb-3">
+                            <label for="main_image" class="form-label">Tải file PDF</label>
+                            <input type="file" class="form-control" name="file_pdf" max="1">
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group mb-3">
                             <label for="main_image" class="form-label">Ảnh đại diện sản phẩm</label>
 
                             <!-- Hiển thị ảnh cũ nếu có -->

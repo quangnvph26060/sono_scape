@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\News;
 use App\Models\Product;
 use Illuminate\Pagination\Paginator;
@@ -36,7 +37,9 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function ($view) {
             $view->with([
-                'setting' => \App\Models\Contact::first()
+                'setting' => \App\Models\Contact::first(),
+                'categoryProduct' => Category::query()->where(['type' => 'products', 'status' => 1])->get()
+
             ]);
         });
 

@@ -76,6 +76,7 @@ class ProductController extends Controller
         // $countries = Country::all();
         // $companies = Company::all();
         $categories = Category::type('products')->get();
+
         return view('backend.product.add', compact('categories'));
     }
 
@@ -95,6 +96,8 @@ class ProductController extends Controller
                 'description_seo' => 'nullable',
                 'title_seo' => 'nullable',
                 'keyword_seo' => 'nullable',
+                'category_id' => 'nullable',
+                'file_pdf' => 'nullable',
             ],
             __('request.messages'),
             [
@@ -163,7 +166,9 @@ class ProductController extends Controller
                 'sub_description' => 'Mô tả phụ',
                 'description_seo' => 'Mô tả SEO',
                 'title_seo' => 'Tiêu đề SEO',
-                'keyword_seo' => 'Từ khóa SEO'
+                'keyword_seo' => 'Từ khóa SEO',
+                'file_fdf' => 'nullable',
+
             ]
         );
 
@@ -236,7 +241,7 @@ class ProductController extends Controller
     public function detail($id)
     {
         try {
-            $categories = Category::orderByDesc('created_at')->get();
+            $categories = Category::type('products')->get();
             $product = Product::find($id);
             // $productImages = $product->whereHas('images')->get();
 

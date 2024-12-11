@@ -47,4 +47,21 @@
         });
     });
 </script>
+
+<script>
+    const toggleSubmenu = (element) => {
+        const submenu = element.closest('.nav-item').querySelector(
+        '.sub-menu'); // Tìm .sub-menu trong .nav-item cha
+        if (submenu) {
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+                element.classList.remove('active');
+            } else {
+                submenu.style.display = 'block';
+                element.classList.add('active');
+            }
+        }
+    }
+</script>
+
 @stack('scripts')
