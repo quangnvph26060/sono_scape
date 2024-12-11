@@ -58,12 +58,13 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $pdfData = $product->file_pdf;
+        $fileName = $product->file_name;
 
         return response()->stream(function () use ($pdfData) {
             echo $pdfData;
         }, 200, [
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename="product.pdf"',
+            'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
         ]);
     }
 }

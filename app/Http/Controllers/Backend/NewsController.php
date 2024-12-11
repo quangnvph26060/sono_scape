@@ -31,10 +31,10 @@ class NewsController extends Controller
                     return '<a href="' . route('admin.news.edit', $row) . '" class="two-lines" aria-label="' . $row->subject . '">' . $row->subject . '</a>';
                 })
                 ->addColumn('posted_at', function ($row) {
-                    return \Carbon\Carbon::parse($row->posted_at)->format('d/m/Y') . ' - ' . \Carbon\Carbon::parse($row->posted_at)->locale('vi')->diffForHumans();
+                    return Carbon::parse($row->posted_at)->format('d/m/Y') . ' - ' . Carbon::parse($row->posted_at)->locale('vi')->diffForHumans();
                 })
                 ->addColumn('created_at', function ($row) {
-                    return \Carbon\Carbon::parse($row->created_at)->format('d/m/Y') . ' - ' . \Carbon\Carbon::parse($row->created_at)->locale('vi')->diffForHumans();
+                    return Carbon::parse($row->created_at)->format('d/m/Y') . ' - ' . Carbon::parse($row->created_at)->locale('vi')->diffForHumans();
                 })
                 ->addColumn('action', function ($row) {
                     return '

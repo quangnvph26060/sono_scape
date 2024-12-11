@@ -25,7 +25,8 @@ class Product extends Model
         'description',
         'main_image',
         'category_id',
-        'file_pdf'
+        'file_pdf',
+        'file_name'
     ];
 
     protected $casts = [
