@@ -1,5 +1,5 @@
-<div class="header-top" style="background-color: #cccccc">
-    <div class=" row align-items-center">
+<div class="header-top " style="background-color: #cccccc">
+    <div class=" row align-items-center container">
         <div class="col-lg-6">
             <div class="section-infor-topbar relative " style="padding-top: 5px; margin-left: 140px">
                 {{-- <ul class="info-account line-right">

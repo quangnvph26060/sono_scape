@@ -72,7 +72,7 @@ class ProductController extends Controller
     {
         // $countries = Country::all();
         // $companies = Company::all();
-        $categories = Category::all();
+        $categories = Category::type('products')->get();
         return view('backend.product.add', compact('categories'));
     }
 
