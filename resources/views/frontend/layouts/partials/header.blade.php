@@ -172,13 +172,13 @@
                             <div class="phone_content" style="line-height: 20px">
                                 <span class="d-block" style="font-size: 13px">Liên hệ ngay</span>
                                 <a class="fone fw-bold text-danger" style="font-size: 16px"
-                                    href="tel:{{ $setting->name }}">{{ $setting->name }}</a>
+                                    href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
                             </div>
                         </div>
 
                         <!-- Phần icon điện thoại, sẽ hiển thị trên màn hình mobile -->
                         <div class="icon-phone-mobile d-md-none" style="text-align: right">
-                            <a target="_blank" href="tel:{{ $setting->name }}" class="btn-contact">
+                            <a target="_blank" href="tel:{{ $setting->phone }}" class="btn-contact">
                                 <i class="fas fa-phone"></i>
                             </a>
                         </div>
@@ -301,7 +301,7 @@
                             <div class="phone_content" style="line-height: 20px">
                                 <span class="d-block" style="font-size: 15px">Liên hệ ngay</span>
                                 <a class="fone fw-bold text-danger" style="font-size: 18px"
-                                    href="tel:{{ $setting->name }}">{{ $setting->name }}</a>
+                                    href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
                             </div>
                         </div>
                     </div>

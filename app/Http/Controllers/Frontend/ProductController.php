@@ -64,7 +64,8 @@ class ProductController extends Controller
             echo $pdfData;
         }, 200, [
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+            'Content-Disposition' => 'inline; filename="' . $fileName . '"',
         ]);
     }
+    // attachment
 }
