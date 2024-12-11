@@ -55,7 +55,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $categories  = Category::query()->where('type', 'posts')->latest()->pluck('name', 'id');
+        $categories  = Category::query()->type('posts')->latest()->pluck('name', 'id');
         return view('backend.news.create', compact('categories'));
     }
 

@@ -1,6 +1,12 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Giới thiệu về ' . $setting->company)
+@section('title', $introduction->name)
+@section('description', $introduction->description_seo)
+@section('keywords', $introduction->keyword_seo)
+
+
+@section('og_title', $introduction->title_seo)
+@section('og_description', $introduction->description_seo)
 
 @section('content')
     <x-breadcrumb :title="'Giới thiệu'" />
@@ -14,7 +20,7 @@
                     <!-- blog post-->
                     <article class="article-detail m-bottom-50">
                         <div class="ck_editor_content">
-                            {!! $introduction->article !!}
+                            {!! $introduction->page_description !!}
 
                         </div>
                     </article>

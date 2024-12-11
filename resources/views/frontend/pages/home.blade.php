@@ -6,7 +6,7 @@
         <div class="row">
             <div class="widget widget-slider widget-26 col-12 col-md-12" data-widget-id="26" data-widget="slider">
                 <div class="hero-wrap widget-slider widget-26 not-padding-bottom not-padding-top style-1" data-id="124">
-                    <div class="container">
+                    <div class="">
                         <div class="owl-carousel w-slider-carousel widget-content" data-total-item="3" data-responsive-0="1"
                             data-responsive-576="1" data-responsive-768="1" data-responsive-992="1" data-autoheight="true"
                             data-width="1920" data-height="800" data-animatein="fadeInDown" data-animateout="fadeOut"
