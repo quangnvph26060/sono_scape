@@ -40,7 +40,10 @@ class ProductController extends Controller
     {
         if ($request->ajax()) {
             DB::reconnect();
-            return datatables()->of(Product::select(['id', 'name', 'status', 'price', 'guarantee', 'sale_price'])->get())
+            return datatables()->of(Product::select(['id', 'name', 'status', 'price', 'guarantee', 'sale_price', 'category_id'])->get())
+                ->addColumn('category_id', function ($row) {
+                    return $row->category->name ?? '';
+                })
                 ->addColumn('status', function ($row) {
                     return $row->status ? 'Còn hàng' : 'Hết hàng';
                 })
@@ -135,6 +138,7 @@ class ProductController extends Controller
             [
                 'name' => 'required|unique:sgo_products,name',
                 'price' => 'nullable|numeric',
+                'category_id' => 'nullable',
                 'sale_price' => 'nullable|numeric',
                 'images' => 'nullable|array|min:1',
                 'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
@@ -150,6 +154,7 @@ class ProductController extends Controller
             [
                 'name' => 'Tên sản phẩm',
                 'price' => 'Giá',
+                'category_id' => 'Danh mục sản phẩm',
                 'image' => 'Hiển thị',
                 'status' => 'Trạng thái',
                 'sale_price' => 'Giá khuyến mãi',
@@ -161,6 +166,8 @@ class ProductController extends Controller
                 'keyword_seo' => 'Từ khóa SEO'
             ]
         );
+
+        // dd($request->all());
         try {
             $product = $this->productService->addNewProduct($request->all());
 

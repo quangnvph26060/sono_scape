@@ -5,6 +5,7 @@
             <th>STT</th>
             <th>Tên danh mục</th>
             <th>Loại</th>
+            <th>Trạng thái</th>
             <th style="text-align: center">Hành động</th>
         </tr>
     </thead>
@@ -15,6 +16,13 @@
                     <td>{{ ($categories->currentPage() - 1) * $categories->perPage() + $loop->index + 1 }}</td>
                     <td>{{ $value->name ?? '' }}</td>
                     <td>{{ $value->type == 'posts' ? 'Bài viết' : 'Sản phẩm' }}</td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" class="toggle-status" data-id="{{ $value->id }}"
+                                {{ $value->status == 1 ? 'checked' : '' }}>
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
                     <td style="text-align:center">
                         {{-- <a href="#" id="{{ $value->id }}" data-bs-toggle="modal" data-bs-target="#editUserModal" class="btn btn-primary editUserIcon"><i
                                 class="fas fa-user-edit"></i></a> --}}

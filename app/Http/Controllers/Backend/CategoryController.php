@@ -98,6 +98,7 @@ class CategoryController extends Controller
                 'title_seo' => 'nullable|max:100',
                 'keyword_seo' => 'nullable',
                 'description_seo' => 'nullable',
+                'status' => 'nullable',
             ],
             __('request.messages'),
             [
@@ -105,6 +106,7 @@ class CategoryController extends Controller
                 'title_seo' => 'Tiêu đề SEO',
                 'description_seo' => 'Mô tả SEO',
                 'keyword_seo' => 'Từ khóa SEO',
+                'status' => 'Trạng thái',
             ]
         );
 
@@ -169,6 +171,21 @@ class CategoryController extends Controller
         } catch (Exception $e) {
             Log::error('Failed to find this Category: ' . $e->getMessage());
             return response()->json(['success' => false, 'message' => 'Tìm danh mục thất bại']);
+        }
+    }
+
+    public function updateCategoryStatus(Request $request)
+    {
+        try{
+            $category = Category::findOrFail($request->id);
+            $category->status = $request->input('status');
+            $category->save();
+            return response()->json(['success' => true, 'message' => 'Cập nhật trạng thái danh mục thành công']);
+        }
+        catch(Exception $e)
+        {
+            Log::error('Failed to update category status: ' .$e->getMessage());
+            return response()->json(['success' => false, 'message' => 'Cập nhật trạng thái danh mục thất bại']);
         }
     }
 }
