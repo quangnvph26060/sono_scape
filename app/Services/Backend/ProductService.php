@@ -30,22 +30,16 @@ class ProductService
         try {
             DB::beginTransaction();
 
-            $price = isset($data['price']) ? preg_replace('/[^\d]/', '', $data['price']) : 0;
-            $salePrice = isset($data['sale_price']) ? preg_replace('/[^\d]/', '', $data['sale_price']) : 0;
+            $data['price'] = isset($data['price']) ? preg_replace('/[^\d]/', '', $data['price']) : 0;
+            $data['sale_price'] = isset($data['sale_price']) ? preg_replace('/[^\d]/', '', $data['sale_price']) : 0;
 
-            $product = $this->product->create([
-                'name' => $data['name'],
-                'category_id' => $data['category_id'],
-                'guarantee' => $data['guarantee'],
-                'price' => $price,
-                'status' => $data['status'],
-                'description' => $data['description'],
-                'sub_description' => $data['sub_description'],
-                'sale_price' => $salePrice,
-                'title_seo' => $data['title_seo'],
-                'description_seo' => $data['description_seo'],
-                'keyword_seo' => $data['keyword_seo'],
-            ]);
+            if (request()->hasFile('file_pdf')) {
+                $file = request()->file('file_pdf');
+                $data['file_pdf'] = file_get_contents($file->getRealPath());
+            }
+
+            $product = $this->product->create($data);
+
             if (request()->hasFile('main_image')) { // Kiểm tra xem file có được upload hay không
                 $file = request()->file('main_image'); // Lấy tệp từ request
                 $mainImageName = $file->getClientOriginalName();
@@ -83,8 +77,8 @@ class ProductService
         try {
             DB::beginTransaction();
 
-            $price = isset($data['price']) ? preg_replace('/[^\d]/', '', $data['price']) : 0;
-            $salePrice = isset($data['sale_price']) ? preg_replace('/[^\d]/', '', $data['sale_price']) : 0;
+            $data['price'] = isset($data['price']) ? preg_replace('/[^\d]/', '', $data['price']) : 0;
+            $data['sale_price'] = isset($data['sale_price']) ? preg_replace('/[^\d]/', '', $data['sale_price']) : 0;
 
             $product = $this->product->find($id);
 
@@ -96,18 +90,28 @@ class ProductService
             }
 
 
-            $product->update([
-                'name' => $data['name'],
-                'guarantee' => $data['guarantee'],
-                'price' => $price,
-                'status' => $data['status'],
-                'description' => $data['description'],
-                'sub_description' => $data['sub_description'],
-                'sale_price' => $salePrice,
-                'title_seo' => $data['title_seo'],
-                'description_seo' => $data['description_seo'],
-                'keyword_seo' => $data['keyword_seo'],
-            ]);
+
+            if (request()->hasFile('file_pdf')) {
+                $file = request()->file('file_pdf');
+                $data['file_pdf'] = file_get_contents($file->getRealPath());
+            }
+
+            // [
+            //                 'name' => $data['name'],
+            //                 'guarantee' => $data['guarantee'],
+            //                 'price' => $price,
+            //                 'status' => $data['status'],
+            //                 'description' => $data['description'],
+            //                 'sub_description' => $data['sub_description'],
+            //                 'sale_price' => $salePrice,
+            //                 'title_seo' => $data['title_seo'],
+            //                 'description_seo' => $data['description_seo'],
+            //                 'keyword_seo' => $data['keyword_seo'],
+            //                 'category_id' => $data['category_id'],
+            //                 'file_pdf' => $fileData,
+            //             ]
+
+            $product->update($data);
 
 
             $images = $product->images;

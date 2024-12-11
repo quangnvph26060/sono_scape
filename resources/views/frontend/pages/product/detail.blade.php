@@ -88,30 +88,29 @@
 
 
                                     @if ($product->price || $product->sale_price)
-                                            <p class="mb-1">
-                                                @if ($product->sale_price)
-                                                    Giá chỉ từ:
-                                                    <span style="color: red; font-weight: bold; margin-left:10px">
-                                                        ₫{{ number_format($product->sale_price, 0, '', '.') }}
-                                                    </span>
-                                                    <span
-                                                        style="text-decoration: line-through; color: gray; margin-left: 8px;">
-                                                        ₫{{ number_format($product->price, 0, '', '.') }}
-                                                    </span>
-                                                @else
-                                                    Giá chỉ từ: <span style="color: red; font-weight: bold;">
-                                                        ₫{{ number_format($product->price, 0, '', '.') }}
-                                                    </span>
-                                                @endif
+                                        <p class="mb-1">
+                                            @if ($product->sale_price)
+                                                Giá chỉ từ:
+                                                <span style="color: red; font-weight: bold; margin-left:10px">
+                                                    ₫{{ number_format($product->sale_price, 0, '', '.') }}
+                                                </span>
+                                                <span style="text-decoration: line-through; color: gray; margin-left: 8px;">
+                                                    ₫{{ number_format($product->price, 0, '', '.') }}
+                                                </span>
+                                            @else
+                                                Giá chỉ từ: <span style="color: red; font-weight: bold;">
+                                                    ₫{{ number_format($product->price, 0, '', '.') }}
+                                                </span>
+                                            @endif
+                                        </p>
 
-                                            <p class="mb-1">
-                                                Bảo hành: <span class="ml-2">{{ $product->guarantee }}</span> tháng
-
-                                            </p>
-                                            </p>
-                                        <hr class="divider" />
                                     @endif
 
+                                    <p class="mb-1">
+                                        Bảo hành: <span class="ml-2">{{ $product->guarantee }}</span> tháng
+
+                                    </p>
+                                    <hr class="divider" />
                                     <!-- Thuộc tính -->
                                     <div class="product-infor">
                                         <div class="row desc info-extra inventory">
@@ -133,6 +132,13 @@
                                                 title="{{ $product->name }}">Liên hệ <i style="margin-left: 5px"
                                                     class="fa fa-phone-alt" aria-hidden="true"></i></a>
                                         </div>
+                                        @if ($product->file_pdf)
+                                            <a href="{{ route('file.download', $product->id) }}"
+                                                style="font-weight: bold; border-radius: 5px; color: #fff; background: #009FAB; border:none; padding: 5px;">
+                                                Tải file catalog <i class="fas fa-download ml-2"></i>
+                                            </a>
+                                        @endif
+
                                     </div>
                                     <hr class="divider" />
                                 </div>
@@ -378,6 +384,15 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('frontend/assets/plugins/swiper/swiper-bundle.min.css') }}" />
     <style>
+        .product-content-des ul {
+            margin-top: 1rem;
+        }
+
+        .tab-content ul {
+            padding-left: 40px !important;
+            list-style: unset !important;
+        }
+
         .swiper-container {
             width: 100%;
             padding: 0px 5px;

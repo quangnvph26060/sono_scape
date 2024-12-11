@@ -102,11 +102,25 @@
                                         </li>
 
                                         <li class="nav-item mega_menu relative wb-header-menu-item">
-                                            <a class="nav-link" href="{{ route('product.list') }}"
-                                                aria-label="{{ $setting->company }}">
-                                                SẢN PHẨM
-                                            </a>
+                                            <div style="display: flex; color: #fff">
+                                                <a class="nav-link" style="color: #fff"
+                                                    href="{{ route('product.list') }}"
+                                                    aria-label="{{ $setting->company }}">
+                                                    SẢN PHẨM
+
+                                                </a>
+                                                <span class="toggle-submenu" onclick="toggleSubmenu(this)">+</span>
+                                            </div>
+                                            <!-- Nút toggle để mở danh mục -->
+                                            <ul class="dropdown-menu sub-menu">
+                                                @foreach ($categoryProduct as $item)
+                                                    <li><a
+                                                            href="{{ route('product.detail', $item->slug) }}">{{ $item->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </li>
+
 
                                         <li class="nav-item mega_menu relative wb-header-menu-item">
                                             <a class="nav-link" href="{{ route('news.list') }}"
@@ -329,12 +343,20 @@
                                         </li>
 
                                         <li
-                                            class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'product.list') active @endif">
+                                            class="nav-item mega_menu relative wb-header-menu-item @if (Route::currentRouteName() == 'product.list') active @endif">
                                             <a class="nav-link" href="{{ route('product.list') }}"
-                                                aria-label="MÁY SIÊU ÂM  ">
+                                                aria-label="SẢN PHẨM">
                                                 SẢN PHẨM
                                             </a>
+                                            <!-- Danh mục hiển thị khi hover -->
+                                            <ul class="dropdown-menu sub-menu">
+                                                @foreach ($categoryProduct as $item)
+                                                    <li><a href="{{ route('product.detail', $item->slug) }}">{{ $item->name }}</a></li>
+                                                @endforeach
+                                            </ul>
                                         </li>
+
+
 
                                         <li
                                             class="nav-item mega_menu relative wb-header-menu-item  @if (Route::currentRouteName() == 'news.list') active @endif">
