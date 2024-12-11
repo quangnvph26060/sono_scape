@@ -149,16 +149,16 @@
                                     </div>
                                     <!-- Nút đặt mua -->
                                     <div class="product-oder row">
-                                        <div class="col-sm-6  order-now">
+                                        <div class="col-sm-6  order-now" style="padding-right: 5px">
                                             <a href="{{ route('contact', $product->slug) }}" rel="nofollow"
                                                 class="btn btn--l btn-primary btn-order wb-main-order btn-item buy_now"
                                                 title="{{ $product->name }}">Liên hệ <i style="margin-left: 5px"
                                                     class="fa fa-phone-alt" aria-hidden="true"></i></a>
                                         </div>
-                                        <div class="col-sm-6 order-now">
+                                        <div class="col-sm-6 order-now" style="padding-left: 5px">
                                             @if ($product->file_pdf)
                                                 <a target="_bank" href="{{ route('file.download', $product->id) }}"
-                                                    style="font-weight: bold; border-radius: 5px; color: #fff; background: #009FAB; border:none; padding: 5px; width: 100%; display: block; text-align: center">
+                                                    style="font-weight: bold; border-radius: 3px; color: #fff; background: #009FAB; border:none; padding: 6px; width: 100%; display: block; text-align: center">
                                                     Xem Catalogue <i class="fas fa-download ml-2"></i>
                                                 </a>
                                             @endif
