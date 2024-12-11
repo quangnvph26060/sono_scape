@@ -157,7 +157,7 @@
                                         </div>
                                         <div class="col-sm-6 order-now">
                                             @if ($product->file_pdf)
-                                                <a href="{{ route('file.download', $product->id) }}"
+                                                <a target="_bank" href="{{ route('file.download', $product->id) }}"
                                                     style="font-weight: bold; border-radius: 5px; color: #fff; background: #009FAB; border:none; padding: 5px; width: 100%; display: block; text-align: center">
                                                     Xem Catalogue <i class="fas fa-download ml-2"></i>
                                                 </a>

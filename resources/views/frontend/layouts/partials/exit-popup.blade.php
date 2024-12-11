@@ -2,7 +2,7 @@
 <div class="float-button">
     <div
         class="btn-quick-alo-phone btn-quick-alo-green btn-quick-alo-show phone-mobile edit_btn_quick_phone position_0 left_position">
-        <a id="btn_hotline" href="tel:{{$setting->name}}" rel="nofollow" aria-label="Hotline">
+        <a id="btn_hotline" href="tel:{{$setting->phone}}" rel="nofollow" aria-label="Hotline">
             <div class="btn-quick-alo-ph-circle edit_btn_quick_ph_circle"></div>
             <div class="btn-quick-alo-ph-circle-fill edit_btn_quick_ph_circle_fill"></div>
             <div class="btn-quick-alo-ph-img-circle edit_btn_quick_ph_img_circle"
@@ -14,7 +14,7 @@
     </div>
     <div
         class="btn-quick-mail-phone btn-quick-mail-green btn-quick-mail-show phone-mobile edit_btn_quick_phone position_1 left_position">
-        <a id="btn_zalo" href="https://zalo.me/{{$setting->name}}" rel="nofollow" target="_blank">
+        <a id="btn_zalo" href="https://zalo.me/{{$setting->phone}}" rel="nofollow" target="_blank">
             <div class="btn-quick-mail-ph-circle edit_btn_quick_ph_circle"></div>
             <div class="btn-quick-mail-ph-circle-fill edit_btn_quick_ph_circle_fill"></div>
             <div class="btn-quick-mail-ph-img-circle edit_btn_quick_ph_img_circle"
