@@ -8,6 +8,60 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* Slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        /* Khi input được checked, thay đổi màu nền */
+        input:checked+.slider {
+            background-color: #9370db;
+            /* Màu nền khi bật */
+        }
+
+        /* Hiệu ứng khi focus */
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        /* Thay đổi vị trí của slider khi input được checked */
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
         .d-flex {
             display: flex;
             align-items: center;
@@ -84,6 +138,7 @@
         .table td {
             padding: 1rem;
             vertical-align: middle;
+            text-align: center
         }
 
         .table th {
@@ -216,7 +271,13 @@
                         </div>
 
                         <input type="hidden" name="type" value="{{ request()->get('type') }}">
-
+                        <div class="form-group mb-3">
+                            <label for="status">Trạng thái</label>
+                            <select class="form-select" id="status" name="status">
+                                <option value="1">Kích hoạt</option>
+                                <option value="0">Tắt</option>
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="title_seo" class="form-label">Tiêu đề SEO</label>
                             <input type="text" class="form-control" id="title_seo" name="title_seo">
@@ -257,7 +318,6 @@
                             <input type="text" class="form-control" id="edit-name" name="name">
                             <small id="name-error" class="text-danger"></small>
                         </div>
-
                         <div class="mb-3">
                             <label for="title_seo" class="form-label">Tiêu đề SEO</label>
                             <input type="text" class="form-control" id="edit-title_seo" name="title_seo">
@@ -328,15 +388,18 @@
                     type: 'GET',
                     success: function(response) {
                         if (response) {
-                            // Gán dữ liệu vào hidden input và các trường khác trong form
+                            // Gán dữ liệu vào các trường trong form
                             $('#edit-category-id').val(response.id); // Gán ID vào hidden input
                             $('#edit-name').val(response.name); // Gán tên
                             $('#edit-title_seo').val(response.title_seo ||
-                                ''); // Gán số điện thoại
+                                ''); // Gán tiêu đề SEO
                             $('#edit-description_seo').val(response.description_seo ||
-                                ''); // Gán số điện thoại
+                                ''); // Gán mô tả SEO
                             $('#edit-keyword_seo').val(response.keyword_seo ||
-                                ''); // Gán số điện thoại
+                                ''); // Gán từ khóa SEO
+
+                            // Truyền giá trị vào dropdown
+                            $('#edit-status').val(response.status).change();
 
                             // Hiển thị modal
                             $('#editCategoryModal').modal('show');
@@ -351,6 +414,7 @@
                     }
                 });
             });
+
 
             // Thêm danh mục mới
             $('#add-category-form').on('submit', function(e) {
@@ -497,56 +561,48 @@
                 }
             });
 
-            // $('#category-search-query').on('keyup', function() {
-            //     let query = $(this).val().trim();
-            //     updateTable(query);
-            // });
-
-            // function updateTable(query) {
-            //     $.ajax({
-            //         url: "{{ route('admin.category.search') }}", // Route tìm kiếm
-            //         type: 'GET',
-            //         data: {
-            //             query: query
-            //         }, // Gửi từ khóa tìm kiếm
-            //         success: function(response) {
-            //             if (response.success) {
-            //                 let htmlContent = '';
-            //                 if (response.customers.length > 0) {
-            //                     response.customers.forEach(function(customer) {
-            //                         htmlContent += `
-        //                     <tr>
-        //                         <td>${customer.id}</td>
-        //                         <td>${customer.name}</td>
-        //                         <td>${customer.phone}</td>
-        //                         <td>
-        //                             <a href="javascript:void(0)" class="btn btn-warning edit-btn" data-id="${customer.id}">
-        //                                 <i class="fas fa-wrench"></i>
-        //                             </a>
-        //                             <a href="javascript:void(0)" class="btn btn-danger delete-category-btn" data-url="/admin/category/delete/${customer.id}">
-        //                                 <i class="fas fa-trash-alt"></i>
-        //                             </a>
-        //                         </td>
-        //                     </tr>`;
-            //                     });
-            //                 } else {
-            //                     htmlContent = `
-        //                 <tr>
-        //                     <td colspan="4" class="text-center">Không tìm thấy kết quả</td>
-        //                 </tr>`;
-            //                 }
-
-            //                 // Cập nhật bảng
-            //                 $('#table-content tbody').html(htmlContent);
-            //             } else {
-            //                 console.log('Error:', response.error);
-            //             }
-            //         },
-            //         error: function(xhr) {
-            //             console.error(xhr.responseText);
-            //         }
-            //     });
-            // }
+            $('.toggle-status').on('change', function() {
+                var status = $(this).is(':checked') ? 1 : 0;
+                var categoryId = $(this).data('id');
+                // Gửi AJAX request để cập nhật trạng thái
+                $.ajax({
+                    url: '{{ route('admin.category.updateStatus') }}', // Đường dẫn tới route update
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}', // Bảo mật với CSRF token
+                        status: status,
+                        id: categoryId,
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thành công',
+                                text: 'Cập nhật trạng thái thành công!',
+                                timer: 1500,
+                                showConfirmButton: false,
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Lỗi',
+                                text: 'Cập nhật trạng thái thất bại!',
+                                timer: 1500,
+                                showConfirmButton: false,
+                            });
+                        }
+                    },
+                    error: function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: 'Có lỗi xảy ra, vui lòng thử lại!',
+                            timer: 1500,
+                            showConfirmButton: false,
+                        });
+                    }
+                });
+            });
         });
     </script>
 @endsection

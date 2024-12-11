@@ -35,6 +35,7 @@ class ProductService
 
             $product = $this->product->create([
                 'name' => $data['name'],
+                'category_id' => $data['category_id'],
                 'guarantee' => $data['guarantee'],
                 'price' => $price,
                 'status' => $data['status'],
@@ -68,6 +69,7 @@ class ProductService
                 'images' => $images,
                 'main_image' => $main_image
             ]);
+
             DB::commit();
             return $product;
         } catch (Exception $e) {

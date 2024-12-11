@@ -15,6 +15,7 @@
                     <thead>
                         <th>STT</th>
                         <th>Tên</th>
+                        <th>Danh mục</th>
                         <th>Bảo hành (Tháng)</th>
                         <th>Giá</th>
                         <th>Giá khuyến mãi</th>
@@ -51,6 +52,10 @@
                             return '<a href="' + '{{ route('admin.product.detail', '__id__') }}'
                                 .replace('__id__', row.id) + '">' + data + '</a>';
                         }
+                    },
+                    {
+                        data: 'category_id',
+                        name: 'category_id'
                     },
                     {
                         data: 'guarantee',
@@ -172,8 +177,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css" rel="stylesheet">
     <style>
-      table tr td:last-child{
-        text-align: center;
-      }
+        table tr td:last-child {
+            text-align: center;
+        }
     </style>
 @endpush

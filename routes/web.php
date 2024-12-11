@@ -62,6 +62,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/update/{id}', [CategoryController::class, 'update'])->name('update');
             Route::post('/store', [CategoryController::class, 'store'])->name('store');
             Route::get('/detail/{id}', [CategoryController::class, 'detail'])->name('detail');
+            Route::post('/update-status', [CategoryController::class, 'updateCategoryStatus'])->name('updateStatus');
         });
 
         route::controller(ContactController::class)->group(function () {
