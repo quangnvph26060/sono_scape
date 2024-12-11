@@ -132,12 +132,13 @@
                                                 title="{{ $product->name }}">Liên hệ <i style="margin-left: 5px"
                                                     class="fa fa-phone-alt" aria-hidden="true"></i></a>
                                         </div>
-                                        <a href="{{ route('file.download', $product->id) }}"
-                                            style="font-weight: bold; border-radius: 5px; color: #fff; background: #009FAB; border:none; padding: 5px;">
-                                            Tải file catalog <i class="fas fa-download ml-2"></i>
+                                        @if ($product->file_pdf)
+                                            <a href="{{ route('file.download', $product->id) }}"
+                                                style="font-weight: bold; border-radius: 5px; color: #fff; background: #009FAB; border:none; padding: 5px;">
+                                                Tải file catalog <i class="fas fa-download ml-2"></i>
+                                            </a>
+                                        @endif
 
-
-                                        </a>
                                     </div>
                                     <hr class="divider" />
                                 </div>
