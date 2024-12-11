@@ -28,7 +28,8 @@ class Product extends Model
         'file_pdf',
         'file_name',
         'manufacturer',
-        'model'
+        'model',
+        'origin'
     ];
 
     protected $casts = [

@@ -67,7 +67,7 @@
                                         <input type="hidden" name="product_price" value="0" />
                                         <input type="hidden" name="product_sale_price" value="0" />
                                     </div>
-                                    <hr class="divider" />
+                                    <hr class="divider mt-0" />
                                     @if ($product->sub_description)
                                         <div class="product-content-des">
                                             {!! $product->sub_description !!}
@@ -115,30 +115,33 @@
 
                                             @endif
 
-                                            @if ($product->guarantee)
-                                                <p class="mb-1 d-flex">
-                                                    <span>Bảo hành:</span>
-                                                    <span class="" style="margin-left: 18px">{{ $product->guarantee }} tháng</span>
-                                                </p>
-                                            @endif
-
                                             @if ($product->model)
                                                 <p class="mb-1 d-flex">
                                                     <span> Model:</span>
-                                                    <span class="" style="margin-left: 40px">{{ $product->model }}</span>
+                                                    <span class=""
+                                                        style="margin-left: 40px">{{ $product->model }}</span>
+                                                </p>
+                                            @endif
+
+                                            @if ($product->guarantee)
+                                                <p class="mb-1 d-flex">
+                                                    <span>Bảo hành:</span>
+                                                    <span class=""
+                                                        style="margin-left: 18px">{{ $product->guarantee }} tháng</span>
                                                 </p>
                                             @endif
 
                                             @if ($product->status)
                                                 <p class="mb-1">
-                                                    Tình trạng: <span class="" style="margin-left: 10px">{{ $product->status }}</span> tháng
+                                                    Tình trạng: <span class=""
+                                                        style="margin-left: 10px">{{ $product->status }}</span>
                                                 </p>
                                             @endif
 
-                                            @if ($product->category)
+                                            @if ($product->origin)
                                                 <p class="mb-1">
-                                                    Danh mục: <span class="" style="margin-left: 10px">{{ $product->category->name }}</span>
-                                                    tháng
+                                                    Xuất xứ: <span class=""
+                                                        style="margin-left: 27px">{{ $product->origin }}</span>
                                                 </p>
                                             @endif
 

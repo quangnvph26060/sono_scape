@@ -44,16 +44,10 @@
                             <!-- Cột bên trái -->
 
                             <!-- Tên sản phẩm -->
-                            <div class="form-group mb-3 col-lg-6">
+                            <div class="form-group mb-3 col-lg-12">
                                 <label for="name" class="form-label">Tên sản phẩm</label>
                                 <input value="{{ $product->name }}" type="text" class="form-control" name="name"
                                     id="name" placeholder="Nhập tên sản phẩm">
-                            </div>
-
-                            <div class="form-group mb-3 col-lg-6">
-                                <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
-                                <input value="{{ $product->guarantee }}" type="number" class="form-control"
-                                    name="guarantee" id="guarantee" placeholder="Nhập số tháng bảo hành">
                             </div>
 
                             <!-- Giá -->
@@ -62,6 +56,7 @@
                                 <input value="{{ $product->price }}" type="number" class="form-control" name="price"
                                     id="price" placeholder="Nhập giá sản phẩm">
                             </div>
+
                             <div class="form-group mb-3 col-lg-6">
                                 <label for="price" class="form-label">Giá khuyến mãi</label>
                                 <input value="{{ $product->sale_price }}" type="number" class="form-control"
@@ -69,9 +64,15 @@
                             </div>
 
                             <div class="form-group mb-3 col-lg-6">
+                                <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
+                                <input value="{{ $product->guarantee }}" type="number" class="form-control"
+                                    name="guarantee" id="guarantee" placeholder="Nhập số tháng bảo hành">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
                                 <label for="status">Tình trạng</label>
-                                <input type="text" name="status" id="" value="{{$product->status}}" class="form-control"
-                                    placeholder="Nhập tình trạng">
+                                <input type="text" name="status" id="" value="{{ $product->status }}"
+                                    class="form-control" placeholder="Nhập tình trạng">
                             </div>
 
                             <div class="form-group mb-3 col-lg-6">
@@ -82,8 +83,14 @@
 
                             <div class="form-group mb-3 col-lg-6">
                                 <label for="model">Model</label>
-                                <input type="text" name="model"  value="{{ $product->model }}" id="" class="form-control"
-                                    placeholder="Nhập model">
+                                <input type="text" name="model" value="{{ $product->model }}" id=""
+                                    class="form-control" placeholder="Nhập model">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="origin">Xuất xứ</label>
+                                <input type="text" name="origin" id="" value="{{ $product->origin }}"
+                                    class="form-control" placeholder="Nhập xuất xứ">
                             </div>
 
                             <div class="form-group mb-3 col-lg-6">
