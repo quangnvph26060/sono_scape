@@ -4435,7 +4435,7 @@ body.product_detail .detail-product .product-title .product-detail-title {
     font-weight: 700;
 }
 body.product_detail .detail-product .product-infor {
-    margin-bottom: 12px;
+    margin: 12px 0;
 }
 body.product_detail .detail-product .product-infor .info-extra {
     color: var(--txt-color);

@@ -24,6 +24,7 @@
             </ul>
         </div>
     @endif
+
     <div class="card">
         <div class="card-header  d-flex justify-content-between">
             <h4 class="card-title">Chỉnh sửa thông tin sản phẩm {{ $product->name }}</h4>
@@ -34,37 +35,116 @@
     </div>
     <form action="{{ route('admin.product.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <!-- Cột bên trái -->
-                    <div class="col-lg-6 add_product">
-                        <!-- Tên sản phẩm -->
-                        <div class="form-group mb-3">
-                            <label for="name" class="form-label">Tên sản phẩm</label>
-                            <input value="{{ $product->name }}" type="text" class="form-control" name="name"
-                                id="name" placeholder="Nhập tên sản phẩm">
+
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Cột bên trái -->
+
+                            <!-- Tên sản phẩm -->
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="name" class="form-label">Tên sản phẩm</label>
+                                <input value="{{ $product->name }}" type="text" class="form-control" name="name"
+                                    id="name" placeholder="Nhập tên sản phẩm">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
+                                <input value="{{ $product->guarantee }}" type="number" class="form-control"
+                                    name="guarantee" id="guarantee" placeholder="Nhập số tháng bảo hành">
+                            </div>
+
+                            <!-- Giá -->
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="price" class="form-label">Giá</label>
+                                <input value="{{ $product->price }}" type="number" class="form-control" name="price"
+                                    id="price" placeholder="Nhập giá sản phẩm">
+                            </div>
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="price" class="form-label">Giá khuyến mãi</label>
+                                <input value="{{ $product->sale_price }}" type="number" class="form-control"
+                                    name="sale_price" id="sale_price" placeholder="Nhập giá khuyến mãi sản phẩm">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="status">Tình trạng</label>
+                                <input type="text" name="status" id="" value="{{$product->status}}" class="form-control"
+                                    placeholder="Nhập tình trạng">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="manufacturer">Hãng sản xuất</label>
+                                <input type="text" name="manufacturer" value="{{ $product->manufacturer }}"
+                                    id="" class="form-control" placeholder="Nhập hãng sản xuất">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="model">Model</label>
+                                <input type="text" name="model"  value="{{ $product->model }}" id="" class="form-control"
+                                    placeholder="Nhập model">
+                            </div>
+
+                            <div class="form-group mb-3 col-lg-6">
+                                <label for="main_image" class="form-label">Tải file PDF</label>
+                                <input type="file" class="form-control" name="file_pdf" max="1">
+                            </div>
+
+
+                            <div class="form-group mb-3 col-lg-12">
+                                <!-- Ảnh sản phẩm -->
+                                <div class="form-group mb-3">
+                                    <label for="images" class="form-label">Album ảnh</label>
+                                    <input type="file" class="form-control" id="images" name="images[]" multiple
+                                        accept="image/*">
+                                </div>
+                            </div>
+
+                            <!-- Mô tả -->
+                            <div class="col-lg-12 mb-3">
+                                <label for="sub_description" class="form-label">Mô tả ngắn</label>
+                                <textarea id="sub_description" class="form-control" name="sub_description" rows="10">{!! $product->sub_description !!}</textarea>
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="description" class="form-label">Mô tả chi tiết</label>
+                                <textarea id="description" class="form-control" name="description" rows="10">{!! $product->description !!}</textarea>
+                            </div>
                         </div>
-                        <!-- Giá -->
-                        <div class="form-group mb-3">
-                            <label for="price" class="form-label">Giá</label>
-                            <input value="{{ $product->price }}" type="number" class="form-control" name="price"
-                                id="price" placeholder="Nhập giá sản phẩm">
-                        </div>
-                        <!-- Giá khuyến mãi-->
-                        <div class="form-group mb-3">
-                            <label for="sale_price" class="form-label">Giá khuyễn mãi</label>
-                            <input value="{{ $product->sale_price }}" type="number" class="form-control" name="sale_price"
-                                id="sale_price" placeholder="Nhập giá khuyến mãi sản phẩm">
+                        <div class="row">
+                            <div class="form-group mb-3">
+                                <label for="title_seo" class="form-label">Tiêu đề SEO</label>
+                                <input value="{{ $product->title_seo }}" type="text" class="form-control"
+                                    name="title_seo" id="title_seo" placeholder="Nhập tiêu đề SEO">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="description_seo" class="form-label">Mô tả SEO</label>
+                                <input value="{{ $product->description_seo }}" type="text" class="form-control"
+                                    name="description_seo" id="description_seo" placeholder="Nhập mô tả SEO">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="keyword_seo" class="form-label">Từ khóa SEO</label>
+                                <input value="{{ $product->keyword_seo }}" type="text" class="form-control"
+                                    name="keyword_seo" id="keyword_seo" placeholder="Nhập từ khóa SEO">
+                            </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Xác nhận</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Danh mục</h3>
+                    </div>
 
-                    <!-- Cột bên phải -->
-                    <div class="col-lg-6 add_product">
-
-                        <div class="form-group mb-3">
-                            <label for="category_id" class="form-label">Danh mục</label>
+                    <div class="card-body">
+                        <div class="form-group">
                             <select class="form-select" name="category_id" id="category_id">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
@@ -75,91 +155,25 @@
                             </select>
                         </div>
 
-
-                        <!-- Bảo hành -->
-                        <div class="form-group mb-3">
-                            <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
-                            <input value="{{ $product->guarantee }}" type="number" class="form-control" name="guarantee"
-                                id="guarantee" placeholder="Nhập số tháng bảo hành">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="status">Trạng thái</label>
-                            <select class="form-select" id="status" name="status">
-                                <option value="1" {{ $product->status == 1 ? 'selected' : '' }}>Còn hàng</option>
-                                <option value="0" {{ $product->status == 0 ? 'selected' : '' }}>Hết hàng</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group mb-3">
-                            <label for="main_image" class="form-label">Tải file PDF</label>
-                            <input type="file" class="form-control" name="file_pdf" max="1">
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group mb-3">
-                            <label for="main_image" class="form-label">Ảnh đại diện sản phẩm</label>
-
-                            <!-- Hiển thị ảnh cũ nếu có -->
-                            @if ($product->main_image)
-                                <div class="mb-3">
-                                    <img id="current-image" src="{{ asset('storage/' . $product->main_image) }}"
-                                        alt="Ảnh đại diện hiện tại"
-                                        style="max-width: 200px; max-height: 200px; border: 1px solid #ddd;">
-                                </div>
-                            @else
-                                <!-- Placeholder khi không có ảnh cũ -->
-                                <div class="mb-3">
-                                    <img id="current-image" src="" alt="Ảnh mới"
-                                        style="max-width: 200px; max-height: 200px; border: 1px solid #ddd; display: none;">
-                                </div>
-                            @endif
-
-                            <!-- Input để chọn ảnh mới -->
-                            <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12">
-                        <!-- Ảnh sản phẩm -->
-                        <div class="form-group mb-3">
-                            <label for="images" class="form-label">Ảnh sản phẩm</label>
-                            <input type="file" class="form-control" id="images" name="images[]" multiple
-                                accept="image/*">
-                        </div>
-                    </div>
-
-                    <!-- Mô tả -->
-                    <div class="col-lg-12 mb-3">
-                        <label for="sub_description" class="form-label">Mô tả ngắn</label>
-                        <textarea id="sub_description" class="form-control" name="sub_description" rows="10">{!! $product->sub_description !!}</textarea>
-                    </div>
-                    <div class="col-lg-12">
-                        <label for="description" class="form-label">Mô tả chi tiết</label>
-                        <textarea id="description" class="form-control" name="description" rows="10">{!! $product->description !!}</textarea>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group mb-3">
-                        <label for="title_seo" class="form-label">Tiêu đề SEO</label>
-                        <input value="{{ $product->title_seo }}" type="text" class="form-control" name="title_seo"
-                            id="title_seo" placeholder="Nhập tiêu đề SEO">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Ảnh đại diện</h3>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="description_seo" class="form-label">Mô tả SEO</label>
-                        <input value="{{ $product->description_seo }}" type="text" class="form-control"
-                            name="description_seo" id="description_seo" placeholder="Nhập mô tả SEO">
+
+                    <div class="card-body">
+                        <div class="form-group">
+                            <img class="img-fluid img-thumbnail w-100" id="show_main_image" style="cursor: pointer"
+                                src="{{ showImage($product->main_image) }}" alt=""
+                                onclick="document.getElementById('main_image').click();">
+
+                            <input type="file" class="form-control d-none" id="main_image" name="main_image"
+                                accept="image/*" onchange="previewImage(event, 'show_main_image')">
+                        </div>
+
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="keyword_seo" class="form-label">Từ khóa SEO</label>
-                        <input value="{{ $product->keyword_seo }}" type="text" class="form-control"
-                            name="keyword_seo" id="keyword_seo" placeholder="Nhập từ khóa SEO">
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Xác nhận</button>
                 </div>
             </div>
         </div>

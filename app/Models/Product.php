@@ -26,12 +26,13 @@ class Product extends Model
         'main_image',
         'category_id',
         'file_pdf',
-        'file_name'
+        'file_name',
+        'manufacturer',
+        'model'
     ];
 
     protected $casts = [
         'images' => 'array',
-        'status' => 'boolean',
     ];
 
     public static function boot()
