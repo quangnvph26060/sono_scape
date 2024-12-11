@@ -68,9 +68,10 @@
                                         <input type="hidden" name="product_sale_price" value="0" />
                                     </div>
                                     <hr class="divider mb-0" />
-                                    <div class="product-content-des">
-                                        {!! $product->sub_description !!}
-                                        {{-- <p class="mb-1 mt-3">
+                                    @if ($product->sub_description)
+                                        <div class="product-content-des">
+                                            {!! $product->sub_description !!}
+                                            {{-- <p class="mb-1 mt-3">
                                             Nguồn gốc: {{ $product->source }}
                                         </p>
                                         <p class="mb-1">
@@ -83,63 +84,83 @@
                                         </p>
 
                                         --}}
-                                    </div>
-                                    <hr class="divider" />
-
-
-
-                                    @if ($product->price || $product->sale_price)
-                                        <p class="mb-1">
-                                            @if ($product->sale_price)
-                                                Giá chỉ từ:
-                                                <span style="color: red; font-weight: bold; margin-left:10px">
-                                                    ₫{{ number_format($product->sale_price, 0, '', '.') }}
-                                                </span>
-                                                <span style="text-decoration: line-through; color: gray; margin-left: 8px;">
-                                                    ₫{{ number_format($product->price, 0, '', '.') }}
-                                                </span>
-                                            @else
-                                                Giá chỉ từ: <span style="color: red; font-weight: bold;">
-                                                    ₫{{ number_format($product->price, 0, '', '.') }}
-                                                </span>
-                                            @endif
-                                        </p>
-
+                                        </div>
+                                        <hr class="divider" />
                                     @endif
 
-                                    <p class="mb-1">
-                                        Bảo hành: <span class="ml-2">{{ $product->guarantee }}</span> tháng
 
-                                    </p>
-                                    <hr class="divider" />
+
+
+
                                     <!-- Thuộc tính -->
                                     <div class="product-infor">
-                                        <div class="row desc info-extra inventory">
-                                            <!-- Tình trạng -->
-                                            <div class="col-4 no-padding-right">
-                                                <label>Tình trạng:&nbsp;</label>
-                                            </div>
-                                            <div class="col-8 pl-1">
-                                                <span
-                                                    class="color edit_speciality_color wb-stock-status">{{ $product->status ? 'Còn hàng' : 'Hết hàng' }}</span>
-                                            </div>
+                                        <div class=" desc info-extra inventory">
+                                            @if ($product->price || $product->sale_price)
+                                                <p class="mb-1 d-flex">
+                                                    @if ($product->sale_price)
+                                                        <span>Giá chỉ từ:</span>
+                                                        <span style="color: red; font-weight: bold; margin-left:18px">
+                                                            ₫{{ number_format($product->sale_price, 0, '', '.') }}
+                                                        </span>
+                                                        <span
+                                                            style="text-decoration: line-through; color: gray; margin-left: 8px;">
+                                                            ₫{{ number_format($product->price, 0, '', '.') }}
+                                                        </span>
+                                                    @else
+                                                        Giá chỉ từ: <span style="color: red; font-weight: bold;">
+                                                            ₫{{ number_format($product->price, 0, '', '.') }}
+                                                        </span>
+                                                    @endif
+                                                </p>
+
+                                            @endif
+
+                                            @if ($product->guarantee)
+                                                <p class="mb-1 d-flex">
+                                                    <span>Bảo hành:</span>
+                                                    <span class="" style="margin-left: 18px">{{ $product->guarantee }} tháng</span>
+                                                </p>
+                                            @endif
+
+                                            @if ($product->model)
+                                                <p class="mb-1 d-flex">
+                                                    <span> Model:</span>
+                                                    <span class="" style="margin-left: 40px">{{ $product->model }}</span>
+                                                </p>
+                                            @endif
+
+                                            @if ($product->status)
+                                                <p class="mb-1">
+                                                    Tình trạng: <span class="" style="margin-left: 10px">{{ $product->status }}</span> tháng
+                                                </p>
+                                            @endif
+
+                                            @if ($product->category)
+                                                <p class="mb-1">
+                                                    Danh mục: <span class="" style="margin-left: 10px">{{ $product->category->name }}</span>
+                                                    tháng
+                                                </p>
+                                            @endif
+
                                         </div>
                                     </div>
                                     <!-- Nút đặt mua -->
                                     <div class="product-oder row">
-                                        <div class="col-sm-6 order-now">
+                                        <div class="col-sm-6  order-now">
                                             <a href="{{ route('contact', $product->slug) }}" rel="nofollow"
                                                 class="btn btn--l btn-primary btn-order wb-main-order btn-item buy_now"
                                                 title="{{ $product->name }}">Liên hệ <i style="margin-left: 5px"
                                                     class="fa fa-phone-alt" aria-hidden="true"></i></a>
                                         </div>
-                                        @if ($product->file_pdf)
-                                            <a href="{{ route('file.download', $product->id) }}"
-                                                style="font-weight: bold; border-radius: 5px; color: #fff; background: #009FAB; border:none; padding: 5px;">
-                                                Xem Catalogue <i class="fas fa-download ml-2"></i>
-                                            </a>
-                                        @endif
+                                        <div class="col-sm-6 order-now">
+                                            @if ($product->file_pdf)
+                                                <a href="{{ route('file.download', $product->id) }}"
+                                                    style="font-weight: bold; border-radius: 5px; color: #fff; background: #009FAB; border:none; padding: 5px; width: 100%; display: block; text-align: center">
+                                                    Xem Catalogue <i class="fas fa-download ml-2"></i>
+                                                </a>
+                                            @endif
 
+                                        </div>
                                     </div>
                                     <hr class="divider" />
                                 </div>
@@ -308,7 +329,7 @@
                                                         <div class="relative img-product">
                                                             <a href="{{ route('product.detail', $item->slug) }}"
                                                                 class="d-block relative">
-                                                                <img src="{{ showImage($item->images[0]) }}"
+                                                                <img src="{{ showImage($item->main_image) }}"
                                                                     width="100%" height="100%" class="lazyload"
                                                                     alt="{{ $item->name }}" />
                                                             </a>
