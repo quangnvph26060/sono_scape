@@ -14,7 +14,11 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $products = Product::latest()->take(8)->get();
+        $products = Product::orderByDesc('is_hot')
+            ->orderByDesc('created_at')
+            ->take(8)
+            ->get();
+
 
         // $introduction = Introduction::whereDate('release_date', '<=', Carbon::today())
         //     ->orderByDesc('release_date')

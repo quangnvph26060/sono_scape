@@ -17,9 +17,8 @@
                         <th>Tên</th>
                         <th>Danh mục</th>
                         <th>Bảo hành (Tháng)</th>
+                        <th>Bán chạy</th>
                         <th>Giá</th>
-                        <th>Giá khuyến mãi</th>
-                        <th>Trạng thái</th>
                         <th style="text-align: center">Hành động</th>
                     </thead>
 
@@ -42,7 +41,7 @@
                 serverSide: true,
                 ajax: '{{ route('admin.product.index') }}',
                 columns: [{
-                        data: 'DT_RowIndex', 
+                        data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
                         orderable: false,
                         searchable: false,
@@ -65,19 +64,15 @@
                         searchable: false
                     },
                     {
+                        data: 'is_hot',
+                        name: 'is_hot'
+                    },
+                    {
                         data: 'price',
                         name: 'price'
                     },
-                    {
-                        data: 'sale_price',
-                        name: 'sale_price',
-                        orderable: false
-                    },
-                    {
-                        data: 'status',
-                        name: 'status',
-                        searchable: false
-                    },
+
+
                     {
                         data: 'action',
                         name: 'action',
@@ -171,6 +166,61 @@
                     }
                 });
             })
+
+            $(document).on('change', '.update-status', function() {
+
+                function showToast(icon, title) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                    Toast.fire({
+                        icon: icon,
+                        title: title
+                    });
+                }
+
+                const id = $(this).data('id');
+
+                let checkbox = $(this);
+                let isChecked = checkbox.is(':checked');
+
+                let newStatus = isChecked ? 1 : 0;
+
+                $.ajax({
+                    url: '{{ route('admin.product.change.is-hot') }}',
+                    type: 'POST',
+                    data: {
+                        id: id,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        if (response.status) {
+                            // $('#myTable').DataTable().ajax.reload();
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thành công',
+                                text: response.message,
+                            });
+
+                        } else {
+                            checkbox.prop('checked', !isChecked);
+                            Swal.fire('Lỗi!',
+                                'Có lỗi xảy ra. Vui lòng thử lại!',
+                                'error');
+                        }
+                    },
+                    error: function() {
+                        Swal.fire('Lỗi!', 'Có lỗi xảy ra. Vui lòng thử lại.',
+                            'error');
+                    }
+                });
+            });
         })
     </script>
 @endpush
