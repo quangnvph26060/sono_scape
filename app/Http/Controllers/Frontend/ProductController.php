@@ -19,6 +19,8 @@ class ProductController extends Controller
         })->when(request('keyword'), function ($query) {
             return $query->where('name', 'like', '%' . request('keyword') . '%');
         })
+            ->orderByDesc('is_hot')
+            ->orderByDesc('created_at')
             ->paginate(12);
 
         return view('frontend.pages.product.list', compact('products'));
