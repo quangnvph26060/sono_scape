@@ -43,8 +43,10 @@
                 serverSide: true,
                 ajax: '{{ route('admin.news.index') }}',
                 columns: [{
-                        data: 'id',
-                        name: 'id'
+                        data: 'DT_RowIndex', // Đây là số thứ tự
+                        name: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false,
                     },
                     {
                         data: 'subject',
