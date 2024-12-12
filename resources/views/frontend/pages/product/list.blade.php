@@ -43,19 +43,21 @@
                                 <div class="item col-6 col-sm-6 col-md-6 col-lg-4 pd-style1">
                                     <div class="product-item relative">
                                         <figure class="photoframe relative">
+                                            @if ($product->is_hot)
+                                                <img style="position: absolute; max-width: 22%; height: auto; z-index: 100; top: -2px; right: -7px;"
+                                                    src="{{ asset('frontend/assets/image/pngegg.png') }}" alt="">
+                                            @endif
                                             <div class="relative img-product">
                                                 <a href="{{ route('product.detail', $product->slug) }}"
                                                     class="d-block relative">
-                                                    <img src="{{ showImage($product->main_image) }}"
-                                                        width="100%" height="100%"
-                                                        data-isrc="{{ showImage($product->main_image) }}"
+                                                    <img src="{{ showImage($product->main_image) }}" width="100%"
+                                                        height="100%" data-isrc="{{ showImage($product->main_image) }}"
                                                         class="lazyload" alt="{{ $product->name }}"
                                                         aria-label="{{ $product->name }}" />
                                                 </a>
                                                 <a href="{{ route('contact', $product->slug) }}" rel="nofollow"
                                                     class="btn btn--m btn-primary btn-item" title="{{ $product->name }}">
-                                                    Liên hệ <i
-                                                    class="fa fa-phone-alt ml-2" aria-hidden="true"></i></a>
+                                                    Liên hệ <i class="fa fa-phone-alt ml-2" aria-hidden="true"></i></a>
                                             </div>
                                             <figcaption class="infor-product">
                                                 <h3 class="wrap-two-lines product-title">
@@ -67,8 +69,7 @@
                                                     <a href="{{ route('contact', $product->slug) }}" rel="nofollow"
                                                         class="btn btn--m btn-primary btn-item"
                                                         title="{{ $product->name }}">
-                                                        Liên hệ <i class="fa fa-phone-alt ml-2"
-                                                        aria-hidden="true"></i></a>
+                                                        Liên hệ <i class="fa fa-phone-alt ml-2" aria-hidden="true"></i></a>
                                                 </div>
                                             </figcaption>
                                         </figure>

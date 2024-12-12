@@ -5234,6 +5234,7 @@ body.product_detail .img-product .qv-preview a:first-child {
     background-repeat: no-repeat;
 }
 @media (min-width: 768px) {
+   
     .list-category-product a {
         width: calc(14.28571% - 5px);
     }
@@ -6999,10 +7000,10 @@ body.tab_style7 .widget-sidebar ul.tab_list li a {
     bottom: 435px;
 }
 .position_0.left_position {
-    bottom: 45px;
+    bottom: 85px;
 }
 .position_1.left_position {
-    bottom: 130px;
+    bottom: 150px;
 }
 .position_2.left_position {
     bottom: 215px;
@@ -7080,7 +7081,7 @@ body.tab_style7 .widget-sidebar ul.tab_list li a {
 .btn-quick-alo-phone.left_position,
 .btn-quick-mail-phone.left_position,
 .quick-alo-show.left_position {
-    left: 15px;
+    /* left: 15px; */
 }
 body .big_size_button .scroll-top {
     width: 50px;

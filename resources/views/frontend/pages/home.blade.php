@@ -67,6 +67,11 @@
                                                 <div class="col-6 col-sm-4 col-md-4 col-lg-3">
                                                     <div class="product-item relative">
                                                         <figure class="photoframe relative">
+                                                            @if ($product->is_hot)
+                                                                <img style="position: absolute; max-width: 22%; height: auto; z-index: 100; top: -2px; right: -7px;"
+                                                                    src="{{ asset('frontend/assets/image/pngegg.png') }}"
+                                                                    alt="">
+                                                            @endif
                                                             <div class="relative img-product">
                                                                 <a href="{{ route('product.detail', $product->slug) }}"
                                                                     class="d-block relative">
