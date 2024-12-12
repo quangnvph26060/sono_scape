@@ -70,9 +70,9 @@
                                                             <div class="relative img-product">
                                                                 <a href="{{ route('product.detail', $product->slug) }}"
                                                                     class="d-block relative">
-                                                                    <img src="{{ showImage($product->images[0] ?? '') }}"
+                                                                    <img src="{{ showImage($product->main_image) }}"
                                                                         width="100%" height="100%"
-                                                                        data-isrc="{{ showImage($product->images[0] ?? '') }}"
+                                                                        data-isrc="{{ showImage($product->main_image) }}"
                                                                         class="lazyload" alt="{{ $product->name }}"
                                                                         aria-label="{{ $product->name }}" />
                                                                 </a>
@@ -191,7 +191,8 @@
                             <div class="text-center">
                                 <div class="box_heading">
                                     <h2 class="heading">
-                                        <a style="color: #cc0000 !important" href="{{ route('news.list') }}">TIN TỨC NỔI BẬT</a>
+                                        <a style="color: #cc0000 !important" href="{{ route('news.list') }}">TIN TỨC NỔI
+                                            BẬT</a>
                                     </h2>
                                     <div class="line-hg"><span></span></div>
                                     <div class="svg-wrap">
@@ -312,7 +313,7 @@
                         <form class="consult-form w-100 contact-form" action="{{ route('contact') }}" id="contact_form">
                             {{-- <h2 >Bạn đang cần được tư vấn</h2> --}}
                             <h2 style="font-size: 1.8rem; color: #cc0000 !important">
-                               Bạn đang cần được tư vấn
+                                Bạn đang cần được tư vấn
                             </h2>
                             <p style="font-weight: 500">Chúng tôi sẽ liên hệ với bạn trong ít phút nữa.</p>
 
