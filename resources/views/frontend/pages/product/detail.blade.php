@@ -22,8 +22,10 @@
                     <div class="row product-detail in-stock" data-attributes="[]" data-attributes-data="[]">
                         <div class="col-md-5 col-sm-12 col-xs-12 img-product">
                             <div class="relative d-inline-b qv-preview" data-zoom="1">
-
-                                @foreach ($product->images as $item)
+                                @php
+                                    $allImages = array_merge([$product->main_image], $product->images);
+                                @endphp
+                                @foreach ($allImages as $item)
                                     <a data-fancybox="gallery" data-number="{{ $loop->index }}"
                                         href="{{ showImage($item) }}" class="img-main-href">
                                         <img class="img-main-detail" src="{{ showImage($item) }}" alt="{{ $product->name }}"
@@ -38,7 +40,7 @@
                                     data-nav="true" data-margin="15" data-responsive-0="4" data-responsive-576="4"
                                     data-responsive-768="4" data-responsive-992="4" onclick="changeImageOnClick(event)">
 
-                                    @foreach ($product->images as $item)
+                                    @foreach ($allImages as $item)
                                         <div>
                                             <a class="d-block text-center"
                                                 style="
@@ -185,8 +187,8 @@
                                                 rel="nofollow" target="_blank" class="f-size-ex-large textAlign-center">
                                                 <i class="fab fa-facebook-f"></i>
                                             </a> --}}
-                                            <div class="fb-share-button" data-href="{{ url()->current() }}" data-layout=""
-                                                data-size=""><a target="_blank"
+                                            <div class="fb-share-button" data-href="{{ url()->current() }}"
+                                                data-layout="" data-size=""><a target="_blank"
                                                     href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}&amp;src=sdkpreparse"
                                                     class="fb-xfbml-parse-ignore">Chia sẻ</a>
                                             </div>
