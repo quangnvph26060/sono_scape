@@ -42,8 +42,10 @@
                 serverSide: true,
                 ajax: '{{ route('admin.product.index') }}',
                 columns: [{
-                        data: 'id',
-                        name: 'id'
+                        data: 'DT_RowIndex', 
+                        name: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false,
                     },
                     {
                         data: 'name',

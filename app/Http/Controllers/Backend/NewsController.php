@@ -17,6 +17,7 @@ class NewsController extends Controller
     {
         if (request()->ajax()) {
             return datatables()->of(News::withoutGlobalScope('published')->get())
+                ->addIndexColumn() // Thêm số thứ tự
                 ->addColumn('status', function ($row) {
                     return '
                     <div class="radio-container">
@@ -44,11 +45,11 @@ class NewsController extends Controller
                     ';
                 })
                 ->rawColumns(['status', 'action', 'subject'])
-                ->addIndexColumn()
                 ->make(true);
         }
         return view('backend.news.index');
     }
+
 
     /**
      * Show the form for creating a new resource.
