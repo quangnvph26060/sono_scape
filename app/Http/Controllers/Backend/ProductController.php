@@ -40,7 +40,7 @@ class ProductController extends Controller
     {
         if ($request->ajax()) {
             DB::reconnect();
-            return datatables()->of(Product::select(['id', 'name', 'status', 'price', 'guarantee', 'sale_price', 'category_id'])->get())
+            return datatables()->of(Product::select(['id', 'name', 'status', 'price', 'guarantee', 'sale_price', 'category_id', 'is_hot'])->get())
                 ->addColumn('category_id', function ($row) {
                     return $row->category->name ?? '';
                 })
@@ -50,9 +50,20 @@ class ProductController extends Controller
                 ->addColumn('price', function ($row) {
                     return number_format($row->price, 0, ',', '.') . ' VND';
                 })
+                ->addColumn('is_hot', function ($row) {
+                    return '
+                    <div class="radio-container">
+                        <label class="toggle">
+                            <input type="checkbox" class="status-change update-status" data-id="' . $row->id . '" ' . ($row->is_hot ? 'checked' : 'a') . '>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                ';
+                })
                 ->addColumn('sale_price', function ($row) {
                     return number_format($row->price, 0, ',', '.') . ' VND';
                 })
+
                 ->addColumn('action', function ($row) {
                     return '
                     <div class="btn-group">
@@ -62,7 +73,7 @@ class ProductController extends Controller
                     </div>
                 ';
                 })
-                ->rawColumns(['status', 'action'])
+                ->rawColumns(['status', 'action', 'is_hot'])
                 ->addIndexColumn()
                 ->make(true);
         }
@@ -250,5 +261,30 @@ class ProductController extends Controller
             Log::error('Failed to find this Product: ' . $e->getMessage());
             return response()->json(['success' => false, 'message' => 'Tìm sản phẩm thất bại']);
         }
+    }
+
+    public function changeIsHot(Request $request)
+    {
+        // dd($request->toArray());
+        $product = Product::find($request->id);
+
+        if (!$product) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Sản phẩm không tồn tại trên hệ thống!',
+            ]);
+        }
+
+        // dd($product);
+
+        $product->is_hot = !$product->is_hot;
+        $product->created_at = now();
+
+        $product->save();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Cập nhật thành công',
+        ]);
     }
 }
