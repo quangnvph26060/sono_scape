@@ -40,8 +40,6 @@ class ProductService
                 $data['file_name'] = $fileName;
             }
 
-            dd($data);
-
             $product = $this->product->create($data);
 
             if (request()->hasFile('main_image')) { // Kiểm tra xem file có được upload hay không
