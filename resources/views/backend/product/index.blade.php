@@ -33,6 +33,7 @@
 @push('scripts')
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -202,22 +203,16 @@
                         if (response.status) {
                             // $('#myTable').DataTable().ajax.reload();
 
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Thành công',
-                                text: response.message,
-                            });
+                            toastr.success(response.message);
 
                         } else {
                             checkbox.prop('checked', !isChecked);
-                            Swal.fire('Lỗi!',
-                                'Có lỗi xảy ra. Vui lòng thử lại!',
-                                'error');
+
+                            toastr.success('Có lỗi xảy ra. Vui lòng thử lại!');
                         }
                     },
                     error: function() {
-                        Swal.fire('Lỗi!', 'Có lỗi xảy ra. Vui lòng thử lại.',
-                            'error');
+                        toastr.success('Có lỗi xảy ra. Vui lòng thử lại!');
                     }
                 });
             });
@@ -228,6 +223,7 @@
 @push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
         table tr td:last-child {
             text-align: center;
