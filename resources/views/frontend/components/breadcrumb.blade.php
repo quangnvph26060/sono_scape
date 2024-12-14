@@ -6,7 +6,7 @@
             </li>
             @if (isset($name))
                 <li>
-                    <a href="{{ route('news.list') }}" class="color-base">
+                    <a href="{{ $route }}" class="color-base">
                         {{ $title }}
                     </a>
                     <i>/</i>
