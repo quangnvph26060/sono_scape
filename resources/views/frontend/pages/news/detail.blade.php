@@ -7,7 +7,7 @@
 
 @section('content')
 {{-- @dd($news) --}}
-    <x-breadcrumb :title="'Tin tức'" :name="$news->subject" />
+    <x-breadcrumb :title="'Tin tức'" :name="$news->subject" :route="route('news.list')"/>
 
     <div class="page-content">
         <div class="container">

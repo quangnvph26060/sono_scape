@@ -207,7 +207,7 @@ body.layout_fullwidth .container {
     bottom: -1px;
     height: 3px;
     position: absolute;
-    background: #EB0218;
+    background: #eb0218;
     left: 0;
 }
 
@@ -543,14 +543,14 @@ header .header-container .search-form button[type="submit"] {
         display: none !important;
     } */
 
-    .widget-fanpage_fb{
+    .widget-fanpage_fb {
         margin-left: 0 !important;
     }
 
-    .widget-text_editor .block-wrapper div{
+    .widget-text_editor .block-wrapper div {
         padding-right: 0 !important;
     }
-    .header-top{
+    .header-top {
         display: none !important;
     }
     header .fixed-menu-right .search-form button[type="submit"],
@@ -5234,7 +5234,6 @@ body.product_detail .img-product .qv-preview a:first-child {
     background-repeat: no-repeat;
 }
 @media (min-width: 768px) {
-   
     .list-category-product a {
         width: calc(14.28571% - 5px);
     }
@@ -5813,7 +5812,7 @@ body.product_detail .img-product .qv-preview a:first-child {
 }
 ul.tab_list {
     display: block;
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
     border-bottom: none;
 }
 .widget ul.tab_list {
@@ -5822,12 +5821,14 @@ ul.tab_list {
     z-index: 1;
 }
 body.product_detail .detail-tabs ul.tab_list {
-    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(48, 46, 46, .3);
+
+    margin-bottom: 20px;
 }
 ul.tab_list li {
     display: inline-block;
     position: relative;
-    margin: 3px 0;
+    /* margin: 3px 0; */
 }
 .widget-sidebar ul.tab_list {
     text-align: center;
@@ -5890,9 +5891,10 @@ body.tab_style2 ul.tab_list,
 body.tab_style3 ul.tab_list {
     text-align: center;
 }
-ul.tab_list li a.active,
-ul.tab_list li a:hover {
-    background: var(--primary-color);
+/* ul.tab_list li a.active, */
+body.product_detail.tab_style1 .detail-tabs ul.tab_list li a.active:hover {
+    /* background: red !important; */
+    background: #eb0218;
     color: #fff;
     transition: all 0.3s;
 }
@@ -5979,13 +5981,18 @@ body.product_detail.tab_style8 .detail-tabs .tab-content {
 body.product_detail .detail-tabs ul.tab_list li a {
     background: #fff;
 }
-body.product_detail.tab_style1 .detail-tabs ul.tab_list li a.active,
+
 body.product_detail.tab_style2 .detail-tabs ul.tab_list li a.active,
 body.product_detail.tab_style3 .detail-tabs ul.tab_list li a.active,
 body.product_detail.tab_style4 .detail-tabs ul.tab_list li a.active,
 body.product_detail.tab_style5 .detail-tabs ul.tab_list li a.active {
     background: var(--primary-color);
 }
+
+body.product_detail.tab_style1 .detail-tabs ul.tab_list li a.active {
+    background: none;
+}
+
 body.tab_style6 ul.tab_list,
 body.tab_style7 ul.tab_list {
     overflow: hidden;

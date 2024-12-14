@@ -13,7 +13,7 @@
 
 @section('content')
 
-    <x-breadcrumb :title="'Sản phẩm'" :name="$product->name" />
+    <x-breadcrumb :title="'Sản phẩm'" :name="$product->name" :route="route('product.list')" />
 
     <div class="page-content">
         <div class="container">
