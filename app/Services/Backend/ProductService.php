@@ -75,6 +75,7 @@ class ProductService
 
     public function updateProduct(array $data, $id)
     {
+        // dd($data);
         try {
             DB::beginTransaction();
 
