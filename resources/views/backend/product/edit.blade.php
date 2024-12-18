@@ -64,9 +64,9 @@
                             </div>
 
                             <div class="form-group mb-3 col-lg-6">
-                                <label for="guarantee" class="form-label">Bảo hành (tháng)</label>
-                                <input value="{{ $product->guarantee }}" type="number" class="form-control"
-                                    name="guarantee" id="guarantee" placeholder="Nhập số tháng bảo hành">
+                                <label for="guarantee" class="form-label">Bảo hành</label>
+                                <input value="{{ $product->guarantee }}" type="text" class="form-control"
+                                    name="guarantee" id="guarantee" placeholder="Nhập thời gian bảo hành">
                             </div>
 
                             <div class="form-group mb-3 col-lg-6">
@@ -136,11 +136,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Xác nhận</button>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -182,8 +178,14 @@
 
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                </div>
             </div>
+
         </div>
+
     </form>
 @endsection
 

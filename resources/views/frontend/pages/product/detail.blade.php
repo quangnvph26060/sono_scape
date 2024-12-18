@@ -109,7 +109,7 @@
                                                             ₫{{ number_format($product->price, 0, '', '.') }}
                                                         </span>
                                                     @else
-                                                        Giá chỉ từ: <span style="color: red; font-weight: bold;">
+                                                        Giá chỉ từ: <span style="color: red; font-weight: bold; margin-left: 35px;">
                                                             ₫{{ number_format($product->price, 0, '', '.') }}
                                                         </span>
                                                     @endif
@@ -137,7 +137,7 @@
                                                 <p class="mb-1 d-flex">
                                                     <span>Bảo hành:</span>
                                                     <span class=""
-                                                        style="margin-left: 38px">{{ $product->guarantee }} tháng</span>
+                                                        style="margin-left: 38px">{{ $product->guarantee }}</span>
                                                 </p>
                                             @endif
 
